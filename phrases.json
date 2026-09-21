@@ -1,0 +1,554 @@
+[
+  {
+    "phrase": "would like",
+    "translation": "Хотелось бы",
+    "frequency": "616",
+    "pmi": "4.33"
+  },
+  {
+    "phrase": "speak english",
+    "translation": "говорить по-английски",
+    "frequency": "545",
+    "pmi": "5.05"
+  },
+  {
+    "phrase": "learn english",
+    "translation": "выучить английский",
+    "frequency": "465",
+    "pmi": "5.08"
+  },
+  {
+    "phrase": "free time",
+    "translation": "свободное время",
+    "frequency": "404",
+    "pmi": "4.67"
+  },
+  {
+    "phrase": "point of view",
+    "translation": "Точка зрения",
+    "frequency": "340",
+    "pmi": "11.43"
+  },
+  {
+    "phrase": "learning english",
+    "translation": "изучение английского языка",
+    "frequency": "261",
+    "pmi": "5.34"
+  },
+  {
+    "phrase": "advanced level",
+    "translation": "продвинутый уровень",
+    "frequency": "238",
+    "pmi": "6.51"
+  },
+  {
+    "phrase": "great pleasure",
+    "translation": "большое удовольствие",
+    "frequency": "171",
+    "pmi": "7.2"
+  },
+  {
+    "phrase": "pay attention",
+    "translation": "обращать внимание",
+    "frequency": "169",
+    "pmi": "7.03"
+  },
+  {
+    "phrase": "within the framework",
+    "translation": "в рамках",
+    "frequency": "166",
+    "pmi": "11.63"
+  },
+  {
+    "phrase": "really like",
+    "translation": "очень нравится",
+    "frequency": "163",
+    "pmi": "3.23"
+  },
+  {
+    "phrase": "years ago",
+    "translation": "Много лет назад",
+    "frequency": "120",
+    "pmi": "6.45"
+  },
+  {
+    "phrase": "make mistakes",
+    "translation": "совершать ошибки",
+    "frequency": "111",
+    "pmi": "5.24"
+  },
+  {
+    "phrase": "native speaker",
+    "translation": "Носитель языка",
+    "frequency": "106",
+    "pmi": "8.6"
+  },
+  {
+    "phrase": "correct answer",
+    "translation": "Правильный ответ",
+    "frequency": "104",
+    "pmi": "5.85"
+  },
+  {
+    "phrase": "every day",
+    "translation": "каждый день",
+    "frequency": "99",
+    "pmi": "6.17"
+  },
+  {
+    "phrase": "soon as possible",
+    "translation": "Как можно скорее",
+    "frequency": "85",
+    "pmi": "11.67"
+  },
+  {
+    "phrase": "sure to write",
+    "translation": "обязательно писать",
+    "frequency": "85",
+    "pmi": "9.34"
+  },
+  {
+    "phrase": "take part",
+    "translation": "принимать участие",
+    "frequency": "85",
+    "pmi": "4.83"
+  },
+  {
+    "phrase": "write about your results",
+    "translation": "Напишите о своих результатах",
+    "frequency": "83",
+    "pmi": "16.74"
+  },
+  {
+    "phrase": "sooner or later",
+    "translation": "Рано или поздно",
+    "frequency": "81",
+    "pmi": "13.42"
+  },
+  {
+    "phrase": "foreign languages",
+    "translation": "иностранные языки",
+    "frequency": "75",
+    "pmi": "9.08"
+  },
+  {
+    "phrase": "say it differently",
+    "translation": "Говорить по-другому",
+    "frequency": "75",
+    "pmi": "8.72"
+  },
+  {
+    "phrase": "talking on the phone",
+    "translation": "говорить по телефону",
+    "frequency": "71",
+    "pmi": "14.81"
+  },
+  {
+    "phrase": "step by step",
+    "translation": "Шаг за шагом",
+    "frequency": "71",
+    "pmi": "13.52"
+  },
+  {
+    "phrase": "keep in mind",
+    "translation": "Имейте в виду",
+    "frequency": "66",
+    "pmi": "10.66"
+  },
+  {
+    "phrase": "glad to see",
+    "translation": "Рад видеть",
+    "frequency": "64",
+    "pmi": "9.44"
+  },
+  {
+    "phrase": "improve my english",
+    "translation": "Улучшить свой английский",
+    "frequency": "64",
+    "pmi": "8.65"
+  },
+  {
+    "phrase": "pass this exam",
+    "translation": "сдать этот экзамен",
+    "frequency": "62",
+    "pmi": "10.22"
+  },
+  {
+    "phrase": "later than usual",
+    "translation": "позже, чем обычно",
+    "frequency": "60",
+    "pmi": "14.13"
+  },
+  {
+    "phrase": "without any mistakes",
+    "translation": "Без ошибок",
+    "frequency": "59",
+    "pmi": "11.45"
+  },
+  {
+    "phrase": "pros and cons",
+    "translation": "плюсы и минусы",
+    "frequency": "57",
+    "pmi": "12.42"
+  },
+  {
+    "phrase": "started learning english",
+    "translation": "Начал изучать английский",
+    "frequency": "57",
+    "pmi": "12.02"
+  },
+  {
+    "phrase": "sum of money",
+    "translation": "Сумма денег",
+    "frequency": "57",
+    "pmi": "10.09"
+  },
+  {
+    "phrase": "walking in the park",
+    "translation": "Прогулка в парке",
+    "frequency": "55",
+    "pmi": "15.56"
+  },
+  {
+    "phrase": "cup of coffee",
+    "translation": "Чашка кофе",
+    "frequency": "54",
+    "pmi": "12.46"
+  },
+  {
+    "phrase": "listen to music",
+    "translation": "Слушайте музыку",
+    "frequency": "54",
+    "pmi": "9.78"
+  },
+  {
+    "phrase": "call you back",
+    "translation": "перезвонить",
+    "frequency": "51",
+    "pmi": "8.78"
+  },
+  {
+    "phrase": "speak english fluently",
+    "translation": "свободно говорить по-английски",
+    "frequency": "50",
+    "pmi": "12.67"
+  },
+  {
+    "phrase": "full of energy",
+    "translation": "Полный энергии",
+    "frequency": "49",
+    "pmi": "11.51"
+  },
+  {
+    "phrase": "speak english correctly",
+    "translation": "Говорить по-английски правильно",
+    "frequency": "49",
+    "pmi": "10.88"
+  },
+  {
+    "phrase": "need to speak english",
+    "translation": "Нужно говорить по-английски",
+    "frequency": "48",
+    "pmi": "12.25"
+  },
+  {
+    "phrase": "advantages and disadvantages",
+    "translation": "преимущества и недостатки",
+    "frequency": "46",
+    "pmi": "13.17"
+  },
+  {
+    "phrase": "devote more time",
+    "translation": "посвящать больше времени",
+    "frequency": "45",
+    "pmi": "10.12"
+  },
+  {
+    "phrase": "talking about the past",
+    "translation": "Разговоры о прошлом",
+    "frequency": "44",
+    "pmi": "13.89"
+  },
+  {
+    "phrase": "amount of money",
+    "translation": "Сумма денег",
+    "frequency": "44",
+    "pmi": "9.98"
+  },
+  {
+    "phrase": "couple of years",
+    "translation": "пару лет",
+    "frequency": "43",
+    "pmi": "10.73"
+  },
+  {
+    "phrase": "much does it cost",
+    "translation": "Сколько это стоит",
+    "frequency": "41",
+    "pmi": "13.66"
+  },
+  {
+    "phrase": "phrases and expressions",
+    "translation": "Фразы и выражения",
+    "frequency": "39",
+    "pmi": "9.53"
+  },
+  {
+    "phrase": "trying to find",
+    "translation": "Пытаясь найти",
+    "frequency": "39",
+    "pmi": "8.99"
+  },
+  {
+    "phrase": "say for example",
+    "translation": "Скажем, например",
+    "frequency": "39",
+    "pmi": "6.85"
+  },
+  {
+    "phrase": "fought very bravely",
+    "translation": "Сражался очень храбро",
+    "frequency": "38",
+    "pmi": "13.86"
+  },
+  {
+    "phrase": "little more complicated",
+    "translation": "Немного сложнее",
+    "frequency": "38",
+    "pmi": "12.11"
+  },
+  {
+    "phrase": "full of enthusiasm",
+    "translation": "Полный энтузиазма",
+    "frequency": "38",
+    "pmi": "11.12"
+  },
+  {
+    "phrase": "money is important",
+    "translation": "Деньги важны",
+    "frequency": "36",
+    "pmi": "6.07"
+  },
+  {
+    "phrase": "working on this project",
+    "translation": "Работа над этим проектом",
+    "frequency": "35",
+    "pmi": "13.56"
+  },
+  {
+    "phrase": "beauty of this place",
+    "translation": "Красота этого места",
+    "frequency": "35",
+    "pmi": "13.55"
+  },
+  {
+    "phrase": "full of optimism",
+    "translation": "Полный оптимизма",
+    "frequency": "35",
+    "pmi": "11.51"
+  },
+  {
+    "phrase": "improve my grammar",
+    "translation": "Улучшить свою грамматику",
+    "frequency": "35",
+    "pmi": "11.1"
+  },
+  {
+    "phrase": "pass this test",
+    "translation": "пройти этот тест",
+    "frequency": "34",
+    "pmi": "8.62"
+  },
+  {
+    "phrase": "try to find",
+    "translation": "Попробуйте найти",
+    "frequency": "34",
+    "pmi": "7.92"
+  },
+  {
+    "phrase": "walk in the park",
+    "translation": "Прогулка в парке",
+    "frequency": "33",
+    "pmi": "14.65"
+  },
+  {
+    "phrase": "drink a cup",
+    "translation": "выпить чашку",
+    "frequency": "33",
+    "pmi": "10.78"
+  },
+  {
+    "phrase": "ask these questions",
+    "translation": "Задайте эти вопросы",
+    "frequency": "33",
+    "pmi": "10.67"
+  },
+  {
+    "phrase": "help you improve",
+    "translation": "Помогите улучшить",
+    "frequency": "33",
+    "pmi": "7.91"
+  },
+  {
+    "phrase": "works very hard",
+    "translation": "Работает очень усердно",
+    "frequency": "32",
+    "pmi": "11.18"
+  },
+  {
+    "phrase": "confuse these words",
+    "translation": "Запутать эти слова",
+    "frequency": "32",
+    "pmi": "11.05"
+  },
+  {
+    "phrase": "call me back",
+    "translation": "перезвони мне",
+    "frequency": "32",
+    "pmi": "10.03"
+  },
+  {
+    "phrase": "everything is simple",
+    "translation": "Все очень просто",
+    "frequency": "32",
+    "pmi": "7.29"
+  },
+  {
+    "phrase": "find a good job",
+    "translation": "Найти хорошую работу",
+    "frequency": "31",
+    "pmi": "14.85"
+  },
+  {
+    "phrase": "resolve this conflict",
+    "translation": "Урегулировать этот конфликт",
+    "frequency": "31",
+    "pmi": "12.27"
+  },
+  {
+    "phrase": "train my memory",
+    "translation": "Тренировать свою память",
+    "frequency": "31",
+    "pmi": "11.78"
+  },
+  {
+    "phrase": "live in another place",
+    "translation": "Жить в другом месте",
+    "frequency": "29",
+    "pmi": "14.53"
+  },
+  {
+    "phrase": "listen to the radio",
+    "translation": "Послушать радио",
+    "frequency": "29",
+    "pmi": "13.69"
+  },
+  {
+    "phrase": "rid of these mistakes",
+    "translation": "Избавиться от этих ошибок",
+    "frequency": "28",
+    "pmi": "15.65"
+  },
+  {
+    "phrase": "know how to answer",
+    "translation": "Знать, как ответить",
+    "frequency": "28",
+    "pmi": "12.6"
+  },
+  {
+    "phrase": "devote more free time",
+    "translation": "Уделяйте больше свободного времени",
+    "frequency": "27",
+    "pmi": "16.68"
+  },
+  {
+    "phrase": "try not to forget",
+    "translation": "Старайтесь не забывать",
+    "frequency": "27",
+    "pmi": "13.71"
+  },
+  {
+    "phrase": "would like to note",
+    "translation": "Хотелось бы отметить",
+    "frequency": "26",
+    "pmi": "14.09"
+  },
+  {
+    "phrase": "talk about the past",
+    "translation": "Разговоры о прошлом",
+    "frequency": "26",
+    "pmi": "13.5"
+  },
+  {
+    "phrase": "would like to become",
+    "translation": "Хотелось бы стать",
+    "frequency": "26",
+    "pmi": "12.99"
+  },
+  {
+    "phrase": "understand you very well",
+    "translation": "Вы очень хорошо понимаете",
+    "frequency": "25",
+    "pmi": "12.33"
+  },
+  {
+    "phrase": "boss is very busy",
+    "translation": "Босс очень занят",
+    "frequency": "24",
+    "pmi": "14.58"
+  },
+  {
+    "phrase": "speak english very well",
+    "translation": "Говорить по-английски очень хорошо",
+    "frequency": "24",
+    "pmi": "14.12"
+  },
+  {
+    "phrase": "knocked on the door",
+    "translation": "постучали в дверь",
+    "frequency": "23",
+    "pmi": "15.2"
+  },
+  {
+    "phrase": "meaning of this phrase",
+    "translation": "значение этой фразы",
+    "frequency": "23",
+    "pmi": "12.82"
+  },
+  {
+    "phrase": "need to learn english",
+    "translation": "Нужно выучить английский",
+    "frequency": "23",
+    "pmi": "11.71"
+  },
+  {
+    "phrase": "lots of free time",
+    "translation": "Много свободного времени",
+    "frequency": "22",
+    "pmi": "15.18"
+  },
+  {
+    "phrase": "try not to spend",
+    "translation": "Старайтесь не тратить",
+    "frequency": "22",
+    "pmi": "13.44"
+  },
+  {
+    "phrase": "run out of time",
+    "translation": "исчерпать время",
+    "frequency": "22",
+    "pmi": "13.27"
+  },
+  {
+    "phrase": "try to learn english",
+    "translation": "Попробуйте выучить английский",
+    "frequency": "22",
+    "pmi": "13.17"
+  },
+  {
+    "phrase": "would like to drink",
+    "translation": "Хотелось бы выпить",
+    "frequency": "21",
+    "pmi": "13.3"
+  }
+]
