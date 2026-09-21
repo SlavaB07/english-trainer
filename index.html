@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,27 +12,27 @@
             <div class="header-left">
                 <h1>English Trainer</h1>
                 <div class="stats">
-                    <span id="progress-info">Изучено: 0 / 0</span>
+                    <span id="progress-info">Learned: 0 / 0</span>
                 </div>
             </div>
             <div class="header-right">
-                <div class="stat-box" title="Опыт">
+                <div class="stat-box" title="Experience">
                     <span class="stat-icon">⚡</span>
                     <span id="xp-info">0 XP</span>
                 </div>
-                <div class="stat-box" title="Дней подряд">
+                <div class="stat-box" title="Days in a row">
                     <span class="stat-icon">🔥</span>
                     <span id="streak-info">0</span>
                 </div>
-                <div class="stat-box" title="Уровень">
+                <div class="stat-box" title="Level">
                     <span class="stat-icon">🏆</span>
-                    <span id="level-info">Новичок</span>
+                    <span id="level-info">Beginner</span>
                 </div>
             </div>
         </header>
 
         <div class="daily-goal">
-            <div class="goal-text">Цель дня: <span id="goal-progress">0 / 20 XP</span></div>
+            <div class="goal-text">Daily goal: <span id="goal-progress">0 / 20 XP</span></div>
             <div class="goal-bar">
                 <div class="goal-bar-fill" id="goal-bar-fill"></div>
             </div>
@@ -41,10 +41,10 @@
         <div class="levels" id="level-buttons"></div>
 
         <nav class="menu">
-            <button class="menu-btn active" data-mode="cards">📇 Карточки</button>
-            <button class="menu-btn" data-mode="test">✅ Тест</button>
-            <button class="menu-btn" data-mode="write">✏️ Написание</button>
-            <button class="menu-btn" data-mode="phrases">💬 Фразы</button>
+            <button class="menu-btn active" data-mode="cards">📇 Cards</button>
+            <button class="menu-btn" data-mode="test">✅ Test</button>
+            <button class="menu-btn" data-mode="write">✏️ Writing</button>
+            <button class="menu-btn" data-mode="phrases">💬 Phrases</button>
         </nav>
 
         <main class="main">
@@ -52,8 +52,8 @@
         </main>
 
         <footer class="footer">
-            <button id="btn-prev">← Назад</button>
-            <button id="btn-next">Вперёд →</button>
+            <button id="btn-prev">← Back</button>
+            <button id="btn-next">Next →</button>
         </footer>
     </div>
 
@@ -63,7 +63,6 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js'
         import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
 
-        // Твой ПРАВИЛЬНЫЙ конфиг из Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCUVI52EfHAHkimFQQ3l9car3bA22OopGI",
             authDomain: "english-trainer-f1a28.firebaseapp.com",
@@ -73,12 +72,10 @@
             appId: "1:1070026282701:web:4d8270da0a9c24cdeb3b84"
         };
 
-        // Инициализация
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // Экспорт в глобальную область, чтобы app.js мог использовать
         window.firebaseAuth = auth;
         window.firebaseDb = db;
         window.firebaseSignInAnonymously = signInAnonymously;
