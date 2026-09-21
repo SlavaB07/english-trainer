@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Trainer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-left">
+                <h1>English Trainer</h1>
+                <div class="stats">
+                    <span id="progress-info">Изучено: 0 / 0</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="stat-box" title="Опыт">
+                    <span class="stat-icon">⚡</span>
+                    <span id="xp-info">0 XP</span>
+                </div>
+                <div class="stat-box" title="Дней подряд">
+                    <span class="stat-icon">🔥</span>
+                    <span id="streak-info">0</span>
+                </div>
+                <div class="stat-box" title="Уровень">
+                    <span class="stat-icon">🏆</span>
+                    <span id="level-info">Новичок</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="daily-goal">
+            <div class="goal-text">Цель дня: <span id="goal-progress">0 / 20 XP</span></div>
+            <div class="goal-bar">
+                <div class="goal-bar-fill" id="goal-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="levels" id="level-buttons"></div>
+
+        <nav class="menu">
+            <button class="menu-btn active" data-mode="cards">📇 Карточки</button>
+            <button class="menu-btn" data-mode="test">✅ Тест</button>
+            <button class="menu-btn" data-mode="write">✏️ Написание</button>
+            <button class="menu-btn" data-mode="phrases">💬 Фразы</button>
+        </nav>
+
+        <main class="main">
+            <div id="content"></div>
+        </main>
+
+        <footer class="footer">
+            <button id="btn-prev">← Назад</button>
+            <button id="btn-next">Вперёд →</button>
+        </footer>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js'
+        import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js'
+        import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js'
+
+        // Твой ПРАВИЛЬНЫЙ конфиг из Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCUVI52EfHAHkimFQQ3l9car3bA22OopGI",
+            authDomain: "english-trainer-f1a28.firebaseapp.com",
+            projectId: "english-trainer-f1a28",
+            storageBucket: "english-trainer-f1a28.firebasestorage.app",
+            messagingSenderId: "1070026282701",
+            appId: "1:1070026282701:web:4d8270da0a9c24cdeb3b84"
+        };
+
+        // Инициализация
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Экспорт в глобальную область, чтобы app.js мог использовать
+        window.firebaseAuth = auth;
+        window.firebaseDb = db;
+        window.firebaseSignInAnonymously = signInAnonymously;
+        window.firebaseOnAuthStateChanged = onAuthStateChanged;
+        window.firebaseDoc = doc;
+        window.firebaseSetDoc = setDoc;
+        window.firebaseGetDoc = getDoc;
+    </script>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
