@@ -584,3 +584,20 @@ body {
     transform: scale(1.1);
     background: #5568d3;
 }
+/* ===== WORD FAMILY ===== */
+.card-family {
+    background: #fff8e1;
+    border-left: 4px solid #ffc107;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+.card-family strong {
+    color: #f57c00;
+    display: block;
+    margin-bottom: 5px;
+}
