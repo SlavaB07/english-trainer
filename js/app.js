@@ -73,7 +73,6 @@ async function loadFromFirebase() {
                 positions.tempWrite = data.positions.tempWrite || 0;
             }
             currentLevel = data.currentLevel ?? currentLevel;
-            // temporary из Firebase объединяем с уже загруженным
             if (Array.isArray(data.temporary) && data.temporary.length > 0) {
                 temporary = mergeTemporary(temporary, data.temporary);
             }
@@ -142,7 +141,6 @@ async function loadData() {
         const phrasesRes = await fetch('data/phrases.json');
         phrases = await phrasesRes.json();
 
-        // temporary: сначала JSON, потом localStorage, объединяем
         let tempFromJson = [];
         try {
             const tempRes = await fetch('data/temporary.json');
@@ -802,7 +800,6 @@ function renderTemporary() {
         attachTempWriteHandlers();
     }
 
-    // Футер неактивен в Temporary
     document.getElementById('btn-prev').disabled = true;
     document.getElementById('btn-next').disabled = true;
 }
