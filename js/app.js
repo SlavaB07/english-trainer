@@ -5,7 +5,15 @@ let temporary = [];
 let currentMode = 'cards';
 let currentLevel = localStorage.getItem('level') || 'all';
 
-let positions = JSON.parse(localStorage.getItem('positions') || '{"cards":0,"test":0,"write":0,"phrases":0,"temporary":0,"listening":0}');
+// Исправление: загружаем positions и добавляем недостающие поля
+let positions = JSON.parse(localStorage.getItem('positions') || '{}');
+positions.cards = positions.cards || 0;
+positions.test = positions.test || 0;
+positions.write = positions.write || 0;
+positions.phrases = positions.phrases || 0;
+positions.temporary = positions.temporary || 0;
+positions.listening = positions.listening || 0;
+
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 
 let xp = parseInt(localStorage.getItem('xp') || '0');
@@ -49,7 +57,14 @@ async function loadFromFirebase() {
             streak = data.streak ?? streak;
             achievements = data.achievements ?? achievements;
             learned = data.learned ?? learned;
-            positions = data.positions ?? positions;
+            if (data.positions) {
+                positions.cards = data.positions.cards || 0;
+                positions.test = data.positions.test || 0;
+                positions.write = data.positions.write || 0;
+                positions.phrases = data.positions.phrases || 0;
+                positions.temporary = data.positions.temporary || 0;
+                positions.listening = data.positions.listening || 0;
+            }
             currentLevel = data.currentLevel ?? currentLevel;
             temporary = data.temporary ?? temporary;
             srsData = data.srsData ?? srsData;
