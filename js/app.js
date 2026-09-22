@@ -2,6 +2,7 @@
 let vocabulary = [];
 let phrases = [];
 let temporary = [];
+let sentences = [];
 let currentMode = 'cards';
 let currentLevel = localStorage.getItem('level') || 'all';
 
@@ -15,8 +16,15 @@ positions.listening = positions.listening || 0;
 positions.tempCards = positions.tempCards || 0;
 positions.tempTest = positions.tempTest || 0;
 positions.tempWrite = positions.tempWrite || 0;
+positions.sentBuild = positions.sentBuild || 0;
+positions.sentChoose = positions.sentChoose || 0;
+positions.sentTranslate = positions.sentTranslate || 0;
 
 let tempSubMode = 'list';
+
+// Sentences
+let sentSubMode = 'build'; // 'build' | 'choose' | 'translate'
+let sentFilter = 'all';    // 'all' | 'present_simple' | 'present_continuous' | ...
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
@@ -41,7 +49,6 @@ const LEVEL_RANGES = {
 let currentUser = null;
 
 // ===== ХЕЛПЕРЫ ДЛЯ FAMILY / COLLOCATIONS =====
-// Поддерживают и новый формат (объект) и старый (строка).
 function formatFamily(family) {
     if (!family || family.length === 0) return '';
     return family.map(f => {
@@ -110,6 +117,9 @@ async function loadFromFirebase() {
                 positions.tempCards = data.positions.tempCards || 0;
                 positions.tempTest = data.positions.tempTest || 0;
                 positions.tempWrite = data.positions.tempWrite || 0;
+                positions.sentBuild = data.positions.sentBuild || 0;
+                positions.sentChoose = data.positions.sentChoose || 0;
+                positions.sentTranslate = data.positions.sentTranslate || 0;
             }
             currentLevel = data.currentLevel ?? currentLevel;
             if (Array.isArray(data.temporary) && data.temporary.length > 0) {
@@ -203,6 +213,16 @@ async function loadData() {
 
         temporary = mergeTemporary(tempFromJson, tempFromLocal);
         localStorage.setItem('temporary', JSON.stringify(temporary));
+
+        // sentences.json (может отсутствовать — не критично)
+        try {
+            const sentRes = await fetch('data/sentences.json');
+            sentences = await sentRes.json();
+            if (!Array.isArray(sentences)) sentences = [];
+        } catch (e) {
+            console.warn('sentences.json не загружен:', e);
+            sentences = [];
+        }
 
         checkStreak();
         updateStats();
@@ -391,7 +411,8 @@ function renderLevelButtons() {
             positions = {
                 cards: 0, test: 0, write: 0, phrases: 0,
                 temporary: 0, listening: 0,
-                tempCards: 0, tempTest: 0, tempWrite: 0
+                tempCards: 0, tempTest: 0, tempWrite: 0,
+                sentBuild: 0, sentChoose: 0, sentTranslate: 0
             };
             savePositions();
             renderLevelButtons();
@@ -432,6 +453,7 @@ function renderMode(mode) {
     else if (mode === 'temporary') renderTemporary();
     else if (mode === 'listening') renderListening();
     else if (mode === 'mastered') renderMastered();
+    else if (mode === 'sentences') renderSentences();
 }
 
 // ===== КАРТОЧКИ (SRS) =====
@@ -902,7 +924,6 @@ function renderTemporary() {
     document.getElementById('btn-next').disabled = true;
 }
 
-// ----- Temporary: список -----
 function renderTempList() {
     return `
         <div style="margin: 10px 0;">
@@ -992,7 +1013,6 @@ function deleteTempWord(index) {
     renderTemporary();
 }
 
-// ----- Temporary: карточки -----
 function renderTempCards() {
     if (temporary.length === 0) {
         return '<p style="color:#888;margin-top:20px;">Нет временных слов. Добавь в «Список».</p>';
@@ -1071,7 +1091,6 @@ function attachTempCardsHandlers() {
     }
 }
 
-// ----- Temporary: тест -----
 function renderTempTest() {
     if (temporary.length < 4) {
         return '<p style="color:#888;margin-top:20px;">Нужно минимум 4 слова для теста.</p>';
@@ -1155,7 +1174,6 @@ function attachTempTestHandlers() {
     }
 }
 
-// ----- Temporary: написание -----
 function renderTempWrite() {
     if (temporary.length === 0) {
         return '<p style="color:#888;margin-top:20px;">Нет временных слов.</p>';
@@ -1222,7 +1240,7 @@ function attachTempWriteHandlers() {
     };
 
     input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !document.getElementById('temp-btn-next-write').disabled) {
+        if (e.key === 'Enter' && !document.getElementById('temp-btn-check').disabled) {
             document.getElementById('temp-btn-check').click();
         }
     });
@@ -1281,6 +1299,401 @@ function unmasterWord(word) {
     updateStats();
 }
 
+// ===== SENTENCES =====
+function getFilteredSentences() {
+    if (sentFilter === 'all') return sentences;
+    return sentences.filter(s => s.tense === sentFilter);
+}
+
+function getUniqueTenses() {
+    const map = new Map();
+    sentences.forEach(s => {
+        if (!map.has(s.tense)) {
+            map.set(s.tense, s.tense_label);
+        }
+    });
+    return Array.from(map.entries()).map(([key, label]) => ({ key, label }));
+}
+
+function renderSentences() {
+    if (sentences.length === 0) {
+        document.getElementById('content').innerHTML = `
+            <div class="sentences-header">
+                <h2>📖 Sentences</h2>
+            </div>
+            <p style="color:#888;margin-top:20px;">Файл <b>sentences.json</b> не загружен.<br>
+            Проверь, что он лежит в <b>data/sentences.json</b>.</p>
+        `;
+        document.getElementById('btn-prev').disabled = true;
+        document.getElementById('btn-next').disabled = true;
+        return;
+    }
+
+    const tenses = getUniqueTenses();
+    const filterChips = `
+        <button class="sent-filter-chip ${sentFilter === 'all' ? 'active' : ''}" data-filter="all">All (${sentences.length})</button>
+        ${tenses.map(t => {
+            const count = sentences.filter(s => s.tense === t.key).length;
+            return `<button class="sent-filter-chip ${sentFilter === t.key ? 'active' : ''}" data-filter="${t.key}">${t.label} (${count})</button>`;
+        }).join('')}
+    `;
+
+    const subNav = `
+        <div class="temp-subnav">
+            <button class="temp-subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">🔤 Сборка</button>
+            <button class="temp-subnav-btn ${sentSubMode === 'choose' ? 'active' : ''}" data-sub="choose">✅ Выбор времени</button>
+            <button class="temp-subnav-btn ${sentSubMode === 'translate' ? 'active' : ''}" data-sub="translate">✏️ Перевод</button>
+        </div>
+    `;
+
+    let bodyHtml = '';
+    if (sentSubMode === 'build') bodyHtml = renderSentBuild();
+    else if (sentSubMode === 'choose') bodyHtml = renderSentChoose();
+    else if (sentSubMode === 'translate') bodyHtml = renderSentTranslate();
+
+    document.getElementById('content').innerHTML = `
+        <div class="sentences-header">
+            <h2>📖 Sentences</h2>
+        </div>
+        <div class="sent-filters">${filterChips}</div>
+        ${subNav}
+        ${bodyHtml}
+    `;
+
+    document.querySelectorAll('.sent-filter-chip').forEach(btn => {
+        btn.onclick = () => {
+            sentFilter = btn.dataset.filter;
+            renderSentences();
+        };
+    });
+
+    document.querySelectorAll('.temp-subnav-btn').forEach(btn => {
+        btn.onclick = () => {
+            sentSubMode = btn.dataset.sub;
+            renderSentences();
+        };
+    });
+
+    if (sentSubMode === 'build') attachSentBuildHandlers();
+    else if (sentSubMode === 'choose') attachSentChooseHandlers();
+    else if (sentSubMode === 'translate') attachSentTranslateHandlers();
+
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
+}
+
+// ----- Sentences: Build -----
+function renderSentBuild() {
+    const data = getFilteredSentences();
+    if (data.length === 0) {
+        return '<p style="color:#888;margin-top:20px;">Нет предложений под этот фильтр.</p>';
+    }
+
+    if (positions.sentBuild >= data.length) positions.sentBuild = 0;
+    const sent = data[positions.sentBuild];
+
+    // Перемешиваем слова
+    const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
+
+    return `
+        <div class="sent-task">
+            <div class="sent-label">${sent.tense_label} · ${sent.hint}</div>
+            <div class="sent-ru">${sent.ru}</div>
+            <div class="sent-words" id="sent-words-pool">
+                ${shuffled.map((w, i) => `<button class="sent-word-chip" data-word="${w}" data-idx="${i}">${w}</button>`).join('')}
+            </div>
+            <div class="sent-answer" id="sent-answer-area"></div>
+            <div class="sent-feedback" id="sent-build-feedback"></div>
+            <button class="btn btn-primary" id="sent-build-check" style="display:none;">✓ Проверить</button>
+            <button class="btn btn-secondary" id="sent-build-reset">↺ Сбросить</button>
+            <button class="btn btn-secondary" id="sent-build-show">👁 Показать ответ</button>
+            <button class="btn btn-success" id="sent-build-next" style="display:none;">Дальше →</button>
+            <div class="card-frequency">${positions.sentBuild + 1} из ${data.length}</div>
+        </div>
+    `;
+}
+
+function attachSentBuildHandlers() {
+    const data = getFilteredSentences();
+    if (data.length === 0) return;
+
+    const sent = data[positions.sentBuild];
+    const poolEl = document.getElementById('sent-words-pool');
+    const answerEl = document.getElementById('sent-answer-area');
+    const feedback = document.getElementById('sent-build-feedback');
+    const checkBtn = document.getElementById('sent-build-check');
+    const resetBtn = document.getElementById('sent-build-reset');
+    const showBtn = document.getElementById('sent-build-show');
+    const nextBtn = document.getElementById('sent-build-next');
+
+    let picked = [];
+
+    function updateUI() {
+        // Pool
+        poolEl.innerHTML = '';
+        const poolWords = [...sent.words].sort(() => Math.random() - 0.5);
+        poolWords.forEach(w => {
+            const used = picked.filter(p => p === w).length;
+            const available = poolWords.filter(p => p === w).length;
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip';
+            btn.textContent = w;
+            if (used >= available) btn.disabled = true;
+            btn.onclick = () => {
+                picked.push(w);
+                render();
+            };
+            poolEl.appendChild(btn);
+        });
+
+        // Answer
+        answerEl.innerHTML = '';
+        picked.forEach((w, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip picked';
+            btn.textContent = w;
+            btn.onclick = () => {
+                picked.splice(i, 1);
+                render();
+            };
+            answerEl.appendChild(btn);
+        });
+
+        checkBtn.style.display = picked.length === sent.words.length ? 'inline-block' : 'none';
+    }
+
+    function render() {
+        // Просто перерисовываем pool/answer через updateUI
+        updateUI();
+    }
+
+    // Первый рендер pool — без picked
+    poolEl.innerHTML = '';
+    const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
+    shuffled.forEach(w => {
+        const btn = document.createElement('button');
+        btn.className = 'sent-word-chip';
+        btn.textContent = w;
+        btn.onclick = () => {
+            picked.push(w);
+            updateUI();
+        };
+        poolEl.appendChild(btn);
+    });
+
+    checkBtn.onclick = () => {
+        const userAnswer = picked.join(' ').trim();
+        const correct = sent.words.join(' ').trim();
+
+        if (userAnswer === correct) {
+            feedback.textContent = '✓ Правильно! +10 XP';
+            feedback.className = 'sent-feedback correct';
+            addXP(10);
+        } else {
+            feedback.innerHTML = `✗ Не совсем.<br><b>Твой ответ:</b> ${userAnswer}<br><b>Правильно:</b> ${correct} (+2 XP)`;
+            feedback.className = 'sent-feedback wrong';
+            addXP(2);
+        }
+        document.querySelectorAll('.sent-word-chip').forEach(b => b.disabled = true);
+        checkBtn.disabled = true;
+        resetBtn.disabled = true;
+        showBtn.disabled = true;
+        nextBtn.style.display = 'inline-block';
+    };
+
+    resetBtn.onclick = () => {
+        picked = [];
+        feedback.textContent = '';
+        feedback.className = 'sent-feedback';
+        answerEl.innerHTML = '';
+        updateUI();
+    };
+
+    showBtn.onclick = () => {
+        feedback.innerHTML = `<b>Правильно:</b> ${sent.words.join(' ')}`;
+        feedback.className = 'sent-feedback';
+        document.querySelectorAll('.sent-word-chip').forEach(b => b.disabled = true);
+        checkBtn.disabled = true;
+        resetBtn.disabled = true;
+        showBtn.disabled = true;
+        nextBtn.style.display = 'inline-block';
+    };
+
+    nextBtn.onclick = () => {
+        positions.sentBuild++;
+        if (positions.sentBuild >= data.length) positions.sentBuild = 0;
+        savePositions();
+        renderSentences();
+    };
+}
+
+// ----- Sentences: Choose tense -----
+function renderSentChoose() {
+    const data = getFilteredSentences();
+    if (data.length < 4) {
+        return '<p style="color:#888;margin-top:20px;">Нужно минимум 4 предложения.</p>';
+    }
+
+    if (positions.sentChoose >= data.length) positions.sentChoose = 0;
+    const sent = data[positions.sentChoose];
+
+    // Правильный ответ = label времени этого предложения
+    const correct = sent.tense_label;
+
+    // Собираем уникальные времена из данных и берём 3 неверных
+    const allLabels = [...new Set(data.map(s => s.tense_label))];
+    const wrongOptions = allLabels.filter(l => l !== correct).slice(0, 3);
+
+    // Если уникальных времён мало — добавим «заглушки» из общего набора
+    const fallback = ['Present Simple', 'Present Continuous', 'Present Perfect', 'Present Perfect Continuous', 'Past Simple', 'Future Simple'];
+    for (const f of fallback) {
+        if (wrongOptions.length >= 3) break;
+        if (f !== correct && !wrongOptions.includes(f)) wrongOptions.push(f);
+    }
+
+    const options = [correct, ...wrongOptions.slice(0, 3)].sort(() => Math.random() - 0.5);
+
+    return `
+        <div class="sent-task">
+            <div class="sent-label">Определи время</div>
+            <div class="sent-en-big">${sent.en}</div>
+            <button class="speak-btn" onclick="speak('${sent.en.replace(/'/g, "\\'")}')">🔊</button>
+            <div class="test-options">
+                ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
+            </div>
+            <div class="sent-feedback" id="sent-choose-feedback"></div>
+            <button class="btn btn-success" id="sent-choose-next" style="display:none;">Дальше →</button>
+            <div class="card-frequency">${positions.sentChoose + 1} из ${data.length}</div>
+        </div>
+    `;
+}
+
+function attachSentChooseHandlers() {
+    const data = getFilteredSentences();
+    if (data.length < 4) return;
+
+    const sent = data[positions.sentChoose];
+    const correct = sent.tense_label;
+    const feedback = document.getElementById('sent-choose-feedback');
+
+    document.querySelectorAll('#content .test-option').forEach(btn => {
+        btn.onclick = () => {
+            const answer = btn.dataset.answer;
+
+            if (answer === correct) {
+                btn.classList.add('correct');
+                feedback.textContent = `✓ Правильно! ${correct} · ${sent.hint} (+10 XP)`;
+                feedback.className = 'sent-feedback correct';
+                addXP(10);
+            } else {
+                btn.classList.add('wrong');
+                document.querySelectorAll('#content .test-option').forEach(b => {
+                    if (b.dataset.answer === correct) b.classList.add('correct');
+                });
+                feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
+                feedback.className = 'sent-feedback wrong';
+                addXP(2);
+            }
+            document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
+            document.getElementById('sent-choose-next').style.display = 'inline-block';
+        };
+    });
+
+    document.getElementById('sent-choose-next').onclick = () => {
+        positions.sentChoose++;
+        if (positions.sentChoose >= data.length) positions.sentChoose = 0;
+        savePositions();
+        renderSentences();
+    };
+}
+
+// ----- Sentences: Translate -----
+function renderSentTranslate() {
+    const data = getFilteredSentences();
+    if (data.length === 0) {
+        return '<p style="color:#888;margin-top:20px;">Нет предложений под этот фильтр.</p>';
+    }
+
+    if (positions.sentTranslate >= data.length) positions.sentTranslate = 0;
+    const sent = data[positions.sentTranslate];
+
+    return `
+        <div class="sent-task">
+            <div class="sent-label">${sent.tense_label} · ${sent.hint}</div>
+            <div class="sent-ru-big">${sent.ru}</div>
+            <input type="text" class="write-input" id="sent-translate-input" placeholder="Введи перевод..." autocomplete="off">
+            <button class="btn btn-primary" id="sent-translate-check">✓ Показать эталон</button>
+            <button class="btn btn-success" id="sent-translate-next" style="display:none;">Дальше →</button>
+            <div class="sent-reference" id="sent-translate-ref" style="display:none;">
+                <div class="sent-ref-label">Эталон:</div>
+                <div class="sent-ref-en">${sent.en}</div>
+                <button class="speak-btn" onclick="speak('${sent.en.replace(/'/g, "\\'")}')">🔊</button>
+                <div class="sent-ref-hint">Оцени себя честно:</div>
+                <button class="btn btn-success" id="sent-mark-correct">✓ Совпало (+10 XP)</button>
+                <button class="btn btn-warning" id="sent-mark-partial">~ Частично (+5 XP)</button>
+                <button class="btn btn-secondary" id="sent-mark-wrong">✗ Не смог (+2 XP)</button>
+            </div>
+            <div class="sent-feedback" id="sent-translate-feedback"></div>
+            <div class="card-frequency">${positions.sentTranslate + 1} из ${data.length}</div>
+        </div>
+    `;
+}
+
+function attachSentTranslateHandlers() {
+    const data = getFilteredSentences();
+    if (data.length === 0) return;
+
+    const sent = data[positions.sentTranslate];
+    const input = document.getElementById('sent-translate-input');
+    input.focus();
+
+    document.getElementById('sent-translate-check').onclick = () => {
+        const userAnswer = input.value.trim();
+        if (!userAnswer) {
+            alert('Сначала введи свой перевод');
+            return;
+        }
+        document.getElementById('sent-translate-ref').style.display = 'block';
+        document.getElementById('sent-translate-check').disabled = true;
+        input.disabled = true;
+        document.getElementById('sent-translate-next').style.display = 'inline-block';
+    };
+
+    document.getElementById('sent-mark-correct').onclick = () => {
+        addXP(10);
+        document.getElementById('sent-translate-feedback').textContent = '✓ +10 XP';
+        document.getElementById('sent-translate-feedback').className = 'sent-feedback correct';
+        document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
+    };
+
+    document.getElementById('sent-mark-partial').onclick = () => {
+        addXP(5);
+        document.getElementById('sent-translate-feedback').textContent = '~ +5 XP';
+        document.getElementById('sent-translate-feedback').className = 'sent-feedback';
+        document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
+    };
+
+    document.getElementById('sent-mark-wrong').onclick = () => {
+        addXP(2);
+        document.getElementById('sent-translate-feedback').textContent = '✗ +2 XP. Запомни эталон.';
+        document.getElementById('sent-translate-feedback').className = 'sent-feedback wrong';
+        document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
+    };
+
+    document.getElementById('sent-translate-next').onclick = () => {
+        positions.sentTranslate++;
+        if (positions.sentTranslate >= data.length) positions.sentTranslate = 0;
+        savePositions();
+        renderSentences();
+    };
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('sent-translate-check').disabled) {
+            document.getElementById('sent-translate-check').click();
+        }
+    });
+}
+
 // ===== НАВИГАЦИЯ =====
 function nextCard() {
     if (currentMode === 'cards') {
@@ -1317,7 +1730,7 @@ function prevCard() {
 function updateFooterButtons(total) {
     if (currentMode === 'test' || currentMode === 'write' ||
         currentMode === 'temporary' || currentMode === 'listening' ||
-        currentMode === 'mastered') {
+        currentMode === 'mastered' || currentMode === 'sentences') {
         document.getElementById('btn-prev').disabled = true;
         document.getElementById('btn-next').disabled = true;
         return;
