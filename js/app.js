@@ -16,7 +16,7 @@ positions.tempCards = positions.tempCards || 0;
 positions.tempTest = positions.tempTest || 0;
 positions.tempWrite = positions.tempWrite || 0;
 
-let tempSubMode = 'list'; // 'list' | 'cards' | 'test' | 'write'
+let tempSubMode = 'list';
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 
@@ -31,15 +31,29 @@ let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
 const DAILY_GOAL = 20;
 const SRS_INTERVALS = [0, 1, 2, 4, 7, 14];
 
+// Границы уровней (по индексам в vocabulary.json)
+const LEVEL_RANGES = {
+    A1: { start: 0,   end: 300 },
+    A2: { start: 300, end: 600 },
+    B1: { start: 600, end: Infinity }
+};
+
 let currentUser = null;
 
 // ===== СИНХРОНИЗАЦИЯ С FIREBASE =====
 async function syncToFirebase() {
     if (!currentUser || !window.firebaseSetDoc) return;
     try {
+        const payload = {
+            xp, dailyXP, lastActiveDate, streak, achievements,
+            learned, positions, currentLevel, srsData
+        };
+        if (Array.isArray(temporary) && temporary.length > 0) {
+            payload.temporary = temporary;
+        }
         await window.firebaseSetDoc(
             window.firebaseDoc(window.firebaseDb, 'users', currentUser.uid),
-            { xp, dailyXP, lastActiveDate, streak, achievements, learned, positions, currentLevel, temporary, srsData },
+            payload,
             { merge: true }
         );
         console.log('✅ Synced to Firebase');
@@ -255,11 +269,26 @@ function getLevelName() {
     return 'Master';
 }
 
-// ===== СТАТИСТИКА =====
+// ===== СТАТИСТИКА (с учётом уровней) =====
+function getLevelTotal() {
+    return getFilteredVocabulary().length;
+}
+
+function getLevelLearnedCount() {
+    const levelWords = getFilteredVocabulary();
+    const learnedSet = new Set(learned);
+    return levelWords.filter(w => learnedSet.has(w.word)).length;
+}
+
 function updateStats() {
+    const levelTotal = getLevelTotal();
+    const levelLearned = getLevelLearnedCount();
     const dueCount = getDueWords().length;
+
+    const levelLabel = currentLevel === 'all' ? '' : ` [${currentLevel}]`;
     document.getElementById('progress-info').textContent =
-        `Learned: ${learned.length} / ${vocabulary.length} · Due: ${dueCount}`;
+        `Learned: ${levelLearned} / ${levelTotal}${levelLabel} · Due: ${dueCount}`;
+
     document.getElementById('xp-info').textContent = `${xp} XP`;
     document.getElementById('streak-info').textContent = streak;
     document.getElementById('level-info').textContent = getLevelName();
@@ -309,30 +338,26 @@ function renderLevelButtons() {
             savePositions();
             renderLevelButtons();
             renderMode(currentMode);
+            updateStats();
         };
     });
 }
 
 function getFilteredVocabulary() {
     if (currentLevel === 'all') return vocabulary;
-    return vocabulary.filter(word => {
-        const idx = vocabulary.indexOf(word);
-        if (currentLevel === 'A1') return idx < 300;
-        if (currentLevel === 'A2') return idx >= 300 && idx < 600;
-        if (currentLevel === 'B1') return idx >= 600;
-        return true;
-    });
+    const range = LEVEL_RANGES[currentLevel];
+    if (!range) return vocabulary;
+    return vocabulary.slice(range.start, Math.min(range.end, vocabulary.length));
 }
 
 function getFilteredPhrases() {
     if (currentLevel === 'all') return phrases;
-    return phrases.filter(phrase => {
-        const idx = phrases.indexOf(phrase);
-        if (currentLevel === 'A1') return idx < 30;
-        if (currentLevel === 'A2') return idx >= 30 && idx < 60;
-        if (currentLevel === 'B1') return idx >= 60;
-        return true;
-    });
+    const total = phrases.length;
+    const step = Math.ceil(total / 3);
+    if (currentLevel === 'A1') return phrases.slice(0, step);
+    if (currentLevel === 'A2') return phrases.slice(step, step * 2);
+    if (currentLevel === 'B1') return phrases.slice(step * 2);
+    return phrases;
 }
 
 // ===== ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ =====
