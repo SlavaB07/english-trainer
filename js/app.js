@@ -333,6 +333,13 @@ function renderCards() {
             </div>
         `;
     }
+    if (word.family && word.family.length > 0) {
+        hiddenContent += `
+            <div class="card-family">
+                <strong>Word Family:</strong> ${word.family.join(', ')}
+            </div>
+        `;
+    }
 
     document.getElementById('content').innerHTML = `
         <div class="card">
@@ -641,7 +648,6 @@ function renderListening() {
         </div>
     `;
 
-    // Автоматически произносим слово при загрузке
     setTimeout(() => speak(word.word), 500);
 
     const input = document.getElementById('listen-input');
