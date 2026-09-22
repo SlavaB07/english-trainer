@@ -1,1 +1,266 @@
-[]
+[
+  {
+    "word": "backbone",
+    "translation": "основа, опора",
+    "transcription_ru": "бэкбоун",
+    "frequency": 0,
+    "note": "1) основа, опора, суть; 2) магистраль",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "capability",
+    "translation": "способность, возможность",
+    "transcription_ru": "кэпэбилити",
+    "frequency": 0,
+    "note": "1) возможность, способность; 2) производительность; 3) характеристика",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "concise",
+    "translation": "краткий, сжатый",
+    "transcription_ru": "кэнсайс",
+    "frequency": 0,
+    "note": "краткий; сжатый; немногословный",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "deploy",
+    "translation": "развёртывать, вводить",
+    "transcription_ru": "диплой",
+    "frequency": 0,
+    "note": "вводить в действие, разворачивать",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "discard",
+    "translation": "отбрасывать, отбраковать",
+    "transcription_ru": "дискард",
+    "frequency": 0,
+    "note": "отбрасывать, отвергать (напр., данные); не учитывать",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "disposal",
+    "translation": "удаление, избавление",
+    "transcription_ru": "диспоузэл",
+    "frequency": 0,
+    "note": "освобождение; удаление",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "drastic",
+    "translation": "радикальный, резкий",
+    "transcription_ru": "дрэстик",
+    "frequency": 0,
+    "note": "1) глубокий; 2) крутой; 3) форсированный",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "facilitate",
+    "translation": "облегчать, способствовать",
+    "transcription_ru": "фэсилитейт",
+    "frequency": 0,
+    "note": "облегчать, способствовать, помогать, продвигать",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "inclined",
+    "translation": "склонный, расположенный",
+    "transcription_ru": "инклайнд",
+    "frequency": 0,
+    "note": "расположенный, предрасположенный, склонный",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "mainstay",
+    "translation": "опора, оплот",
+    "transcription_ru": "мейнстей",
+    "frequency": 0,
+    "note": "главная поддержка, опора, оплот",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "omission",
+    "translation": "пропуск, упущение",
+    "transcription_ru": "оумишэн",
+    "frequency": 0,
+    "note": "опускание; вычеркивание",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "shredder",
+    "translation": "шредер, измельчитель",
+    "transcription_ru": "шредэр",
+    "frequency": 0,
+    "note": "шредер, машинка для уничтожения бумаг",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "unify",
+    "translation": "объединять, унифицировать",
+    "transcription_ru": "йунифай",
+    "frequency": 0,
+    "note": "унифицировать; выполнять операцию унификации",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "alongside",
+    "translation": "рядом, около",
+    "transcription_ru": "элонгсайд",
+    "frequency": 0,
+    "note": "неподалеку, поблизости; около, возле, рядом",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "broadband",
+    "translation": "широкополосный",
+    "transcription_ru": "бродбэнд",
+    "frequency": 0,
+    "note": "1) широкополосный; 2) широкополосная сеть; 3) технология, способная обеспечить одновременную передачу голоса, данных, видео; обычно это осуществляется путем мультиплексирования с разделением частот",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "chassis",
+    "translation": "шасси, корпус",
+    "transcription_ru": "шэси",
+    "frequency": 0,
+    "note": "1) шасси; 2) ходовая часть",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "erroneous",
+    "translation": "ошибочный",
+    "transcription_ru": "ироуниэс",
+    "frequency": 0,
+    "note": "ошибочный",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "prior to",
+    "translation": "до, перед, раньше",
+    "transcription_ru": "прайор ту",
+    "frequency": 0,
+    "note": "1) прежде чем; 2) до, перед, раньше",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "set-up",
+    "translation": "структура, устройство",
+    "transcription_ru": "сетап",
+    "frequency": 0,
+    "note": "структура, устройство (организации)",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "stock system",
+    "translation": "система ассортимента",
+    "transcription_ru": "сток систем",
+    "frequency": 0,
+    "note": "система ассортимента (товаров)",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "terrestrial aerial",
+    "translation": "наземная антенна",
+    "transcription_ru": "тэрэстриэл эриэл",
+    "frequency": 0,
+    "note": "наземная антенна",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "time-shift",
+    "translation": "сдвигать во времени",
+    "transcription_ru": "тайм-шифт",
+    "frequency": 0,
+    "note": "сдвигать во времени",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "vast",
+    "translation": "обширный, огромный",
+    "transcription_ru": "васт",
+    "frequency": 0,
+    "note": "обширный, огромный, широкий",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  },
+  {
+    "word": "weld",
+    "translation": "сваривать, соединять",
+    "transcription_ru": "уелд",
+    "frequency": 0,
+    "note": "сваривать, соединять",
+    "example": "",
+    "example_translation": "",
+    "family": [],
+    "collocations": []
+  }
+]
