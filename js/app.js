@@ -561,7 +561,7 @@ function renderTemporary() {
         <div class="temp-form" id="temp-form" style="display: none;">
             <input type="text" id="temp-word" placeholder="English word" autocomplete="off">
             <input type="text" id="temp-translation" placeholder="Перевод" autocomplete="off">
-            <input type="text" id="temp-transcription" placeholder="Транскрипция (например, [лайк])" autocomplete="off">
+            <input type="text" id="temp-transcription" placeholder="Транскрипция (например, [олвэйс])" autocomplete="off">
             <button class="btn btn-success" id="btn-save-temp">Save</button>
             <button class="btn btn-secondary" id="btn-cancel-temp">Cancel</button>
         </div>
@@ -613,6 +613,7 @@ function renderTemporary() {
             <div class="temp-item">
                 <div class="temp-item-info">
                     <strong>${w.word}</strong>
+                    <button class="speak-btn" onclick="speak('${w.word.replace(/'/g, "\\'")}')">🔊</button>
                     <span class="temp-transcription">[${w.transcription_ru || ''}]</span>
                     <span class="temp-translation">${w.translation}</span>
                 </div>
