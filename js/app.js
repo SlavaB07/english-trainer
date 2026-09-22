@@ -5,7 +5,7 @@ let temporary = [];
 let currentMode = 'cards';
 let currentLevel = localStorage.getItem('level') || 'all';
 
-let positions = JSON.parse(localStorage.getItem('positions') || '{"cards":0,"test":0,"write":0,"phrases":0,"temporary":0}');
+let positions = JSON.parse(localStorage.getItem('positions') || '{"cards":0,"test":0,"write":0,"phrases":0,"temporary":0,"listening":0}');
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 
 let xp = parseInt(localStorage.getItem('xp') || '0');
@@ -146,7 +146,6 @@ function updateSrs(word, correct) {
         data.next = Date.now() + days * 24 * 60 * 60 * 1000;
     } else {
         data.level = 0;
-        // Оставляем слово в due — следующая дата = сегодня (0 дней)
         data.next = Date.now();
     }
     srsData[word] = data;
@@ -162,7 +161,6 @@ function isDue(word) {
 function getDueWords() {
     const all = getFilteredVocabulary();
     const due = all.filter(w => isDue(w.word));
-    // Сортируем: сначала те, у кого меньше уровень
     due.sort((a, b) => {
         const aLevel = getSrsData(a.word).level;
         const bLevel = getSrsData(b.word).level;
@@ -253,7 +251,7 @@ function renderLevelButtons() {
         btn.onclick = () => {
             currentLevel = btn.dataset.level;
             localStorage.setItem('level', currentLevel);
-            positions = { cards: 0, test: 0, write: 0, phrases: 0, temporary: 0 };
+            positions = { cards: 0, test: 0, write: 0, phrases: 0, temporary: 0, listening: 0 };
             savePositions();
             renderLevelButtons();
             renderMode(currentMode);
@@ -295,6 +293,7 @@ function renderMode(mode) {
     else if (mode === 'write') renderWrite();
     else if (mode === 'phrases') renderPhrases();
     else if (mode === 'temporary') renderTemporary();
+    else if (mode === 'listening') renderListening();
 }
 
 // ===== КАРТОЧКИ (SRS) =====
@@ -380,7 +379,6 @@ function renderCards() {
     document.getElementById('btn-dontknow').onclick = () => {
         updateSrs(word.word, false);
         addXP(2);
-        // Слово остаётся в due — просто переходим к следующему
         positions.cards++;
         if (positions.cards >= dueWords.length) positions.cards = 0;
         renderCards();
@@ -617,6 +615,78 @@ function renderPhrases() {
     updateFooterButtons(data.length);
 }
 
+// ===== АУДИРОВАНИЕ =====
+function renderListening() {
+    const data = getFilteredVocabulary();
+    if (data.length === 0) {
+        document.getElementById('content').innerHTML = '<p>Нет слов для этого уровня.</p>';
+        return;
+    }
+
+    if (positions.listening >= data.length) positions.listening = 0;
+    const word = data[positions.listening];
+
+    document.getElementById('content').innerHTML = `
+        <div class="card">
+            <div class="card-srs">🎧 Listen and write the word</div>
+            <div class="card-word">
+                <button class="speak-btn big-speak" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+            </div>
+            <input type="text" class="write-input" id="listen-input" placeholder="Введи слово..." autocomplete="off">
+            <button class="btn btn-primary" id="btn-listen-check">✓ Проверить</button>
+            <button class="btn btn-secondary" id="btn-listen-play">🔊 Повторить</button>
+            <button class="btn btn-success" id="btn-next-listen" style="display: none;">Дальше →</button>
+            <div class="write-feedback" id="listen-feedback"></div>
+            <div class="card-frequency">Слово ${positions.listening + 1} из ${data.length}</div>
+        </div>
+    `;
+
+    // Автоматически произносим слово при загрузке
+    setTimeout(() => speak(word.word), 500);
+
+    const input = document.getElementById('listen-input');
+    input.focus();
+
+    document.getElementById('btn-listen-play').onclick = () => {
+        speak(word.word);
+    };
+
+    document.getElementById('btn-listen-check').onclick = () => {
+        const answer = input.value.trim().toLowerCase();
+        const feedback = document.getElementById('listen-feedback');
+
+        if (answer === word.word.toLowerCase()) {
+            feedback.textContent = '✓ Правильно! +10 XP';
+            feedback.className = 'write-feedback correct';
+            updateSrs(word.word, true);
+            addXP(10);
+        } else {
+            feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
+            feedback.className = 'write-feedback wrong';
+            updateSrs(word.word, false);
+            addXP(2);
+        }
+        document.getElementById('btn-listen-check').disabled = true;
+        input.disabled = true;
+        document.getElementById('btn-next-listen').style.display = 'inline-block';
+    };
+
+    document.getElementById('btn-next-listen').onclick = () => {
+        positions.listening++;
+        if (positions.listening >= data.length) positions.listening = 0;
+        savePositions();
+        renderListening();
+    };
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('btn-listen-check').disabled) {
+            document.getElementById('btn-listen-check').click();
+        }
+    });
+
+    updateFooterButtons(data.length);
+}
+
 // ===== ВРЕМЕННЫЕ СЛОВА =====
 function renderTemporary() {
     document.getElementById('content').innerHTML = `
@@ -731,7 +801,7 @@ function prevCard() {
 }
 
 function updateFooterButtons(total) {
-    if (currentMode === 'test' || currentMode === 'write' || currentMode === 'temporary') {
+    if (currentMode === 'test' || currentMode === 'write' || currentMode === 'temporary' || currentMode === 'listening') {
         document.getElementById('btn-prev').disabled = true;
         document.getElementById('btn-next').disabled = true;
         return;
