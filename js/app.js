@@ -1,10 +1,11 @@
 // ===== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ =====
 let vocabulary = [];
 let phrases = [];
+let temporary = [];
 let currentMode = 'cards';
 let currentLevel = localStorage.getItem('level') || 'all';
 
-let positions = JSON.parse(localStorage.getItem('positions') || '{"cards":0,"test":0,"write":0,"phrases":0}');
+let positions = JSON.parse(localStorage.getItem('positions') || '{"cards":0,"test":0,"write":0,"phrases":0,"temporary":0}');
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 
 let xp = parseInt(localStorage.getItem('xp') || '0');
@@ -24,7 +25,7 @@ async function syncToFirebase() {
     try {
         await window.firebaseSetDoc(
             window.firebaseDoc(window.firebaseDb, 'users', currentUser.uid),
-            { xp, dailyXP, lastActiveDate, streak, achievements, learned, positions, currentLevel },
+            { xp, dailyXP, lastActiveDate, streak, achievements, learned, positions, currentLevel, temporary },
             { merge: true }
         );
         console.log('✅ Synced to Firebase');
@@ -48,6 +49,7 @@ async function loadFromFirebase() {
             learned = data.learned ?? learned;
             positions = data.positions ?? positions;
             currentLevel = data.currentLevel ?? currentLevel;
+            temporary = data.temporary ?? temporary;
 
             localStorage.setItem('xp', xp.toString());
             localStorage.setItem('dailyXP', dailyXP.toString());
@@ -57,6 +59,7 @@ async function loadFromFirebase() {
             localStorage.setItem('learned', JSON.stringify(learned));
             localStorage.setItem('positions', JSON.stringify(positions));
             localStorage.setItem('level', currentLevel);
+            localStorage.setItem('temporary', JSON.stringify(temporary));
 
             console.log('✅ Loaded from Firebase');
         } else {
@@ -100,12 +103,23 @@ async function loadData() {
         const phrasesRes = await fetch('data/phrases.json');
         phrases = await phrasesRes.json();
 
+        const tempRes = await fetch('data/temporary.json');
+        temporary = await tempRes.json();
+
+        // Загружаем временные из localStorage (если есть)
+        const localTemp = localStorage.getItem('temporary');
+        if (localTemp) {
+            try {
+                const parsed = JSON.parse(localTemp);
+                if (parsed.length > 0) temporary = parsed;
+            } catch (e) {}
+        }
+
         checkStreak();
         updateStats();
         renderLevelButtons();
         renderMode('cards');
 
-        // Firebase инициализируется и сам загрузит данные
         initFirebase();
     } catch (error) {
         console.error('Ошибка загрузки данных:', error);
@@ -139,55 +153,21 @@ function addXP(amount) {
     localStorage.setItem('xp', xp.toString());
     localStorage.setItem('dailyXP', dailyXP.toString());
     updateStats();
-    checkAchievements();
     syncToFirebase();
 }
 
 function getLevelName() {
-    if (xp < 100) return 'Новичок';
-    if (xp < 500) return 'Любитель';
-    if (xp < 1500) return 'Знаток';
-    if (xp < 3000) return 'Профи';
-    return 'Мастер';
-}
-
-// ===== ДОСТИЖЕНИЯ =====
-function checkAchievements() {
-    const milestones = [
-        { count: 10, name: '🌱 Первые шаги' },
-        { count: 50, name: '📚 Книголюб' },
-        { count: 100, name: '💯 Сотка' },
-        { count: 500, name: '🏅 Полтысячи' },
-        { count: 1000, name: '👑 Тысячник' },
-    ];
-
-    milestones.forEach(m => {
-        if (learned.length >= m.count && !achievements.includes(m.name)) {
-            achievements.push(m.name);
-            localStorage.setItem('achievements', JSON.stringify(achievements));
-            showAchievement(m.name);
-        }
-    });
-
-    if (streak >= 7 && !achievements.includes('🔥 Неделя')) {
-        achievements.push('🔥 Неделя');
-        localStorage.setItem('achievements', JSON.stringify(achievements));
-        showAchievement('🔥 Неделя');
-    }
-}
-
-function showAchievement(name) {
-    const toast = document.createElement('div');
-    toast.className = 'achievement-toast';
-    toast.textContent = `🏆 Достижение: ${name}`;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
+    if (xp < 100) return 'Beginner';
+    if (xp < 500) return 'Amateur';
+    if (xp < 1500) return 'Advanced';
+    if (xp < 3000) return 'Pro';
+    return 'Master';
 }
 
 // ===== СТАТИСТИКА =====
 function updateStats() {
     document.getElementById('progress-info').textContent =
-        `Изучено: ${learned.length} / ${vocabulary.length}`;
+        `Learned: ${learned.length} / ${vocabulary.length}`;
     document.getElementById('xp-info').textContent = `${xp} XP`;
     document.getElementById('streak-info').textContent = streak;
     document.getElementById('level-info').textContent = getLevelName();
@@ -221,7 +201,7 @@ function renderLevelButtons() {
     const levels = ['all', 'A1', 'A2', 'B1'];
     container.innerHTML = levels.map(lvl =>
         `<button class="level-btn ${lvl === currentLevel ? 'active' : ''}" data-level="${lvl}">
-            ${lvl === 'all' ? 'Все' : lvl}
+            ${lvl === 'all' ? 'All' : lvl}
         </button>`
     ).join('');
 
@@ -229,7 +209,7 @@ function renderLevelButtons() {
         btn.onclick = () => {
             currentLevel = btn.dataset.level;
             localStorage.setItem('level', currentLevel);
-            positions = { cards: 0, test: 0, write: 0, phrases: 0 };
+            positions = { cards: 0, test: 0, write: 0, phrases: 0, temporary: 0 };
             savePositions();
             renderLevelButtons();
             renderMode(currentMode);
@@ -270,6 +250,7 @@ function renderMode(mode) {
     else if (mode === 'test') renderTest();
     else if (mode === 'write') renderWrite();
     else if (mode === 'phrases') renderPhrases();
+    else if (mode === 'temporary') renderTemporary();
 }
 
 // ===== КАРТОЧКИ =====
@@ -570,6 +551,85 @@ function renderPhrases() {
     updateFooterButtons(data.length);
 }
 
+// ===== ВРЕМЕННЫЕ СЛОВА =====
+function renderTemporary() {
+    document.getElementById('content').innerHTML = `
+        <div class="temporary-header">
+            <h2>📝 Temporary Words</h2>
+            <button class="btn btn-primary" id="btn-add-temp">+ Add Word</button>
+        </div>
+        <div class="temp-form" id="temp-form" style="display: none;">
+            <input type="text" id="temp-word" placeholder="English word" autocomplete="off">
+            <input type="text" id="temp-translation" placeholder="Перевод" autocomplete="off">
+            <input type="text" id="temp-transcription" placeholder="Транскрипция (например, [лайк])" autocomplete="off">
+            <button class="btn btn-success" id="btn-save-temp">Save</button>
+            <button class="btn btn-secondary" id="btn-cancel-temp">Cancel</button>
+        </div>
+        <div class="temp-list" id="temp-list">
+            ${temporary.length === 0 ? '<p>No temporary words yet. Add your first word!</p>' : ''}
+        </div>
+    `;
+
+    document.getElementById('btn-add-temp').onclick = () => {
+        document.getElementById('temp-form').style.display = 'block';
+        document.getElementById('temp-word').focus();
+    };
+
+    document.getElementById('btn-cancel-temp').onclick = () => {
+        document.getElementById('temp-form').style.display = 'none';
+        document.getElementById('temp-word').value = '';
+        document.getElementById('temp-translation').value = '';
+        document.getElementById('temp-transcription').value = '';
+    };
+
+    document.getElementById('btn-save-temp').onclick = () => {
+        const word = document.getElementById('temp-word').value.trim();
+        const translation = document.getElementById('temp-translation').value.trim();
+        const transcription = document.getElementById('temp-transcription').value.trim();
+
+        if (!word || !translation) {
+            alert('Введи слово и перевод!');
+            return;
+        }
+
+        temporary.push({
+            word: word,
+            translation: translation,
+            transcription_ru: transcription.replace(/[\[\]]/g, ''),
+            frequency: 0,
+            note: '',
+            example: '',
+            example_translation: ''
+        });
+
+        localStorage.setItem('temporary', JSON.stringify(temporary));
+        syncToFirebase();
+        renderTemporary();
+    };
+
+    const listContainer = document.getElementById('temp-list');
+    if (temporary.length > 0) {
+        listContainer.innerHTML = temporary.map((w, i) => `
+            <div class="temp-item">
+                <div class="temp-item-info">
+                    <strong>${w.word}</strong>
+                    <span class="temp-transcription">[${w.transcription_ru || ''}]</span>
+                    <span class="temp-translation">${w.translation}</span>
+                </div>
+                <button class="btn btn-warning" onclick="deleteTempWord(${i})">🗑 Delete</button>
+            </div>
+        `).join('');
+    }
+}
+
+function deleteTempWord(index) {
+    if (!confirm('Удалить это слово?')) return;
+    temporary.splice(index, 1);
+    localStorage.setItem('temporary', JSON.stringify(temporary));
+    syncToFirebase();
+    renderTemporary();
+}
+
 // ===== НАВИГАЦИЯ =====
 function nextCard() {
     const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
@@ -594,7 +654,11 @@ function prevCard() {
 }
 
 function updateFooterButtons(total) {
-    if (currentMode === 'test' || currentMode === 'write') return;
+    if (currentMode === 'test' || currentMode === 'write' || currentMode === 'temporary') {
+        document.getElementById('btn-prev').disabled = true;
+        document.getElementById('btn-next').disabled = true;
+        return;
+    }
     document.getElementById('btn-prev').disabled = positions[currentMode] === 0;
     document.getElementById('btn-next').disabled = positions[currentMode] >= total - 1;
 }
