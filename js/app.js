@@ -14,13 +14,11 @@ let lastActiveDate = localStorage.getItem('lastActiveDate') || '';
 let streak = parseInt(localStorage.getItem('streak') || '0');
 let achievements = JSON.parse(localStorage.getItem('achievements') || '[]');
 
-// SRS: база данных уровней слов
 let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
 
 const DAILY_GOAL = 20;
-const SRS_INTERVALS = [0, 1, 2, 4, 7, 14]; // дни
+const SRS_INTERVALS = [0, 1, 2, 4, 7, 14];
 
-// Firebase
 let currentUser = null;
 
 // ===== СИНХРОНИЗАЦИЯ С FIREBASE =====
@@ -144,11 +142,13 @@ function updateSrs(word, correct) {
     const data = getSrsData(word);
     if (correct) {
         data.level = Math.min(data.level + 1, 5);
+        const days = SRS_INTERVALS[data.level];
+        data.next = Date.now() + days * 24 * 60 * 60 * 1000;
     } else {
         data.level = 0;
+        // Оставляем слово в due — следующая дата = сегодня (0 дней)
+        data.next = Date.now();
     }
-    const days = SRS_INTERVALS[data.level];
-    data.next = Date.now() + days * 24 * 60 * 60 * 1000;
     srsData[word] = data;
     localStorage.setItem('srsData', JSON.stringify(srsData));
     syncToFirebase();
@@ -162,7 +162,7 @@ function isDue(word) {
 function getDueWords() {
     const all = getFilteredVocabulary();
     const due = all.filter(w => isDue(w.word));
-    // Сортируем: сначала новые (уровень 0), потом по уровню
+    // Сортируем: сначала те, у кого меньше уровень
     due.sort((a, b) => {
         const aLevel = getSrsData(a.word).level;
         const bLevel = getSrsData(b.word).level;
@@ -372,13 +372,19 @@ function renderCards() {
         }
         updateSrs(word.word, true);
         addXP(10);
-        nextCard();
+        positions.cards = 0;
+        renderCards();
+        updateStats();
     };
 
     document.getElementById('btn-dontknow').onclick = () => {
         updateSrs(word.word, false);
         addXP(2);
-        nextCard();
+        // Слово остаётся в due — просто переходим к следующему
+        positions.cards++;
+        if (positions.cards >= dueWords.length) positions.cards = 0;
+        renderCards();
+        updateStats();
     };
 
     updateFooterButtons(dueWords.length);
