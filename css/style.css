@@ -601,3 +601,20 @@ body {
     display: block;
     margin-bottom: 5px;
 }
+/* ===== COLLOCATIONS ===== */
+.card-collocations {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+.card-collocations strong {
+    color: #1976d2;
+    display: block;
+    margin-bottom: 5px;
+}
