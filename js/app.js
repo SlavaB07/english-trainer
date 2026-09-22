@@ -5,7 +5,6 @@ let temporary = [];
 let currentMode = 'cards';
 let currentLevel = localStorage.getItem('level') || 'all';
 
-// Исправление: загружаем positions и добавляем недостающие поля
 let positions = JSON.parse(localStorage.getItem('positions') || '{}');
 positions.cards = positions.cards || 0;
 positions.test = positions.test || 0;
@@ -352,6 +351,13 @@ function renderCards() {
         hiddenContent += `
             <div class="card-family">
                 <strong>Word Family:</strong> ${word.family.join(', ')}
+            </div>
+        `;
+    }
+    if (word.collocations && word.collocations.length > 0) {
+        hiddenContent += `
+            <div class="card-collocations">
+                <strong>Collocations:</strong> ${word.collocations.join(' · ')}
             </div>
         `;
     }
