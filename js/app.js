@@ -19,6 +19,7 @@ positions.tempWrite = positions.tempWrite || 0;
 let tempSubMode = 'list';
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
+let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
 
 let xp = parseInt(localStorage.getItem('xp') || '0');
 let dailyXP = parseInt(localStorage.getItem('dailyXP') || '0');
@@ -31,7 +32,6 @@ let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
 const DAILY_GOAL = 20;
 const SRS_INTERVALS = [0, 1, 2, 4, 7, 14];
 
-// Границы уровней (по индексам в vocabulary.json)
 const LEVEL_RANGES = {
     A1: { start: 0,   end: 300 },
     A2: { start: 300, end: 600 },
@@ -46,7 +46,7 @@ async function syncToFirebase() {
     try {
         const payload = {
             xp, dailyXP, lastActiveDate, streak, achievements,
-            learned, positions, currentLevel, srsData
+            learned, mastered, positions, currentLevel, srsData
         };
         if (Array.isArray(temporary) && temporary.length > 0) {
             payload.temporary = temporary;
@@ -75,6 +75,7 @@ async function loadFromFirebase() {
             streak = data.streak ?? streak;
             achievements = data.achievements ?? achievements;
             learned = data.learned ?? learned;
+            mastered = data.mastered ?? mastered;
             if (data.positions) {
                 positions.cards = data.positions.cards || 0;
                 positions.test = data.positions.test || 0;
@@ -98,6 +99,7 @@ async function loadFromFirebase() {
             localStorage.setItem('streak', streak.toString());
             localStorage.setItem('achievements', JSON.stringify(achievements));
             localStorage.setItem('learned', JSON.stringify(learned));
+            localStorage.setItem('mastered', JSON.stringify(mastered));
             localStorage.setItem('positions', JSON.stringify(positions));
             localStorage.setItem('level', currentLevel);
             localStorage.setItem('temporary', JSON.stringify(temporary));
@@ -223,13 +225,47 @@ function isDue(word, isTemp = false) {
 
 function getDueWords() {
     const all = getFilteredVocabulary();
-    const due = all.filter(w => isDue(w.word, false));
+    const due = all.filter(w => !isMastered(w.word) && isDue(w.word, false));
     due.sort((a, b) => {
         const aLevel = getSrsData(a.word, false).level;
         const bLevel = getSrsData(b.word, false).level;
         return aLevel - bLevel;
     });
     return due;
+}
+
+// ===== MASTERED =====
+function isMastered(word) {
+    return mastered.includes(word);
+}
+
+function addMastered(word) {
+    if (!mastered.includes(word)) {
+        mastered.push(word);
+        localStorage.setItem('mastered', JSON.stringify(mastered));
+    }
+    // Убираем из learned (если было)
+    const idx = learned.indexOf(word);
+    if (idx !== -1) {
+        learned.splice(idx, 1);
+        localStorage.setItem('learned', JSON.stringify(learned));
+    }
+    syncToFirebase();
+}
+
+function removeMastered(word) {
+    const idx = mastered.indexOf(word);
+    if (idx !== -1) {
+        mastered.splice(idx, 1);
+        localStorage.setItem('mastered', JSON.stringify(mastered));
+        // Сбрасываем SRS — слово вернётся в обучение
+        const key = word;
+        if (srsData[key]) {
+            srsData[key] = { level: 0, next: 0 };
+            localStorage.setItem('srsData', JSON.stringify(srsData));
+        }
+        syncToFirebase();
+    }
 }
 
 // ===== STREAK =====
@@ -269,7 +305,7 @@ function getLevelName() {
     return 'Master';
 }
 
-// ===== СТАТИСТИКА (с учётом уровней) =====
+// ===== СТАТИСТИКА =====
 function getLevelTotal() {
     return getFilteredVocabulary().length;
 }
@@ -287,7 +323,7 @@ function updateStats() {
 
     const levelLabel = currentLevel === 'all' ? '' : ` [${currentLevel}]`;
     document.getElementById('progress-info').textContent =
-        `Learned: ${levelLearned} / ${levelTotal}${levelLabel} · Due: ${dueCount}`;
+        `Learned: ${levelLearned} / ${levelTotal}${levelLabel} · Due: ${dueCount} · 🏆 ${mastered.length}`;
 
     document.getElementById('xp-info').textContent = `${xp} XP`;
     document.getElementById('streak-info').textContent = streak;
@@ -373,6 +409,7 @@ function renderMode(mode) {
     else if (mode === 'phrases') renderPhrases();
     else if (mode === 'temporary') renderTemporary();
     else if (mode === 'listening') renderListening();
+    else if (mode === 'mastered') renderMastered();
 }
 
 // ===== КАРТОЧКИ (SRS) =====
@@ -446,6 +483,7 @@ function renderCards() {
             <div id="buttons-after" style="display: none;">
                 <button class="btn btn-success" id="btn-learned">✓ Выучил (+10 XP)</button>
                 <button class="btn btn-warning" id="btn-dontknow">✗ Не знаю</button>
+                <button class="btn btn-master" id="btn-master">✓✓ Навсегда (+20 XP)</button>
             </div>
             <div class="card-frequency">Частота: ${word.frequency} · Слово ${positions.cards + 1} из ${dueWords.length} (due)</div>
         </div>
@@ -478,12 +516,21 @@ function renderCards() {
         updateStats();
     };
 
+    document.getElementById('btn-master').onclick = () => {
+        addMastered(word.word);
+        addXP(20);
+        positions.cards = 0;
+        renderCards();
+        updateStats();
+    };
+
     updateFooterButtons(dueWords.length);
 }
 
 // ===== ТЕСТ =====
 function renderTest() {
     const data = getFilteredVocabulary().filter(w =>
+        !isMastered(w.word) &&
         !w.translation.includes(';') &&
         !w.translation.includes(',') &&
         w.translation.length > 2
@@ -499,7 +546,9 @@ function renderTest() {
     const correct = word.translation;
 
     const wrongOptions = [];
-    while (wrongOptions.length < 3) {
+    let guard = 0;
+    while (wrongOptions.length < 3 && guard < 200) {
+        guard++;
         const randomWord = data[Math.floor(Math.random() * data.length)];
         if (randomWord.translation !== correct && !wrongOptions.includes(randomWord.translation)) {
             wrongOptions.push(randomWord.translation);
@@ -567,7 +616,7 @@ function renderTest() {
 
 // ===== НАПИСАНИЕ =====
 function renderWrite() {
-    const data = getFilteredVocabulary();
+    const data = getFilteredVocabulary().filter(w => !isMastered(w.word));
     if (data.length === 0) {
         document.getElementById('content').innerHTML = '<p>Нет слов для этого уровня.</p>';
         return;
@@ -652,7 +701,9 @@ function renderPhrases() {
     const correct = phrase.translation;
 
     const wrongOptions = [];
-    while (wrongOptions.length < 3) {
+    let guard = 0;
+    while (wrongOptions.length < 3 && guard < 200) {
+        guard++;
         const randomPhrase = data[Math.floor(Math.random() * data.length)];
         if (randomPhrase.translation !== correct && !wrongOptions.includes(randomPhrase.translation)) {
             wrongOptions.push(randomPhrase.translation);
@@ -710,7 +761,7 @@ function renderPhrases() {
 
 // ===== АУДИРОВАНИЕ =====
 function renderListening() {
-    const data = getFilteredVocabulary();
+    const data = getFilteredVocabulary().filter(w => !isMastered(w.word));
     if (data.length === 0) {
         document.getElementById('content').innerHTML = '<p>Нет слов для этого уровня.</p>';
         return;
@@ -1155,6 +1206,60 @@ function attachTempWriteHandlers() {
     });
 }
 
+// ===== MASTERED ЭКРАН =====
+function renderMastered() {
+    if (mastered.length === 0) {
+        document.getElementById('content').innerHTML = `
+            <div class="mastered-header">
+                <h2>🏆 Mastered (0)</h2>
+            </div>
+            <p class="mastered-empty">Пока нет слов, помеченных как «знаю навсегда».<br>
+            В карточке нажми <b>✓✓ Навсегда</b>, чтобы добавить сюда.</p>
+        `;
+        document.getElementById('btn-prev').disabled = true;
+        document.getElementById('btn-next').disabled = true;
+        return;
+    }
+
+    // Сортируем по алфавиту для удобства
+    const sorted = [...mastered].sort();
+
+    document.getElementById('content').innerHTML = `
+        <div class="mastered-header">
+            <h2>🏆 Mastered (${mastered.length})</h2>
+            <button class="btn btn-warning" id="btn-clear-mastered" style="min-width:auto;padding:8px 14px;font-size:13px;">🗑 Очистить всё</button>
+        </div>
+        <div class="mastered-list">
+            ${sorted.map(word => `
+                <div class="mastered-item">
+                    <div class="mastered-item-info">
+                        <strong>${word}</strong>
+                        <button class="speak-btn" onclick="speak('${word.replace(/'/g, "\\'")}')">🔊</button>
+                    </div>
+                    <button class="btn btn-secondary" onclick="unmasterWord('${word.replace(/'/g, "\\'")}')" style="min-width:auto;">↩ Вернуть</button>
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+    document.getElementById('btn-clear-mastered').onclick = () => {
+        if (!confirm(`Вернуть все ${mastered.length} слов в обучение?`)) return;
+        mastered.forEach(w => removeMastered(w));
+        renderMastered();
+        updateStats();
+    };
+
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
+}
+
+function unmasterWord(word) {
+    if (!confirm(`Вернуть «${word}» в обучение?`)) return;
+    removeMastered(word);
+    renderMastered();
+    updateStats();
+}
+
 // ===== НАВИГАЦИЯ =====
 function nextCard() {
     if (currentMode === 'cards') {
@@ -1190,7 +1295,8 @@ function prevCard() {
 
 function updateFooterButtons(total) {
     if (currentMode === 'test' || currentMode === 'write' ||
-        currentMode === 'temporary' || currentMode === 'listening') {
+        currentMode === 'temporary' || currentMode === 'listening' ||
+        currentMode === 'mastered') {
         document.getElementById('btn-prev').disabled = true;
         document.getElementById('btn-next').disabled = true;
         return;
