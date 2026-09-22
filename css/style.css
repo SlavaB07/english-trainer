@@ -570,3 +570,17 @@ body {
     margin-bottom: 10px;
     font-weight: 600;
 }
+/* ===== АУДИРОВАНИЕ ===== */
+.big-speak {
+    font-size: 48px;
+    padding: 20px 30px;
+    background: #667eea;
+    border-radius: 50%;
+    color: #fff;
+    transition: transform 0.2s;
+}
+
+.big-speak:hover {
+    transform: scale(1.1);
+    background: #5568d3;
+}
