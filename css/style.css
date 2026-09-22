@@ -482,6 +482,7 @@ body {
         padding: 5px 8px;
     }
 }
+
 /* ===== ДОСТИЖЕНИЯ (Всплывающие уведомления) ===== */
 .achievement-toast {
     position: fixed;
@@ -507,6 +508,7 @@ body {
     from { opacity: 1; }
     to { opacity: 0; }
 }
+
 /* ===== МЕТА-ИНФОРМАЦИЯ СЛОВА ===== */
 .card-meta {
     display: flex;
@@ -549,6 +551,7 @@ body {
     font-size: 13px;
     color: #888;
 }
+
 /* ===== ТРАНСКРИПЦИЯ ===== */
 .card-transcription {
     color: #667eea;
@@ -559,6 +562,7 @@ body {
     padding: 2px 8px;
     border-radius: 4px;
 }
+
 /* ===== SRS ===== */
 .card-srs {
     font-size: 12px;
@@ -570,6 +574,7 @@ body {
     margin-bottom: 10px;
     font-weight: 600;
 }
+
 /* ===== АУДИРОВАНИЕ ===== */
 .big-speak {
     font-size: 48px;
@@ -584,6 +589,7 @@ body {
     transform: scale(1.1);
     background: #5568d3;
 }
+
 /* ===== WORD FAMILY ===== */
 .card-family {
     background: #fff8e1;
@@ -601,6 +607,7 @@ body {
     display: block;
     margin-bottom: 5px;
 }
+
 /* ===== COLLOCATIONS ===== */
 .card-collocations {
     background: #e3f2fd;
@@ -617,4 +624,166 @@ body {
     color: #1976d2;
     display: block;
     margin-bottom: 5px;
+}
+
+/* ===== TEMPORARY: под-режимы ===== */
+.temporary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.temporary-header h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.temp-subnav {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.temp-subnav-btn {
+    padding: 8px 14px;
+    background: #f0f0f0;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.temp-subnav-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.temp-subnav-btn.active {
+    background: #667eea;
+    border-color: #667eea;
+    color: #fff;
+}
+
+/* Форма добавления */
+.temp-form {
+    background: #f8f9ff;
+    border: 1px solid #e0e6ff;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.temp-form input {
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.temp-form input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Список */
+.temp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.temp-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 10px 12px;
+    gap: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.temp-item:hover {
+    border-color: #667eea;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.12);
+}
+
+.temp-item-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+.temp-item-info strong {
+    font-size: 15px;
+    color: #333;
+}
+
+.temp-item-info .speak-btn {
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.temp-transcription {
+    color: #667eea;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    background: #f0f4ff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.temp-translation {
+    color: #555;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.temp-item .btn {
+    min-width: auto;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Мобильная адаптация для temporary */
+@media (max-width: 600px) {
+    .temp-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .temp-item-info {
+        justify-content: flex-start;
+    }
+
+    .temp-subnav-btn {
+        flex: 1;
+        text-align: center;
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+
+    .temp-form input {
+        font-size: 14px;
+    }
 }
