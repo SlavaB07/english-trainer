@@ -14,7 +14,11 @@ let lastActiveDate = localStorage.getItem('lastActiveDate') || '';
 let streak = parseInt(localStorage.getItem('streak') || '0');
 let achievements = JSON.parse(localStorage.getItem('achievements') || '[]');
 
+// SRS: база данных уровней слов
+let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
+
 const DAILY_GOAL = 20;
+const SRS_INTERVALS = [0, 1, 2, 4, 7, 14]; // дни
 
 // Firebase
 let currentUser = null;
@@ -25,7 +29,7 @@ async function syncToFirebase() {
     try {
         await window.firebaseSetDoc(
             window.firebaseDoc(window.firebaseDb, 'users', currentUser.uid),
-            { xp, dailyXP, lastActiveDate, streak, achievements, learned, positions, currentLevel, temporary },
+            { xp, dailyXP, lastActiveDate, streak, achievements, learned, positions, currentLevel, temporary, srsData },
             { merge: true }
         );
         console.log('✅ Synced to Firebase');
@@ -50,6 +54,7 @@ async function loadFromFirebase() {
             positions = data.positions ?? positions;
             currentLevel = data.currentLevel ?? currentLevel;
             temporary = data.temporary ?? temporary;
+            srsData = data.srsData ?? srsData;
 
             localStorage.setItem('xp', xp.toString());
             localStorage.setItem('dailyXP', dailyXP.toString());
@@ -60,6 +65,7 @@ async function loadFromFirebase() {
             localStorage.setItem('positions', JSON.stringify(positions));
             localStorage.setItem('level', currentLevel);
             localStorage.setItem('temporary', JSON.stringify(temporary));
+            localStorage.setItem('srsData', JSON.stringify(srsData));
 
             console.log('✅ Loaded from Firebase');
         } else {
@@ -70,7 +76,6 @@ async function loadFromFirebase() {
     }
 }
 
-// ===== ИНИЦИАЛИЗАЦИЯ FIREBASE =====
 function initFirebase() {
     if (!window.firebaseOnAuthStateChanged) {
         console.warn('⚠️ Firebase not loaded');
@@ -106,7 +111,6 @@ async function loadData() {
         const tempRes = await fetch('data/temporary.json');
         temporary = await tempRes.json();
 
-        // Загружаем временные из localStorage (если есть)
         const localTemp = localStorage.getItem('temporary');
         if (localTemp) {
             try {
@@ -126,6 +130,45 @@ async function loadData() {
         document.getElementById('content').innerHTML =
             '<p style="color: red;">Ошибка загрузки данных.</p>';
     }
+}
+
+// ===== SRS ЛОГИКА =====
+function getSrsData(word) {
+    if (!srsData[word]) {
+        srsData[word] = { level: 0, next: 0 };
+    }
+    return srsData[word];
+}
+
+function updateSrs(word, correct) {
+    const data = getSrsData(word);
+    if (correct) {
+        data.level = Math.min(data.level + 1, 5);
+    } else {
+        data.level = 0;
+    }
+    const days = SRS_INTERVALS[data.level];
+    data.next = Date.now() + days * 24 * 60 * 60 * 1000;
+    srsData[word] = data;
+    localStorage.setItem('srsData', JSON.stringify(srsData));
+    syncToFirebase();
+}
+
+function isDue(word) {
+    const data = getSrsData(word);
+    return Date.now() >= data.next;
+}
+
+function getDueWords() {
+    const all = getFilteredVocabulary();
+    const due = all.filter(w => isDue(w.word));
+    // Сортируем: сначала новые (уровень 0), потом по уровню
+    due.sort((a, b) => {
+        const aLevel = getSrsData(a.word).level;
+        const bLevel = getSrsData(b.word).level;
+        return aLevel - bLevel;
+    });
+    return due;
 }
 
 // ===== STREAK =====
@@ -166,8 +209,9 @@ function getLevelName() {
 
 // ===== СТАТИСТИКА =====
 function updateStats() {
+    const dueCount = getDueWords().length;
     document.getElementById('progress-info').textContent =
-        `Learned: ${learned.length} / ${vocabulary.length}`;
+        `Learned: ${learned.length} / ${vocabulary.length} · Due: ${dueCount}`;
     document.getElementById('xp-info').textContent = `${xp} XP`;
     document.getElementById('streak-info').textContent = streak;
     document.getElementById('level-info').textContent = getLevelName();
@@ -253,17 +297,25 @@ function renderMode(mode) {
     else if (mode === 'temporary') renderTemporary();
 }
 
-// ===== КАРТОЧКИ =====
+// ===== КАРТОЧКИ (SRS) =====
 function renderCards() {
-    const data = getFilteredVocabulary();
-    if (data.length === 0) {
-        document.getElementById('content').innerHTML = '<p>Нет слов для этого уровня.</p>';
+    const dueWords = getDueWords();
+
+    if (dueWords.length === 0) {
+        document.getElementById('content').innerHTML = `
+            <div class="card">
+                <h2>🎉 All caught up!</h2>
+                <p>No words due for review right now.</p>
+                <p>Come back later or add new words.</p>
+            </div>
+        `;
         return;
     }
 
-    if (positions.cards >= data.length) positions.cards = 0;
-    const word = data[positions.cards];
+    if (positions.cards >= dueWords.length) positions.cards = 0;
+    const word = dueWords[positions.cards];
 
+    const srs = getSrsData(word.word);
     const transText = word.transcription_ru
         ? `<span class="card-transcription">[${word.transcription_ru}]</span>`
         : (word.ipa ? `<span class="card-transcription">${word.ipa}</span>` : '');
@@ -285,6 +337,7 @@ function renderCards() {
 
     document.getElementById('content').innerHTML = `
         <div class="card">
+            <div class="card-srs">SRS Level: ${srs.level}/5</div>
             <div class="card-word">
                 ${word.word}
                 <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
@@ -302,7 +355,7 @@ function renderCards() {
                 <button class="btn btn-success" id="btn-learned">✓ Выучил (+10 XP)</button>
                 <button class="btn btn-warning" id="btn-dontknow">✗ Не знаю</button>
             </div>
-            <div class="card-frequency">Частота: ${word.frequency} · Слово ${positions.cards + 1} из ${data.length}</div>
+            <div class="card-frequency">Частота: ${word.frequency} · Слово ${positions.cards + 1} из ${dueWords.length} (due)</div>
         </div>
     `;
 
@@ -316,17 +369,19 @@ function renderCards() {
         if (!learned.includes(word.word)) {
             learned.push(word.word);
             localStorage.setItem('learned', JSON.stringify(learned));
-            addXP(10);
         }
+        updateSrs(word.word, true);
+        addXP(10);
         nextCard();
     };
 
     document.getElementById('btn-dontknow').onclick = () => {
+        updateSrs(word.word, false);
         addXP(2);
         nextCard();
     };
 
-    updateFooterButtons(data.length);
+    updateFooterButtons(dueWords.length);
 }
 
 // ===== ТЕСТ =====
@@ -386,6 +441,7 @@ function renderTest() {
                 btn.classList.add('correct');
                 feedback.textContent = '✓ Правильно! +10 XP';
                 feedback.className = 'test-feedback correct';
+                updateSrs(word.word, true);
                 addXP(10);
             } else {
                 btn.classList.add('wrong');
@@ -394,6 +450,7 @@ function renderTest() {
                 });
                 feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
                 feedback.className = 'test-feedback wrong';
+                updateSrs(word.word, false);
                 addXP(2);
             }
             document.querySelectorAll('.test-option').forEach(b => b.disabled = true);
@@ -444,10 +501,12 @@ function renderWrite() {
         if (answer === word.word.toLowerCase()) {
             feedback.textContent = '✓ Правильно! +10 XP';
             feedback.className = 'write-feedback correct';
+            updateSrs(word.word, true);
             addXP(10);
         } else {
             feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
             feedback.className = 'write-feedback wrong';
+            updateSrs(word.word, false);
             addXP(2);
         }
         document.getElementById('btn-check').disabled = true;
@@ -463,6 +522,7 @@ function renderWrite() {
         document.getElementById('btn-show-answer').disabled = true;
         input.disabled = true;
         document.getElementById('btn-next-write').style.display = 'inline-block';
+        updateSrs(word.word, false);
         addXP(2);
     };
 
@@ -633,6 +693,11 @@ function deleteTempWord(index) {
 
 // ===== НАВИГАЦИЯ =====
 function nextCard() {
+    if (currentMode === 'cards') {
+        positions.cards++;
+        renderCards();
+        return;
+    }
     const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
     if (positions[currentMode] < data.length - 1) {
         positions[currentMode]++;
@@ -644,6 +709,11 @@ function nextCard() {
 }
 
 function prevCard() {
+    if (currentMode === 'cards') {
+        if (positions.cards > 0) positions.cards--;
+        renderCards();
+        return;
+    }
     const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
     if (positions[currentMode] > 0) {
         positions[currentMode]--;
