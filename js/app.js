@@ -900,4 +900,291 @@ function deleteTempWord(index) {
 // ----- Temporary: карточки -----
 function renderTempCards() {
     if (temporary.length === 0) {
-        return '<p style="color:#888;margin-top:20px;">Нет
+        return '<p style="color:#888;margin-top:20px;">Нет временных слов. Добавь в «Список».</p>';
+    }
+
+    if (positions.tempCards >= temporary.length) positions.tempCards = 0;
+    const word = temporary[positions.tempCards];
+    const srs = getSrsData(word.word, true);
+
+    const transText = word.transcription_ru
+        ? `<span class="card-transcription">[${word.transcription_ru}]</span>`
+        : '';
+
+    let hiddenContent = `<div class="card-translation">${word.translation}</div>`;
+    if (word.note) {
+        hiddenContent += `<div class="card-note">${word.note}</div>`;
+    }
+
+    return `
+        <div class="card">
+            <div class="card-srs">SRS (temp): ${srs.level}/5</div>
+            <div class="card-word">
+                ${word.word}
+                <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+            </div>
+            <div class="card-meta">${transText}</div>
+            <div id="temp-hidden" style="display: none;">${hiddenContent}</div>
+            <div id="temp-buttons-before">
+                <button class="btn btn-secondary" id="temp-btn-show">👁 Показать перевод</button>
+            </div>
+            <div id="temp-buttons-after" style="display: none;">
+                <button class="btn btn-success" id="temp-btn-learned">✓ Выучил (+10 XP)</button>
+                <button class="btn btn-warning" id="temp-btn-dontknow">✗ Не знаю</button>
+            </div>
+            <div class="card-frequency">Слово ${positions.tempCards + 1} из ${temporary.length}</div>
+        </div>
+    `;
+}
+
+function attachTempCardsHandlers() {
+    if (temporary.length === 0) return;
+
+    const showBtn = document.getElementById('temp-btn-show');
+    if (showBtn) {
+        showBtn.onclick = () => {
+            document.getElementById('temp-hidden').style.display = 'block';
+            document.getElementById('temp-buttons-before').style.display = 'none';
+            document.getElementById('temp-buttons-after').style.display = 'block';
+        };
+    }
+
+    const learnedBtn = document.getElementById('temp-btn-learned');
+    if (learnedBtn) {
+        learnedBtn.onclick = () => {
+            const word = temporary[positions.tempCards];
+            updateSrs(word.word, true, true);
+            addXP(10);
+            positions.tempCards++;
+            if (positions.tempCards >= temporary.length) positions.tempCards = 0;
+            savePositions();
+            renderTemporary();
+        };
+    }
+
+    const dontBtn = document.getElementById('temp-btn-dontknow');
+    if (dontBtn) {
+        dontBtn.onclick = () => {
+            const word = temporary[positions.tempCards];
+            updateSrs(word.word, false, true);
+            addXP(2);
+            positions.tempCards++;
+            if (positions.tempCards >= temporary.length) positions.tempCards = 0;
+            savePositions();
+            renderTemporary();
+        };
+    }
+}
+
+// ----- Temporary: тест -----
+function renderTempTest() {
+    if (temporary.length < 4) {
+        return '<p style="color:#888;margin-top:20px;">Нужно минимум 4 слова для теста.</p>';
+    }
+
+    if (positions.tempTest >= temporary.length) positions.tempTest = 0;
+    const word = temporary[positions.tempTest];
+    const correct = word.translation;
+
+    const wrongOptions = [];
+    let guard = 0;
+    while (wrongOptions.length < 3 && guard < 100) {
+        guard++;
+        const randomWord = temporary[Math.floor(Math.random() * temporary.length)];
+        if (randomWord.translation !== correct && !wrongOptions.includes(randomWord.translation)) {
+            wrongOptions.push(randomWord.translation);
+        }
+    }
+
+    const options = [correct, ...wrongOptions].sort(() => Math.random() - 0.5);
+
+    const transText = word.transcription_ru
+        ? `<span class="card-transcription">[${word.transcription_ru}]</span>`
+        : '';
+
+    return `
+        <div class="test-question">
+            ${word.word}
+            <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+        </div>
+        <div class="card-meta">${transText}</div>
+        <div class="test-options">
+            ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
+        </div>
+        <div class="test-feedback" id="temp-test-feedback"></div>
+        <button class="btn btn-success" id="temp-btn-next-test" style="display: none;">Дальше →</button>
+        <div class="card-frequency">Слово ${positions.tempTest + 1} из ${temporary.length}</div>
+    `;
+}
+
+function attachTempTestHandlers() {
+    if (temporary.length < 4) return;
+
+    const word = temporary[positions.tempTest];
+    const correct = word.translation;
+
+    document.querySelectorAll('#content .test-option').forEach(btn => {
+        btn.onclick = () => {
+            const answer = btn.dataset.answer;
+            const feedback = document.getElementById('temp-test-feedback');
+
+            if (answer === correct) {
+                btn.classList.add('correct');
+                feedback.textContent = '✓ Правильно! +10 XP';
+                feedback.className = 'test-feedback correct';
+                updateSrs(word.word, true, true);
+                addXP(10);
+            } else {
+                btn.classList.add('wrong');
+                document.querySelectorAll('#content .test-option').forEach(b => {
+                    if (b.dataset.answer === correct) b.classList.add('correct');
+                });
+                feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
+                feedback.className = 'test-feedback wrong';
+                updateSrs(word.word, false, true);
+                addXP(2);
+            }
+            document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
+            document.getElementById('temp-btn-next-test').style.display = 'inline-block';
+        };
+    });
+
+    const nextBtn = document.getElementById('temp-btn-next-test');
+    if (nextBtn) {
+        nextBtn.onclick = () => {
+            positions.tempTest++;
+            if (positions.tempTest >= temporary.length) positions.tempTest = 0;
+            savePositions();
+            renderTemporary();
+        };
+    }
+}
+
+// ----- Temporary: написание -----
+function renderTempWrite() {
+    if (temporary.length === 0) {
+        return '<p style="color:#888;margin-top:20px;">Нет временных слов.</p>';
+    }
+
+    if (positions.tempWrite >= temporary.length) positions.tempWrite = 0;
+    const word = temporary[positions.tempWrite];
+
+    return `
+        <div class="card-word">${word.translation}</div>
+        <input type="text" class="write-input" id="temp-write-input" placeholder="Введи слово..." autocomplete="off">
+        <button class="btn btn-primary" id="temp-btn-check">✓ Проверить</button>
+        <button class="btn btn-secondary" id="temp-btn-show-answer">👁 Показать ответ</button>
+        <button class="btn btn-success" id="temp-btn-next-write" style="display: none;">Дальше →</button>
+        <div class="write-feedback" id="temp-write-feedback"></div>
+        <div class="card-frequency">Подсказка: ${word.word.length} букв. Слово ${positions.tempWrite + 1} из ${temporary.length}</div>
+    `;
+}
+
+function attachTempWriteHandlers() {
+    if (temporary.length === 0) return;
+
+    const word = temporary[positions.tempWrite];
+    const input = document.getElementById('temp-write-input');
+    input.focus();
+
+    document.getElementById('temp-btn-check').onclick = () => {
+        const answer = input.value.trim().toLowerCase();
+        const feedback = document.getElementById('temp-write-feedback');
+
+        if (answer === word.word.toLowerCase()) {
+            feedback.textContent = '✓ Правильно! +10 XP';
+            feedback.className = 'write-feedback correct';
+            updateSrs(word.word, true, true);
+            addXP(10);
+        } else {
+            feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
+            feedback.className = 'write-feedback wrong';
+            updateSrs(word.word, false, true);
+            addXP(2);
+        }
+        document.getElementById('temp-btn-check').disabled = true;
+        document.getElementById('temp-btn-show-answer').disabled = true;
+        input.disabled = true;
+        document.getElementById('temp-btn-next-write').style.display = 'inline-block';
+    };
+
+    document.getElementById('temp-btn-show-answer').onclick = () => {
+        document.getElementById('temp-write-feedback').textContent = `Правильный ответ: ${word.word}`;
+        document.getElementById('temp-write-feedback').className = 'write-feedback';
+        document.getElementById('temp-btn-check').disabled = true;
+        document.getElementById('temp-btn-show-answer').disabled = true;
+        input.disabled = true;
+        document.getElementById('temp-btn-next-write').style.display = 'inline-block';
+        updateSrs(word.word, false, true);
+        addXP(2);
+    };
+
+    document.getElementById('temp-btn-next-write').onclick = () => {
+        positions.tempWrite++;
+        if (positions.tempWrite >= temporary.length) positions.tempWrite = 0;
+        savePositions();
+        renderTemporary();
+    };
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('temp-btn-check').disabled) {
+            document.getElementById('temp-btn-check').click();
+        }
+    });
+}
+
+// ===== НАВИГАЦИЯ =====
+function nextCard() {
+    if (currentMode === 'cards') {
+        positions.cards++;
+        renderCards();
+        return;
+    }
+    const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
+    if (positions[currentMode] < data.length - 1) {
+        positions[currentMode]++;
+    } else {
+        positions[currentMode] = 0;
+    }
+    savePositions();
+    renderMode(currentMode);
+}
+
+function prevCard() {
+    if (currentMode === 'cards') {
+        if (positions.cards > 0) positions.cards--;
+        renderCards();
+        return;
+    }
+    const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
+    if (positions[currentMode] > 0) {
+        positions[currentMode]--;
+    } else {
+        positions[currentMode] = data.length - 1;
+    }
+    savePositions();
+    renderMode(currentMode);
+}
+
+function updateFooterButtons(total) {
+    if (currentMode === 'test' || currentMode === 'write' ||
+        currentMode === 'temporary' || currentMode === 'listening') {
+        document.getElementById('btn-prev').disabled = true;
+        document.getElementById('btn-next').disabled = true;
+        return;
+    }
+    document.getElementById('btn-prev').disabled = positions[currentMode] === 0;
+    document.getElementById('btn-next').disabled = positions[currentMode] >= total - 1;
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ =====
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+        btn.onclick = () => renderMode(btn.dataset.mode);
+    });
+
+    document.getElementById('btn-prev').onclick = prevCard;
+    document.getElementById('btn-next').onclick = nextCard;
+
+    loadData();
+});
