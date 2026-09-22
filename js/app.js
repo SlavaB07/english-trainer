@@ -40,6 +40,30 @@ const LEVEL_RANGES = {
 
 let currentUser = null;
 
+// ===== ХЕЛПЕРЫ ДЛЯ FAMILY / COLLOCATIONS =====
+// Поддерживают и новый формат (объект) и старый (строка).
+function formatFamily(family) {
+    if (!family || family.length === 0) return '';
+    return family.map(f => {
+        if (typeof f === 'string') return f;
+        if (f && f.translation) {
+            return `${f.word} <span class="meta-translation">(${f.translation})</span>`;
+        }
+        return f.word || '';
+    }).join(' · ');
+}
+
+function formatCollocations(collocations) {
+    if (!collocations || collocations.length === 0) return '';
+    return collocations.map(c => {
+        if (typeof c === 'string') return c;
+        if (c && c.translation) {
+            return `${c.phrase} <span class="meta-translation">(${c.translation})</span>`;
+        }
+        return c.phrase || '';
+    }).join(' · ');
+}
+
 // ===== СИНХРОНИЗАЦИЯ С FIREBASE =====
 async function syncToFirebase() {
     if (!currentUser || !window.firebaseSetDoc) return;
@@ -244,7 +268,6 @@ function addMastered(word) {
         mastered.push(word);
         localStorage.setItem('mastered', JSON.stringify(mastered));
     }
-    // Убираем из learned (если было)
     const idx = learned.indexOf(word);
     if (idx !== -1) {
         learned.splice(idx, 1);
@@ -258,7 +281,6 @@ function removeMastered(word) {
     if (idx !== -1) {
         mastered.splice(idx, 1);
         localStorage.setItem('mastered', JSON.stringify(mastered));
-        // Сбрасываем SRS — слово вернётся в обучение
         const key = word;
         if (srsData[key]) {
             srsData[key] = { level: 0, next: 0 };
@@ -452,14 +474,14 @@ function renderCards() {
     if (word.family && word.family.length > 0) {
         hiddenContent += `
             <div class="card-family">
-                <strong>Word Family:</strong> ${word.family.join(', ')}
+                <strong>Word Family:</strong> ${formatFamily(word.family)}
             </div>
         `;
     }
     if (word.collocations && word.collocations.length > 0) {
         hiddenContent += `
             <div class="card-collocations">
-                <strong>Collocations:</strong> ${word.collocations.join(' · ')}
+                <strong>Collocations:</strong> ${formatCollocations(word.collocations)}
             </div>
         `;
     }
@@ -1200,7 +1222,7 @@ function attachTempWriteHandlers() {
     };
 
     input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !document.getElementById('temp-btn-check').disabled) {
+        if (e.key === 'Enter' && !document.getElementById('temp-btn-next-write').disabled) {
             document.getElementById('temp-btn-check').click();
         }
     });
@@ -1221,7 +1243,6 @@ function renderMastered() {
         return;
     }
 
-    // Сортируем по алфавиту для удобства
     const sorted = [...mastered].sort();
 
     document.getElementById('content').innerHTML = `
