@@ -1,0 +1,437 @@
+[
+  {
+    "id": 1,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "I work every day.",
+    "ru": "Я работаю каждый день.",
+    "hint": "регулярное действие, факт",
+    "words": ["I", "work", "every", "day."]
+  },
+  {
+    "id": 2,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "She drinks coffee in the morning.",
+    "ru": "Она пьёт кофе по утрам.",
+    "hint": "привычка, регулярно",
+    "words": ["She", "drinks", "coffee", "in", "the", "morning."]
+  },
+  {
+    "id": 3,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "They live in London.",
+    "ru": "Они живут в Лондоне.",
+    "hint": "постоянное положение",
+    "words": ["They", "live", "in", "London."]
+  },
+  {
+    "id": 4,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "He speaks English very well.",
+    "ru": "Он очень хорошо говорит по-английски.",
+    "hint": "умение, факт",
+    "words": ["He", "speaks", "English", "very", "well."]
+  },
+  {
+    "id": 5,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "The sun rises in the east.",
+    "ru": "Солнце встаёт на востоке.",
+    "hint": "закон природы",
+    "words": ["The", "sun", "rises", "in", "the", "east."]
+  },
+  {
+    "id": 6,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "We usually go to the gym on Mondays.",
+    "ru": "Мы обычно ходим в спортзал по понедельникам.",
+    "hint": "регулярное действие",
+    "words": ["We", "usually", "go", "to", "the", "gym", "on", "Mondays."]
+  },
+  {
+    "id": 7,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "My brother works at a bank.",
+    "ru": "Мой брат работает в банке.",
+    "hint": "постоянная работа",
+    "words": ["My", "brother", "works", "at", "a", "bank."]
+  },
+  {
+    "id": 8,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "Water boils at 100 degrees Celsius.",
+    "ru": "Вода кипит при 100 градусах Цельсия.",
+    "hint": "научный факт",
+    "words": ["Water", "boils", "at", "100", "degrees", "Celsius."]
+  },
+  {
+    "id": 9,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "She never eats meat.",
+    "ru": "Она никогда не ест мясо.",
+    "hint": "привычка, отрицание",
+    "words": ["She", "never", "eats", "meat."]
+  },
+  {
+    "id": 10,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "Do you like Italian food?",
+    "ru": "Ты любишь итальянскую еду?",
+    "hint": "вопрос о предпочтении",
+    "words": ["Do", "you", "like", "Italian", "food?"]
+  },
+  {
+    "id": 11,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "The train leaves at 7 AM.",
+    "ru": "Поезд отправляется в 7 утра.",
+    "hint": "расписание",
+    "words": ["The", "train", "leaves", "at", "7", "AM."]
+  },
+  {
+    "id": 12,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "He doesn't understand Spanish.",
+    "ru": "Он не понимает испанский.",
+    "hint": "отрицание, факт",
+    "words": ["He", "doesn't", "understand", "Spanish."]
+  },
+
+  {
+    "id": 13,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am reading a book right now.",
+    "ru": "Я сейчас читаю книгу.",
+    "hint": "действие прямо сейчас",
+    "words": ["I", "am", "reading", "a", "book", "right", "now."]
+  },
+  {
+    "id": 14,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "She is cooking dinner at the moment.",
+    "ru": "Она сейчас готовит ужин.",
+    "hint": "действие в момент речи",
+    "words": ["She", "is", "cooking", "dinner", "at", "the", "moment."]
+  },
+  {
+    "id": 15,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "They are playing football in the park.",
+    "ru": "Они играют в футбол в парке.",
+    "hint": "действие прямо сейчас",
+    "words": ["They", "are", "playing", "football", "in", "the", "park."]
+  },
+  {
+    "id": 16,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am learning English this year.",
+    "ru": "Я учу английский в этом году.",
+    "hint": "временная ситуация",
+    "words": ["I", "am", "learning", "English", "this", "year."]
+  },
+  {
+    "id": 17,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "The baby is sleeping now.",
+    "ru": "Ребёнок сейчас спит.",
+    "hint": "прямо сейчас",
+    "words": ["The", "baby", "is", "sleeping", "now."]
+  },
+  {
+    "id": 18,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "We are moving to a new apartment next month.",
+    "ru": "Мы переезжаем в новую квартиру в следующем месяце.",
+    "hint": "запланированное будущее",
+    "words": ["We", "are", "moving", "to", "a", "new", "apartment", "next", "month."]
+  },
+  {
+    "id": 19,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "He is working from home today.",
+    "ru": "Он сегодня работает из дома.",
+    "hint": "временное действие",
+    "words": ["He", "is", "working", "from", "home", "today."]
+  },
+  {
+    "id": 20,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "It is raining outside.",
+    "ru": "На улице идёт дождь.",
+    "hint": "погода сейчас",
+    "words": ["It", "is", "raining", "outside."]
+  },
+  {
+    "id": 21,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "Why are you laughing?",
+    "ru": "Почему ты смеёшься?",
+    "hint": "вопрос о действии сейчас",
+    "words": ["Why", "are", "you", "laughing?"]
+  },
+  {
+    "id": 22,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "She is talking on the phone.",
+    "ru": "Она говорит по телефону.",
+    "hint": "действие прямо сейчас",
+    "words": ["She", "is", "talking", "on", "the", "phone."]
+  },
+  {
+    "id": 23,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "They are not listening to me.",
+    "ru": "Они меня не слушают.",
+    "hint": "отрицание",
+    "words": ["They", "are", "not", "listening", "to", "me."]
+  },
+  {
+    "id": 24,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am thinking about my future.",
+    "ru": "Я думаю о своём будущем.",
+    "hint": "процесс мышления",
+    "words": ["I", "am", "thinking", "about", "my", "future."]
+  },
+
+  {
+    "id": 25,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I have finished my homework.",
+    "ru": "Я закончил домашнюю работу.",
+    "hint": "результат важен сейчас",
+    "words": ["I", "have", "finished", "my", "homework."]
+  },
+  {
+    "id": 26,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "She has lived in Paris for five years.",
+    "ru": "Она живёт в Париже пять лет.",
+    "hint": "действие началось в прошлом и продолжается",
+    "words": ["She", "has", "lived", "in", "Paris", "for", "five", "years."]
+  },
+  {
+    "id": 27,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "They have just arrived.",
+    "ru": "Они только что приехали.",
+    "hint": "только что завершилось",
+    "words": ["They", "have", "just", "arrived."]
+  },
+  {
+    "id": 28,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I have never seen this movie.",
+    "ru": "Я никогда не видел этот фильм.",
+    "hint": "опыт до настоящего момента",
+    "words": ["I", "have", "never", "seen", "this", "movie."]
+  },
+  {
+    "id": 29,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "He has already eaten lunch.",
+    "ru": "Он уже пообедал.",
+    "hint": "действие завершено",
+    "words": ["He", "has", "already", "eaten", "lunch."]
+  },
+  {
+    "id": 30,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "We have known each other since childhood.",
+    "ru": "Мы знаем друг друга с детства.",
+    "hint": "с какого-то момента в прошлом",
+    "words": ["We", "have", "known", "each", "other", "since", "childhood."]
+  },
+  {
+    "id": 31,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "Have you ever been to Japan?",
+    "ru": "Ты когда-нибудь был в Японии?",
+    "hint": "вопрос об опыте",
+    "words": ["Have", "you", "ever", "been", "to", "Japan?"]
+  },
+  {
+    "id": 32,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "She has bought a new car.",
+    "ru": "Она купила новую машину.",
+    "hint": "недавно, результат виден",
+    "words": ["She", "has", "bought", "a", "new", "car."]
+  },
+  {
+    "id": 33,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I have lost my keys.",
+    "ru": "Я потерял свои ключи.",
+    "hint": "результат сейчас — ключей нет",
+    "words": ["I", "have", "lost", "my", "keys."]
+  },
+  {
+    "id": 34,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "They have been married for ten years.",
+    "ru": "Они женаты десять лет.",
+    "hint": "состояние длится",
+    "words": ["They", "have", "been", "married", "for", "ten", "years."]
+  },
+  {
+    "id": 35,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "He has not called me yet.",
+    "ru": "Он мне ещё не позвонил.",
+    "hint": "отрицание + ещё не",
+    "words": ["He", "has", "not", "called", "me", "yet."]
+  },
+  {
+    "id": 36,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "The train has just left the station.",
+    "ru": "Поезд только что уехал со станции.",
+    "hint": "только что",
+    "words": ["The", "train", "has", "just", "left", "the", "station."]
+  },
+
+  {
+    "id": 37,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "I have been studying English for three years.",
+    "ru": "Я учу английский три года.",
+    "hint": "процесс начался в прошлом и продолжается",
+    "words": ["I", "have", "been", "studying", "English", "for", "three", "years."]
+  },
+  {
+    "id": 38,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "She has been working here since 2020.",
+    "ru": "Она работает здесь с 2020 года.",
+    "hint": "длительный процесс",
+    "words": ["She", "has", "been", "working", "here", "since", "2020."]
+  },
+  {
+    "id": 39,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "It has been raining all day.",
+    "ru": "Дождь идёт весь день.",
+    "hint": "процесс длится и не завершён",
+    "words": ["It", "has", "been", "raining", "all", "day."]
+  },
+  {
+    "id": 40,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "They have been waiting for two hours.",
+    "ru": "Они ждут уже два часа.",
+    "hint": "длительное ожидание",
+    "words": ["They", "have", "been", "waiting", "for", "two", "hours."]
+  },
+  {
+    "id": 41,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "I have been reading this book all week.",
+    "ru": "Я читаю эту книгу всю неделю.",
+    "hint": "процесс в течение периода",
+    "words": ["I", "have", "been", "reading", "this", "book", "all", "week."]
+  },
+  {
+    "id": 42,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "He has been learning to play the guitar.",
+    "ru": "Он учится играть на гитаре.",
+    "hint": "процесс обучения продолжается",
+    "words": ["He", "has", "been", "learning", "to", "play", "the", "guitar."]
+  },
+  {
+    "id": 43,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "We have been living in this city for a long time.",
+    "ru": "Мы живём в этом городе долго.",
+    "hint": "длительное состояние",
+    "words": ["We", "have", "been", "living", "in", "this", "city", "for", "a", "long", "time."]
+  },
+  {
+    "id": 44,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "She has been feeling tired lately.",
+    "ru": "В последнее время она чувствует себя усталой.",
+    "hint": "процесс в последнее время",
+    "words": ["She", "has", "been", "feeling", "tired", "lately."]
+  },
+  {
+    "id": 45,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "How long have you been learning Spanish?",
+    "ru": "Как долго ты учишь испанский?",
+    "hint": "вопрос о длительности",
+    "words": ["How", "long", "have", "you", "been", "learning", "Spanish?"]
+  },
+  {
+    "id": 46,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "The children have been playing outside since morning.",
+    "ru": "Дети играют на улице с утра.",
+    "hint": "с какого-то времени",
+    "words": ["The", "children", "have", "been", "playing", "outside", "since", "morning."]
+  },
+  {
+    "id": 47,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "I have been trying to call you all day.",
+    "ru": "Я весь день пытаюсь тебе дозвониться.",
+    "hint": "процесс в течение дня",
+    "words": ["I", "have", "been", "trying", "to", "call", "you", "all", "day."]
+  },
+  {
+    "id": 48,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "He has been working on this project for months.",
+    "ru": "Он работает над этим проектом месяцами.",
+    "hint": "длительный процесс",
+    "words": ["He", "has", "been", "working", "on", "this", "project", "for", "months."]
+  }
+]
