@@ -643,7 +643,7 @@ function renderPhrases() {
     updateFooterButtons(data.length);
 }
 
-// ===== АУДИРОВАНИЕ =====
+// ===== АУДИРОВАНИЕ (БЕЗ АВТООЗВУЧКИ) =====
 function renderListening() {
     const data = getFilteredVocabulary();
     if (data.length === 0) {
@@ -668,8 +668,6 @@ function renderListening() {
             <div class="card-frequency">Слово ${positions.listening + 1} из ${data.length}</div>
         </div>
     `;
-
-    setTimeout(() => speak(word.word), 500);
 
     const input = document.getElementById('listen-input');
     input.focus();
