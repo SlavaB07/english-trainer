@@ -136,14 +136,16 @@ body {
     display: flex;
     background: #f5f5f5;
     border-bottom: 1px solid #e0e0e0;
+    flex-wrap: wrap;
 }
 
 .menu-btn {
     flex: 1;
+    min-width: 70px;
     padding: 14px 5px;
     background: none;
     border: none;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     color: #666;
     cursor: pointer;
@@ -276,6 +278,15 @@ body {
 
 .btn-primary:hover {
     background: #5568d3;
+}
+
+.btn-master {
+    background: #17a2b8;
+    color: #fff;
+}
+
+.btn-master:hover {
+    background: #138496;
 }
 
 /* ===== ОЗВУЧКА ===== */
@@ -457,8 +468,9 @@ body {
     }
 
     .menu-btn {
-        font-size: 11px;
+        font-size: 10px;
         padding: 12px 3px;
+        min-width: 55px;
     }
 
     .level-btn {
@@ -670,7 +682,6 @@ body {
     color: #fff;
 }
 
-/* Форма добавления */
 .temp-form {
     background: #f8f9ff;
     border: 1px solid #e0e6ff;
@@ -696,7 +707,6 @@ body {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Список */
 .temp-list {
     display: flex;
     flex-direction: column;
@@ -765,14 +775,90 @@ body {
     margin: 0;
 }
 
-/* Мобильная адаптация для temporary */
+/* ===== MASTERED ===== */
+.mastered-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.mastered-header h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.mastered-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.mastered-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0fff4;
+    border: 1px solid #c8e6c9;
+    border-radius: 10px;
+    padding: 10px 12px;
+    gap: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.mastered-item:hover {
+    border-color: #28a745;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.15);
+}
+
+.mastered-item-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+.mastered-item-info strong {
+    font-size: 15px;
+    color: #155724;
+}
+
+.mastered-item-info .speak-btn {
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.mastered-item .btn {
+    min-width: auto;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 0;
+}
+
+.mastered-empty {
+    color: #888;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* Мобильная адаптация для temporary и mastered */
 @media (max-width: 600px) {
-    .temp-item {
+    .temp-item,
+    .mastered-item {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .temp-item-info {
+    .temp-item-info,
+    .mastered-item-info {
         justify-content: flex-start;
     }
 
