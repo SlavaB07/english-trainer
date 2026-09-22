@@ -12,6 +12,11 @@ positions.write = positions.write || 0;
 positions.phrases = positions.phrases || 0;
 positions.temporary = positions.temporary || 0;
 positions.listening = positions.listening || 0;
+positions.tempCards = positions.tempCards || 0;
+positions.tempTest = positions.tempTest || 0;
+positions.tempWrite = positions.tempWrite || 0;
+
+let tempSubMode = 'list'; // 'list' | 'cards' | 'test' | 'write'
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 
@@ -63,9 +68,15 @@ async function loadFromFirebase() {
                 positions.phrases = data.positions.phrases || 0;
                 positions.temporary = data.positions.temporary || 0;
                 positions.listening = data.positions.listening || 0;
+                positions.tempCards = data.positions.tempCards || 0;
+                positions.tempTest = data.positions.tempTest || 0;
+                positions.tempWrite = data.positions.tempWrite || 0;
             }
             currentLevel = data.currentLevel ?? currentLevel;
-            temporary = data.temporary ?? temporary;
+            // temporary из Firebase объединяем с уже загруженным
+            if (Array.isArray(data.temporary) && data.temporary.length > 0) {
+                temporary = mergeTemporary(temporary, data.temporary);
+            }
             srsData = data.srsData ?? srsData;
 
             localStorage.setItem('xp', xp.toString());
@@ -111,6 +122,17 @@ function initFirebase() {
     });
 }
 
+// ===== MERGE TEMPORARY =====
+function mergeTemporary(base, extra) {
+    const map = new Map();
+    [...base, ...extra].forEach(item => {
+        if (item && item.word) {
+            map.set(item.word.toLowerCase(), item);
+        }
+    });
+    return Array.from(map.values());
+}
+
 // ===== ЗАГРУЗКА ДАННЫХ =====
 async function loadData() {
     try {
@@ -120,16 +142,29 @@ async function loadData() {
         const phrasesRes = await fetch('data/phrases.json');
         phrases = await phrasesRes.json();
 
-        const tempRes = await fetch('data/temporary.json');
-        temporary = await tempRes.json();
-
-        const localTemp = localStorage.getItem('temporary');
-        if (localTemp) {
-            try {
-                const parsed = JSON.parse(localTemp);
-                if (parsed.length > 0) temporary = parsed;
-            } catch (e) {}
+        // temporary: сначала JSON, потом localStorage, объединяем
+        let tempFromJson = [];
+        try {
+            const tempRes = await fetch('data/temporary.json');
+            tempFromJson = await tempRes.json();
+            if (!Array.isArray(tempFromJson)) tempFromJson = [];
+        } catch (e) {
+            console.warn('temporary.json не загружен:', e);
         }
+
+        let tempFromLocal = [];
+        try {
+            const localTemp = localStorage.getItem('temporary');
+            if (localTemp) {
+                const parsed = JSON.parse(localTemp);
+                if (Array.isArray(parsed)) tempFromLocal = parsed;
+            }
+        } catch (e) {
+            console.warn('local temporary ошибка:', e);
+        }
+
+        temporary = mergeTemporary(tempFromJson, tempFromLocal);
+        localStorage.setItem('temporary', JSON.stringify(temporary));
 
         checkStreak();
         updateStats();
@@ -145,15 +180,17 @@ async function loadData() {
 }
 
 // ===== SRS ЛОГИКА =====
-function getSrsData(word) {
-    if (!srsData[word]) {
-        srsData[word] = { level: 0, next: 0 };
+function getSrsData(word, isTemp = false) {
+    const key = isTemp ? `temp:${word}` : word;
+    if (!srsData[key]) {
+        srsData[key] = { level: 0, next: 0 };
     }
-    return srsData[word];
+    return srsData[key];
 }
 
-function updateSrs(word, correct) {
-    const data = getSrsData(word);
+function updateSrs(word, correct, isTemp = false) {
+    const key = isTemp ? `temp:${word}` : word;
+    const data = getSrsData(word, isTemp);
     if (correct) {
         data.level = Math.min(data.level + 1, 5);
         const days = SRS_INTERVALS[data.level];
@@ -162,22 +199,22 @@ function updateSrs(word, correct) {
         data.level = 0;
         data.next = Date.now();
     }
-    srsData[word] = data;
+    srsData[key] = data;
     localStorage.setItem('srsData', JSON.stringify(srsData));
     syncToFirebase();
 }
 
-function isDue(word) {
-    const data = getSrsData(word);
+function isDue(word, isTemp = false) {
+    const data = getSrsData(word, isTemp);
     return Date.now() >= data.next;
 }
 
 function getDueWords() {
     const all = getFilteredVocabulary();
-    const due = all.filter(w => isDue(w.word));
+    const due = all.filter(w => isDue(w.word, false));
     due.sort((a, b) => {
-        const aLevel = getSrsData(a.word).level;
-        const bLevel = getSrsData(b.word).level;
+        const aLevel = getSrsData(a.word, false).level;
+        const bLevel = getSrsData(b.word, false).level;
         return aLevel - bLevel;
     });
     return due;
@@ -190,6 +227,7 @@ function checkStreak() {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         if (lastActiveDate === yesterday.toDateString()) {
+            // streak продолжается
         } else if (lastActiveDate !== '') {
             streak = 0;
         }
@@ -265,7 +303,11 @@ function renderLevelButtons() {
         btn.onclick = () => {
             currentLevel = btn.dataset.level;
             localStorage.setItem('level', currentLevel);
-            positions = { cards: 0, test: 0, write: 0, phrases: 0, temporary: 0, listening: 0 };
+            positions = {
+                cards: 0, test: 0, write: 0, phrases: 0,
+                temporary: 0, listening: 0,
+                tempCards: 0, tempTest: 0, tempWrite: 0
+            };
             savePositions();
             renderLevelButtons();
             renderMode(currentMode);
@@ -328,7 +370,7 @@ function renderCards() {
     if (positions.cards >= dueWords.length) positions.cards = 0;
     const word = dueWords[positions.cards];
 
-    const srs = getSrsData(word.word);
+    const srs = getSrsData(word.word, false);
     const transText = word.transcription_ru
         ? `<span class="card-transcription">[${word.transcription_ru}]</span>`
         : (word.ipa ? `<span class="card-transcription">${word.ipa}</span>` : '');
@@ -397,7 +439,7 @@ function renderCards() {
             learned.push(word.word);
             localStorage.setItem('learned', JSON.stringify(learned));
         }
-        updateSrs(word.word, true);
+        updateSrs(word.word, true, false);
         addXP(10);
         positions.cards = 0;
         renderCards();
@@ -405,7 +447,7 @@ function renderCards() {
     };
 
     document.getElementById('btn-dontknow').onclick = () => {
-        updateSrs(word.word, false);
+        updateSrs(word.word, false, false);
         addXP(2);
         positions.cards++;
         if (positions.cards >= dueWords.length) positions.cards = 0;
@@ -473,7 +515,7 @@ function renderTest() {
                 btn.classList.add('correct');
                 feedback.textContent = '✓ Правильно! +10 XP';
                 feedback.className = 'test-feedback correct';
-                updateSrs(word.word, true);
+                updateSrs(word.word, true, false);
                 addXP(10);
             } else {
                 btn.classList.add('wrong');
@@ -482,7 +524,7 @@ function renderTest() {
                 });
                 feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
                 feedback.className = 'test-feedback wrong';
-                updateSrs(word.word, false);
+                updateSrs(word.word, false, false);
                 addXP(2);
             }
             document.querySelectorAll('.test-option').forEach(b => b.disabled = true);
@@ -533,12 +575,12 @@ function renderWrite() {
         if (answer === word.word.toLowerCase()) {
             feedback.textContent = '✓ Правильно! +10 XP';
             feedback.className = 'write-feedback correct';
-            updateSrs(word.word, true);
+            updateSrs(word.word, true, false);
             addXP(10);
         } else {
             feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
             feedback.className = 'write-feedback wrong';
-            updateSrs(word.word, false);
+            updateSrs(word.word, false, false);
             addXP(2);
         }
         document.getElementById('btn-check').disabled = true;
@@ -554,7 +596,7 @@ function renderWrite() {
         document.getElementById('btn-show-answer').disabled = true;
         input.disabled = true;
         document.getElementById('btn-next-write').style.display = 'inline-block';
-        updateSrs(word.word, false);
+        updateSrs(word.word, false, false);
         addXP(2);
     };
 
@@ -643,7 +685,7 @@ function renderPhrases() {
     updateFooterButtons(data.length);
 }
 
-// ===== АУДИРОВАНИЕ (БЕЗ АВТООЗВУЧКИ) =====
+// ===== АУДИРОВАНИЕ =====
 function renderListening() {
     const data = getFilteredVocabulary();
     if (data.length === 0) {
@@ -683,12 +725,12 @@ function renderListening() {
         if (answer === word.word.toLowerCase()) {
             feedback.textContent = '✓ Правильно! +10 XP';
             feedback.className = 'write-feedback correct';
-            updateSrs(word.word, true);
+            updateSrs(word.word, true, false);
             addXP(10);
         } else {
             feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
             feedback.className = 'write-feedback wrong';
-            updateSrs(word.word, false);
+            updateSrs(word.word, false, false);
             addXP(2);
         }
         document.getElementById('btn-listen-check').disabled = true;
@@ -714,73 +756,136 @@ function renderListening() {
 
 // ===== ВРЕМЕННЫЕ СЛОВА =====
 function renderTemporary() {
+    const subNav = `
+        <div class="temp-subnav">
+            <button class="temp-subnav-btn ${tempSubMode === 'list' ? 'active' : ''}" data-sub="list">📋 Список</button>
+            <button class="temp-subnav-btn ${tempSubMode === 'cards' ? 'active' : ''}" data-sub="cards">📇 Карточки</button>
+            <button class="temp-subnav-btn ${tempSubMode === 'test' ? 'active' : ''}" data-sub="test">✅ Тест</button>
+            <button class="temp-subnav-btn ${tempSubMode === 'write' ? 'active' : ''}" data-sub="write">✏️ Написание</button>
+        </div>
+    `;
+
+    let bodyHtml = '';
+
+    if (tempSubMode === 'list') {
+        bodyHtml = renderTempList();
+    } else if (tempSubMode === 'cards') {
+        bodyHtml = renderTempCards();
+    } else if (tempSubMode === 'test') {
+        bodyHtml = renderTempTest();
+    } else if (tempSubMode === 'write') {
+        bodyHtml = renderTempWrite();
+    }
+
     document.getElementById('content').innerHTML = `
         <div class="temporary-header">
-            <h2>📝 Temporary Words</h2>
-            <button class="btn btn-primary" id="btn-add-temp">+ Add Word</button>
+            <h2>📝 Temporary Words (${temporary.length})</h2>
+        </div>
+        ${subNav}
+        ${bodyHtml}
+    `;
+
+    document.querySelectorAll('.temp-subnav-btn').forEach(btn => {
+        btn.onclick = () => {
+            tempSubMode = btn.dataset.sub;
+            renderTemporary();
+        };
+    });
+
+    if (tempSubMode === 'list') {
+        attachTempListHandlers();
+    } else if (tempSubMode === 'cards') {
+        attachTempCardsHandlers();
+    } else if (tempSubMode === 'test') {
+        attachTempTestHandlers();
+    } else if (tempSubMode === 'write') {
+        attachTempWriteHandlers();
+    }
+
+    // Футер неактивен в Temporary
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
+}
+
+// ----- Temporary: список -----
+function renderTempList() {
+    return `
+        <div style="margin: 10px 0;">
+            <button class="btn btn-primary" id="btn-add-temp">+ Добавить слово</button>
         </div>
         <div class="temp-form" id="temp-form" style="display: none;">
             <input type="text" id="temp-word" placeholder="English word" autocomplete="off">
             <input type="text" id="temp-translation" placeholder="Перевод" autocomplete="off">
-            <input type="text" id="temp-transcription" placeholder="Транскрипция (например, [олвэйс])" autocomplete="off">
-            <button class="btn btn-success" id="btn-save-temp">Save</button>
-            <button class="btn btn-secondary" id="btn-cancel-temp">Cancel</button>
+            <input type="text" id="temp-transcription" placeholder="Транскрипция рус. (напр. уелд)" autocomplete="off">
+            <button class="btn btn-success" id="btn-save-temp">Сохранить</button>
+            <button class="btn btn-secondary" id="btn-cancel-temp">Отмена</button>
         </div>
         <div class="temp-list" id="temp-list">
-            ${temporary.length === 0 ? '<p>No temporary words yet. Add your first word!</p>' : ''}
+            ${temporary.length === 0
+                ? '<p style="color:#888;margin-top:20px;">Пока нет временных слов.</p>'
+                : temporary.map((w, i) => `
+                    <div class="temp-item">
+                        <div class="temp-item-info">
+                            <strong>${w.word}</strong>
+                            <button class="speak-btn" onclick="speak('${w.word.replace(/'/g, "\\'")}')">🔊</button>
+                            <span class="temp-transcription">[${w.transcription_ru || ''}]</span>
+                            <span class="temp-translation">${w.translation}</span>
+                        </div>
+                        <button class="btn btn-warning" onclick="deleteTempWord(${i})">🗑</button>
+                    </div>
+                `).join('')
+            }
         </div>
     `;
+}
 
-    document.getElementById('btn-add-temp').onclick = () => {
-        document.getElementById('temp-form').style.display = 'block';
-        document.getElementById('temp-word').focus();
-    };
+function attachTempListHandlers() {
+    const addBtn = document.getElementById('btn-add-temp');
+    if (addBtn) {
+        addBtn.onclick = () => {
+            document.getElementById('temp-form').style.display = 'block';
+            document.getElementById('temp-word').focus();
+        };
+    }
 
-    document.getElementById('btn-cancel-temp').onclick = () => {
-        document.getElementById('temp-form').style.display = 'none';
-        document.getElementById('temp-word').value = '';
-        document.getElementById('temp-translation').value = '';
-        document.getElementById('temp-transcription').value = '';
-    };
+    const cancelBtn = document.getElementById('btn-cancel-temp');
+    if (cancelBtn) {
+        cancelBtn.onclick = () => {
+            document.getElementById('temp-form').style.display = 'none';
+            document.getElementById('temp-word').value = '';
+            document.getElementById('temp-translation').value = '';
+            document.getElementById('temp-transcription').value = '';
+        };
+    }
 
-    document.getElementById('btn-save-temp').onclick = () => {
-        const word = document.getElementById('temp-word').value.trim();
-        const translation = document.getElementById('temp-translation').value.trim();
-        const transcription = document.getElementById('temp-transcription').value.trim();
+    const saveBtn = document.getElementById('btn-save-temp');
+    if (saveBtn) {
+        saveBtn.onclick = () => {
+            const word = document.getElementById('temp-word').value.trim();
+            const translation = document.getElementById('temp-translation').value.trim();
+            const transcription = document.getElementById('temp-transcription').value.trim();
 
-        if (!word || !translation) {
-            alert('Введи слово и перевод!');
-            return;
-        }
+            if (!word || !translation) {
+                alert('Введи слово и перевод!');
+                return;
+            }
 
-        temporary.push({
-            word: word,
-            translation: translation,
-            transcription_ru: transcription.replace(/[\[\]]/g, ''),
-            frequency: 0,
-            note: '',
-            example: '',
-            example_translation: ''
-        });
+            temporary = mergeTemporary(temporary, [{
+                word: word,
+                translation: translation,
+                transcription_ru: transcription.replace(/[\[\]]/g, ''),
+                frequency: 0,
+                note: '',
+                example: '',
+                example_translation: '',
+                family: [],
+                collocations: []
+            }]);
 
-        localStorage.setItem('temporary', JSON.stringify(temporary));
-        syncToFirebase();
-        renderTemporary();
-    };
-
-    const listContainer = document.getElementById('temp-list');
-    if (temporary.length > 0) {
-        listContainer.innerHTML = temporary.map((w, i) => `
-            <div class="temp-item">
-                <div class="temp-item-info">
-                    <strong>${w.word}</strong>
-                    <button class="speak-btn" onclick="speak('${w.word.replace(/'/g, "\\'")}')">🔊</button>
-                    <span class="temp-transcription">[${w.transcription_ru || ''}]</span>
-                    <span class="temp-translation">${w.translation}</span>
-                </div>
-                <button class="btn btn-warning" onclick="deleteTempWord(${i})">🗑 Delete</button>
-            </div>
-        `).join('');
+            localStorage.setItem('temporary', JSON.stringify(temporary));
+            syncToFirebase();
+            renderTemporary();
+        };
     }
 }
 
@@ -792,57 +897,7 @@ function deleteTempWord(index) {
     renderTemporary();
 }
 
-// ===== НАВИГАЦИЯ =====
-function nextCard() {
-    if (currentMode === 'cards') {
-        positions.cards++;
-        renderCards();
-        return;
-    }
-    const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
-    if (positions[currentMode] < data.length - 1) {
-        positions[currentMode]++;
-    } else {
-        positions[currentMode] = 0;
-    }
-    savePositions();
-    renderMode(currentMode);
-}
-
-function prevCard() {
-    if (currentMode === 'cards') {
-        if (positions.cards > 0) positions.cards--;
-        renderCards();
-        return;
-    }
-    const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
-    if (positions[currentMode] > 0) {
-        positions[currentMode]--;
-    } else {
-        positions[currentMode] = data.length - 1;
-    }
-    savePositions();
-    renderMode(currentMode);
-}
-
-function updateFooterButtons(total) {
-    if (currentMode === 'test' || currentMode === 'write' || currentMode === 'temporary' || currentMode === 'listening') {
-        document.getElementById('btn-prev').disabled = true;
-        document.getElementById('btn-next').disabled = true;
-        return;
-    }
-    document.getElementById('btn-prev').disabled = positions[currentMode] === 0;
-    document.getElementById('btn-next').disabled = positions[currentMode] >= total - 1;
-}
-
-// ===== ИНИЦИАЛИЗАЦИЯ =====
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.menu-btn').forEach(btn => {
-        btn.onclick = () => renderMode(btn.dataset.mode);
-    });
-
-    document.getElementById('btn-prev').onclick = prevCard;
-    document.getElementById('btn-next').onclick = nextCard;
-
-    loadData();
-});
+// ----- Temporary: карточки -----
+function renderTempCards() {
+    if (temporary.length === 0) {
+        return '<p style="color:#888;margin-top:20px;">Нет
