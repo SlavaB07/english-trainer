@@ -873,3 +873,9 @@ body {
         font-size: 14px;
     }
 }
+/* ===== Перевод в Word Family / Collocations ===== */
+.meta-translation {
+    color: #999;
+    font-style: italic;
+    font-weight: normal;
+}
