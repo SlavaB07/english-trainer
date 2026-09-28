@@ -3,7 +3,7 @@ let vocabulary = [];
 let phrases = [];
 let temporary = [];
 let sentences = [];
-let currentMode = 'cards';
+let currentMode = 'dashboard';
 let currentLevel = localStorage.getItem('level') || 'all';
 
 let positions = JSON.parse(localStorage.getItem('positions') || '{}');
@@ -21,10 +21,8 @@ positions.sentChoose = positions.sentChoose || 0;
 positions.sentTranslate = positions.sentTranslate || 0;
 
 let tempSubMode = 'list';
-
-// Sentences
-let sentSubMode = 'build'; // 'build' | 'choose' | 'translate'
-let sentFilter = 'all';    // 'all' | 'present_simple' | 'present_continuous' | ...
+let sentSubMode = 'build';
+let sentFilter = 'all';
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
@@ -34,6 +32,7 @@ let dailyXP = parseInt(localStorage.getItem('dailyXP') || '0');
 let lastActiveDate = localStorage.getItem('lastActiveDate') || '';
 let streak = parseInt(localStorage.getItem('streak') || '0');
 let achievements = JSON.parse(localStorage.getItem('achievements') || '[]');
+let userName = localStorage.getItem('userName') || '';
 
 let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
 
@@ -48,7 +47,38 @@ const LEVEL_RANGES = {
 
 let currentUser = null;
 
-// ===== ХЕЛПЕРЫ ДЛЯ FAMILY / COLLOCATIONS =====
+// ===== ТЕМА =====
+function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    updateThemeIcon(saved);
+}
+
+function updateThemeIcon(theme) {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.innerHTML = theme === 'dark'
+        ? '<i data-lucide="sun"></i>'
+        : '<i data-lucide="moon"></i>';
+    if (window.lucide) window.lucide.createIcons();
+}
+
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateThemeIcon(next);
+}
+
+// ===== ИКОНКИ LUCIDE =====
+function refreshIcons() {
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
+}
+
+// ===== ХЕЛПЕРЫ FAMILY/COLLOCATIONS =====
 function formatFamily(family) {
     if (!family || family.length === 0) return '';
     return family.map(f => {
@@ -71,13 +101,13 @@ function formatCollocations(collocations) {
     }).join(' · ');
 }
 
-// ===== СИНХРОНИЗАЦИЯ С FIREBASE =====
+// ===== FIREBASE =====
 async function syncToFirebase() {
     if (!currentUser || !window.firebaseSetDoc) return;
     try {
         const payload = {
             xp, dailyXP, lastActiveDate, streak, achievements,
-            learned, mastered, positions, currentLevel, srsData
+            learned, mastered, positions, currentLevel, srsData, userName
         };
         if (Array.isArray(temporary) && temporary.length > 0) {
             payload.temporary = temporary;
@@ -87,7 +117,6 @@ async function syncToFirebase() {
             payload,
             { merge: true }
         );
-        console.log('✅ Synced to Firebase');
     } catch (e) {
         console.error('❌ Sync error:', e);
     }
@@ -107,6 +136,7 @@ async function loadFromFirebase() {
             achievements = data.achievements ?? achievements;
             learned = data.learned ?? learned;
             mastered = data.mastered ?? mastered;
+            userName = data.userName ?? userName;
             if (data.positions) {
                 positions.cards = data.positions.cards || 0;
                 positions.test = data.positions.test || 0;
@@ -134,14 +164,11 @@ async function loadFromFirebase() {
             localStorage.setItem('achievements', JSON.stringify(achievements));
             localStorage.setItem('learned', JSON.stringify(learned));
             localStorage.setItem('mastered', JSON.stringify(mastered));
+            localStorage.setItem('userName', userName);
             localStorage.setItem('positions', JSON.stringify(positions));
             localStorage.setItem('level', currentLevel);
             localStorage.setItem('temporary', JSON.stringify(temporary));
             localStorage.setItem('srsData', JSON.stringify(srsData));
-
-            console.log('✅ Loaded from Firebase');
-        } else {
-            console.log('ℹ️ No data in Firebase yet, using local');
         }
     } catch (e) {
         console.error('❌ Load error:', e);
@@ -149,15 +176,10 @@ async function loadFromFirebase() {
 }
 
 function initFirebase() {
-    if (!window.firebaseOnAuthStateChanged) {
-        console.warn('⚠️ Firebase not loaded');
-        return;
-    }
-
+    if (!window.firebaseOnAuthStateChanged) return;
     window.firebaseOnAuthStateChanged(window.firebaseAuth, (user) => {
         if (user) {
             currentUser = user;
-            console.log('👤 Anonymous user:', user.uid);
             loadFromFirebase().then(() => {
                 updateStats();
                 renderLevelButtons();
@@ -182,7 +204,7 @@ function mergeTemporary(base, extra) {
     return Array.from(map.values());
 }
 
-// ===== ЗАГРУЗКА ДАННЫХ =====
+// ===== ЗАГРУЗКА =====
 async function loadData() {
     try {
         const vocabRes = await fetch('data/vocabulary.json');
@@ -196,9 +218,7 @@ async function loadData() {
             const tempRes = await fetch('data/temporary.json');
             tempFromJson = await tempRes.json();
             if (!Array.isArray(tempFromJson)) tempFromJson = [];
-        } catch (e) {
-            console.warn('temporary.json не загружен:', e);
-        }
+        } catch (e) {}
 
         let tempFromLocal = [];
         try {
@@ -207,27 +227,23 @@ async function loadData() {
                 const parsed = JSON.parse(localTemp);
                 if (Array.isArray(parsed)) tempFromLocal = parsed;
             }
-        } catch (e) {
-            console.warn('local temporary ошибка:', e);
-        }
+        } catch (e) {}
 
         temporary = mergeTemporary(tempFromJson, tempFromLocal);
         localStorage.setItem('temporary', JSON.stringify(temporary));
 
-        // sentences.json (может отсутствовать — не критично)
         try {
             const sentRes = await fetch('data/sentences.json');
             sentences = await sentRes.json();
             if (!Array.isArray(sentences)) sentences = [];
         } catch (e) {
-            console.warn('sentences.json не загружен:', e);
             sentences = [];
         }
 
         checkStreak();
         updateStats();
         renderLevelButtons();
-        renderMode('cards');
+        renderMode('dashboard');
 
         initFirebase();
     } catch (error) {
@@ -237,7 +253,7 @@ async function loadData() {
     }
 }
 
-// ===== SRS ЛОГИКА =====
+// ===== SRS =====
 function getSrsData(word, isTemp = false) {
     const key = isTemp ? `temp:${word}` : word;
     if (!srsData[key]) {
@@ -301,9 +317,8 @@ function removeMastered(word) {
     if (idx !== -1) {
         mastered.splice(idx, 1);
         localStorage.setItem('mastered', JSON.stringify(mastered));
-        const key = word;
-        if (srsData[key]) {
-            srsData[key] = { level: 0, next: 0 };
+        if (srsData[word]) {
+            srsData[word] = { level: 0, next: 0 };
             localStorage.setItem('srsData', JSON.stringify(srsData));
         }
         syncToFirebase();
@@ -317,9 +332,11 @@ function checkStreak() {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         if (lastActiveDate === yesterday.toDateString()) {
-            // streak продолжается
+            streak += 1;
         } else if (lastActiveDate !== '') {
-            streak = 0;
+            streak = 1;
+        } else {
+            streak = 1;
         }
         lastActiveDate = today;
         dailyXP = 0;
@@ -359,21 +376,19 @@ function getLevelLearnedCount() {
 }
 
 function updateStats() {
-    const levelTotal = getLevelTotal();
-    const levelLearned = getLevelLearnedCount();
     const dueCount = getDueWords().length;
 
-    const levelLabel = currentLevel === 'all' ? '' : ` [${currentLevel}]`;
-    document.getElementById('progress-info').textContent =
-        `Learned: ${levelLearned} / ${levelTotal}${levelLabel} · Due: ${dueCount} · 🏆 ${mastered.length}`;
+    const xpEl = document.getElementById('xp-info');
+    const streakEl = document.getElementById('streak-info');
+    const levelEl = document.getElementById('level-info');
+    if (xpEl) xpEl.textContent = `${xp} XP`;
+    if (streakEl) streakEl.textContent = streak;
+    if (levelEl) levelEl.textContent = getLevelName();
 
-    document.getElementById('xp-info').textContent = `${xp} XP`;
-    document.getElementById('streak-info').textContent = streak;
-    document.getElementById('level-info').textContent = getLevelName();
-
-    document.getElementById('goal-progress').textContent = `${dailyXP} / ${DAILY_GOAL} XP`;
-    const percent = Math.min(100, (dailyXP / DAILY_GOAL) * 100);
-    document.getElementById('goal-bar-fill').style.width = `${percent}%`;
+    const greeting = document.getElementById('topbar-greeting');
+    if (greeting) {
+        greeting.textContent = userName ? `Привет, ${userName}! 👋` : 'Привет! 👋';
+    }
 }
 
 function savePositions() {
@@ -392,7 +407,7 @@ function speak(text) {
     }
 }
 
-// ===== ВЫБОР УРОВНЯ =====
+// ===== УРОВНИ =====
 function renderLevelButtons() {
     const container = document.getElementById('level-buttons');
     if (!container) return;
@@ -439,14 +454,19 @@ function getFilteredPhrases() {
     return phrases;
 }
 
-// ===== ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ =====
-function renderMode(mode) {
-    currentMode = mode;
-    document.querySelectorAll('.menu-btn').forEach(btn => {
+// ===== НАВИГАЦИЯ =====
+function setActiveNav(mode) {
+    document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.mode === mode);
     });
+}
 
-    if (mode === 'cards') renderCards();
+function renderMode(mode) {
+    currentMode = mode;
+    setActiveNav(mode);
+
+    if (mode === 'dashboard') renderDashboard();
+    else if (mode === 'cards') renderCards();
     else if (mode === 'test') renderTest();
     else if (mode === 'write') renderWrite();
     else if (mode === 'phrases') renderPhrases();
@@ -454,9 +474,34 @@ function renderMode(mode) {
     else if (mode === 'listening') renderListening();
     else if (mode === 'mastered') renderMastered();
     else if (mode === 'sentences') renderSentences();
+    else if (mode === 'profile') renderProfile();
+
+    refreshIcons();
 }
 
-// ===== КАРТОЧКИ (SRS) =====
+// ===== DASHBOARD (заглушка — D2) =====
+function renderDashboard() {
+    const dueCount = getDueWords().length;
+    const levelTotal = getLevelTotal();
+    const levelLearned = getLevelLearnedCount();
+
+    document.getElementById('content').innerHTML = `
+        <div class="dashboard-placeholder">
+            <h2>📊 Главная (Dashboard)</h2>
+            <p>Будет здесь в D2.</p>
+            <p style="margin-top:20px; color: var(--text-secondary);">
+                <b>${xp} XP</b> · 🔥 <b>${streak}</b> · 
+                Learned: <b>${levelLearned}/${levelTotal}</b> · 
+                Due: <b>${dueCount}</b> · 
+                🏆 <b>${mastered.length}</b>
+            </p>
+        </div>
+    `;
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
+}
+
+// ===== CARDS =====
 function renderCards() {
     const dueWords = getDueWords();
 
@@ -466,6 +511,9 @@ function renderCards() {
                 <h2>🎉 All caught up!</h2>
                 <p>No words due for review right now.</p>
                 <p>Come back later or add new words.</p>
+                <div style="margin-top:20px;">
+                    <button class="btn btn-secondary" onclick="renderMode('temporary')">📝 Temporary</button>
+                </div>
             </div>
         `;
         return;
@@ -482,9 +530,7 @@ function renderCards() {
     const posText = word.pos ? `<span class="card-pos">${word.pos}</span>` : '';
 
     let hiddenContent = `<div class="card-translation">${word.translation}</div>`;
-    if (word.note) {
-        hiddenContent += `<div class="card-note">${word.note}</div>`;
-    }
+    if (word.note) hiddenContent += `<div class="card-note">${word.note}</div>`;
     if (word.example) {
         hiddenContent += `
             <div class="card-example">
@@ -494,18 +540,10 @@ function renderCards() {
         `;
     }
     if (word.family && word.family.length > 0) {
-        hiddenContent += `
-            <div class="card-family">
-                <strong>Word Family:</strong> ${formatFamily(word.family)}
-            </div>
-        `;
+        hiddenContent += `<div class="card-family"><strong>Word Family:</strong> ${formatFamily(word.family)}</div>`;
     }
     if (word.collocations && word.collocations.length > 0) {
-        hiddenContent += `
-            <div class="card-collocations">
-                <strong>Collocations:</strong> ${formatCollocations(word.collocations)}
-            </div>
-        `;
+        hiddenContent += `<div class="card-collocations"><strong>Collocations:</strong> ${formatCollocations(word.collocations)}</div>`;
     }
 
     document.getElementById('content').innerHTML = `
@@ -515,12 +553,8 @@ function renderCards() {
                 ${word.word}
                 <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
             </div>
-            <div class="card-meta">
-                ${transText} ${posText}
-            </div>
-            <div id="hidden-content" style="display: none;">
-                ${hiddenContent}
-            </div>
+            <div class="card-meta">${transText} ${posText}</div>
+            <div id="hidden-content" style="display: none;">${hiddenContent}</div>
             <div id="buttons-before">
                 <button class="btn btn-secondary" id="btn-show">👁 Показать перевод</button>
             </div>
@@ -529,7 +563,7 @@ function renderCards() {
                 <button class="btn btn-warning" id="btn-dontknow">✗ Не знаю</button>
                 <button class="btn btn-master" id="btn-master">✓✓ Навсегда (+20 XP)</button>
             </div>
-            <div class="card-frequency">Частота: ${word.frequency} · Слово ${positions.cards + 1} из ${dueWords.length} (due)</div>
+            <div class="card-frequency">Частота: ${word.frequency} · Слово ${positions.cards + 1} из ${dueWords.length}</div>
         </div>
     `;
 
@@ -537,6 +571,7 @@ function renderCards() {
         document.getElementById('hidden-content').style.display = 'block';
         document.getElementById('buttons-before').style.display = 'none';
         document.getElementById('buttons-after').style.display = 'block';
+        refreshIcons();
     };
 
     document.getElementById('btn-learned').onclick = () => {
@@ -568,10 +603,11 @@ function renderCards() {
         updateStats();
     };
 
-    updateFooterButtons(dueWords.length);
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
 }
 
-// ===== ТЕСТ =====
+// ===== TEST =====
 function renderTest() {
     const data = getFilteredVocabulary().filter(w =>
         !isMastered(w.word) &&
@@ -655,10 +691,11 @@ function renderTest() {
         renderTest();
     };
 
-    updateFooterButtons(data.length);
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
 }
 
-// ===== НАПИСАНИЕ =====
+// ===== WRITE =====
 function renderWrite() {
     const data = getFilteredVocabulary().filter(w => !isMastered(w.word));
     if (data.length === 0) {
@@ -670,9 +707,7 @@ function renderWrite() {
     const word = data[positions.write];
 
     document.getElementById('content').innerHTML = `
-        <div class="card-word">
-            ${word.translation}
-        </div>
+        <div class="card-word">${word.translation}</div>
         <input type="text" class="write-input" id="write-input" placeholder="Введи слово..." autocomplete="off">
         <button class="btn btn-primary" id="btn-check">✓ Проверить</button>
         <button class="btn btn-secondary" id="btn-show-answer">👁 Показать ответ</button>
@@ -729,14 +764,15 @@ function renderWrite() {
         }
     });
 
-    updateFooterButtons(data.length);
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
 }
 
-// ===== ФРАЗЫ =====
+// ===== PHRASES =====
 function renderPhrases() {
     const data = getFilteredPhrases();
     if (data.length < 4) {
-        document.getElementById('content').innerHTML = '<p>Недостаточно фраз для теста.</p>';
+        document.getElementById('content').innerHTML = '<p>Недостаточно фраз.</p>';
         return;
     }
 
@@ -800,10 +836,11 @@ function renderPhrases() {
         renderPhrases();
     };
 
-    updateFooterButtons(data.length);
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
 }
 
-// ===== АУДИРОВАНИЕ =====
+// ===== LISTENING =====
 function renderListening() {
     const data = getFilteredVocabulary().filter(w => !isMastered(w.word));
     if (data.length === 0) {
@@ -832,9 +869,7 @@ function renderListening() {
     const input = document.getElementById('listen-input');
     input.focus();
 
-    document.getElementById('btn-listen-play').onclick = () => {
-        speak(word.word);
-    };
+    document.getElementById('btn-listen-play').onclick = () => speak(word.word);
 
     document.getElementById('btn-listen-check').onclick = () => {
         const answer = input.value.trim().toLowerCase();
@@ -869,10 +904,11 @@ function renderListening() {
         }
     });
 
-    updateFooterButtons(data.length);
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
 }
 
-// ===== ВРЕМЕННЫЕ СЛОВА =====
+// ===== TEMPORARY =====
 function renderTemporary() {
     const subNav = `
         <div class="temp-subnav">
@@ -884,16 +920,10 @@ function renderTemporary() {
     `;
 
     let bodyHtml = '';
-
-    if (tempSubMode === 'list') {
-        bodyHtml = renderTempList();
-    } else if (tempSubMode === 'cards') {
-        bodyHtml = renderTempCards();
-    } else if (tempSubMode === 'test') {
-        bodyHtml = renderTempTest();
-    } else if (tempSubMode === 'write') {
-        bodyHtml = renderTempWrite();
-    }
+    if (tempSubMode === 'list') bodyHtml = renderTempList();
+    else if (tempSubMode === 'cards') bodyHtml = renderTempCards();
+    else if (tempSubMode === 'test') bodyHtml = renderTempTest();
+    else if (tempSubMode === 'write') bodyHtml = renderTempWrite();
 
     document.getElementById('content').innerHTML = `
         <div class="temporary-header">
@@ -910,15 +940,10 @@ function renderTemporary() {
         };
     });
 
-    if (tempSubMode === 'list') {
-        attachTempListHandlers();
-    } else if (tempSubMode === 'cards') {
-        attachTempCardsHandlers();
-    } else if (tempSubMode === 'test') {
-        attachTempTestHandlers();
-    } else if (tempSubMode === 'write') {
-        attachTempWriteHandlers();
-    }
+    if (tempSubMode === 'list') attachTempListHandlers();
+    else if (tempSubMode === 'cards') attachTempCardsHandlers();
+    else if (tempSubMode === 'test') attachTempTestHandlers();
+    else if (tempSubMode === 'write') attachTempWriteHandlers();
 
     document.getElementById('btn-prev').disabled = true;
     document.getElementById('btn-next').disabled = true;
@@ -938,7 +963,7 @@ function renderTempList() {
         </div>
         <div class="temp-list" id="temp-list">
             ${temporary.length === 0
-                ? '<p style="color:#888;margin-top:20px;">Пока нет временных слов.</p>'
+                ? '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Пока нет временных слов.</p>'
                 : temporary.map((w, i) => `
                     <div class="temp-item">
                         <div class="temp-item-info">
@@ -957,52 +982,41 @@ function renderTempList() {
 
 function attachTempListHandlers() {
     const addBtn = document.getElementById('btn-add-temp');
-    if (addBtn) {
-        addBtn.onclick = () => {
-            document.getElementById('temp-form').style.display = 'block';
-            document.getElementById('temp-word').focus();
-        };
-    }
+    if (addBtn) addBtn.onclick = () => {
+        document.getElementById('temp-form').style.display = 'block';
+        document.getElementById('temp-word').focus();
+    };
 
     const cancelBtn = document.getElementById('btn-cancel-temp');
-    if (cancelBtn) {
-        cancelBtn.onclick = () => {
-            document.getElementById('temp-form').style.display = 'none';
-            document.getElementById('temp-word').value = '';
-            document.getElementById('temp-translation').value = '';
-            document.getElementById('temp-transcription').value = '';
-        };
-    }
+    if (cancelBtn) cancelBtn.onclick = () => {
+        document.getElementById('temp-form').style.display = 'none';
+        document.getElementById('temp-word').value = '';
+        document.getElementById('temp-translation').value = '';
+        document.getElementById('temp-transcription').value = '';
+    };
 
     const saveBtn = document.getElementById('btn-save-temp');
-    if (saveBtn) {
-        saveBtn.onclick = () => {
-            const word = document.getElementById('temp-word').value.trim();
-            const translation = document.getElementById('temp-translation').value.trim();
-            const transcription = document.getElementById('temp-transcription').value.trim();
+    if (saveBtn) saveBtn.onclick = () => {
+        const word = document.getElementById('temp-word').value.trim();
+        const translation = document.getElementById('temp-translation').value.trim();
+        const transcription = document.getElementById('temp-transcription').value.trim();
 
-            if (!word || !translation) {
-                alert('Введи слово и перевод!');
-                return;
-            }
+        if (!word || !translation) {
+            alert('Введи слово и перевод!');
+            return;
+        }
 
-            temporary = mergeTemporary(temporary, [{
-                word: word,
-                translation: translation,
-                transcription_ru: transcription.replace(/[\[\]]/g, ''),
-                frequency: 0,
-                note: '',
-                example: '',
-                example_translation: '',
-                family: [],
-                collocations: []
-            }]);
+        temporary = mergeTemporary(temporary, [{
+            word, translation,
+            transcription_ru: transcription.replace(/[\[\]]/g, ''),
+            frequency: 0, note: '', example: '', example_translation: '',
+            family: [], collocations: []
+        }]);
 
-            localStorage.setItem('temporary', JSON.stringify(temporary));
-            syncToFirebase();
-            renderTemporary();
-        };
-    }
+        localStorage.setItem('temporary', JSON.stringify(temporary));
+        syncToFirebase();
+        renderTemporary();
+    };
 }
 
 function deleteTempWord(index) {
@@ -1015,21 +1029,16 @@ function deleteTempWord(index) {
 
 function renderTempCards() {
     if (temporary.length === 0) {
-        return '<p style="color:#888;margin-top:20px;">Нет временных слов. Добавь в «Список».</p>';
+        return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет временных слов. Добавь в «Список».</p>';
     }
 
     if (positions.tempCards >= temporary.length) positions.tempCards = 0;
     const word = temporary[positions.tempCards];
     const srs = getSrsData(word.word, true);
-
-    const transText = word.transcription_ru
-        ? `<span class="card-transcription">[${word.transcription_ru}]</span>`
-        : '';
+    const transText = word.transcription_ru ? `<span class="card-transcription">[${word.transcription_ru}]</span>` : '';
 
     let hiddenContent = `<div class="card-translation">${word.translation}</div>`;
-    if (word.note) {
-        hiddenContent += `<div class="card-note">${word.note}</div>`;
-    }
+    if (word.note) hiddenContent += `<div class="card-note">${word.note}</div>`;
 
     return `
         <div class="card">
@@ -1056,45 +1065,37 @@ function attachTempCardsHandlers() {
     if (temporary.length === 0) return;
 
     const showBtn = document.getElementById('temp-btn-show');
-    if (showBtn) {
-        showBtn.onclick = () => {
-            document.getElementById('temp-hidden').style.display = 'block';
-            document.getElementById('temp-buttons-before').style.display = 'none';
-            document.getElementById('temp-buttons-after').style.display = 'block';
-        };
-    }
+    if (showBtn) showBtn.onclick = () => {
+        document.getElementById('temp-hidden').style.display = 'block';
+        document.getElementById('temp-buttons-before').style.display = 'none';
+        document.getElementById('temp-buttons-after').style.display = 'block';
+    };
 
     const learnedBtn = document.getElementById('temp-btn-learned');
-    if (learnedBtn) {
-        learnedBtn.onclick = () => {
-            const word = temporary[positions.tempCards];
-            updateSrs(word.word, true, true);
-            addXP(10);
-            positions.tempCards++;
-            if (positions.tempCards >= temporary.length) positions.tempCards = 0;
-            savePositions();
-            renderTemporary();
-        };
-    }
+    if (learnedBtn) learnedBtn.onclick = () => {
+        const word = temporary[positions.tempCards];
+        updateSrs(word.word, true, true);
+        addXP(10);
+        positions.tempCards++;
+        if (positions.tempCards >= temporary.length) positions.tempCards = 0;
+        savePositions();
+        renderTemporary();
+    };
 
     const dontBtn = document.getElementById('temp-btn-dontknow');
-    if (dontBtn) {
-        dontBtn.onclick = () => {
-            const word = temporary[positions.tempCards];
-            updateSrs(word.word, false, true);
-            addXP(2);
-            positions.tempCards++;
-            if (positions.tempCards >= temporary.length) positions.tempCards = 0;
-            savePositions();
-            renderTemporary();
-        };
-    }
+    if (dontBtn) dontBtn.onclick = () => {
+        const word = temporary[positions.tempCards];
+        updateSrs(word.word, false, true);
+        addXP(2);
+        positions.tempCards++;
+        if (positions.tempCards >= temporary.length) positions.tempCards = 0;
+        savePositions();
+        renderTemporary();
+    };
 }
 
 function renderTempTest() {
-    if (temporary.length < 4) {
-        return '<p style="color:#888;margin-top:20px;">Нужно минимум 4 слова для теста.</p>';
-    }
+    if (temporary.length < 4) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нужно минимум 4 слова для теста.</p>';
 
     if (positions.tempTest >= temporary.length) positions.tempTest = 0;
     const word = temporary[positions.tempTest];
@@ -1111,10 +1112,7 @@ function renderTempTest() {
     }
 
     const options = [correct, ...wrongOptions].sort(() => Math.random() - 0.5);
-
-    const transText = word.transcription_ru
-        ? `<span class="card-transcription">[${word.transcription_ru}]</span>`
-        : '';
+    const transText = word.transcription_ru ? `<span class="card-transcription">[${word.transcription_ru}]</span>` : '';
 
     return `
         <div class="test-question">
@@ -1164,20 +1162,16 @@ function attachTempTestHandlers() {
     });
 
     const nextBtn = document.getElementById('temp-btn-next-test');
-    if (nextBtn) {
-        nextBtn.onclick = () => {
-            positions.tempTest++;
-            if (positions.tempTest >= temporary.length) positions.tempTest = 0;
-            savePositions();
-            renderTemporary();
-        };
-    }
+    if (nextBtn) nextBtn.onclick = () => {
+        positions.tempTest++;
+        if (positions.tempTest >= temporary.length) positions.tempTest = 0;
+        savePositions();
+        renderTemporary();
+    };
 }
 
 function renderTempWrite() {
-    if (temporary.length === 0) {
-        return '<p style="color:#888;margin-top:20px;">Нет временных слов.</p>';
-    }
+    if (temporary.length === 0) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет временных слов.</p>';
 
     if (positions.tempWrite >= temporary.length) positions.tempWrite = 0;
     const word = temporary[positions.tempWrite];
@@ -1246,13 +1240,11 @@ function attachTempWriteHandlers() {
     });
 }
 
-// ===== MASTERED ЭКРАН =====
+// ===== MASTERED =====
 function renderMastered() {
     if (mastered.length === 0) {
         document.getElementById('content').innerHTML = `
-            <div class="mastered-header">
-                <h2>🏆 Mastered (0)</h2>
-            </div>
+            <div class="mastered-header"><h2>🏆 Mastered (0)</h2></div>
             <p class="mastered-empty">Пока нет слов, помеченных как «знаю навсегда».<br>
             В карточке нажми <b>✓✓ Навсегда</b>, чтобы добавить сюда.</p>
         `;
@@ -1308,9 +1300,7 @@ function getFilteredSentences() {
 function getUniqueTenses() {
     const map = new Map();
     sentences.forEach(s => {
-        if (!map.has(s.tense)) {
-            map.set(s.tense, s.tense_label);
-        }
+        if (!map.has(s.tense)) map.set(s.tense, s.tense_label);
     });
     return Array.from(map.entries()).map(([key, label]) => ({ key, label }));
 }
@@ -1318,11 +1308,8 @@ function getUniqueTenses() {
 function renderSentences() {
     if (sentences.length === 0) {
         document.getElementById('content').innerHTML = `
-            <div class="sentences-header">
-                <h2>📖 Sentences</h2>
-            </div>
-            <p style="color:#888;margin-top:20px;">Файл <b>sentences.json</b> не загружен.<br>
-            Проверь, что он лежит в <b>data/sentences.json</b>.</p>
+            <div class="sentences-header"><h2>📖 Грамматика</h2></div>
+            <p style="color:var(--text-muted);margin-top:20px;text-align:center;">Файл <b>sentences.json</b> не загружен.</p>
         `;
         document.getElementById('btn-prev').disabled = true;
         document.getElementById('btn-next').disabled = true;
@@ -1352,9 +1339,7 @@ function renderSentences() {
     else if (sentSubMode === 'translate') bodyHtml = renderSentTranslate();
 
     document.getElementById('content').innerHTML = `
-        <div class="sentences-header">
-            <h2>📖 Sentences</h2>
-        </div>
+        <div class="sentences-header"><h2>📖 Грамматика</h2></div>
         <div class="sent-filters">${filterChips}</div>
         ${subNav}
         ${bodyHtml}
@@ -1382,17 +1367,12 @@ function renderSentences() {
     document.getElementById('btn-next').disabled = true;
 }
 
-// ----- Sentences: Build -----
 function renderSentBuild() {
     const data = getFilteredSentences();
-    if (data.length === 0) {
-        return '<p style="color:#888;margin-top:20px;">Нет предложений под этот фильтр.</p>';
-    }
+    if (data.length === 0) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет предложений.</p>';
 
     if (positions.sentBuild >= data.length) positions.sentBuild = 0;
     const sent = data[positions.sentBuild];
-
-    // Перемешиваем слова
     const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
 
     return `
@@ -1400,7 +1380,7 @@ function renderSentBuild() {
             <div class="sent-label">${sent.tense_label} · ${sent.hint}</div>
             <div class="sent-ru">${sent.ru}</div>
             <div class="sent-words" id="sent-words-pool">
-                ${shuffled.map((w, i) => `<button class="sent-word-chip" data-word="${w}" data-idx="${i}">${w}</button>`).join('')}
+                ${shuffled.map((w) => `<button class="sent-word-chip" data-word="${w}">${w}</button>`).join('')}
             </div>
             <div class="sent-answer" id="sent-answer-area"></div>
             <div class="sent-feedback" id="sent-build-feedback"></div>
@@ -1429,57 +1409,32 @@ function attachSentBuildHandlers() {
     let picked = [];
 
     function updateUI() {
-        // Pool
         poolEl.innerHTML = '';
-        const poolWords = [...sent.words].sort(() => Math.random() - 0.5);
-        poolWords.forEach(w => {
-            const used = picked.filter(p => p === w).length;
-            const available = poolWords.filter(p => p === w).length;
+        const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
+        shuffled.forEach(w => {
             const btn = document.createElement('button');
             btn.className = 'sent-word-chip';
             btn.textContent = w;
+            const used = picked.filter(p => p === w).length;
+            const available = shuffled.filter(p => p === w).length;
             if (used >= available) btn.disabled = true;
-            btn.onclick = () => {
-                picked.push(w);
-                render();
-            };
+            btn.onclick = () => { picked.push(w); updateUI(); };
             poolEl.appendChild(btn);
         });
 
-        // Answer
         answerEl.innerHTML = '';
         picked.forEach((w, i) => {
             const btn = document.createElement('button');
             btn.className = 'sent-word-chip picked';
             btn.textContent = w;
-            btn.onclick = () => {
-                picked.splice(i, 1);
-                render();
-            };
+            btn.onclick = () => { picked.splice(i, 1); updateUI(); };
             answerEl.appendChild(btn);
         });
 
         checkBtn.style.display = picked.length === sent.words.length ? 'inline-block' : 'none';
     }
 
-    function render() {
-        // Просто перерисовываем pool/answer через updateUI
-        updateUI();
-    }
-
-    // Первый рендер pool — без picked
-    poolEl.innerHTML = '';
-    const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
-    shuffled.forEach(w => {
-        const btn = document.createElement('button');
-        btn.className = 'sent-word-chip';
-        btn.textContent = w;
-        btn.onclick = () => {
-            picked.push(w);
-            updateUI();
-        };
-        poolEl.appendChild(btn);
-    });
+    updateUI();
 
     checkBtn.onclick = () => {
         const userAnswer = picked.join(' ').trim();
@@ -1527,25 +1482,17 @@ function attachSentBuildHandlers() {
     };
 }
 
-// ----- Sentences: Choose tense -----
 function renderSentChoose() {
     const data = getFilteredSentences();
-    if (data.length < 4) {
-        return '<p style="color:#888;margin-top:20px;">Нужно минимум 4 предложения.</p>';
-    }
+    if (data.length < 4) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нужно минимум 4 предложения.</p>';
 
     if (positions.sentChoose >= data.length) positions.sentChoose = 0;
     const sent = data[positions.sentChoose];
-
-    // Правильный ответ = label времени этого предложения
     const correct = sent.tense_label;
 
-    // Собираем уникальные времена из данных и берём 3 неверных
     const allLabels = [...new Set(data.map(s => s.tense_label))];
     const wrongOptions = allLabels.filter(l => l !== correct).slice(0, 3);
-
-    // Если уникальных времён мало — добавим «заглушки» из общего набора
-    const fallback = ['Present Simple', 'Present Continuous', 'Present Perfect', 'Present Perfect Continuous', 'Past Simple', 'Future Simple'];
+    const fallback = ['Present Simple', 'Present Continuous', 'Present Perfect', 'Past Simple', 'Future Simple', 'Past Continuous'];
     for (const f of fallback) {
         if (wrongOptions.length >= 3) break;
         if (f !== correct && !wrongOptions.includes(f)) wrongOptions.push(f);
@@ -1607,12 +1554,9 @@ function attachSentChooseHandlers() {
     };
 }
 
-// ----- Sentences: Translate -----
 function renderSentTranslate() {
     const data = getFilteredSentences();
-    if (data.length === 0) {
-        return '<p style="color:#888;margin-top:20px;">Нет предложений под этот фильтр.</p>';
-    }
+    if (data.length === 0) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет предложений.</p>';
 
     if (positions.sentTranslate >= data.length) positions.sentTranslate = 0;
     const sent = data[positions.sentTranslate];
@@ -1643,7 +1587,6 @@ function attachSentTranslateHandlers() {
     const data = getFilteredSentences();
     if (data.length === 0) return;
 
-    const sent = data[positions.sentTranslate];
     const input = document.getElementById('sent-translate-input');
     input.focus();
 
@@ -1694,59 +1637,192 @@ function attachSentTranslateHandlers() {
     });
 }
 
+// ===== PROFILE =====
+function renderProfile() {
+    const levelTotal = getLevelTotal();
+    const levelLearned = getLevelLearnedCount();
+    const dueCount = getDueWords().length;
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    const uid = currentUser ? currentUser.uid : '(нет)';
+
+    document.getElementById('content').innerHTML = `
+        <div class="card" style="text-align: left; max-width: 700px; margin: 0 auto;">
+            <h2 style="font-size: 22px; font-weight: 800; margin-bottom: 20px;">👤 Профиль</h2>
+
+            <div style="margin-bottom: 24px;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Имя</label>
+                <input type="text" class="write-input" id="profile-name" placeholder="Введи имя" value="${userName}" style="text-align: left; margin-bottom: 8px;">
+                <button class="btn btn-primary" id="btn-save-name" style="min-width: auto;">Сохранить имя</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px;">
+                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
+                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">XP</div>
+                    <div style="font-size: 22px; font-weight: 800;">${xp}</div>
+                </div>
+                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
+                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">🔥 Streak</div>
+                    <div style="font-size: 22px; font-weight: 800;">${streak}</div>
+                </div>
+                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
+                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">📚 Learned</div>
+                    <div style="font-size: 22px; font-weight: 800;">${levelLearned}/${levelTotal}</div>
+                </div>
+                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
+                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">🏆 Mastered</div>
+                    <div style="font-size: 22px; font-weight: 800;">${mastered.length}</div>
+                </div>
+                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
+                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">⏰ Due</div>
+                    <div style="font-size: 22px; font-weight: 800;">${dueCount}</div>
+                </div>
+                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
+                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">⚙️ Уровень</div>
+                    <div style="font-size: 22px; font-weight: 800;">${getLevelName()}</div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">Тема</div>
+                <button class="btn btn-secondary" id="profile-theme-toggle" style="min-width: auto;">
+                    ${theme === 'dark' ? '☀️ Светлая тема' : '🌙 Тёмная тема'}
+                </button>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">Прогресс</div>
+                <button class="btn btn-secondary" id="btn-export" style="min-width: auto;">💾 Экспорт JSON</button>
+                <button class="btn btn-secondary" id="btn-import" style="min-width: auto;">📂 Импорт JSON</button>
+                <input type="file" id="import-file" accept=".json" style="display: none;">
+            </div>
+
+            <div style="background: var(--danger-bg); padding: 16px; border-radius: var(--radius-md); margin-bottom: 24px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--danger); margin-bottom: 8px;">Опасная зона</div>
+                <button class="btn btn-warning" id="btn-reset" style="min-width: auto; background: var(--danger);">🗑 Сбросить прогресс</button>
+            </div>
+
+            <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md); font-size: 12px; color: var(--text-muted); word-break: break-all;">
+                <b>Firebase UID:</b> ${uid}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('btn-save-name').onclick = () => {
+        const name = document.getElementById('profile-name').value.trim();
+        userName = name;
+        localStorage.setItem('userName', userName);
+        syncToFirebase();
+        updateStats();
+        alert('Имя сохранено!');
+    };
+
+    document.getElementById('profile-theme-toggle').onclick = () => {
+        toggleTheme();
+        renderProfile();
+    };
+
+    document.getElementById('btn-export').onclick = () => {
+        const data = {
+            xp, dailyXP, streak, learned, mastered, srsData, positions,
+            temporary, currentLevel, userName, lastActiveDate
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `langstep-backup-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
+    document.getElementById('btn-import').onclick = () => {
+        document.getElementById('import-file').click();
+    };
+
+    document.getElementById('import-file').onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            try {
+                const data = JSON.parse(ev.target.result);
+                if (confirm('Импорт перезапишет текущий прогресс. Продолжить?')) {
+                    xp = data.xp ?? xp;
+                    dailyXP = data.dailyXP ?? dailyXP;
+                    streak = data.streak ?? streak;
+                    learned = data.learned ?? learned;
+                    mastered = data.mastered ?? mastered;
+                    srsData = data.srsData ?? srsData;
+                    positions = data.positions ?? positions;
+                    temporary = data.temporary ?? temporary;
+                    currentLevel = data.currentLevel ?? currentLevel;
+                    userName = data.userName ?? userName;
+                    lastActiveDate = data.lastActiveDate ?? lastActiveDate;
+
+                    localStorage.setItem('xp', xp.toString());
+                    localStorage.setItem('dailyXP', dailyXP.toString());
+                    localStorage.setItem('streak', streak.toString());
+                    localStorage.setItem('learned', JSON.stringify(learned));
+                    localStorage.setItem('mastered', JSON.stringify(mastered));
+                    localStorage.setItem('srsData', JSON.stringify(srsData));
+                    localStorage.setItem('positions', JSON.stringify(positions));
+                    localStorage.setItem('temporary', JSON.stringify(temporary));
+                    localStorage.setItem('level', currentLevel);
+                    localStorage.setItem('userName', userName);
+                    localStorage.setItem('lastActiveDate', lastActiveDate);
+
+                    syncToFirebase();
+                    updateStats();
+                    renderProfile();
+                    alert('Импорт завершён!');
+                }
+            } catch (err) {
+                alert('Ошибка чтения файла: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+    };
+
+    document.getElementById('btn-reset').onclick = () => {
+        if (!confirm('Сбросить ВЕСЬ прогресс? Это необратимо.')) return;
+        if (!confirm('Точно? XP, learned, mastered, SRS — всё обнулится.')) return;
+        localStorage.clear();
+        location.reload();
+    };
+
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = true;
+}
+
 // ===== НАВИГАЦИЯ =====
 function nextCard() {
-    if (currentMode === 'cards') {
-        positions.cards++;
-        renderCards();
-        return;
-    }
-    const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
-    if (positions[currentMode] < data.length - 1) {
-        positions[currentMode]++;
-    } else {
-        positions[currentMode] = 0;
-    }
-    savePositions();
-    renderMode(currentMode);
+    // Пустышка — навигация по футеру отключена в новом дизайне
 }
 
 function prevCard() {
-    if (currentMode === 'cards') {
-        if (positions.cards > 0) positions.cards--;
-        renderCards();
-        return;
-    }
-    const data = currentMode === 'phrases' ? getFilteredPhrases() : getFilteredVocabulary();
-    if (positions[currentMode] > 0) {
-        positions[currentMode]--;
-    } else {
-        positions[currentMode] = data.length - 1;
-    }
-    savePositions();
-    renderMode(currentMode);
-}
-
-function updateFooterButtons(total) {
-    if (currentMode === 'test' || currentMode === 'write' ||
-        currentMode === 'temporary' || currentMode === 'listening' ||
-        currentMode === 'mastered' || currentMode === 'sentences') {
-        document.getElementById('btn-prev').disabled = true;
-        document.getElementById('btn-next').disabled = true;
-        return;
-    }
-    document.getElementById('btn-prev').disabled = positions[currentMode] === 0;
-    document.getElementById('btn-next').disabled = positions[currentMode] >= total - 1;
+    // Пустышка
 }
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.menu-btn').forEach(btn => {
+    // Тема
+    initTheme();
+
+    // Сайдбар + bottom nav
+    document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(btn => {
         btn.onclick = () => renderMode(btn.dataset.mode);
     });
 
-    document.getElementById('btn-prev').onclick = prevCard;
-    document.getElementById('btn-next').onclick = nextCard;
+    // Переключатель темы в шапке
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.onclick = toggleTheme;
+
+    // Кнопка профиля в шапке
+    const profileBtn = document.getElementById('profile-btn');
+    if (profileBtn) profileBtn.onclick = () => renderMode('profile');
+
+    // Lucide
+    refreshIcons();
 
     loadData();
 });
