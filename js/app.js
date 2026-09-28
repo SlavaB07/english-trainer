@@ -32,6 +32,9 @@ let lpExpandedTenses = JSON.parse(localStorage.getItem('lpExpandedTenses') || '[
 let sentOrderOverride = null;   // null | 'ordered'
 let sentReturnToLP = false;
 let sentFromLP = false;         // зашли ли в Sentences из Пути (для сабнава)
+let lpQueue = [];                    // очередь sentId для текущей LP-группы
+let lpIndex = 0;                     // текущий индекс в очереди
+let lpSkippedThisSession = new Set(); // пропущенные в этой сессии (сбрасывается при заходе в новую группу)
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
@@ -581,13 +584,8 @@ function setActiveNav(mode) {
 }
 
 function renderMode(mode) {
-    // Если зашли в Sentences НЕ из Learning Path — сбрасываем флаг
-    if (mode === 'sentences' && currentMode !== 'learning') {
-        sentReturnToLP = false;
-        sentFromLP = false;
-    }
-    // Уход из Sentences — чистим override
-    if (mode !== 'sentences') {
+    // Если ушли из Sentences в другой раздел (не learning) — сбрасываем override
+    if (mode !== 'sentences' && mode !== 'learning') {
         sentOrderOverride = null;
     }
 
@@ -1379,19 +1377,16 @@ function renderListening() {
 
 // ===== TEMPORARY =====
 function renderTemporary() {
-    const subNav = `
+        const subNav = `
         <div class="subnav">
-            <button class="subnav-btn ${tempSubMode === 'list' ? 'active' : ''}" data-sub="list">
-                <i data-lucide="list"></i> Список
+            <button class="subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">
+                <i data-lucide="puzzle"></i> Сборка
             </button>
-            <button class="subnav-btn ${tempSubMode === 'cards' ? 'active' : ''}" data-sub="cards">
-                <i data-lucide="layers"></i> Карточки
+            <button class="subnav-btn ${sentSubMode === 'choose' ? 'active' : ''}" data-sub="choose">
+                <i data-lucide="check-circle-2"></i> Выбор времени
             </button>
-            <button class="subnav-btn ${tempSubMode === 'test' ? 'active' : ''}" data-sub="test">
-                <i data-lucide="check-circle-2"></i> Тест
-            </button>
-            <button class="subnav-btn ${tempSubMode === 'write' ? 'active' : ''}" data-sub="write">
-                <i data-lucide="pencil"></i> Написание
+            <button class="subnav-btn ${sentSubMode === 'translate' ? 'active' : ''}" data-sub="translate">
+                <i data-lucide="pencil"></i> Перевод
             </button>
         </div>
     `;
@@ -1899,6 +1894,12 @@ function renderSentences() {
         return;
     }
 
+    // Режим Learning Path — отдельный рендер
+    if (sentFromLP) {
+        renderSentencesLP();
+        return;
+    }
+
     const tenses = getUniqueTenses();
     const totalAll = sentences.length;
     const totalLevelFiltered = getFilteredSentences().length;
@@ -1926,18 +1927,7 @@ function renderSentences() {
         </button>`;
     }).join('');
 
-    // Сабнав: если из Пути — только 2 кнопки (Сборка / Перевод)
-    // Если из сайдбара — все 3
-    const subNav = sentFromLP ? `
-        <div class="subnav">
-            <button class="subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">
-                <i data-lucide="puzzle"></i> Сборка
-            </button>
-            <button class="subnav-btn ${sentSubMode === 'translate' ? 'active' : ''}" data-sub="translate">
-                <i data-lucide="pencil"></i> Перевод
-            </button>
-        </div>
-    ` : `
+    const subNav = `
         <div class="subnav">
             <button class="subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">
                 <i data-lucide="puzzle"></i> Сборка
@@ -1950,11 +1940,6 @@ function renderSentences() {
             </button>
         </div>
     `;
-
-    // Если из Пути и вдруг стоит choose — сбросим на build
-    if (sentFromLP && sentSubMode === 'choose') {
-        sentSubMode = 'build';
-    }
 
     let bodyHtml = '';
     if (sentSubMode === 'build') bodyHtml = renderSentBuild();
@@ -1970,11 +1955,6 @@ function renderSentences() {
                         12 времён · ${sentences.length} предложений · показано ${totalLevelFiltered}
                     </div>
                 </div>
-                ${sentReturnToLP ? `
-                    <button class="btn btn-secondary" id="sent-back-to-lp">
-                        <i data-lucide="arrow-left"></i> Назад в Путь
-                    </button>
-                ` : ''}
             </div>
             <div class="chips-row">${tenseChips}</div>
             <div class="chips-row chips-row-levels">${levelChips}</div>
@@ -1983,13 +1963,17 @@ function renderSentences() {
         </div>
     `;
 
-    document.querySelectorAll('.chip[data-tense]').forEach(btn => {
+        document.querySelectorAll('.chip[data-tense]').forEach(btn => {
         btn.onclick = () => {
             sentTenseFilter = btn.dataset.tense;
             sentLevelFilter = 'all';
-            sentOrderOverride = null;
-            sentReturnToLP = false;
-            sentFromLP = false;
+
+            if (sentFromLP) {
+                // Пересобираем LP-очередь
+                rebuildLPQueue();
+            } else {
+                sentOrderOverride = null;
+            }
             renderSentences();
         };
     });
@@ -2002,9 +1986,12 @@ function renderSentences() {
             } else {
                 sentLevelFilter = lvl;
             }
-            sentOrderOverride = null;
-            sentReturnToLP = false;
-            sentFromLP = false;
+
+            if (sentFromLP) {
+                rebuildLPQueue();
+            } else {
+                sentOrderOverride = null;
+            }
             renderSentences();
         };
     });
@@ -2019,16 +2006,6 @@ function renderSentences() {
     if (sentSubMode === 'build') attachSentBuildHandlers();
     else if (sentSubMode === 'choose') attachSentChooseHandlers();
     else if (sentSubMode === 'translate') attachSentTranslateHandlers();
-
-    const backBtn = document.getElementById('sent-back-to-lp');
-    if (backBtn) {
-        backBtn.onclick = () => {
-            sentOrderOverride = null;
-            sentReturnToLP = false;
-            sentFromLP = false;
-            renderMode('learning');
-        };
-    }
 
     refreshIcons();
 }
@@ -2512,25 +2489,9 @@ function attachLearningPathHandlers() {
         };
     });
 
-    document.querySelectorAll('.lp-level-btn').forEach(btn => {
+        document.querySelectorAll('.lp-level-btn').forEach(btn => {
         btn.onclick = () => {
-            const tense = btn.dataset.tense;
-            const level = btn.dataset.level;
-
-            sentTenseFilter = tense;
-            sentLevelFilter = level;
-            sentSubMode = 'build';
-
-            positions.sentBuild = 0;
-            positions.sentChoose = 0;
-            positions.sentTranslate = 0;
-            savePositions();
-
-            sentOrderOverride = 'ordered';
-            sentReturnToLP = true;
-            sentFromLP = true;
-
-            renderMode('sentences');
+            startLPGroup(btn.dataset.tense, btn.dataset.level);
         };
     });
 
@@ -2545,7 +2506,408 @@ function attachLearningPathHandlers() {
         };
     }
 }
+// ===== LEARNING PATH — Sentences (режим Пути) =====
 
+function rebuildLPQueue() {
+    lpQueue = sentences
+        .filter(s => sentTenseFilter === 'all' || s.tense === sentTenseFilter)
+        .filter(s => sentLevelFilter === 'all' || s.level === sentLevelFilter)
+        .map(s => s.id)
+        .sort((a, b) => a - b);
+    lpIndex = 0;
+    lpSkippedThisSession = new Set();
+}
+
+function startLPGroup(tense, level) {
+    sentTenseFilter = tense;
+    sentLevelFilter = level;
+    sentFromLP = true;
+    sentReturnToLP = true;
+    sentOrderOverride = 'ordered';
+
+    rebuildLPQueue();
+
+    // Сбрасываем positions обычной Грамматики
+    positions.sentBuild = 0;
+    positions.sentChoose = 0;
+    positions.sentTranslate = 0;
+    savePositions();
+
+    renderMode('sentences');
+}
+
+function renderSentencesLP() {
+    // Пропускаем пройденные и пропущенные в этой сессии
+    while (lpIndex < lpQueue.length) {
+        const id = lpQueue[lpIndex];
+        if (isDuoDone(id) || lpSkippedThisSession.has(id)) {
+            lpIndex++;
+        } else {
+            break;
+        }
+    }
+
+    const tense = sentTenseFilter;
+    const level = sentLevelFilter;
+
+    const groupAll = sentences.filter(s => {
+        const mT = tense === 'all' || s.tense === tense;
+        const mL = level === 'all' || s.level === level;
+        return mT && mL;
+    });
+    const groupDone = groupAll.filter(s => isDuoDone(s.id)).length;
+
+    // Всё пройдено — экран «Готово»
+    if (lpIndex >= lpQueue.length) {
+        renderLPDoneScreen(tense, level, groupDone, groupAll.length);
+        return;
+    }
+
+    const sentId = lpQueue[lpIndex];
+    const sent = sentences.find(s => s.id === sentId);
+    if (!sent) {
+        lpIndex++;
+        renderSentencesLP();
+        return;
+    }
+
+    const prog = duoProgress[sentId] || { build: false, translate: false };
+    const needMode = !prog.build ? 'build' : 'translate';
+
+    const tenseLabel = sent.tense_label || tense;
+    const levelLabel = sent.level || level;
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title">
+                        <i data-lucide="book-open"></i> ${tenseLabel} · ${levelLabel}
+                    </div>
+                    <div class="list-subtitle">
+                        Пройдено ${groupDone} из ${groupAll.length} · Задание ${lpIndex + 1} из ${lpQueue.length}
+                    </div>
+                </div>
+                <button class="btn btn-secondary" id="sent-back-to-lp">
+                    <i data-lucide="arrow-left"></i> Назад в Путь
+                </button>
+            </div>
+
+            ${needMode === 'build' ? renderBuildUILP(sent) : renderTranslateUILP(sent)}
+        </div>
+    `;
+
+    document.getElementById('sent-back-to-lp').onclick = () => {
+        sentFromLP = false;
+        sentReturnToLP = false;
+        sentOrderOverride = null;
+        lpQueue = [];
+        lpIndex = 0;
+        lpSkippedThisSession = new Set();
+        renderMode('learning');
+    };
+
+    if (needMode === 'build') attachBuildHandlersLP(sent);
+    else attachTranslateHandlersLP(sent);
+
+    refreshIcons();
+}
+
+function renderBuildUILP(sent) {
+    const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
+    return `
+        <div class="mode-card sent-task">
+            <div class="mode-badge">
+                <i data-lucide="puzzle"></i> Собери предложение
+            </div>
+            <div class="sent-ru">${sent.ru}</div>
+            <div class="sent-words" id="sent-words-pool">
+                ${shuffled.map(w => `<button class="sent-word-chip" data-word="${w}">${w}</button>`).join('')}
+            </div>
+            <div class="sent-answer" id="sent-answer-area"></div>
+            <div class="sent-feedback" id="sent-build-feedback"></div>
+            <div class="card-actions">
+                <button class="btn btn-primary btn-lg" id="sent-build-check" style="display:none;">
+                    <i data-lucide="check"></i> Проверить
+                </button>
+                <button class="btn btn-secondary" id="sent-build-reset">
+                    <i data-lucide="rotate-ccw"></i> Сбросить
+                </button>
+                <button class="btn btn-secondary" id="sent-build-show">
+                    <i data-lucide="eye"></i> Показать ответ
+                </button>
+            </div>
+            <button class="btn btn-success btn-lg" id="sent-build-next" style="display:none;">
+                Дальше <i data-lucide="arrow-right"></i>
+            </button>
+        </div>
+    `;
+}
+
+function renderTranslateUILP(sent) {
+    return `
+        <div class="mode-card sent-task">
+            <div class="mode-badge">
+                <i data-lucide="pencil"></i> Переведи
+            </div>
+            <div class="sent-ru-big">${sent.ru}</div>
+            <input type="text" class="write-input" id="sent-translate-input" placeholder="Введи перевод..." autocomplete="off" autocapitalize="off" spellcheck="false">
+            <button class="btn btn-primary btn-lg" id="sent-translate-check">
+                <i data-lucide="eye"></i> Показать эталон
+            </button>
+            <div class="sent-reference" id="sent-translate-ref" style="display:none;">
+                <div class="sent-ref-label">Эталон</div>
+                <div class="sent-ref-en">${sent.en}</div>
+                <button class="speak-btn" onclick="speak('${sent.en.replace(/'/g, "\\'")}')">
+                    <i data-lucide="volume-2"></i>
+                </button>
+                <div class="sent-ref-hint">Оцени себя честно:</div>
+                <div class="card-actions">
+                    <button class="btn btn-success" id="sent-mark-correct">✓ Совпало +10 XP</button>
+                    <button class="btn btn-warning" id="sent-mark-partial">~ Частично +5 XP</button>
+                    <button class="btn btn-secondary" id="sent-mark-wrong">✗ Не смог +2 XP</button>
+                </div>
+            </div>
+            <div class="sent-feedback" id="sent-translate-feedback"></div>
+            <button class="btn btn-secondary" id="sent-translate-skip" style="margin-top: 12px;">
+                <i data-lucide="skip-forward"></i> Пропустить перевод (потом)
+            </button>
+        </div>
+    `;
+}
+
+function attachBuildHandlersLP(sent) {
+    const poolEl = document.getElementById('sent-words-pool');
+    const answerEl = document.getElementById('sent-answer-area');
+    const feedback = document.getElementById('sent-build-feedback');
+    const checkBtn = document.getElementById('sent-build-check');
+    const resetBtn = document.getElementById('sent-build-reset');
+    const showBtn = document.getElementById('sent-build-show');
+    const nextBtn = document.getElementById('sent-build-next');
+
+    let picked = [];
+
+    function updateUI() {
+        poolEl.innerHTML = '';
+        const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
+        shuffled.forEach(w => {
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip';
+            btn.textContent = w;
+            const used = picked.filter(p => p === w).length;
+            const available = shuffled.filter(p => p === w).length;
+            if (used >= available) btn.disabled = true;
+            btn.onclick = () => { picked.push(w); updateUI(); };
+            poolEl.appendChild(btn);
+        });
+
+        answerEl.innerHTML = '';
+        picked.forEach((w, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip picked';
+            btn.textContent = w;
+            btn.onclick = () => { picked.splice(i, 1); updateUI(); };
+            answerEl.appendChild(btn);
+        });
+
+        checkBtn.style.display = picked.length === sent.words.length ? 'inline-flex' : 'none';
+    }
+
+    updateUI();
+    refreshIcons();
+
+    checkBtn.onclick = () => {
+        const userAnswer = picked.join(' ').trim();
+        const correct = sent.words.join(' ').trim();
+
+        if (userAnswer === correct) {
+            feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
+            feedback.className = 'sent-feedback correct';
+            addXP(10);
+            markDuoDone(sent.id, 'build');
+
+            document.querySelectorAll('.sent-word-chip').forEach(b => b.disabled = true);
+            checkBtn.disabled = true;
+            resetBtn.disabled = true;
+            showBtn.disabled = true;
+            refreshIcons();
+
+            // Автопереход в Перевод этого же предложения
+            setTimeout(() => {
+                if (currentMode === 'sentences' && sentFromLP) {
+                    renderSentencesLP();
+                }
+            }, 700);
+        } else {
+            feedback.innerHTML = `<i data-lucide="x-circle"></i> Твой: ${userAnswer}<br>Правильно: <b>${correct}</b> (+2 XP)`;
+            feedback.className = 'sent-feedback wrong';
+            addXP(2);
+
+            document.querySelectorAll('.sent-word-chip').forEach(b => b.disabled = true);
+            checkBtn.disabled = true;
+            resetBtn.disabled = true;
+            showBtn.disabled = true;
+            nextBtn.style.display = 'inline-flex';
+            refreshIcons();
+        }
+    };
+
+    resetBtn.onclick = () => {
+        picked = [];
+        feedback.textContent = '';
+        feedback.className = 'sent-feedback';
+        answerEl.innerHTML = '';
+        updateUI();
+    };
+
+    showBtn.onclick = () => {
+        feedback.innerHTML = `<b>Правильно:</b> ${sent.words.join(' ')}`;
+        feedback.className = 'sent-feedback';
+        document.querySelectorAll('.sent-word-chip').forEach(b => b.disabled = true);
+        checkBtn.disabled = true;
+        resetBtn.disabled = true;
+        showBtn.disabled = true;
+        nextBtn.style.display = 'inline-flex';
+        refreshIcons();
+    };
+
+    nextBtn.onclick = () => {
+        lpIndex++;
+        renderSentencesLP();
+    };
+}
+
+function attachTranslateHandlersLP(sent) {
+    const input = document.getElementById('sent-translate-input');
+    input.focus();
+
+    function goNext() {
+        lpIndex++;
+        renderSentencesLP();
+    }
+
+    document.getElementById('sent-translate-check').onclick = () => {
+        const userAnswer = input.value.trim();
+        if (!userAnswer) {
+            alert('Сначала введи свой перевод');
+            return;
+        }
+        document.getElementById('sent-translate-ref').style.display = 'block';
+        document.getElementById('sent-translate-check').disabled = true;
+        input.disabled = true;
+        refreshIcons();
+    };
+
+    document.getElementById('sent-mark-correct').onclick = () => {
+        addXP(10);
+        const fb = document.getElementById('sent-translate-feedback');
+        fb.textContent = '✓ +10 XP';
+        fb.className = 'sent-feedback correct';
+        document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
+        markDuoDone(sent.id, 'translate');
+
+        setTimeout(() => {
+            if (currentMode === 'sentences' && sentFromLP) goNext();
+        }, 700);
+    };
+
+    document.getElementById('sent-mark-partial').onclick = () => {
+        addXP(5);
+        const fb = document.getElementById('sent-translate-feedback');
+        fb.textContent = '~ +5 XP';
+        fb.className = 'sent-feedback';
+        document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
+        setTimeout(() => {
+            if (currentMode === 'sentences' && sentFromLP) goNext();
+        }, 700);
+    };
+
+    document.getElementById('sent-mark-wrong').onclick = () => {
+        addXP(2);
+        const fb = document.getElementById('sent-translate-feedback');
+        fb.textContent = '✗ +2 XP';
+        fb.className = 'sent-feedback wrong';
+        document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
+        setTimeout(() => {
+            if (currentMode === 'sentences' && sentFromLP) goNext();
+        }, 700);
+    };
+
+    const skipBtn = document.getElementById('sent-translate-skip');
+    if (skipBtn) {
+        skipBtn.onclick = () => {
+            // Запоминаем как пропущенный в этой сессии
+            lpSkippedThisSession.add(sent.id);
+            goNext();
+        };
+    }
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('sent-translate-check').disabled) {
+            document.getElementById('sent-translate-check').click();
+        }
+    });
+}
+
+function renderLPDoneScreen(tense, level, done, total) {
+    const firstSent = sentences.find(s => {
+        const mT = tense === 'all' || s.tense === tense;
+        const mL = level === 'all' || s.level === level;
+        return mT && mL;
+    });
+    const tenseLabel = tense === 'all' ? 'Все времена' : (firstSent?.tense_label || tense);
+    const levelLabel = level === 'all' ? 'Все уровни' : level;
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap lp-done-wrap">
+            <div class="lp-done-card">
+                <div class="lp-done-icon">🎉</div>
+                <div class="lp-done-title">Отлично!</div>
+                <div class="lp-done-sub">${tenseLabel} · ${levelLabel}</div>
+                <div class="lp-done-stats">
+                    Пройдено <b>${done}</b> из <b>${total}</b>
+                </div>
+                <div class="lp-done-actions">
+                    <button class="btn btn-primary" id="lp-done-back">
+                        <i data-lucide="arrow-left"></i> Вернуться в Путь
+                    </button>
+                    <button class="btn btn-secondary" id="lp-done-retry">
+                        <i data-lucide="rotate-ccw"></i> Пройти заново
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('lp-done-back').onclick = () => {
+        sentFromLP = false;
+        sentReturnToLP = false;
+        sentOrderOverride = null;
+        lpQueue = [];
+        lpIndex = 0;
+        lpSkippedThisSession = new Set();
+        renderMode('learning');
+    };
+
+    document.getElementById('lp-done-retry').onclick = () => {
+        if (!confirm('Сбросить прогресс этой группы и пройти заново?')) return;
+
+        const t = sentTenseFilter;
+        const l = sentLevelFilter;
+        sentences.forEach(s => {
+            const mT = t === 'all' || s.tense === t;
+            const mL = l === 'all' || s.level === l;
+            if (mT && mL) delete duoProgress[s.id];
+        });
+        localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
+        syncToFirebase();
+
+        rebuildLPQueue();
+        renderSentencesLP();
+    };
+
+    refreshIcons();
+}
 // ===== PROFILE =====
 function renderProfile() {
     const levelTotal = getLevelTotal();
@@ -2725,8 +3087,20 @@ function prevCard() {}
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
 
-    document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(btn => {
-        btn.onclick = () => renderMode(btn.dataset.mode);
+        document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(btn => {
+        btn.onclick = () => {
+            const mode = btn.dataset.mode;
+            // Если кликнули на «Грамматика» — принудительно выходим из режима Пути
+            if (mode === 'sentences') {
+                sentFromLP = false;
+                sentReturnToLP = false;
+                sentOrderOverride = null;
+                lpQueue = [];
+                lpIndex = 0;
+                lpSkippedThisSession = new Set();
+            }
+            renderMode(mode);
+        };
     });
 
     const themeBtn = document.getElementById('theme-toggle');
