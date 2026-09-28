@@ -1,67 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Trainer</title>
+    <title>LangStep — Small steps, big results</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#5B5FE9">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
-    <div class="app">
-        <header class="header">
-            <div class="header-left">
-                <h1>English Trainer</h1>
-                <div class="stats">
-                    <span id="progress-info">Learned: 0 / 0</span>
+    <div class="app-layout">
+
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i data-lucide="rocket"></i>
+                </div>
+                <div class="brand-text">
+                    <div class="brand-name">LangStep</div>
+                    <div class="brand-tagline">Small steps · Big results</div>
                 </div>
             </div>
-            <div class="header-right">
-                <div class="stat-box" title="Experience">
-                    <span class="stat-icon">⚡</span>
-                    <span id="xp-info">0 XP</span>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item" data-mode="dashboard">
+                    <i data-lucide="home"></i>
+                    <span>Главная</span>
+                </button>
+                <button class="nav-item" data-mode="cards">
+                    <i data-lucide="layers"></i>
+                    <span>Карточки</span>
+                </button>
+                <button class="nav-item" data-mode="write">
+                    <i data-lucide="pencil"></i>
+                    <span>Письмо</span>
+                </button>
+                <button class="nav-item" data-mode="sentences">
+                    <i data-lucide="book-open"></i>
+                    <span>Грамматика</span>
+                </button>
+                <button class="nav-item" data-mode="listening">
+                    <i data-lucide="headphones"></i>
+                    <span>Аудирование</span>
+                </button>
+                <button class="nav-item" data-mode="phrases">
+                    <i data-lucide="message-circle"></i>
+                    <span>Фразы</span>
+                </button>
+                <button class="nav-item" data-mode="temporary">
+                    <i data-lucide="clock"></i>
+                    <span>Временные задания</span>
+                </button>
+                <button class="nav-item" data-mode="mastered">
+                    <i data-lucide="trophy"></i>
+                    <span>Mastered</span>
+                </button>
+                <button class="nav-item" data-mode="profile">
+                    <i data-lucide="user"></i>
+                    <span>Профиль</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-motivation">
+                <div class="motivation-icon">
+                    <i data-lucide="flag"></i>
                 </div>
-                <div class="stat-box" title="Days in a row">
-                    <span class="stat-icon">🔥</span>
-                    <span id="streak-info">0</span>
-                </div>
-                <div class="stat-box" title="Level">
-                    <span class="stat-icon">🏆</span>
-                    <span id="level-info">Beginner</span>
-                </div>
+                <div class="motivation-title">Ты можешь больше!</div>
+                <div class="motivation-text">Каждый день — это новая возможность стать лучше.</div>
             </div>
-        </header>
+        </aside>
 
-        <div class="daily-goal">
-            <div class="goal-text">Daily goal: <span id="goal-progress">0 / 20 XP</span></div>
-            <div class="goal-bar">
-                <div class="goal-bar-fill" id="goal-bar-fill"></div>
+        <!-- ===== MAIN ===== -->
+        <main class="main-area">
+
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 class="topbar-greeting" id="topbar-greeting">Привет! 👋</h1>
+                    <div class="topbar-subtitle" id="topbar-subtitle">Сегодня отличный день, чтобы учить английский!</div>
+                </div>
+                <div class="topbar-right">
+                    <div class="stat-pill" title="Опыт">
+                        <i data-lucide="zap"></i>
+                        <span id="xp-info">0 XP</span>
+                    </div>
+                    <div class="stat-pill" title="Дней подряд">
+                        <i data-lucide="flame"></i>
+                        <span id="streak-info">0</span>
+                    </div>
+                    <div class="stat-pill" title="Уровень">
+                        <i data-lucide="award"></i>
+                        <span id="level-info">Beginner</span>
+                    </div>
+                    <button class="icon-btn" id="theme-toggle" title="Переключить тему">
+                        <i data-lucide="moon"></i>
+                    </button>
+                    <button class="profile-btn" id="profile-btn" title="Профиль">
+                        <i data-lucide="user"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Level switcher -->
+            <div class="levels-bar" id="level-buttons"></div>
+
+            <!-- Content -->
+            <div class="content-area">
+                <div id="content"></div>
             </div>
-        </div>
 
-        <div class="levels" id="level-buttons"></div>
-
-        <nav class="menu">
-            <button class="menu-btn active" data-mode="cards">📇 Cards</button>
-            <button class="menu-btn" data-mode="test">✅ Test</button>
-            <button class="menu-btn" data-mode="write">✏️ Writing</button>
-            <button class="menu-btn" data-mode="phrases">💬 Phrases</button>
-            <button class="menu-btn" data-mode="temporary">📝 Temporary</button>
-            <button class="menu-btn" data-mode="listening">🎧 Listening</button>
-            <button class="menu-btn" data-mode="mastered">🏆 Mastered</button>
-            <button class="menu-btn" data-mode="sentences">📖 Sentences</button>
-        </nav>
-
-        <main class="main">
-            <div id="content"></div>
         </main>
 
-        <footer class="footer">
-            <button id="btn-prev">← Back</button>
-            <button id="btn-next">Next →</button>
-        </footer>
     </div>
+
+    <!-- Bottom nav (mobile) -->
+    <nav class="bottom-nav" id="bottom-nav">
+        <button class="bottom-nav-item" data-mode="dashboard">
+            <i data-lucide="home"></i>
+            <span>Главная</span>
+        </button>
+        <button class="bottom-nav-item" data-mode="cards">
+            <i data-lucide="layers"></i>
+            <span>Карточки</span>
+        </button>
+        <button class="bottom-nav-item" data-mode="sentences">
+            <i data-lucide="book-open"></i>
+            <span>Грамматика</span>
+        </button>
+        <button class="bottom-nav-item" data-mode="phrases">
+            <i data-lucide="message-circle"></i>
+            <span>Фразы</span>
+        </button>
+        <button class="bottom-nav-item" data-mode="profile">
+            <i data-lucide="user"></i>
+            <span>Профиль</span>
+        </button>
+    </nav>
 
     <!-- Firebase SDK -->
     <script type="module">
