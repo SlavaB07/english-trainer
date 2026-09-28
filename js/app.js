@@ -1377,16 +1377,19 @@ function renderListening() {
 
 // ===== TEMPORARY =====
 function renderTemporary() {
-        const subNav = `
+    const subNav = `
         <div class="subnav">
-            <button class="subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">
-                <i data-lucide="puzzle"></i> Сборка
+            <button class="subnav-btn ${tempSubMode === 'list' ? 'active' : ''}" data-sub="list">
+                <i data-lucide="list"></i> Список
             </button>
-            <button class="subnav-btn ${sentSubMode === 'choose' ? 'active' : ''}" data-sub="choose">
-                <i data-lucide="check-circle-2"></i> Выбор времени
+            <button class="subnav-btn ${tempSubMode === 'cards' ? 'active' : ''}" data-sub="cards">
+                <i data-lucide="layers"></i> Карточки
             </button>
-            <button class="subnav-btn ${sentSubMode === 'translate' ? 'active' : ''}" data-sub="translate">
-                <i data-lucide="pencil"></i> Перевод
+            <button class="subnav-btn ${tempSubMode === 'test' ? 'active' : ''}" data-sub="test">
+                <i data-lucide="check-circle-2"></i> Тест
+            </button>
+            <button class="subnav-btn ${tempSubMode === 'write' ? 'active' : ''}" data-sub="write">
+                <i data-lucide="pencil"></i> Написание
             </button>
         </div>
     `;
@@ -2526,12 +2529,6 @@ function startLPGroup(tense, level) {
     sentOrderOverride = 'ordered';
 
     rebuildLPQueue();
-
-    // Сбрасываем positions обычной Грамматики
-    positions.sentBuild = 0;
-    positions.sentChoose = 0;
-    positions.sentTranslate = 0;
-    savePositions();
 
     renderMode('sentences');
 }
