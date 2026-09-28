@@ -759,10 +759,13 @@ function renderCards() {
                 </div>
 
                 <div id="buttons-before" class="card-actions">
-                    <button class="btn btn-primary btn-lg" id="btn-show">
-                        <i data-lucide="eye"></i> Показать перевод
-                    </button>
-                </div>
+    <button class="btn btn-primary btn-lg" id="btn-show">
+        <i data-lucide="eye"></i> Показать перевод
+    </button>
+    <button class="btn btn-secondary" onclick="renderMode('test')">
+        <i data-lucide="check-circle-2"></i> Режим теста
+    </button>
+</div>
 
                 <div id="buttons-after" class="card-actions" style="display: none;">
                     <button class="btn btn-success" id="btn-learned">
@@ -1054,7 +1057,14 @@ function renderWrite() {
 function renderPhrases() {
     const data = getFilteredPhrases();
     if (data.length < 4) {
-        document.getElementById('content').innerHTML = '<p>Недостаточно фраз.</p>';
+        document.getElementById('content').innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="message-circle"></i></div>
+                <div class="empty-title">Недостаточно фраз</div>
+                <div class="empty-text">Для этого уровня нужно минимум 4 фразы.</div>
+            </div>
+        `;
+        refreshIcons();
         return;
     }
 
@@ -1073,18 +1083,39 @@ function renderPhrases() {
     }
 
     const options = [correct, ...wrongOptions].sort(() => Math.random() - 0.5);
+    const progressPct = Math.round(((positions.phrases + 1) / data.length) * 100);
 
     document.getElementById('content').innerHTML = `
-        <div class="test-question">
-            ${phrase.phrase}
-            <button class="speak-btn" onclick="speak('${phrase.phrase.replace(/'/g, "\\'")}')">🔊</button>
+        <div class="mode-wrap">
+            <div class="mode-progress">
+                <div class="mode-progress-info">
+                    <span class="mode-progress-label">Фраза ${positions.phrases + 1} из ${data.length}</span>
+                    <span class="mode-progress-pct">${progressPct}%</span>
+                </div>
+                <div class="mode-progress-bar">
+                    <div class="mode-progress-fill" style="width:${progressPct}%"></div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="mode-badge">
+                    <i data-lucide="message-square-quote"></i> Что это значит?
+                </div>
+                <div class="test-question">
+                    ${phrase.phrase}
+                    <button class="speak-btn" onclick="speak('${phrase.phrase.replace(/'/g, "\\'")}')">
+                        <i data-lucide="volume-2"></i>
+                    </button>
+                </div>
+                <div class="test-options">
+                    ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
+                </div>
+                <div class="test-feedback" id="test-feedback"></div>
+                <button class="btn btn-success btn-lg" id="btn-next-phrase" style="display: none;">
+                    Дальше <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
         </div>
-        <div class="test-options">
-            ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
-        </div>
-        <div class="test-feedback" id="test-feedback"></div>
-        <button class="btn btn-success" id="btn-next-phrase" style="display: none;">Дальше →</button>
-        <div class="card-frequency">Фраза ${positions.phrases + 1} из ${data.length}</div>
     `;
 
     document.querySelectorAll('.test-option').forEach(btn => {
@@ -1094,7 +1125,7 @@ function renderPhrases() {
 
             if (answer === correct) {
                 btn.classList.add('correct');
-                feedback.textContent = '✓ Правильно! +10 XP';
+                feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
                 feedback.className = 'test-feedback correct';
                 addXP(10);
             } else {
@@ -1102,12 +1133,13 @@ function renderPhrases() {
                 document.querySelectorAll('.test-option').forEach(b => {
                     if (b.dataset.answer === correct) b.classList.add('correct');
                 });
-                feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
+                feedback.innerHTML = `<i data-lucide="x-circle"></i> Правильный ответ: ${correct} (+2 XP)`;
                 feedback.className = 'test-feedback wrong';
                 addXP(2);
             }
             document.querySelectorAll('.test-option').forEach(b => b.disabled = true);
-            document.getElementById('btn-next-phrase').style.display = 'inline-block';
+            document.getElementById('btn-next-phrase').style.display = 'inline-flex';
+            refreshIcons();
         };
     });
 
@@ -1118,33 +1150,68 @@ function renderPhrases() {
         renderPhrases();
     };
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 // ===== LISTENING =====
 function renderListening() {
     const data = getFilteredVocabulary().filter(w => !isMastered(w.word));
     if (data.length === 0) {
-        document.getElementById('content').innerHTML = '<p>Нет слов для этого уровня.</p>';
+        document.getElementById('content').innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="headphones"></i></div>
+                <div class="empty-title">Нет слов</div>
+                <div class="empty-text">Для этого уровня нет доступных слов.</div>
+            </div>
+        `;
+        refreshIcons();
         return;
     }
 
     if (positions.listening >= data.length) positions.listening = 0;
     const word = data[positions.listening];
+    const progressPct = Math.round(((positions.listening + 1) / data.length) * 100);
 
     document.getElementById('content').innerHTML = `
-        <div class="card">
-            <div class="card-srs">🎧 Listen and write the word</div>
-            <div class="card-word">
-                <button class="speak-btn big-speak" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+        <div class="mode-wrap">
+            <div class="mode-progress">
+                <div class="mode-progress-info">
+                    <span class="mode-progress-label">Аудирование ${positions.listening + 1} из ${data.length}</span>
+                    <span class="mode-progress-pct">${progressPct}%</span>
+                </div>
+                <div class="mode-progress-bar">
+                    <div class="mode-progress-fill" style="width:${progressPct}%"></div>
+                </div>
             </div>
-            <input type="text" class="write-input" id="listen-input" placeholder="Введи слово..." autocomplete="off">
-            <button class="btn btn-primary" id="btn-listen-check">✓ Проверить</button>
-            <button class="btn btn-secondary" id="btn-listen-play">🔊 Повторить</button>
-            <button class="btn btn-success" id="btn-next-listen" style="display: none;">Дальше →</button>
-            <div class="write-feedback" id="listen-feedback"></div>
-            <div class="card-frequency">Слово ${positions.listening + 1} из ${data.length}</div>
+
+            <div class="mode-card listen-card">
+                <div class="mode-badge">
+                    <i data-lucide="ear"></i> Слушай и пиши
+                </div>
+
+                <button class="listen-big-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">
+                    <i data-lucide="volume-2"></i>
+                </button>
+
+                <div class="listen-hint">Нажми на кнопку и слушай слово</div>
+
+                <input type="text" class="write-input" id="listen-input" placeholder="Введи слово..." autocomplete="off" autocapitalize="off" spellcheck="false">
+
+                <div class="card-actions">
+                    <button class="btn btn-primary btn-lg" id="btn-listen-check">
+                        <i data-lucide="check"></i> Проверить
+                    </button>
+                    <button class="btn btn-secondary" id="btn-listen-play">
+                        <i data-lucide="volume-2"></i> Повторить
+                    </button>
+                </div>
+
+                <button class="btn btn-success btn-lg" id="btn-next-listen" style="display: none;">
+                    Дальше <i data-lucide="arrow-right"></i>
+                </button>
+
+                <div class="write-feedback" id="listen-feedback"></div>
+            </div>
         </div>
     `;
 
@@ -1158,19 +1225,20 @@ function renderListening() {
         const feedback = document.getElementById('listen-feedback');
 
         if (answer === word.word.toLowerCase()) {
-            feedback.textContent = '✓ Правильно! +10 XP';
+            feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
             feedback.className = 'write-feedback correct';
             updateSrs(word.word, true, false);
             addXP(10);
         } else {
-            feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
+            feedback.innerHTML = `<i data-lucide="x-circle"></i> Правильный ответ: <b>${word.word}</b> (+2 XP)`;
             feedback.className = 'write-feedback wrong';
             updateSrs(word.word, false, false);
             addXP(2);
         }
         document.getElementById('btn-listen-check').disabled = true;
         input.disabled = true;
-        document.getElementById('btn-next-listen').style.display = 'inline-block';
+        document.getElementById('btn-next-listen').style.display = 'inline-flex';
+        refreshIcons();
     };
 
     document.getElementById('btn-next-listen').onclick = () => {
@@ -1186,18 +1254,25 @@ function renderListening() {
         }
     });
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 // ===== TEMPORARY =====
 function renderTemporary() {
     const subNav = `
-        <div class="temp-subnav">
-            <button class="temp-subnav-btn ${tempSubMode === 'list' ? 'active' : ''}" data-sub="list">📋 Список</button>
-            <button class="temp-subnav-btn ${tempSubMode === 'cards' ? 'active' : ''}" data-sub="cards">📇 Карточки</button>
-            <button class="temp-subnav-btn ${tempSubMode === 'test' ? 'active' : ''}" data-sub="test">✅ Тест</button>
-            <button class="temp-subnav-btn ${tempSubMode === 'write' ? 'active' : ''}" data-sub="write">✏️ Написание</button>
+        <div class="subnav">
+            <button class="subnav-btn ${tempSubMode === 'list' ? 'active' : ''}" data-sub="list">
+                <i data-lucide="list"></i> Список
+            </button>
+            <button class="subnav-btn ${tempSubMode === 'cards' ? 'active' : ''}" data-sub="cards">
+                <i data-lucide="layers"></i> Карточки
+            </button>
+            <button class="subnav-btn ${tempSubMode === 'test' ? 'active' : ''}" data-sub="test">
+                <i data-lucide="check-circle-2"></i> Тест
+            </button>
+            <button class="subnav-btn ${tempSubMode === 'write' ? 'active' : ''}" data-sub="write">
+                <i data-lucide="pencil"></i> Написание
+            </button>
         </div>
     `;
 
@@ -1208,14 +1283,21 @@ function renderTemporary() {
     else if (tempSubMode === 'write') bodyHtml = renderTempWrite();
 
     document.getElementById('content').innerHTML = `
-        <div class="temporary-header">
-            <h2>📝 Temporary Words (${temporary.length})</h2>
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title">
+                        <i data-lucide="clock"></i> Temporary Words
+                    </div>
+                    <div class="list-subtitle">${temporary.length} слов в твоём списке</div>
+                </div>
+            </div>
+            ${subNav}
+            ${bodyHtml}
         </div>
-        ${subNav}
-        ${bodyHtml}
     `;
 
-    document.querySelectorAll('.temp-subnav-btn').forEach(btn => {
+    document.querySelectorAll('.subnav-btn').forEach(btn => {
         btn.onclick = () => {
             tempSubMode = btn.dataset.sub;
             renderTemporary();
@@ -1227,34 +1309,46 @@ function renderTemporary() {
     else if (tempSubMode === 'test') attachTempTestHandlers();
     else if (tempSubMode === 'write') attachTempWriteHandlers();
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 function renderTempList() {
     return `
-        <div style="margin: 10px 0;">
-            <button class="btn btn-primary" id="btn-add-temp">+ Добавить слово</button>
+        <div style="margin-bottom: 16px; display: flex; justify-content: flex-end;">
+            <button class="btn btn-primary" id="btn-add-temp">
+                <i data-lucide="plus"></i> Добавить слово
+            </button>
         </div>
         <div class="temp-form" id="temp-form" style="display: none;">
             <input type="text" id="temp-word" placeholder="English word" autocomplete="off">
             <input type="text" id="temp-translation" placeholder="Перевод" autocomplete="off">
             <input type="text" id="temp-transcription" placeholder="Транскрипция рус. (напр. уелд)" autocomplete="off">
-            <button class="btn btn-success" id="btn-save-temp">Сохранить</button>
-            <button class="btn btn-secondary" id="btn-cancel-temp">Отмена</button>
+            <div style="display: flex; gap: 8px;">
+                <button class="btn btn-success" id="btn-save-temp">
+                    <i data-lucide="check"></i> Сохранить
+                </button>
+                <button class="btn btn-secondary" id="btn-cancel-temp">Отмена</button>
+            </div>
         </div>
-        <div class="temp-list" id="temp-list">
+        <div class="list-items">
             ${temporary.length === 0
-                ? '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Пока нет временных слов.</p>'
+                ? `<div class="empty-inline">
+                    <i data-lucide="inbox"></i>
+                    <div>Пока нет временных слов. Нажми «Добавить слово».</div>
+                </div>`
                 : temporary.map((w, i) => `
-                    <div class="temp-item">
-                        <div class="temp-item-info">
+                    <div class="list-item">
+                        <div class="list-item-info">
                             <strong>${w.word}</strong>
-                            <button class="speak-btn" onclick="speak('${w.word.replace(/'/g, "\\'")}')">🔊</button>
-                            <span class="temp-transcription">[${w.transcription_ru || ''}]</span>
-                            <span class="temp-translation">${w.translation}</span>
+                            <button class="speak-btn speak-btn-sm" onclick="speak('${w.word.replace(/'/g, "\\'")}')">
+                                <i data-lucide="volume-2"></i>
+                            </button>
+                            ${w.transcription_ru ? `<span class="list-transcription">[${w.transcription_ru}]</span>` : ''}
+                            <span class="list-translation">${w.translation}</span>
                         </div>
-                        <button class="btn btn-warning" onclick="deleteTempWord(${i})">🗑</button>
+                        <button class="btn btn-warning btn-sm" onclick="deleteTempWord(${i})">
+                            <i data-lucide="trash-2"></i>
+                        </button>
                     </div>
                 `).join('')
             }
@@ -1265,7 +1359,7 @@ function renderTempList() {
 function attachTempListHandlers() {
     const addBtn = document.getElementById('btn-add-temp');
     if (addBtn) addBtn.onclick = () => {
-        document.getElementById('temp-form').style.display = 'block';
+        document.getElementById('temp-form').style.display = 'flex';
         document.getElementById('temp-word').focus();
     };
 
@@ -1311,34 +1405,48 @@ function deleteTempWord(index) {
 
 function renderTempCards() {
     if (temporary.length === 0) {
-        return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет временных слов. Добавь в «Список».</p>';
+        return `<div class="empty-inline"><i data-lucide="inbox"></i><div>Нет слов. Добавь в «Список».</div></div>`;
     }
 
     if (positions.tempCards >= temporary.length) positions.tempCards = 0;
     const word = temporary[positions.tempCards];
     const srs = getSrsData(word.word, true);
-    const transText = word.transcription_ru ? `<span class="card-transcription">[${word.transcription_ru}]</span>` : '';
+    const progressPct = Math.round(((positions.tempCards + 1) / temporary.length) * 100);
 
     let hiddenContent = `<div class="card-translation">${word.translation}</div>`;
     if (word.note) hiddenContent += `<div class="card-note">${word.note}</div>`;
 
     return `
-        <div class="card">
-            <div class="card-srs">SRS (temp): ${srs.level}/5</div>
+        <div class="mode-progress">
+            <div class="mode-progress-info">
+                <span class="mode-progress-label">Слово ${positions.tempCards + 1} из ${temporary.length}</span>
+                <span class="mode-progress-pct">${progressPct}%</span>
+            </div>
+            <div class="mode-progress-bar"><div class="mode-progress-fill" style="width:${progressPct}%"></div></div>
+        </div>
+        <div class="mode-card">
+            <div class="card-srs"><i data-lucide="bar-chart-3"></i> SRS Level ${srs.level}/5</div>
             <div class="card-word">
                 ${word.word}
-                <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+                <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">
+                    <i data-lucide="volume-2"></i>
+                </button>
             </div>
-            <div class="card-meta">${transText}</div>
-            <div id="temp-hidden" style="display: none;">${hiddenContent}</div>
-            <div id="temp-buttons-before">
-                <button class="btn btn-secondary" id="temp-btn-show">👁 Показать перевод</button>
+            ${word.transcription_ru ? `<div class="card-meta"><span class="card-transcription">[${word.transcription_ru}]</span></div>` : ''}
+            <div id="temp-hidden" class="card-hidden" style="display: none;">${hiddenContent}</div>
+            <div id="temp-buttons-before" class="card-actions">
+                <button class="btn btn-primary btn-lg" id="temp-btn-show">
+                    <i data-lucide="eye"></i> Показать перевод
+                </button>
             </div>
-            <div id="temp-buttons-after" style="display: none;">
-                <button class="btn btn-success" id="temp-btn-learned">✓ Выучил (+10 XP)</button>
-                <button class="btn btn-warning" id="temp-btn-dontknow">✗ Не знаю</button>
+            <div id="temp-buttons-after" class="card-actions" style="display: none;">
+                <button class="btn btn-success" id="temp-btn-learned">
+                    <i data-lucide="check"></i> Выучил <span class="xp-tag">+10 XP</span>
+                </button>
+                <button class="btn btn-warning" id="temp-btn-dontknow">
+                    <i data-lucide="x"></i> Не знаю
+                </button>
             </div>
-            <div class="card-frequency">Слово ${positions.tempCards + 1} из ${temporary.length}</div>
         </div>
     `;
 }
@@ -1350,7 +1458,8 @@ function attachTempCardsHandlers() {
     if (showBtn) showBtn.onclick = () => {
         document.getElementById('temp-hidden').style.display = 'block';
         document.getElementById('temp-buttons-before').style.display = 'none';
-        document.getElementById('temp-buttons-after').style.display = 'block';
+        document.getElementById('temp-buttons-after').style.display = 'flex';
+        refreshIcons();
     };
 
     const learnedBtn = document.getElementById('temp-btn-learned');
@@ -1377,7 +1486,7 @@ function attachTempCardsHandlers() {
 }
 
 function renderTempTest() {
-    if (temporary.length < 4) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нужно минимум 4 слова для теста.</p>';
+    if (temporary.length < 4) return `<div class="empty-inline"><i data-lucide="alert-circle"></i><div>Нужно минимум 4 слова для теста.</div></div>`;
 
     if (positions.tempTest >= temporary.length) positions.tempTest = 0;
     const word = temporary[positions.tempTest];
@@ -1394,20 +1503,32 @@ function renderTempTest() {
     }
 
     const options = [correct, ...wrongOptions].sort(() => Math.random() - 0.5);
-    const transText = word.transcription_ru ? `<span class="card-transcription">[${word.transcription_ru}]</span>` : '';
+    const progressPct = Math.round(((positions.tempTest + 1) / temporary.length) * 100);
 
     return `
-        <div class="test-question">
-            ${word.word}
-            <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+        <div class="mode-progress">
+            <div class="mode-progress-info">
+                <span class="mode-progress-label">Тест ${positions.tempTest + 1} из ${temporary.length}</span>
+                <span class="mode-progress-pct">${progressPct}%</span>
+            </div>
+            <div class="mode-progress-bar"><div class="mode-progress-fill" style="width:${progressPct}%"></div></div>
         </div>
-        <div class="card-meta">${transText}</div>
-        <div class="test-options">
-            ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
+        <div class="mode-card">
+            <div class="test-question">
+                ${word.word}
+                <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">
+                    <i data-lucide="volume-2"></i>
+                </button>
+            </div>
+            ${word.transcription_ru ? `<div class="card-meta"><span class="card-transcription">[${word.transcription_ru}]</span></div>` : ''}
+            <div class="test-options">
+                ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
+            </div>
+            <div class="test-feedback" id="temp-test-feedback"></div>
+            <button class="btn btn-success btn-lg" id="temp-btn-next-test" style="display: none;">
+                Дальше <i data-lucide="arrow-right"></i>
+            </button>
         </div>
-        <div class="test-feedback" id="temp-test-feedback"></div>
-        <button class="btn btn-success" id="temp-btn-next-test" style="display: none;">Дальше →</button>
-        <div class="card-frequency">Слово ${positions.tempTest + 1} из ${temporary.length}</div>
     `;
 }
 
@@ -1424,7 +1545,7 @@ function attachTempTestHandlers() {
 
             if (answer === correct) {
                 btn.classList.add('correct');
-                feedback.textContent = '✓ Правильно! +10 XP';
+                feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
                 feedback.className = 'test-feedback correct';
                 updateSrs(word.word, true, true);
                 addXP(10);
@@ -1433,13 +1554,14 @@ function attachTempTestHandlers() {
                 document.querySelectorAll('#content .test-option').forEach(b => {
                     if (b.dataset.answer === correct) b.classList.add('correct');
                 });
-                feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
+                feedback.innerHTML = `<i data-lucide="x-circle"></i> Правильный ответ: ${correct} (+2 XP)`;
                 feedback.className = 'test-feedback wrong';
                 updateSrs(word.word, false, true);
                 addXP(2);
             }
             document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
-            document.getElementById('temp-btn-next-test').style.display = 'inline-block';
+            document.getElementById('temp-btn-next-test').style.display = 'inline-flex';
+            refreshIcons();
         };
     });
 
@@ -1453,19 +1575,40 @@ function attachTempTestHandlers() {
 }
 
 function renderTempWrite() {
-    if (temporary.length === 0) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет временных слов.</p>';
+    if (temporary.length === 0) return `<div class="empty-inline"><i data-lucide="inbox"></i><div>Нет слов.</div></div>`;
 
     if (positions.tempWrite >= temporary.length) positions.tempWrite = 0;
     const word = temporary[positions.tempWrite];
+    const progressPct = Math.round(((positions.tempWrite + 1) / temporary.length) * 100);
 
     return `
-        <div class="card-word">${word.translation}</div>
-        <input type="text" class="write-input" id="temp-write-input" placeholder="Введи слово..." autocomplete="off">
-        <button class="btn btn-primary" id="temp-btn-check">✓ Проверить</button>
-        <button class="btn btn-secondary" id="temp-btn-show-answer">👁 Показать ответ</button>
-        <button class="btn btn-success" id="temp-btn-next-write" style="display: none;">Дальше →</button>
-        <div class="write-feedback" id="temp-write-feedback"></div>
-        <div class="card-frequency">Подсказка: ${word.word.length} букв. Слово ${positions.tempWrite + 1} из ${temporary.length}</div>
+        <div class="mode-progress">
+            <div class="mode-progress-info">
+                <span class="mode-progress-label">Написание ${positions.tempWrite + 1} из ${temporary.length}</span>
+                <span class="mode-progress-pct">${progressPct}%</span>
+            </div>
+            <div class="mode-progress-bar"><div class="mode-progress-fill" style="width:${progressPct}%"></div></div>
+        </div>
+        <div class="mode-card write-card">
+            <div class="write-prompt">
+                <div class="write-prompt-label">Переведи на английский:</div>
+                <div class="write-prompt-word">${word.translation}</div>
+                <div class="write-prompt-hint"><i data-lucide="lightbulb"></i> ${word.word.length} букв</div>
+            </div>
+            <input type="text" class="write-input" id="temp-write-input" placeholder="Введи слово..." autocomplete="off" autocapitalize="off" spellcheck="false">
+            <div class="card-actions">
+                <button class="btn btn-primary btn-lg" id="temp-btn-check">
+                    <i data-lucide="check"></i> Проверить
+                </button>
+                <button class="btn btn-secondary" id="temp-btn-show-answer">
+                    <i data-lucide="eye"></i> Показать ответ
+                </button>
+            </div>
+            <button class="btn btn-success btn-lg" id="temp-btn-next-write" style="display: none;">
+                Дальше <i data-lucide="arrow-right"></i>
+            </button>
+            <div class="write-feedback" id="temp-write-feedback"></div>
+        </div>
     `;
 }
 
@@ -1481,12 +1624,12 @@ function attachTempWriteHandlers() {
         const feedback = document.getElementById('temp-write-feedback');
 
         if (answer === word.word.toLowerCase()) {
-            feedback.textContent = '✓ Правильно! +10 XP';
+            feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
             feedback.className = 'write-feedback correct';
             updateSrs(word.word, true, true);
             addXP(10);
         } else {
-            feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
+            feedback.innerHTML = `<i data-lucide="x-circle"></i> Правильный ответ: <b>${word.word}</b> (+2 XP)`;
             feedback.className = 'write-feedback wrong';
             updateSrs(word.word, false, true);
             addXP(2);
@@ -1494,18 +1637,20 @@ function attachTempWriteHandlers() {
         document.getElementById('temp-btn-check').disabled = true;
         document.getElementById('temp-btn-show-answer').disabled = true;
         input.disabled = true;
-        document.getElementById('temp-btn-next-write').style.display = 'inline-block';
+        document.getElementById('temp-btn-next-write').style.display = 'inline-flex';
+        refreshIcons();
     };
 
     document.getElementById('temp-btn-show-answer').onclick = () => {
-        document.getElementById('temp-write-feedback').textContent = `Правильный ответ: ${word.word}`;
+        document.getElementById('temp-write-feedback').innerHTML = `<i data-lucide="eye"></i> Правильный ответ: <b>${word.word}</b>`;
         document.getElementById('temp-write-feedback').className = 'write-feedback';
         document.getElementById('temp-btn-check').disabled = true;
         document.getElementById('temp-btn-show-answer').disabled = true;
         input.disabled = true;
-        document.getElementById('temp-btn-next-write').style.display = 'inline-block';
+        document.getElementById('temp-btn-next-write').style.display = 'inline-flex';
         updateSrs(word.word, false, true);
         addXP(2);
+        refreshIcons();
     };
 
     document.getElementById('temp-btn-next-write').onclick = () => {
@@ -1526,32 +1671,52 @@ function attachTempWriteHandlers() {
 function renderMastered() {
     if (mastered.length === 0) {
         document.getElementById('content').innerHTML = `
-            <div class="mastered-header"><h2>🏆 Mastered (0)</h2></div>
-            <p class="mastered-empty">Пока нет слов, помеченных как «знаю навсегда».<br>
-            В карточке нажми <b>✓✓ Навсегда</b>, чтобы добавить сюда.</p>
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="trophy"></i></div>
+                <div class="empty-title">Пока пусто</div>
+                <div class="empty-text">Здесь будут слова, которые ты отметил как «знаю навсегда».<br>В карточке нажми <b>✓✓ Навсегда</b>.</div>
+                <div class="empty-actions">
+                    <button class="btn btn-primary" onclick="renderMode('cards')">
+                        <i data-lucide="layers"></i> К карточкам
+                    </button>
+                </div>
+            </div>
         `;
-        document.getElementById('btn-prev').disabled = true;
-        document.getElementById('btn-next').disabled = true;
+        refreshIcons();
         return;
     }
 
     const sorted = [...mastered].sort();
 
     document.getElementById('content').innerHTML = `
-        <div class="mastered-header">
-            <h2>🏆 Mastered (${mastered.length})</h2>
-            <button class="btn btn-warning" id="btn-clear-mastered" style="min-width:auto;padding:8px 14px;font-size:13px;">🗑 Очистить всё</button>
-        </div>
-        <div class="mastered-list">
-            ${sorted.map(word => `
-                <div class="mastered-item">
-                    <div class="mastered-item-info">
-                        <strong>${word}</strong>
-                        <button class="speak-btn" onclick="speak('${word.replace(/'/g, "\\'")}')">🔊</button>
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title">
+                        <i data-lucide="trophy"></i> Mastered
                     </div>
-                    <button class="btn btn-secondary" onclick="unmasterWord('${word.replace(/'/g, "\\'")}')" style="min-width:auto;">↩ Вернуть</button>
+                    <div class="list-subtitle">${mastered.length} слов знаешь навсегда</div>
                 </div>
-            `).join('')}
+                <button class="btn btn-secondary" id="btn-clear-mastered">
+                    <i data-lucide="trash-2"></i> Очистить всё
+                </button>
+            </div>
+
+            <div class="list-items">
+                ${sorted.map(word => `
+                    <div class="list-item list-item-success">
+                        <div class="list-item-info">
+                            <strong>${word}</strong>
+                            <button class="speak-btn speak-btn-sm" onclick="speak('${word.replace(/'/g, "\\'")}')">
+                                <i data-lucide="volume-2"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" onclick="unmasterWord('${word.replace(/'/g, "\\'")}')">
+                            <i data-lucide="undo-2"></i> Вернуть
+                        </button>
+                    </div>
+                `).join('')}
+            </div>
         </div>
     `;
 
@@ -1562,8 +1727,7 @@ function renderMastered() {
         updateStats();
     };
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 function unmasterWord(word) {
@@ -1590,28 +1754,36 @@ function getUniqueTenses() {
 function renderSentences() {
     if (sentences.length === 0) {
         document.getElementById('content').innerHTML = `
-            <div class="sentences-header"><h2>📖 Грамматика</h2></div>
-            <p style="color:var(--text-muted);margin-top:20px;text-align:center;">Файл <b>sentences.json</b> не загружен.</p>
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="book-open"></i></div>
+                <div class="empty-title">Нет предложений</div>
+                <div class="empty-text">Файл <b>sentences.json</b> не загружен.</div>
+            </div>
         `;
-        document.getElementById('btn-prev').disabled = true;
-        document.getElementById('btn-next').disabled = true;
+        refreshIcons();
         return;
     }
 
     const tenses = getUniqueTenses();
     const filterChips = `
-        <button class="sent-filter-chip ${sentFilter === 'all' ? 'active' : ''}" data-filter="all">All (${sentences.length})</button>
+        <button class="chip ${sentFilter === 'all' ? 'active' : ''}" data-filter="all">All · ${sentences.length}</button>
         ${tenses.map(t => {
             const count = sentences.filter(s => s.tense === t.key).length;
-            return `<button class="sent-filter-chip ${sentFilter === t.key ? 'active' : ''}" data-filter="${t.key}">${t.label} (${count})</button>`;
+            return `<button class="chip ${sentFilter === t.key ? 'active' : ''}" data-filter="${t.key}">${t.label} · ${count}</button>`;
         }).join('')}
     `;
 
     const subNav = `
-        <div class="temp-subnav">
-            <button class="temp-subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">🔤 Сборка</button>
-            <button class="temp-subnav-btn ${sentSubMode === 'choose' ? 'active' : ''}" data-sub="choose">✅ Выбор времени</button>
-            <button class="temp-subnav-btn ${sentSubMode === 'translate' ? 'active' : ''}" data-sub="translate">✏️ Перевод</button>
+        <div class="subnav">
+            <button class="subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">
+                <i data-lucide="puzzle"></i> Сборка
+            </button>
+            <button class="subnav-btn ${sentSubMode === 'choose' ? 'active' : ''}" data-sub="choose">
+                <i data-lucide="check-circle-2"></i> Выбор времени
+            </button>
+            <button class="subnav-btn ${sentSubMode === 'translate' ? 'active' : ''}" data-sub="translate">
+                <i data-lucide="pencil"></i> Перевод
+            </button>
         </div>
     `;
 
@@ -1621,20 +1793,27 @@ function renderSentences() {
     else if (sentSubMode === 'translate') bodyHtml = renderSentTranslate();
 
     document.getElementById('content').innerHTML = `
-        <div class="sentences-header"><h2>📖 Грамматика</h2></div>
-        <div class="sent-filters">${filterChips}</div>
-        ${subNav}
-        ${bodyHtml}
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title"><i data-lucide="book-open"></i> Грамматика</div>
+                    <div class="list-subtitle">12 времён · ${sentences.length} предложений</div>
+                </div>
+            </div>
+            <div class="chips-row">${filterChips}</div>
+            ${subNav}
+            ${bodyHtml}
+        </div>
     `;
 
-    document.querySelectorAll('.sent-filter-chip').forEach(btn => {
+    document.querySelectorAll('.chip').forEach(btn => {
         btn.onclick = () => {
             sentFilter = btn.dataset.filter;
             renderSentences();
         };
     });
 
-    document.querySelectorAll('.temp-subnav-btn').forEach(btn => {
+    document.querySelectorAll('.subnav-btn').forEach(btn => {
         btn.onclick = () => {
             sentSubMode = btn.dataset.sub;
             renderSentences();
@@ -1645,32 +1824,50 @@ function renderSentences() {
     else if (sentSubMode === 'choose') attachSentChooseHandlers();
     else if (sentSubMode === 'translate') attachSentTranslateHandlers();
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 function renderSentBuild() {
     const data = getFilteredSentences();
-    if (data.length === 0) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет предложений.</p>';
+    if (data.length === 0) return `<div class="empty-inline"><i data-lucide="inbox"></i><div>Нет предложений под этот фильтр.</div></div>`;
 
     if (positions.sentBuild >= data.length) positions.sentBuild = 0;
     const sent = data[positions.sentBuild];
     const shuffled = [...sent.words].sort(() => Math.random() - 0.5);
+    const progressPct = Math.round(((positions.sentBuild + 1) / data.length) * 100);
 
     return `
-        <div class="sent-task">
-            <div class="sent-label">${sent.tense_label} · ${sent.hint}</div>
+        <div class="mode-progress">
+            <div class="mode-progress-info">
+                <span class="mode-progress-label">${positions.sentBuild + 1} из ${data.length}</span>
+                <span class="mode-progress-pct">${progressPct}%</span>
+            </div>
+            <div class="mode-progress-bar"><div class="mode-progress-fill" style="width:${progressPct}%"></div></div>
+        </div>
+        <div class="mode-card sent-task">
+            <div class="mode-badge">
+                <i data-lucide="puzzle"></i> Собери предложение · ${sent.tense_label}
+            </div>
             <div class="sent-ru">${sent.ru}</div>
             <div class="sent-words" id="sent-words-pool">
-                ${shuffled.map((w) => `<button class="sent-word-chip" data-word="${w}">${w}</button>`).join('')}
+                ${shuffled.map(w => `<button class="sent-word-chip" data-word="${w}">${w}</button>`).join('')}
             </div>
             <div class="sent-answer" id="sent-answer-area"></div>
             <div class="sent-feedback" id="sent-build-feedback"></div>
-            <button class="btn btn-primary" id="sent-build-check" style="display:none;">✓ Проверить</button>
-            <button class="btn btn-secondary" id="sent-build-reset">↺ Сбросить</button>
-            <button class="btn btn-secondary" id="sent-build-show">👁 Показать ответ</button>
-            <button class="btn btn-success" id="sent-build-next" style="display:none;">Дальше →</button>
-            <div class="card-frequency">${positions.sentBuild + 1} из ${data.length}</div>
+            <div class="card-actions">
+                <button class="btn btn-primary btn-lg" id="sent-build-check" style="display:none;">
+                    <i data-lucide="check"></i> Проверить
+                </button>
+                <button class="btn btn-secondary" id="sent-build-reset">
+                    <i data-lucide="rotate-ccw"></i> Сбросить
+                </button>
+                <button class="btn btn-secondary" id="sent-build-show">
+                    <i data-lucide="eye"></i> Показать ответ
+                </button>
+            </div>
+            <button class="btn btn-success btn-lg" id="sent-build-next" style="display:none;">
+                Дальше <i data-lucide="arrow-right"></i>
+            </button>
         </div>
     `;
 }
@@ -1713,21 +1910,22 @@ function attachSentBuildHandlers() {
             answerEl.appendChild(btn);
         });
 
-        checkBtn.style.display = picked.length === sent.words.length ? 'inline-block' : 'none';
+        checkBtn.style.display = picked.length === sent.words.length ? 'inline-flex' : 'none';
     }
 
     updateUI();
+    refreshIcons();
 
     checkBtn.onclick = () => {
         const userAnswer = picked.join(' ').trim();
         const correct = sent.words.join(' ').trim();
 
         if (userAnswer === correct) {
-            feedback.textContent = '✓ Правильно! +10 XP';
+            feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
             feedback.className = 'sent-feedback correct';
             addXP(10);
         } else {
-            feedback.innerHTML = `✗ Не совсем.<br><b>Твой ответ:</b> ${userAnswer}<br><b>Правильно:</b> ${correct} (+2 XP)`;
+            feedback.innerHTML = `<i data-lucide="x-circle"></i> Твой: ${userAnswer}<br>Правильно: <b>${correct}</b> (+2 XP)`;
             feedback.className = 'sent-feedback wrong';
             addXP(2);
         }
@@ -1735,7 +1933,8 @@ function attachSentBuildHandlers() {
         checkBtn.disabled = true;
         resetBtn.disabled = true;
         showBtn.disabled = true;
-        nextBtn.style.display = 'inline-block';
+        nextBtn.style.display = 'inline-flex';
+        refreshIcons();
     };
 
     resetBtn.onclick = () => {
@@ -1753,7 +1952,7 @@ function attachSentBuildHandlers() {
         checkBtn.disabled = true;
         resetBtn.disabled = true;
         showBtn.disabled = true;
-        nextBtn.style.display = 'inline-block';
+        nextBtn.style.display = 'inline-flex';
     };
 
     nextBtn.onclick = () => {
@@ -1766,7 +1965,7 @@ function attachSentBuildHandlers() {
 
 function renderSentChoose() {
     const data = getFilteredSentences();
-    if (data.length < 4) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нужно минимум 4 предложения.</p>';
+    if (data.length < 4) return `<div class="empty-inline"><i data-lucide="alert-circle"></i><div>Нужно минимум 4 предложения.</div></div>`;
 
     if (positions.sentChoose >= data.length) positions.sentChoose = 0;
     const sent = data[positions.sentChoose];
@@ -1781,18 +1980,29 @@ function renderSentChoose() {
     }
 
     const options = [correct, ...wrongOptions.slice(0, 3)].sort(() => Math.random() - 0.5);
+    const progressPct = Math.round(((positions.sentChoose + 1) / data.length) * 100);
 
     return `
-        <div class="sent-task">
-            <div class="sent-label">Определи время</div>
+        <div class="mode-progress">
+            <div class="mode-progress-info">
+                <span class="mode-progress-label">${positions.sentChoose + 1} из ${data.length}</span>
+                <span class="mode-progress-pct">${progressPct}%</span>
+            </div>
+            <div class="mode-progress-bar"><div class="mode-progress-fill" style="width:${progressPct}%"></div></div>
+        </div>
+        <div class="mode-card sent-task">
+            <div class="mode-badge"><i data-lucide="search"></i> Определи время</div>
             <div class="sent-en-big">${sent.en}</div>
-            <button class="speak-btn" onclick="speak('${sent.en.replace(/'/g, "\\'")}')">🔊</button>
-            <div class="test-options">
+            <button class="speak-btn" onclick="speak('${sent.en.replace(/'/g, "\\'")}')">
+                <i data-lucide="volume-2"></i>
+            </button>
+            <div class="test-options" style="margin-top: 20px;">
                 ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
             </div>
             <div class="sent-feedback" id="sent-choose-feedback"></div>
-            <button class="btn btn-success" id="sent-choose-next" style="display:none;">Дальше →</button>
-            <div class="card-frequency">${positions.sentChoose + 1} из ${data.length}</div>
+            <button class="btn btn-success btn-lg" id="sent-choose-next" style="display:none;">
+                Дальше <i data-lucide="arrow-right"></i>
+            </button>
         </div>
     `;
 }
@@ -1811,7 +2021,7 @@ function attachSentChooseHandlers() {
 
             if (answer === correct) {
                 btn.classList.add('correct');
-                feedback.textContent = `✓ Правильно! ${correct} · ${sent.hint} (+10 XP)`;
+                feedback.innerHTML = `<i data-lucide="check-circle"></i> Правильно! ${correct} (+10 XP)`;
                 feedback.className = 'sent-feedback correct';
                 addXP(10);
             } else {
@@ -1819,12 +2029,13 @@ function attachSentChooseHandlers() {
                 document.querySelectorAll('#content .test-option').forEach(b => {
                     if (b.dataset.answer === correct) b.classList.add('correct');
                 });
-                feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
+                feedback.innerHTML = `<i data-lucide="x-circle"></i> Правильный ответ: ${correct} (+2 XP)`;
                 feedback.className = 'sent-feedback wrong';
                 addXP(2);
             }
             document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
-            document.getElementById('sent-choose-next').style.display = 'inline-block';
+            document.getElementById('sent-choose-next').style.display = 'inline-flex';
+            refreshIcons();
         };
     });
 
@@ -1838,29 +2049,44 @@ function attachSentChooseHandlers() {
 
 function renderSentTranslate() {
     const data = getFilteredSentences();
-    if (data.length === 0) return '<p style="color:var(--text-muted);margin-top:20px;text-align:center;">Нет предложений.</p>';
+    if (data.length === 0) return `<div class="empty-inline"><i data-lucide="inbox"></i><div>Нет предложений.</div></div>`;
 
     if (positions.sentTranslate >= data.length) positions.sentTranslate = 0;
     const sent = data[positions.sentTranslate];
+    const progressPct = Math.round(((positions.sentTranslate + 1) / data.length) * 100);
 
     return `
-        <div class="sent-task">
-            <div class="sent-label">${sent.tense_label} · ${sent.hint}</div>
+        <div class="mode-progress">
+            <div class="mode-progress-info">
+                <span class="mode-progress-label">${positions.sentTranslate + 1} из ${data.length}</span>
+                <span class="mode-progress-pct">${progressPct}%</span>
+            </div>
+            <div class="mode-progress-bar"><div class="mode-progress-fill" style="width:${progressPct}%"></div></div>
+        </div>
+        <div class="mode-card sent-task">
+            <div class="mode-badge"><i data-lucide="pencil"></i> Переведи · ${sent.tense_label}</div>
             <div class="sent-ru-big">${sent.ru}</div>
-            <input type="text" class="write-input" id="sent-translate-input" placeholder="Введи перевод..." autocomplete="off">
-            <button class="btn btn-primary" id="sent-translate-check">✓ Показать эталон</button>
-            <button class="btn btn-success" id="sent-translate-next" style="display:none;">Дальше →</button>
+            <input type="text" class="write-input" id="sent-translate-input" placeholder="Введи перевод..." autocomplete="off" autocapitalize="off" spellcheck="false">
+            <button class="btn btn-primary btn-lg" id="sent-translate-check">
+                <i data-lucide="eye"></i> Показать эталон
+            </button>
             <div class="sent-reference" id="sent-translate-ref" style="display:none;">
-                <div class="sent-ref-label">Эталон:</div>
+                <div class="sent-ref-label">Эталон</div>
                 <div class="sent-ref-en">${sent.en}</div>
-                <button class="speak-btn" onclick="speak('${sent.en.replace(/'/g, "\\'")}')">🔊</button>
+                <button class="speak-btn" onclick="speak('${sent.en.replace(/'/g, "\\'")}')">
+                    <i data-lucide="volume-2"></i>
+                </button>
                 <div class="sent-ref-hint">Оцени себя честно:</div>
-                <button class="btn btn-success" id="sent-mark-correct">✓ Совпало (+10 XP)</button>
-                <button class="btn btn-warning" id="sent-mark-partial">~ Частично (+5 XP)</button>
-                <button class="btn btn-secondary" id="sent-mark-wrong">✗ Не смог (+2 XP)</button>
+                <div class="card-actions">
+                    <button class="btn btn-success" id="sent-mark-correct">✓ Совпало +10 XP</button>
+                    <button class="btn btn-warning" id="sent-mark-partial">~ Частично +5 XP</button>
+                    <button class="btn btn-secondary" id="sent-mark-wrong">✗ Не смог +2 XP</button>
+                </div>
             </div>
             <div class="sent-feedback" id="sent-translate-feedback"></div>
-            <div class="card-frequency">${positions.sentTranslate + 1} из ${data.length}</div>
+            <button class="btn btn-success btn-lg" id="sent-translate-next" style="display:none;">
+                Дальше <i data-lucide="arrow-right"></i>
+            </button>
         </div>
     `;
 }
@@ -1881,7 +2107,8 @@ function attachSentTranslateHandlers() {
         document.getElementById('sent-translate-ref').style.display = 'block';
         document.getElementById('sent-translate-check').disabled = true;
         input.disabled = true;
-        document.getElementById('sent-translate-next').style.display = 'inline-block';
+        document.getElementById('sent-translate-next').style.display = 'inline-flex';
+        refreshIcons();
     };
 
     document.getElementById('sent-mark-correct').onclick = () => {
@@ -1900,7 +2127,7 @@ function attachSentTranslateHandlers() {
 
     document.getElementById('sent-mark-wrong').onclick = () => {
         addXP(2);
-        document.getElementById('sent-translate-feedback').textContent = '✗ +2 XP. Запомни эталон.';
+        document.getElementById('sent-translate-feedback').textContent = '✗ +2 XP';
         document.getElementById('sent-translate-feedback').className = 'sent-feedback wrong';
         document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
     };
@@ -1928,62 +2155,75 @@ function renderProfile() {
     const uid = currentUser ? currentUser.uid : '(нет)';
 
     document.getElementById('content').innerHTML = `
-        <div class="card" style="text-align: left; max-width: 700px; margin: 0 auto;">
-            <h2 style="font-size: 22px; font-weight: 800; margin-bottom: 20px;">👤 Профиль</h2>
-
-            <div style="margin-bottom: 24px;">
-                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Имя</label>
-                <input type="text" class="write-input" id="profile-name" placeholder="Введи имя" value="${userName}" style="text-align: left; margin-bottom: 8px;">
-                <button class="btn btn-primary" id="btn-save-name" style="min-width: auto;">Сохранить имя</button>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px;">
-                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
-                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">XP</div>
-                    <div style="font-size: 22px; font-weight: 800;">${xp}</div>
-                </div>
-                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
-                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">🔥 Streak</div>
-                    <div style="font-size: 22px; font-weight: 800;">${streak}</div>
-                </div>
-                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
-                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">📚 Learned</div>
-                    <div style="font-size: 22px; font-weight: 800;">${levelLearned}/${levelTotal}</div>
-                </div>
-                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
-                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">🏆 Mastered</div>
-                    <div style="font-size: 22px; font-weight: 800;">${mastered.length}</div>
-                </div>
-                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
-                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">⏰ Due</div>
-                    <div style="font-size: 22px; font-weight: 800;">${dueCount}</div>
-                </div>
-                <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md);">
-                    <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">⚙️ Уровень</div>
-                    <div style="font-size: 22px; font-weight: 800;">${getLevelName()}</div>
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title"><i data-lucide="user"></i> Профиль</div>
+                    <div class="list-subtitle">Настройки и статистика</div>
                 </div>
             </div>
 
-            <div style="margin-bottom: 24px;">
-                <div style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">Тема</div>
-                <button class="btn btn-secondary" id="profile-theme-toggle" style="min-width: auto;">
-                    ${theme === 'dark' ? '☀️ Светлая тема' : '🌙 Тёмная тема'}
+            <div class="profile-section">
+                <div class="profile-label">Имя</div>
+                <input type="text" class="write-input" id="profile-name" placeholder="Введи имя" value="${userName}" style="text-align: left;">
+                <button class="btn btn-primary" id="btn-save-name">
+                    <i data-lucide="check"></i> Сохранить
                 </button>
             </div>
 
-            <div style="margin-bottom: 24px;">
-                <div style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">Прогресс</div>
-                <button class="btn btn-secondary" id="btn-export" style="min-width: auto;">💾 Экспорт JSON</button>
-                <button class="btn btn-secondary" id="btn-import" style="min-width: auto;">📂 Импорт JSON</button>
+            <div class="profile-stats">
+                <div class="profile-stat">
+                    <div class="profile-stat-value">${xp}</div>
+                    <div class="profile-stat-label">XP</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value">${streak} 🔥</div>
+                    <div class="profile-stat-label">Streak</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value">${levelLearned}/${levelTotal}</div>
+                    <div class="profile-stat-label">Learned</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value">${mastered.length} 🏆</div>
+                    <div class="profile-stat-label">Mastered</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value">${dueCount}</div>
+                    <div class="profile-stat-label">Due</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="profile-stat-value">${getLevelName()}</div>
+                    <div class="profile-stat-label">Уровень</div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="profile-label">Тема</div>
+                <button class="btn btn-secondary" id="profile-theme-toggle">
+                    ${theme === 'dark' ? '<i data-lucide="sun"></i> Светлая' : '<i data-lucide="moon"></i> Тёмная'}
+                </button>
+            </div>
+
+            <div class="profile-section">
+                <div class="profile-label">Прогресс</div>
+                <button class="btn btn-secondary" id="btn-export">
+                    <i data-lucide="download"></i> Экспорт JSON
+                </button>
+                <button class="btn btn-secondary" id="btn-import">
+                    <i data-lucide="upload"></i> Импорт JSON
+                </button>
                 <input type="file" id="import-file" accept=".json" style="display: none;">
             </div>
 
-            <div style="background: var(--danger-bg); padding: 16px; border-radius: var(--radius-md); margin-bottom: 24px;">
-                <div style="font-size: 13px; font-weight: 700; color: var(--danger); margin-bottom: 8px;">Опасная зона</div>
-                <button class="btn btn-warning" id="btn-reset" style="min-width: auto; background: var(--danger);">🗑 Сбросить прогресс</button>
+            <div class="profile-danger">
+                <div class="profile-danger-label">Опасная зона</div>
+                <button class="btn" id="btn-reset" style="background: var(--danger);">
+                    <i data-lucide="trash-2"></i> Сбросить весь прогресс
+                </button>
             </div>
 
-            <div style="background: var(--bg-soft); padding: 14px; border-radius: var(--radius-md); font-size: 12px; color: var(--text-muted); word-break: break-all;">
+            <div class="profile-uid">
                 <b>Firebase UID:</b> ${uid}
             </div>
         </div>
@@ -2072,8 +2312,7 @@ function renderProfile() {
         location.reload();
     };
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 // ===== НАВИГАЦИЯ =====
