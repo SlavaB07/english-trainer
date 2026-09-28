@@ -22,8 +22,15 @@ positions.sentTranslate = positions.sentTranslate || 0;
 
 let tempSubMode = 'list';
 let sentSubMode = 'build';
-let sentTenseFilter = 'all';   // 'all' | 'present_simple' | ...
-let sentLevelFilter = 'all';   // 'all' | 'A1' | 'A2' | 'B1' | 'B2'
+let sentTenseFilter = 'all';
+let sentLevelFilter = 'all';
+
+// === LEARNING PATH ===
+let duoProgress = JSON.parse(localStorage.getItem('duoProgress') || '{}');
+// { "1": { build: true, choose: true, translate: false }, ... }
+let lpExpandedTenses = JSON.parse(localStorage.getItem('lpExpandedTenses') || '[]');
+let sentOrderOverride = null;   // null | 'ordered'
+let sentReturnToLP = false;
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
@@ -36,14 +43,6 @@ let achievements = JSON.parse(localStorage.getItem('achievements') || '[]');
 let userName = localStorage.getItem('userName') || '';
 
 let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
-let duoProgress = JSON.parse(localStorage.getItem('duoProgress') || '{}');
-// { "1": { build: true, choose: true, translate: false }, ... }
-let lpExpandedTenses = JSON.parse(localStorage.getItem('lpExpandedTenses') || '[]');
-// ['present_simple', 'past_simple', ...] — какие тенсы раскрыты в Learning Path
-let sentOrderOverride = null;
-// null | 'ordered' — если пришли из Learning Path, идём по порядку id
-let sentReturnToLP = false;
-// true — показывать кнопку «← Назад в Путь»
 
 const DAILY_GOAL = 20;
 const SRS_INTERVALS = [0, 1, 2, 4, 7, 14];
@@ -63,14 +62,12 @@ function updateThemeIcon(theme) {
 function initTheme() {
     let saved = localStorage.getItem('theme');
     if (!saved || (saved !== 'light' && saved !== 'dark')) {
-        // Первый заход — смотрим на системную тему
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         saved = prefersDark ? 'dark' : 'light';
     }
     document.documentElement.setAttribute('data-theme', saved);
     updateThemeIcon(saved);
 
-    // Реагируем на изменение системной темы, если пользователь не выбирал вручную
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (!localStorage.getItem('theme')) {
             const newTheme = e.matches ? 'dark' : 'light';
@@ -123,10 +120,10 @@ async function syncToFirebase() {
     if (!currentUser || !window.firebaseSetDoc) return;
     try {
         const payload = {
-    xp, dailyXP, lastActiveDate, streak, achievements,
-    learned, mastered, positions, currentLevel, srsData, userName,
-    duoProgress
-};
+            xp, dailyXP, lastActiveDate, streak, achievements,
+            learned, mastered, positions, currentLevel, srsData, userName,
+            duoProgress
+        };
         if (Array.isArray(temporary) && temporary.length > 0) {
             payload.temporary = temporary;
         }
@@ -174,20 +171,21 @@ async function loadFromFirebase() {
                 temporary = mergeTemporary(temporary, data.temporary);
             }
             srsData = data.srsData ?? srsData;
+
+            // === LEARNING PATH: мержим duoProgress ===
             if (data.duoProgress && typeof data.duoProgress === 'object') {
-    // Мержим: локальный + серверный, объединяем по skill
-    const merged = { ...duoProgress };
-    Object.keys(data.duoProgress).forEach(id => {
-        const remote = data.duoProgress[id] || {};
-        const local = merged[id] || {};
-        merged[id] = {
-            build: !!(local.build || remote.build),
-            choose: !!(local.choose || remote.choose),
-            translate: !!(local.translate || remote.translate)
-        };
-    });
-    duoProgress = merged;
-}
+                const merged = { ...duoProgress };
+                Object.keys(data.duoProgress).forEach(id => {
+                    const remote = data.duoProgress[id] || {};
+                    const local = merged[id] || {};
+                    merged[id] = {
+                        build: !!(local.build || remote.build),
+                        choose: !!(local.choose || remote.choose),
+                        translate: !!(local.translate || remote.translate)
+                    };
+                });
+                duoProgress = merged;
+            }
 
             localStorage.setItem('xp', xp.toString());
             localStorage.setItem('dailyXP', dailyXP.toString());
@@ -266,26 +264,15 @@ async function loadData() {
         localStorage.setItem('temporary', JSON.stringify(temporary));
 
         try {
-    const sentRes = await fetch('data/sentences.json');
-    let loaded = await sentRes.json();
-    if (!Array.isArray(loaded)) loaded = [];
-    // Общий шаффл при загрузке страницы
-    sentences = shuffleArray(loaded);
-    console.log('📖 Загружено предложений:', sentences.length);
-} catch (e) {
-    console.warn('sentences.json не загружен:', e);
-    sentences = [];
-}
-
-// Хелпер — перемешивание Фишера-Йетса
-function shuffleArray(arr) {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
+            const sentRes = await fetch('data/sentences.json');
+            let loaded = await sentRes.json();
+            if (!Array.isArray(loaded)) loaded = [];
+            sentences = shuffleArray(loaded);
+            console.log('📖 Загружено предложений:', sentences.length);
+        } catch (e) {
+            console.warn('sentences.json не загружен:', e);
+            sentences = [];
+        }
 
         checkStreak();
         updateStats();
@@ -298,6 +285,16 @@ function shuffleArray(arr) {
         document.getElementById('content').innerHTML =
             '<p style="color: red;">Ошибка загрузки данных.</p>';
     }
+}
+
+// Хелпер — перемешивание Фишера-Йетса
+function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
 }
 
 // ===== SRS =====
@@ -340,6 +337,7 @@ function getDueWords() {
     });
     return due;
 }
+
 // ===== DUO PROGRESS (Learning Path) =====
 function markDuoDone(sentId, skill) {
     // skill: 'build' | 'choose' | 'translate'
@@ -347,7 +345,7 @@ function markDuoDone(sentId, skill) {
     if (!duoProgress[sentId]) {
         duoProgress[sentId] = { build: false, choose: false, translate: false };
     }
-    if (duoProgress[sentId][skill] === true) return; // уже отмечено — не дёргаем sync
+    if (duoProgress[sentId][skill] === true) return;
     duoProgress[sentId][skill] = true;
     localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
     syncToFirebase();
@@ -376,7 +374,6 @@ function getBlockProgress(tenseKeys) {
     return { done, total: items.length };
 }
 
-// ===== LEARNING PATH: блоки и времена =====
 function getBlockName(block) {
     if (block === 'present') return { label: 'Present', emoji: '🟢', color: 'green' };
     if (block === 'past')    return { label: 'Past',    emoji: '🟡', color: 'amber' };
@@ -385,7 +382,8 @@ function getBlockName(block) {
 }
 
 function getTensesInBlock(block) {
-    return sentences
+    const order = ['simple', 'continuous', 'perfect', 'perfect_continuous'];
+    const all = sentences
         .filter(s => s.tense.startsWith(block + '_'))
         .reduce((acc, s) => {
             if (!acc.find(t => t.key === s.tense)) {
@@ -393,11 +391,22 @@ function getTensesInBlock(block) {
             }
             return acc;
         }, []);
+
+    all.sort((a, b) => {
+        const aSuf = a.key.replace(block + '_', '');
+        const bSuf = b.key.replace(block + '_', '');
+        const ai = order.indexOf(aSuf);
+        const bi = order.indexOf(bSuf);
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+    });
+
+    return all;
 }
 
 function getBlockKeys() {
     return ['present', 'past', 'future'];
 }
+
 // ===== MASTERED =====
 function isMastered(word) {
     return mastered.includes(word);
@@ -564,10 +573,19 @@ function setActiveNav(mode) {
 }
 
 function renderMode(mode) {
+    // Сброс флага возврата, если зашли в Sentences НЕ из Learning Path
+    if (mode === 'sentences' && currentMode !== 'learning') {
+        sentReturnToLP = false;
+    }
+    // Сброс override при уходе из Sentences
+    if (mode !== 'sentences') {
+        sentOrderOverride = null;
+    }
+
     currentMode = mode;
     setActiveNav(mode);
 
-      if (mode === 'dashboard') renderDashboard();
+    if (mode === 'dashboard') renderDashboard();
     else if (mode === 'learning') renderLearningPath();
     else if (mode === 'cards') renderCards();
     else if (mode === 'test') renderTest();
@@ -644,7 +662,6 @@ function renderDashboard() {
 
             <div class="dash-main">
 
-                <!-- Hero -->
                 <div class="dash-hero">
                     <div class="dash-hero-content">
                         <div class="dash-hero-title">Время учить английский! 🚀</div>
@@ -657,7 +674,6 @@ function renderDashboard() {
                     <div class="dash-hero-mascot">${mascotHero}</div>
                 </div>
 
-                <!-- Быстрые действия -->
                 <div class="dash-section">
                     <div class="dash-section-header">
                         <div class="dash-section-title">Выбери, с чего начать</div>
@@ -697,7 +713,6 @@ function renderDashboard() {
                     </div>
                 </div>
 
-                <!-- Продолжить обучение -->
                 <div class="dash-section">
                     <div class="dash-continue">
                         <div class="dash-continue-progress">
@@ -728,7 +743,6 @@ function renderDashboard() {
 
             </div>
 
-            <!-- Правая колонка -->
             <div class="dash-side">
 
                 <div class="dash-card">
@@ -1156,6 +1170,7 @@ function renderWrite() {
 
     refreshIcons();
 }
+
 // ===== PHRASES =====
 function renderPhrases() {
     const data = getFilteredPhrases();
@@ -1842,11 +1857,17 @@ function unmasterWord(word) {
 
 // ===== SENTENCES =====
 function getFilteredSentences() {
-    return sentences.filter(s => {
+    let result = sentences.filter(s => {
         if (sentTenseFilter !== 'all' && s.tense !== sentTenseFilter) return false;
         if (sentLevelFilter !== 'all' && s.level !== sentLevelFilter) return false;
         return true;
     });
+
+    if (sentOrderOverride === 'ordered') {
+        result = [...result].sort((a, b) => a.id - b.id);
+    }
+
+    return result;
 }
 
 function getUniqueTenses() {
@@ -1876,7 +1897,6 @@ function renderSentences() {
         return;
     }
 
-    // === Первый ряд: времена ===
     const tenses = getUniqueTenses();
     const totalAll = sentences.length;
     const totalLevelFiltered = getFilteredSentences().length;
@@ -1893,7 +1913,6 @@ function renderSentences() {
         }).join('')}
     `;
 
-    // === Второй ряд: уровни ===
     const levels = getUniqueLevels();
     const levelChips = levels.map(lvl => {
         const count = sentences.filter(s => {
@@ -1933,6 +1952,11 @@ function renderSentences() {
                         12 времён · ${sentences.length} предложений · показано ${totalLevelFiltered}
                     </div>
                 </div>
+                ${sentReturnToLP ? `
+                    <button class="btn btn-secondary" id="sent-back-to-lp">
+                        <i data-lucide="arrow-left"></i> Назад в Путь
+                    </button>
+                ` : ''}
             </div>
             <div class="chips-row">${tenseChips}</div>
             <div class="chips-row chips-row-levels">${levelChips}</div>
@@ -1941,26 +1965,26 @@ function renderSentences() {
         </div>
     `;
 
-    // Обработка кликов по временам
     document.querySelectorAll('.chip[data-tense]').forEach(btn => {
         btn.onclick = () => {
             sentTenseFilter = btn.dataset.tense;
-            // При смене времени — сбрасываем уровень на 'all'
             sentLevelFilter = 'all';
+            sentOrderOverride = null;
+            sentReturnToLP = false;
             renderSentences();
         };
     });
 
-    // Обработка кликов по уровням
     document.querySelectorAll('.chip[data-level]').forEach(btn => {
         btn.onclick = () => {
             const lvl = btn.dataset.level;
-            // Повторный клик по активному → снять фильтр (показать все)
             if (sentLevelFilter === lvl) {
                 sentLevelFilter = 'all';
             } else {
                 sentLevelFilter = lvl;
             }
+            sentOrderOverride = null;
+            sentReturnToLP = false;
             renderSentences();
         };
     });
@@ -1975,6 +1999,15 @@ function renderSentences() {
     if (sentSubMode === 'build') attachSentBuildHandlers();
     else if (sentSubMode === 'choose') attachSentChooseHandlers();
     else if (sentSubMode === 'translate') attachSentTranslateHandlers();
+
+    const backBtn = document.getElementById('sent-back-to-lp');
+    if (backBtn) {
+        backBtn.onclick = () => {
+            sentOrderOverride = null;
+            sentReturnToLP = false;
+            renderMode('learning');
+        };
+    }
 
     refreshIcons();
 }
@@ -2076,6 +2109,7 @@ function attachSentBuildHandlers() {
             feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
             feedback.className = 'sent-feedback correct';
             addXP(10);
+            markDuoDone(sent.id, 'build');
         } else {
             feedback.innerHTML = `<i data-lucide="x-circle"></i> Твой: ${userAnswer}<br>Правильно: <b>${correct}</b> (+2 XP)`;
             feedback.className = 'sent-feedback wrong';
@@ -2176,6 +2210,7 @@ function attachSentChooseHandlers() {
                 feedback.innerHTML = `<i data-lucide="check-circle"></i> Правильно! ${correct} (+10 XP)`;
                 feedback.className = 'sent-feedback correct';
                 addXP(10);
+                markDuoDone(sent.id, 'choose');
             } else {
                 btn.classList.add('wrong');
                 document.querySelectorAll('#content .test-option').forEach(b => {
@@ -2247,6 +2282,8 @@ function attachSentTranslateHandlers() {
     const data = getFilteredSentences();
     if (data.length === 0) return;
 
+    const sent = data[positions.sentTranslate];
+
     const input = document.getElementById('sent-translate-input');
     input.focus();
 
@@ -2268,6 +2305,7 @@ function attachSentTranslateHandlers() {
         document.getElementById('sent-translate-feedback').textContent = '✓ +10 XP';
         document.getElementById('sent-translate-feedback').className = 'sent-feedback correct';
         document.querySelectorAll('#sent-translate-ref button').forEach(b => b.disabled = true);
+        markDuoDone(sent.id, 'translate');
     };
 
     document.getElementById('sent-mark-partial').onclick = () => {
@@ -2297,6 +2335,7 @@ function attachSentTranslateHandlers() {
         }
     });
 }
+
 // ===== LEARNING PATH =====
 function renderLearningPath() {
     if (sentences.length === 0) {
@@ -2329,7 +2368,6 @@ function renderLearningPath() {
             const tpPct = tp.total > 0 ? Math.round((tp.done / tp.total) * 100) : 0;
             const isExpanded = lpExpandedTenses.includes(t.key);
 
-            // Уровни внутри тенса
             let levelsHtml = '';
             if (isExpanded) {
                 const levels = ['A1', 'A2', 'B1', 'B2'];
@@ -2423,7 +2461,6 @@ function renderLearningPath() {
 }
 
 function attachLearningPathHandlers() {
-    // Раскрытие тенса
     document.querySelectorAll('[data-tense-toggle]').forEach(el => {
         el.onclick = () => {
             const key = el.dataset.tenseToggle;
@@ -2435,7 +2472,6 @@ function attachLearningPathHandlers() {
         };
     });
 
-    // Клик на уровень → переход в Sentences с фильтрами
     document.querySelectorAll('.lp-level-btn').forEach(btn => {
         btn.onclick = () => {
             const tense = btn.dataset.tense;
@@ -2445,13 +2481,11 @@ function attachLearningPathHandlers() {
             sentLevelFilter = level;
             sentSubMode = 'build';
 
-            // Сброс позиций, чтобы начать группу с начала
             positions.sentBuild = 0;
             positions.sentChoose = 0;
             positions.sentTranslate = 0;
             savePositions();
 
-            // Идём по порядку id, не шаффлим
             sentOrderOverride = 'ordered';
             sentReturnToLP = true;
 
@@ -2459,7 +2493,6 @@ function attachLearningPathHandlers() {
         };
     });
 
-    // Сброс прогресса Пути
     const resetBtn = document.getElementById('lp-reset');
     if (resetBtn) {
         resetBtn.onclick = () => {
@@ -2472,6 +2505,7 @@ function attachLearningPathHandlers() {
         };
     }
 }
+
 // ===== PROFILE =====
 function renderProfile() {
     const levelTotal = getLevelTotal();
@@ -2572,7 +2606,7 @@ function renderProfile() {
     document.getElementById('btn-export').onclick = () => {
         const data = {
             xp, dailyXP, streak, learned, mastered, srsData, positions,
-            temporary, currentLevel, userName, lastActiveDate
+            temporary, currentLevel, userName, lastActiveDate, duoProgress
         };
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -2606,6 +2640,7 @@ function renderProfile() {
                     currentLevel = data.currentLevel ?? currentLevel;
                     userName = data.userName ?? userName;
                     lastActiveDate = data.lastActiveDate ?? lastActiveDate;
+                    duoProgress = data.duoProgress ?? duoProgress;
 
                     localStorage.setItem('xp', xp.toString());
                     localStorage.setItem('dailyXP', dailyXP.toString());
@@ -2618,6 +2653,7 @@ function renderProfile() {
                     localStorage.setItem('level', currentLevel);
                     localStorage.setItem('userName', userName);
                     localStorage.setItem('lastActiveDate', lastActiveDate);
+                    localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
 
                     syncToFirebase();
                     updateStats();
@@ -2652,23 +2688,18 @@ function prevCard() {
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Тема
     initTheme();
 
-    // Сайдбар + bottom nav
     document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(btn => {
         btn.onclick = () => renderMode(btn.dataset.mode);
     });
 
-    // Переключатель темы в шапке
     const themeBtn = document.getElementById('theme-toggle');
     if (themeBtn) themeBtn.onclick = toggleTheme;
 
-    // Кнопка профиля в шапке
     const profileBtn = document.getElementById('profile-btn');
     if (profileBtn) profileBtn.onclick = () => renderMode('profile');
 
-    // Lucide
     refreshIcons();
 
     loadData();
