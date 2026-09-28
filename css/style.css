@@ -1831,3 +1831,334 @@ button {
         grid-template-columns: 1fr;
     }
 }
+/* ===== D3: УЛУЧШЕНИЯ РЕЖИМОВ ===== */
+
+/* Mode wrapper */
+.mode-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.mode-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+/* Прогресс-бар в режимах */
+.mode-progress {
+    margin-bottom: 20px;
+}
+
+.mode-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.mode-progress-pct {
+    color: var(--accent);
+}
+
+.mode-progress-bar {
+    height: 6px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.mode-progress-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+/* Big button */
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 15px;
+    min-width: 180px;
+}
+
+.btn .xp-tag {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 6px;
+}
+
+.btn-secondary .xp-tag,
+.btn-warning .xp-tag {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Card hidden reveal */
+.card-hidden {
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card actions */
+.card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card-actions .btn {
+    margin: 0;
+}
+
+/* Card meta icons */
+.card-srs {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-srs svg {
+    width: 13px;
+    height: 13px;
+}
+
+.card-frequency {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    padding: 6px 12px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+}
+
+.card-frequency svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Write mode */
+.write-card {
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.write-prompt {
+    background: var(--bg-soft);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.write-prompt-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.write-prompt-word {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+}
+
+.write-prompt-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    background: var(--bg-card);
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+
+.write-prompt-hint svg {
+    width: 13px;
+    height: 13px;
+    color: var(--warning);
+}
+
+/* Write input big */
+.write-input {
+    font-size: 20px;
+    padding: 18px 22px;
+    font-weight: 600;
+}
+
+/* Test feedback icons */
+.test-feedback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.test-feedback svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Write feedback */
+.write-feedback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.write-feedback svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Empty state */
+.empty-state {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 520px;
+    margin: 40px auto;
+}
+
+.empty-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.empty-icon svg {
+    width: 38px;
+    height: 38px;
+    color: var(--accent);
+}
+
+.empty-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+}
+
+.empty-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.empty-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Test option: улучшение hover */
+.test-option {
+    position: relative;
+    padding-left: 56px;
+}
+
+.test-option::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    transition: all var(--transition);
+}
+
+.test-option:hover:not(:disabled)::before {
+    border-color: var(--accent);
+}
+
+.test-option.correct::before {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.test-option.wrong::before {
+    background: var(--danger);
+    border-color: var(--danger);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .mode-card {
+        padding: 22px 18px;
+    }
+
+    .card-word {
+        font-size: 28px;
+    }
+
+    .write-prompt-word {
+        font-size: 24px;
+    }
+
+    .card-actions .btn {
+        width: 100%;
+    }
+
+    .empty-state {
+        padding: 40px 24px;
+    }
+
+    .empty-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .empty-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .empty-title {
+        font-size: 18px;
+    }
+
+    .test-option {
+        padding-left: 48px;
+    }
+
+    .test-option::before {
+        left: 16px;
+        width: 18px;
+        height: 18px;
+    }
+}
