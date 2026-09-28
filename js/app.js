@@ -43,6 +43,15 @@ const SRS_INTERVALS = [0, 1, 2, 4, 7, 14];
 let currentUser = null;
 
 // ===== ТЕМА =====
+function updateThemeIcon(theme) {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.innerHTML = theme === 'dark'
+        ? '<i data-lucide="sun"></i>'
+        : '<i data-lucide="moon"></i>';
+    if (window.lucide) window.lucide.createIcons();
+}
+
 function initTheme() {
     let saved = localStorage.getItem('theme');
     if (!saved || (saved !== 'light' && saved !== 'dark')) {
@@ -61,6 +70,14 @@ function initTheme() {
             updateThemeIcon(newTheme);
         }
     });
+}
+
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateThemeIcon(next);
 }
 
 // ===== ИКОНКИ LUCIDE =====
