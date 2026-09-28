@@ -22,7 +22,8 @@ positions.sentTranslate = positions.sentTranslate || 0;
 
 let tempSubMode = 'list';
 let sentSubMode = 'build';
-let sentFilter = 'all';
+let sentTenseFilter = 'all';   // 'all' | 'present_simple' | ...
+let sentLevelFilter = 'all';   // 'all' | 'A1' | 'A2' | 'B1' | 'B2'
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
@@ -227,12 +228,26 @@ async function loadData() {
         localStorage.setItem('temporary', JSON.stringify(temporary));
 
         try {
-            const sentRes = await fetch('data/sentences.json');
-            sentences = await sentRes.json();
-            if (!Array.isArray(sentences)) sentences = [];
-        } catch (e) {
-            sentences = [];
-        }
+    const sentRes = await fetch('data/sentences.json');
+    let loaded = await sentRes.json();
+    if (!Array.isArray(loaded)) loaded = [];
+    // Общий шаффл при загрузке страницы
+    sentences = shuffleArray(loaded);
+    console.log('📖 Загружено предложений:', sentences.length);
+} catch (e) {
+    console.warn('sentences.json не загружен:', e);
+    sentences = [];
+}
+
+// Хелпер — перемешивание Фишера-Йетса
+function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
 
         checkStreak();
         updateStats();
@@ -1731,8 +1746,11 @@ function unmasterWord(word) {
 
 // ===== SENTENCES =====
 function getFilteredSentences() {
-    if (sentFilter === 'all') return sentences;
-    return sentences.filter(s => s.tense === sentFilter);
+    return sentences.filter(s => {
+        if (sentTenseFilter !== 'all' && s.tense !== sentTenseFilter) return false;
+        if (sentLevelFilter !== 'all' && s.level !== sentLevelFilter) return false;
+        return true;
+    });
 }
 
 function getUniqueTenses() {
@@ -1741,6 +1759,12 @@ function getUniqueTenses() {
         if (!map.has(s.tense)) map.set(s.tense, s.tense_label);
     });
     return Array.from(map.entries()).map(([key, label]) => ({ key, label }));
+}
+
+function getUniqueLevels() {
+    const set = new Set();
+    sentences.forEach(s => { if (s.level) set.add(s.level); });
+    return ['A1', 'A2', 'B1', 'B2'].filter(lvl => set.has(lvl));
 }
 
 function renderSentences() {
@@ -1756,14 +1780,34 @@ function renderSentences() {
         return;
     }
 
+    // === Первый ряд: времена ===
     const tenses = getUniqueTenses();
-    const filterChips = `
-        <button class="chip ${sentFilter === 'all' ? 'active' : ''}" data-filter="all">All · ${sentences.length}</button>
+    const totalAll = sentences.length;
+    const totalLevelFiltered = getFilteredSentences().length;
+
+    const tenseChips = `
+        <button class="chip ${sentTenseFilter === 'all' ? 'active' : ''}" data-tense="all">
+            All · ${totalAll}
+        </button>
         ${tenses.map(t => {
             const count = sentences.filter(s => s.tense === t.key).length;
-            return `<button class="chip ${sentFilter === t.key ? 'active' : ''}" data-filter="${t.key}">${t.label} · ${count}</button>`;
+            return `<button class="chip ${sentTenseFilter === t.key ? 'active' : ''}" data-tense="${t.key}">
+                ${t.label} · ${count}
+            </button>`;
         }).join('')}
     `;
+
+    // === Второй ряд: уровни ===
+    const levels = getUniqueLevels();
+    const levelChips = levels.map(lvl => {
+        const count = sentences.filter(s => {
+            if (sentTenseFilter !== 'all' && s.tense !== sentTenseFilter) return false;
+            return s.level === lvl;
+        }).length;
+        return `<button class="chip chip-level ${sentLevelFilter === lvl ? 'active' : ''}" data-level="${lvl}">
+            ${lvl} · ${count}
+        </button>`;
+    }).join('');
 
     const subNav = `
         <div class="subnav">
@@ -1789,18 +1833,38 @@ function renderSentences() {
             <div class="list-header">
                 <div>
                     <div class="list-title"><i data-lucide="book-open"></i> Грамматика</div>
-                    <div class="list-subtitle">12 времён · ${sentences.length} предложений</div>
+                    <div class="list-subtitle">
+                        12 времён · ${sentences.length} предложений · показано ${totalLevelFiltered}
+                    </div>
                 </div>
             </div>
-            <div class="chips-row">${filterChips}</div>
+            <div class="chips-row">${tenseChips}</div>
+            <div class="chips-row chips-row-levels">${levelChips}</div>
             ${subNav}
             ${bodyHtml}
         </div>
     `;
 
-    document.querySelectorAll('.chip').forEach(btn => {
+    // Обработка кликов по временам
+    document.querySelectorAll('.chip[data-tense]').forEach(btn => {
         btn.onclick = () => {
-            sentFilter = btn.dataset.filter;
+            sentTenseFilter = btn.dataset.tense;
+            // При смене времени — сбрасываем уровень на 'all'
+            sentLevelFilter = 'all';
+            renderSentences();
+        };
+    });
+
+    // Обработка кликов по уровням
+    document.querySelectorAll('.chip[data-level]').forEach(btn => {
+        btn.onclick = () => {
+            const lvl = btn.dataset.level;
+            // Повторный клик по активному → снять фильтр (показать все)
+            if (sentLevelFilter === lvl) {
+                sentLevelFilter = 'all';
+            } else {
+                sentLevelFilter = lvl;
+            }
             renderSentences();
         };
     });
