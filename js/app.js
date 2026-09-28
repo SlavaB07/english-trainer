@@ -479,26 +479,201 @@ function renderMode(mode) {
     refreshIcons();
 }
 
-// ===== DASHBOARD (заглушка — D2) =====
+// ===== DASHBOARD =====
 function renderDashboard() {
     const dueCount = getDueWords().length;
     const levelTotal = getLevelTotal();
     const levelLearned = getLevelLearnedCount();
+    const progressPct = levelTotal > 0 ? Math.round((levelLearned / levelTotal) * 100) : 0;
+    const dashoffset = 188.5 - (188.5 * progressPct / 100);
+
+    const mascotHero = `
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="catBody" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FFFFFF"/>
+                    <stop offset="100%" stop-color="#E8ECFF"/>
+                </linearGradient>
+                <linearGradient id="catEar" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#A5B4FC"/>
+                    <stop offset="100%" stop-color="#818CF8"/>
+                </linearGradient>
+            </defs>
+            <ellipse cx="100" cy="175" rx="55" ry="8" fill="rgba(0,0,0,0.15)"/>
+            <path d="M55 90 Q55 50 75 35 L85 60 Q100 55 115 60 L125 35 Q145 50 145 90 Q145 145 100 145 Q55 145 55 90 Z" fill="url(#catBody)"/>
+            <path d="M55 90 Q50 80 52 70 Q60 72 65 80 Z" fill="url(#catEar)"/>
+            <path d="M145 90 Q150 80 148 70 Q140 72 135 80 Z" fill="url(#catEar)"/>
+            <ellipse cx="80" cy="95" rx="4" ry="6" fill="#1A1D2E"/>
+            <ellipse cx="120" cy="95" rx="4" ry="6" fill="#1A1D2E"/>
+            <circle cx="81.5" cy="93" r="1.5" fill="#fff"/>
+            <circle cx="121.5" cy="93" r="1.5" fill="#fff"/>
+            <path d="M95 110 Q100 115 105 110" stroke="#1A1D2E" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M92 108 L92 118 M100 110 L100 120 M108 108 L108 118" stroke="#1A1D2E" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="65" cy="105" rx="6" ry="4" fill="#F472B6" opacity="0.5"/>
+            <ellipse cx="135" cy="105" rx="6" ry="4" fill="#F472B6" opacity="0.5"/>
+            <rect x="40" y="55" width="120" height="8" rx="4" fill="#5B5FE9"/>
+            <rect x="45" y="48" width="30" height="20" rx="8" fill="#5B5FE9"/>
+            <rect x="125" y="48" width="30" height="20" rx="8" fill="#5B5FE9"/>
+            <rect x="35" y="40" width="130" height="16" rx="8" fill="#7C80F5"/>
+            <path d="M60 140 Q70 155 80 140" stroke="#A5B4FC" stroke-width="0" fill="none"/>
+            <rect x="85" y="138" width="30" height="22" rx="4" fill="#5B5FE9"/>
+            <rect x="90" y="143" width="20" height="12" rx="2" fill="#EEF0FE"/>
+            <circle cx="100" cy="149" r="2" fill="#5B5FE9"/>
+        </svg>
+    `;
+
+    const mascotSmall = `
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28 45 Q28 22 38 16 L44 32 Q50 30 56 32 L62 16 Q72 22 72 45 Q72 70 50 70 Q28 70 28 45 Z" fill="#FFFFFF"/>
+            <path d="M28 45 Q25 40 26 34 Q31 36 34 40 Z" fill="#FBBF24"/>
+            <path d="M72 45 Q75 40 74 34 Q69 36 66 40 Z" fill="#FBBF24"/>
+            <ellipse cx="41" cy="48" rx="2.5" ry="3.5" fill="#1A1D2E"/>
+            <ellipse cx="59" cy="48" rx="2.5" ry="3.5" fill="#1A1D2E"/>
+            <path d="M47 56 Q50 58.5 53 56" stroke="#1A1D2E" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <rect x="20" y="27" width="60" height="4" rx="2" fill="#5B5FE9"/>
+            <rect x="22" y="24" width="15" height="10" rx="4" fill="#5B5FE9"/>
+            <rect x="63" y="24" width="15" height="10" rx="4" fill="#5B5FE9"/>
+        </svg>
+    `;
 
     document.getElementById('content').innerHTML = `
-        <div class="dashboard-placeholder">
-            <h2>📊 Главная (Dashboard)</h2>
-            <p>Будет здесь в D2.</p>
-            <p style="margin-top:20px; color: var(--text-secondary);">
-                <b>${xp} XP</b> · 🔥 <b>${streak}</b> · 
-                Learned: <b>${levelLearned}/${levelTotal}</b> · 
-                Due: <b>${dueCount}</b> · 
-                🏆 <b>${mastered.length}</b>
-            </p>
+        <div class="dash-wrap">
+
+            <div class="dash-main">
+
+                <!-- Hero -->
+                <div class="dash-hero">
+                    <div class="dash-hero-content">
+                        <div class="dash-hero-title">Время учить английский! 🚀</div>
+                        <div class="dash-hero-subtitle">Новые слова, полезные фразы и уверенность в каждом разговоре.</div>
+                        <button class="dash-hero-btn" onclick="renderMode('cards')">
+                            <i data-lucide="play"></i>
+                            Начать обучение
+                        </button>
+                    </div>
+                    <div class="dash-hero-mascot">${mascotHero}</div>
+                </div>
+
+                <!-- Быстрые действия -->
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <div class="dash-section-title">Выбери, с чего начать</div>
+                        <div class="dash-section-meta">🔥 Цель дня: ${DAILY_GOAL} XP</div>
+                    </div>
+                    <div class="dash-actions">
+                        <div class="dash-action i-cards" onclick="renderMode('cards')">
+                            <div class="dash-action-icon"><i data-lucide="layers"></i></div>
+                            <div class="dash-action-title">Карточки</div>
+                            <div class="dash-action-sub">Слова и выражения</div>
+                        </div>
+                        <div class="dash-action i-write" onclick="renderMode('write')">
+                            <div class="dash-action-icon"><i data-lucide="pencil"></i></div>
+                            <div class="dash-action-title">Письмо</div>
+                            <div class="dash-action-sub">Пиши правильно</div>
+                        </div>
+                        <div class="dash-action i-grammar" onclick="renderMode('sentences')">
+                            <div class="dash-action-icon"><i data-lucide="book-open"></i></div>
+                            <div class="dash-action-title">Грамматика</div>
+                            <div class="dash-action-sub">Правила и времена</div>
+                        </div>
+                        <div class="dash-action i-listen" onclick="renderMode('listening')">
+                            <div class="dash-action-icon"><i data-lucide="headphones"></i></div>
+                            <div class="dash-action-title">Аудирование</div>
+                            <div class="dash-action-sub">Слушай и понимай</div>
+                        </div>
+                        <div class="dash-action i-phrases" onclick="renderMode('phrases')">
+                            <div class="dash-action-icon"><i data-lucide="message-circle"></i></div>
+                            <div class="dash-action-title">Фразы</div>
+                            <div class="dash-action-sub">Полезные выражения</div>
+                        </div>
+                        <div class="dash-action i-temp" onclick="renderMode('temporary')">
+                            <div class="dash-action-icon"><i data-lucide="clock"></i></div>
+                            <div class="dash-action-title">Временные</div>
+                            <div class="dash-action-sub">Свои слова</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Продолжить обучение -->
+                <div class="dash-section">
+                    <div class="dash-continue">
+                        <div class="dash-continue-progress">
+                            <svg viewBox="0 0 72 72">
+                                <circle class="dash-continue-progress-track" cx="36" cy="36" r="30"></circle>
+                                <circle class="dash-continue-progress-fill" cx="36" cy="36" r="30"
+                                    stroke-dasharray="188.5"
+                                    stroke-dashoffset="${dashoffset}"></circle>
+                            </svg>
+                            <div class="dash-continue-num">${progressPct}%</div>
+                        </div>
+                        <div class="dash-continue-info">
+                            <div class="dash-continue-title">Основной словарь</div>
+                            <div class="dash-continue-sub">
+                                ${levelLearned} / ${levelTotal} слов · ${dueCount} на повторение
+                            </div>
+                            <div class="dash-continue-actions">
+                                <button class="btn btn-primary" onclick="renderMode('cards')" style="min-width:auto;">
+                                    <i data-lucide="play"></i> Продолжить
+                                </button>
+                                <button class="btn btn-secondary" onclick="renderMode('mastered')" style="min-width:auto;">
+                                    🏆 Mastered (${mastered.length})
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Правая колонка -->
+            <div class="dash-side">
+
+                <div class="dash-card">
+                    <div class="dash-card-title">Твоя статистика</div>
+                    <div class="dash-stat-main">
+                        <div class="dash-stat-main-icon"><i data-lucide="zap"></i></div>
+                        <div>
+                            <div class="dash-stat-main-num">${xp}</div>
+                            <div class="dash-stat-main-label">Текущий опыт</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-rows">
+                        <div class="dash-stat-row">
+                            <div class="dash-stat-row-left"><i data-lucide="flame"></i> Дней подряд</div>
+                            <div class="dash-stat-row-value">${streak}</div>
+                        </div>
+                        <div class="dash-stat-row">
+                            <div class="dash-stat-row-left"><i data-lucide="book"></i> Изучено слов</div>
+                            <div class="dash-stat-row-value">${levelLearned}</div>
+                        </div>
+                        <div class="dash-stat-row">
+                            <div class="dash-stat-row-left"><i data-lucide="trophy"></i> Mastered</div>
+                            <div class="dash-stat-row-value">${mastered.length}</div>
+                        </div>
+                        <div class="dash-stat-row">
+                            <div class="dash-stat-row-left"><i data-lucide="award"></i> Уровень</div>
+                            <div class="dash-stat-row-value">${getLevelName()}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-quote">
+                    <div class="dash-quote-icon">"</div>
+                    <div class="dash-quote-text">Лучший способ предсказать будущее — создать его.</div>
+                    <div class="dash-quote-author">— Abraham Lincoln</div>
+                </div>
+
+                <div class="dash-motivation">
+                    <div class="dash-motivation-mascot">${mascotSmall}</div>
+                    <div class="dash-motivation-text">У тебя всё получится!</div>
+                </div>
+
+            </div>
+
         </div>
     `;
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+
+    refreshIcons();
 }
 
 // ===== CARDS =====
