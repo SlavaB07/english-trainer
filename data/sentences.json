@@ -2456,3 +2456,1156 @@
     "words": ["The", "weather", "has", "changed", "suddenly."]
   }
 ]
+  {
+    "id": 273,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "My father always reads the newspaper in the morning.",
+    "ru": "Мой отец всегда читает газету по утрам.",
+    "hint": "привычка",
+    "words": ["My", "father", "always", "reads", "the", "newspaper", "in", "the", "morning."]
+  },
+  {
+    "id": 274,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "Where does she work?",
+    "ru": "Где она работает?",
+    "hint": "вопрос о работе",
+    "words": ["Where", "does", "she", "work?"]
+  },
+  {
+    "id": 275,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "I don't drink coffee in the evening.",
+    "ru": "Я не пью кофе вечером.",
+    "hint": "отрицание привычки",
+    "words": ["I", "don't", "drink", "coffee", "in", "the", "evening."]
+  },
+  {
+    "id": 276,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "Water freezes at zero degrees.",
+    "ru": "Вода замерзает при нуле градусов.",
+    "hint": "научный факт",
+    "words": ["Water", "freezes", "at", "zero", "degrees."]
+  },
+  {
+    "id": 277,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "They never go to bed before midnight.",
+    "ru": "Они никогда не ложатся спать до полуночи.",
+    "hint": "привычка, отрицание",
+    "words": ["They", "never", "go", "to", "bed", "before", "midnight."]
+  },
+  {
+    "id": 278,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "How do you usually get to work?",
+    "ru": "Как ты обычно добираешься до работы?",
+    "hint": "вопрос о привычке",
+    "words": ["How", "do", "you", "usually", "get", "to", "work?"]
+  },
+  {
+    "id": 279,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "She teaches math at a local school.",
+    "ru": "Она преподаёт математику в местной школе.",
+    "hint": "постоянная работа",
+    "words": ["She", "teaches", "math", "at", "a", "local", "school."]
+  },
+  {
+    "id": 280,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "The bank doesn't open on Sundays.",
+    "ru": "Банк не работает по воскресеньям.",
+    "hint": "расписание, отрицание",
+    "words": ["The", "bank", "doesn't", "open", "on", "Sundays."]
+  },
+  {
+    "id": 281,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "Do you know how to drive?",
+    "ru": "Ты умеешь водить машину?",
+    "hint": "вопрос об умении",
+    "words": ["Do", "you", "know", "how", "to", "drive?"]
+  },
+  {
+    "id": 282,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "My grandfather always tells interesting stories.",
+    "ru": "Мой дедушка всегда рассказывает интересные истории.",
+    "hint": "привычка",
+    "words": ["My", "grandfather", "always", "tells", "interesting", "stories."]
+  },
+  {
+    "id": 283,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "We have three cats and one dog.",
+    "ru": "У нас три кошки и одна собака.",
+    "hint": "постоянный факт",
+    "words": ["We", "have", "three", "cats", "and", "one", "dog."]
+  },
+  {
+    "id": 284,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "What time does the film start?",
+    "ru": "Во сколько начинается фильм?",
+    "hint": "вопрос о расписании",
+    "words": ["What", "time", "does", "the", "film", "start?"]
+  },
+  {
+    "id": 285,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "He often visits his parents on weekends.",
+    "ru": "Он часто навещает родителей по выходным.",
+    "hint": "привычка",
+    "words": ["He", "often", "visits", "his", "parents", "on", "weekends."]
+  },
+  {
+    "id": 286,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am listening to a podcast right now.",
+    "ru": "Я сейчас слушаю подкаст.",
+    "hint": "прямо сейчас",
+    "words": ["I", "am", "listening", "to", "a", "podcast", "right", "now."]
+  },
+  {
+    "id": 287,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "She is not coming to the party tonight.",
+    "ru": "Она не придёт на вечеринку сегодня.",
+    "hint": "отрицание",
+    "words": ["She", "is", "not", "coming", "to", "the", "party", "tonight."]
+  },
+  {
+    "id": 288,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "What is he doing right now?",
+    "ru": "Что он сейчас делает?",
+    "hint": "вопрос",
+    "words": ["What", "is", "he", "doing", "right", "now?"]
+  },
+  {
+    "id": 289,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "They are building a new shopping centre.",
+    "ru": "Они строят новый торговый центр.",
+    "hint": "процесс сейчас",
+    "words": ["They", "are", "building", "a", "new", "shopping", "centre."]
+  },
+  {
+    "id": 290,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am getting used to this new job.",
+    "ru": "Я привыкаю к этой новой работе.",
+    "hint": "процесс адаптации",
+    "words": ["I", "am", "getting", "used", "to", "this", "new", "job."]
+  },
+  {
+    "id": 291,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "Why is she crying?",
+    "ru": "Почему она плачет?",
+    "hint": "вопрос",
+    "words": ["Why", "is", "she", "crying?"]
+  },
+  {
+    "id": 292,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "We are not watching TV at the moment.",
+    "ru": "Мы сейчас не смотрим телевизор.",
+    "hint": "отрицание",
+    "words": ["We", "are", "not", "watching", "TV", "at", "the", "moment."]
+  },
+  {
+    "id": 293,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "The children are playing in the yard.",
+    "ru": "Дети играют во дворе.",
+    "hint": "прямо сейчас",
+    "words": ["The", "children", "are", "playing", "in", "the", "yard."]
+  },
+  {
+    "id": 294,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am working on a new project this month.",
+    "ru": "В этом месяце я работаю над новым проектом.",
+    "hint": "временная ситуация",
+    "words": ["I", "am", "working", "on", "a", "new", "project", "this", "month."]
+  },
+  {
+    "id": 295,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "It is getting dark outside.",
+    "ru": "На улице темнеет.",
+    "hint": "изменение сейчас",
+    "words": ["It", "is", "getting", "dark", "outside."]
+  },
+  {
+    "id": 296,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "Are you feeling better today?",
+    "ru": "Тебе сегодня лучше?",
+    "hint": "вопрос о состоянии",
+    "words": ["Are", "you", "feeling", "better", "today?"]
+  },
+  {
+    "id": 297,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "She is preparing for her exam.",
+    "ru": "Она готовится к экзамену.",
+    "hint": "процесс сейчас",
+    "words": ["She", "is", "preparing", "for", "her", "exam."]
+  },
+  {
+    "id": 298,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "We are looking for a new apartment.",
+    "ru": "Мы ищем новую квартиру.",
+    "hint": "временный процесс",
+    "words": ["We", "are", "looking", "for", "a", "new", "apartment."]
+  },
+  {
+    "id": 299,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I have just read your message.",
+    "ru": "Я только что прочитал твоё сообщение.",
+    "hint": "только что",
+    "words": ["I", "have", "just", "read", "your", "message."]
+  },
+  {
+    "id": 300,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "She has worked here for three years.",
+    "ru": "Она работает здесь три года.",
+    "hint": "длительность до сейчас",
+    "words": ["She", "has", "worked", "here", "for", "three", "years."]
+  },
+  {
+    "id": 301,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "Have you ever eaten Indian food?",
+    "ru": "Ты когда-нибудь ел индийскую еду?",
+    "hint": "вопрос об опыте",
+    "words": ["Have", "you", "ever", "eaten", "Indian", "food?"]
+  },
+  {
+    "id": 302,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "They haven't arrived yet.",
+    "ru": "Они ещё не приехали.",
+    "hint": "отрицание с yet",
+    "words": ["They", "haven't", "arrived", "yet."]
+  },
+  {
+    "id": 303,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I have broken my phone screen.",
+    "ru": "Я разбил экран телефона.",
+    "hint": "результат сейчас",
+    "words": ["I", "have", "broken", "my", "phone", "screen."]
+  },
+  {
+    "id": 304,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "We have already seen this film.",
+    "ru": "Мы уже видели этот фильм.",
+    "hint": "already",
+    "words": ["We", "have", "already", "seen", "this", "film."]
+  },
+  {
+    "id": 305,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "How long has she known him?",
+    "ru": "Как давно она его знает?",
+    "hint": "вопрос о длительности",
+    "words": ["How", "long", "has", "she", "known", "him?"]
+  },
+  {
+    "id": 306,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I haven't finished my project yet.",
+    "ru": "Я ещё не закончил проект.",
+    "hint": "отрицание с yet",
+    "words": ["I", "haven't", "finished", "my", "project", "yet."]
+  },
+  {
+    "id": 307,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "He has written three books so far.",
+    "ru": "Он написал три книги на данный момент.",
+    "hint": "so far",
+    "words": ["He", "has", "written", "three", "books", "so", "far."]
+  },
+  {
+    "id": 308,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "The shop has just closed.",
+    "ru": "Магазин только что закрылся.",
+    "hint": "только что",
+    "words": ["The", "shop", "has", "just", "closed."]
+  },
+  {
+    "id": 309,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I have seen this film twice.",
+    "ru": "Я видел этот фильм дважды.",
+    "hint": "опыт",
+    "words": ["I", "have", "seen", "this", "film", "twice."]
+  },
+  {
+    "id": 310,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "We have known each other for many years.",
+    "ru": "Мы знакомы много лет.",
+    "hint": "длительное знакомство",
+    "words": ["We", "have", "known", "each", "other", "for", "many", "years."]
+  },
+  {
+    "id": 311,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "I have been working on this task since morning.",
+    "ru": "Я работаю над этой задачей с утра.",
+    "hint": "since + момент",
+    "words": ["I", "have", "been", "working", "on", "this", "task", "since", "morning."]
+  },
+  {
+    "id": 312,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "She has been learning French for two years.",
+    "ru": "Она учит французский два года.",
+    "hint": "for + период",
+    "words": ["She", "has", "been", "learning", "French", "for", "two", "years."]
+  },
+  {
+    "id": 313,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "How long have you been living here?",
+    "ru": "Как долго ты здесь живёшь?",
+    "hint": "вопрос о длительности",
+    "words": ["How", "long", "have", "you", "been", "living", "here?"]
+  },
+  {
+    "id": 314,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "They have been arguing for an hour.",
+    "ru": "Они спорят уже час.",
+    "hint": "длительный процесс",
+    "words": ["They", "have", "been", "arguing", "for", "an", "hour."]
+  },
+  {
+    "id": 315,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "It has been raining since last night.",
+    "ru": "Дождь идёт с прошлой ночи.",
+    "hint": "процесс с момента",
+    "words": ["It", "has", "been", "raining", "since", "last", "night."]
+  },
+  {
+    "id": 316,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "I have been feeling tired all week.",
+    "ru": "Я всю неделю чувствую усталость.",
+    "hint": "длительное состояние",
+    "words": ["I", "have", "been", "feeling", "tired", "all", "week."]
+  },
+  {
+    "id": 317,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "We travelled to Spain two years ago.",
+    "ru": "Два года назад мы ездили в Испанию.",
+    "hint": "ago",
+    "words": ["We", "travelled", "to", "Spain", "two", "years", "ago."]
+  },
+  {
+    "id": 318,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "She didn't call me yesterday.",
+    "ru": "Она вчера мне не позвонила.",
+    "hint": "отрицание",
+    "words": ["She", "didn't", "call", "me", "yesterday."]
+  },
+  {
+    "id": 319,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "Did they enjoy the concert?",
+    "ru": "Им понравился концерт?",
+    "hint": "вопрос",
+    "words": ["Did", "they", "enjoy", "the", "concert?"]
+  },
+  {
+    "id": 320,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "I met her at a conference in Berlin.",
+    "ru": "Я познакомился с ней на конференции в Берлине.",
+    "hint": "завершённое событие",
+    "words": ["I", "met", "her", "at", "a", "conference", "in", "Berlin."]
+  },
+  {
+    "id": 321,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "He broke his leg last winter.",
+    "ru": "Он сломал ногу прошлой зимой.",
+    "hint": "last winter",
+    "words": ["He", "broke", "his", "leg", "last", "winter."]
+  },
+  {
+    "id": 322,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "We didn't have enough time.",
+    "ru": "У нас не было достаточно времени.",
+    "hint": "отрицание",
+    "words": ["We", "didn't", "have", "enough", "time."]
+  },
+  {
+    "id": 323,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "What did you do last night?",
+    "ru": "Что ты делал вчера вечером?",
+    "hint": "вопрос",
+    "words": ["What", "did", "you", "do", "last", "night?"]
+  },
+  {
+    "id": 324,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "They sold their house and moved abroad.",
+    "ru": "Они продали дом и уехали за границу.",
+    "hint": "последовательные действия",
+    "words": ["They", "sold", "their", "house", "and", "moved", "abroad."]
+  },
+  {
+    "id": 325,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "I was very busy last week.",
+    "ru": "Я был очень занят на прошлой неделе.",
+    "hint": "состояние в прошлом",
+    "words": ["I", "was", "very", "busy", "last", "week."]
+  },
+  {
+    "id": 326,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "She wrote a long letter to her friend.",
+    "ru": "Она написала длинное письмо подруге.",
+    "hint": "завершённое действие",
+    "words": ["She", "wrote", "a", "long", "letter", "to", "her", "friend."]
+  },
+  {
+    "id": 327,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "We ate at a nice restaurant yesterday.",
+    "ru": "Вчера мы поели в хорошем ресторане.",
+    "hint": "yesterday",
+    "words": ["We", "ate", "at", "a", "nice", "restaurant", "yesterday."]
+  },
+  {
+    "id": 328,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "He didn't tell me about the meeting.",
+    "ru": "Он не сказал мне о встрече.",
+    "hint": "отрицание",
+    "words": ["He", "didn't", "tell", "me", "about", "the", "meeting."]
+  },
+  {
+    "id": 329,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "I was studying when the phone rang.",
+    "ru": "Я занимался, когда зазвонил телефон.",
+    "hint": "прерванное действие",
+    "words": ["I", "was", "studying", "when", "the", "phone", "rang."]
+  },
+  {
+    "id": 330,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "They were waiting for the bus when it started raining.",
+    "ru": "Они ждали автобус, когда начался дождь.",
+    "hint": "прерванный процесс",
+    "words": ["They", "were", "waiting", "for", "the", "bus", "when", "it", "started", "raining."]
+  },
+  {
+    "id": 331,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "She was cooking while he was setting the table.",
+    "ru": "Она готовила, пока он накрывал на стол.",
+    "hint": "параллельные действия",
+    "words": ["She", "was", "cooking", "while", "he", "was", "setting", "the", "table."]
+  },
+  {
+    "id": 332,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "What were you doing at nine o'clock?",
+    "ru": "Что ты делал в девять часов?",
+    "hint": "вопрос",
+    "words": ["What", "were", "you", "doing", "at", "nine", "o'clock?"]
+  },
+  {
+    "id": 333,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "It was raining heavily all night.",
+    "ru": "Всю ночь шёл сильный дождь.",
+    "hint": "длительное действие",
+    "words": ["It", "was", "raining", "heavily", "all", "night."]
+  },
+  {
+    "id": 334,
+    "tense": "past_perfect",
+    "tense_label": "Past Perfect",
+    "en": "She had already left when I got to the office.",
+    "ru": "Она уже ушла, когда я пришёл в офис.",
+    "hint": "раньше другого действия",
+    "words": ["She", "had", "already", "left", "when", "I", "got", "to", "the", "office."]
+  },
+  {
+    "id": 335,
+    "tense": "past_perfect",
+    "tense_label": "Past Perfect",
+    "en": "I had never seen such a beautiful place before.",
+    "ru": "Я никогда раньше не видел такого красивого места.",
+    "hint": "опыт до момента",
+    "words": ["I", "had", "never", "seen", "such", "a", "beautiful", "place", "before."]
+  },
+  {
+    "id": 336,
+    "tense": "past_perfect",
+    "tense_label": "Past Perfect",
+    "en": "By the time we arrived, the show had ended.",
+    "ru": "К тому времени как мы пришли, шоу закончилось.",
+    "hint": "by the time",
+    "words": ["By", "the", "time", "we", "arrived,", "the", "show", "had", "ended."]
+  },
+  {
+    "id": 337,
+    "tense": "past_perfect",
+    "tense_label": "Past Perfect",
+    "en": "He had finished his work before dinner.",
+    "ru": "Он закончил работу до ужина.",
+    "hint": "раньше другого действия",
+    "words": ["He", "had", "finished", "his", "work", "before", "dinner."]
+  },
+  {
+    "id": 338,
+    "tense": "past_perfect_continuous",
+    "tense_label": "Past Perfect Continuous",
+    "en": "I had been working for ten hours before I took a break.",
+    "ru": "Я работал десять часов, прежде чем сделал перерыв.",
+    "hint": "длительный процесс",
+    "words": ["I", "had", "been", "working", "for", "ten", "hours", "before", "I", "took", "a", "break."]
+  },
+  {
+    "id": 339,
+    "tense": "past_perfect_continuous",
+    "tense_label": "Past Perfect Continuous",
+    "en": "They had been waiting for an hour when the doctor arrived.",
+    "ru": "Они ждали час, когда пришёл врач.",
+    "hint": "длительное ожидание",
+    "words": ["They", "had", "been", "waiting", "for", "an", "hour", "when", "the", "doctor", "arrived."]
+  },
+  {
+    "id": 340,
+    "tense": "past_perfect_continuous",
+    "tense_label": "Past Perfect Continuous",
+    "en": "It had been raining for two days before the sun appeared.",
+    "ru": "Дождь шёл два дня, прежде чем появилось солнце.",
+    "hint": "длительный процесс",
+    "words": ["It", "had", "been", "raining", "for", "two", "days", "before", "the", "sun", "appeared."]
+  },
+  {
+    "id": 341,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "I will send you the details tomorrow.",
+    "ru": "Я пришлю тебе детали завтра.",
+    "hint": "обещание",
+    "words": ["I", "will", "send", "you", "the", "details", "tomorrow."]
+  },
+  {
+    "id": 342,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "She won't come to the meeting tomorrow.",
+    "ru": "Она не придёт на встречу завтра.",
+    "hint": "отрицание",
+    "words": ["She", "won't", "come", "to", "the", "meeting", "tomorrow."]
+  },
+  {
+    "id": 343,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "Will you help me carry these bags?",
+    "ru": "Ты поможешь мне донести эти сумки?",
+    "hint": "просьба",
+    "words": ["Will", "you", "help", "me", "carry", "these", "bags?"]
+  },
+  {
+    "id": 344,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "I think they will win the match.",
+    "ru": "Думаю, они выиграют матч.",
+    "hint": "предсказание",
+    "words": ["I", "think", "they", "will", "win", "the", "match."]
+  },
+  {
+    "id": 345,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "We will meet at the café at six.",
+    "ru": "Мы встретимся в кафе в шесть.",
+    "hint": "договорённость",
+    "words": ["We", "will", "meet", "at", "the", "café", "at", "six."]
+  },
+  {
+    "id": 346,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "It will probably snow tonight.",
+    "ru": "Сегодня вечером, вероятно, пойдёт снег.",
+    "hint": "предсказание",
+    "words": ["It", "will", "probably", "snow", "tonight."]
+  },
+  {
+    "id": 347,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "I won't tell anyone your secret.",
+    "ru": "Я никому не расскажу твой секрет.",
+    "hint": "обещание, отрицание",
+    "words": ["I", "won't", "tell", "anyone", "your", "secret."]
+  },
+  {
+    "id": 348,
+    "tense": "future_continuous",
+    "tense_label": "Future Continuous",
+    "en": "At 6 PM tomorrow I will be driving home.",
+    "ru": "Завтра в 6 вечера я буду ехать домой.",
+    "hint": "процесс в будущем",
+    "words": ["At", "6", "PM", "tomorrow", "I", "will", "be", "driving", "home."]
+  },
+  {
+    "id": 349,
+    "tense": "future_continuous",
+    "tense_label": "Future Continuous",
+    "en": "She will be teaching when you arrive.",
+    "ru": "Она будет преподавать, когда ты приедешь.",
+    "hint": "процесс в будущем",
+    "words": ["She", "will", "be", "teaching", "when", "you", "arrive."]
+  },
+  {
+    "id": 350,
+    "tense": "future_continuous",
+    "tense_label": "Future Continuous",
+    "en": "Will you be using the car tonight?",
+    "ru": "Ты будешь пользоваться машиной сегодня вечером?",
+    "hint": "вопрос",
+    "words": ["Will", "you", "be", "using", "the", "car", "tonight?"]
+  },
+  {
+    "id": 351,
+    "tense": "future_perfect",
+    "tense_label": "Future Perfect",
+    "en": "By 2030 I will have visited twenty countries.",
+    "ru": "К 2030 году я посещу двадцать стран.",
+    "hint": "завершение к сроку",
+    "words": ["By", "2030", "I", "will", "have", "visited", "twenty", "countries."]
+  },
+  {
+    "id": 352,
+    "tense": "future_perfect",
+    "tense_label": "Future Perfect",
+    "en": "She will have written her thesis by June.",
+    "ru": "К июню она напишет диссертацию.",
+    "hint": "by + срок",
+    "words": ["She", "will", "have", "written", "her", "thesis", "by", "June."]
+  },
+  {
+    "id": 353,
+    "tense": "future_perfect_continuous",
+    "tense_label": "Future Perfect Continuous",
+    "en": "By next summer I will have been living here for ten years.",
+    "ru": "К следующему лету я буду жить здесь десять лет.",
+    "hint": "длительность к моменту",
+    "words": ["By", "next", "summer", "I", "will", "have", "been", "living", "here", "for", "ten", "years."]
+  },
+  {
+    "id": 354,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "What do you usually do on weekends?",
+    "ru": "Что ты обычно делаешь по выходным?",
+    "hint": "вопрос о привычке",
+    "words": ["What", "do", "you", "usually", "do", "on", "weekends?"]
+  },
+  {
+    "id": 355,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "My sister doesn't like horror films.",
+    "ru": "Моя сестра не любит ужастики.",
+    "hint": "отрицание",
+    "words": ["My", "sister", "doesn't", "like", "horror", "films."]
+  },
+  {
+    "id": 356,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "How much does the ticket cost?",
+    "ru": "Сколько стоит билет?",
+    "hint": "вопрос о цене",
+    "words": ["How", "much", "does", "the", "ticket", "cost?"]
+  },
+  {
+    "id": 357,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "The bus is coming around the corner.",
+    "ru": "Автобус выезжает из-за угла.",
+    "hint": "процесс сейчас",
+    "words": ["The", "bus", "is", "coming", "around", "the", "corner."]
+  },
+  {
+    "id": 358,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "They are staying at a hotel this week.",
+    "ru": "На этой неделе они живут в отеле.",
+    "hint": "временное положение",
+    "words": ["They", "are", "staying", "at", "a", "hotel", "this", "week."]
+  },
+  {
+    "id": 359,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "Why are you wearing a jacket in summer?",
+    "ru": "Почему ты носишь куртку летом?",
+    "hint": "вопрос",
+    "words": ["Why", "are", "you", "wearing", "a", "jacket", "in", "summer?"]
+  },
+  {
+    "id": 360,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am working from home this week.",
+    "ru": "На этой неделе я работаю из дома.",
+    "hint": "временная ситуация",
+    "words": ["I", "am", "working", "from", "home", "this", "week."]
+  },
+  {
+    "id": 361,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "Are you enjoying the party?",
+    "ru": "Тебе нравится вечеринка?",
+    "hint": "вопрос",
+    "words": ["Are", "you", "enjoying", "the", "party?"]
+  },
+  {
+    "id": 362,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "I have already eaten breakfast.",
+    "ru": "Я уже позавтракал.",
+    "hint": "already",
+    "words": ["I", "have", "already", "eaten", "breakfast."]
+  },
+  {
+    "id": 363,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "She hasn't finished her homework yet.",
+    "ru": "Она ещё не сделала домашнюю работу.",
+    "hint": "отрицание с yet",
+    "words": ["She", "hasn't", "finished", "her", "homework", "yet."]
+  },
+  {
+    "id": 364,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "Have you ever been to Australia?",
+    "ru": "Ты когда-нибудь был в Австралии?",
+    "hint": "вопрос об опыте",
+    "words": ["Have", "you", "ever", "been", "to", "Australia?"]
+  },
+  {
+    "id": 365,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "We have known each other since primary school.",
+    "ru": "Мы знакомы с начальной школы.",
+    "hint": "since + момент",
+    "words": ["We", "have", "known", "each", "other", "since", "primary", "school."]
+  },
+  {
+    "id": 366,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "How long have you been studying here?",
+    "ru": "Как долго ты здесь учишься?",
+    "hint": "вопрос о длительности",
+    "words": ["How", "long", "have", "you", "been", "studying", "here?"]
+  },
+  {
+    "id": 367,
+    "tense": "present_perfect_continuous",
+    "tense_label": "Present Perfect Continuous",
+    "en": "They have been waiting since two o'clock.",
+    "ru": "Они ждут с двух часов.",
+    "hint": "since + время",
+    "words": ["They", "have", "been", "waiting", "since", "two", "o'clock."]
+  },
+  {
+    "id": 368,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "I learned to swim when I was five.",
+    "ru": "Я научился плавать, когда мне было пять.",
+    "hint": "завершённое действие",
+    "words": ["I", "learned", "to", "swim", "when", "I", "was", "five."]
+  },
+  {
+    "id": 369,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "We didn't go out because of the rain.",
+    "ru": "Мы не пошли гулять из-за дождя.",
+    "hint": "отрицание с причиной",
+    "words": ["We", "didn't", "go", "out", "because", "of", "the", "rain."]
+  },
+  {
+    "id": 370,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "He paid for dinner and left a tip.",
+    "ru": "Он заплатил за ужин и оставил чаевые.",
+    "hint": "последовательность",
+    "words": ["He", "paid", "for", "dinner", "and", "left", "a", "tip."]
+  },
+  {
+    "id": 371,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "Did she tell you the truth?",
+    "ru": "Она сказала тебе правду?",
+    "hint": "вопрос",
+    "words": ["Did", "she", "tell", "you", "the", "truth?"]
+  },
+  {
+    "id": 372,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "They were still sleeping when I left.",
+    "ru": "Они ещё спали, когда я уходил.",
+    "hint": "фоновое действие",
+    "words": ["They", "were", "still", "sleeping", "when", "I", "left."]
+  },
+  {
+    "id": 373,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "I was not paying attention during the lecture.",
+    "ru": "Я не слушал лекцию внимательно.",
+    "hint": "отрицание",
+    "words": ["I", "was", "not", "paying", "attention", "during", "the", "lecture."]
+  },
+  {
+    "id": 374,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "What was she wearing at the party?",
+    "ru": "Что она была одета на вечеринке?",
+    "hint": "вопрос",
+    "words": ["What", "was", "she", "wearing", "at", "the", "party?"]
+  },
+  {
+    "id": 375,
+    "tense": "past_perfect",
+    "tense_label": "Past Perfect",
+    "en": "The train had already left when we got to the station.",
+    "ru": "Поезд уже уехал, когда мы пришли на станцию.",
+    "hint": "раньше другого действия",
+    "words": ["The", "train", "had", "already", "left", "when", "we", "got", "to", "the", "station."]
+  },
+  {
+    "id": 376,
+    "tense": "past_perfect",
+    "tense_label": "Past Perfect",
+    "en": "I had never eaten sushi before that day.",
+    "ru": "До того дня я никогда не ел суши.",
+    "hint": "опыт до момента",
+    "words": ["I", "had", "never", "eaten", "sushi", "before", "that", "day."]
+  },
+  {
+    "id": 377,
+    "tense": "past_perfect_continuous",
+    "tense_label": "Past Perfect Continuous",
+    "en": "They had been traveling for a month before they came home.",
+    "ru": "Они путешествовали месяц, прежде чем вернулись домой.",
+    "hint": "длительный процесс",
+    "words": ["They", "had", "been", "traveling", "for", "a", "month", "before", "they", "came", "home."]
+  },
+  {
+    "id": 378,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "I will call you when I get home.",
+    "ru": "Я позвоню тебе, когда приду домой.",
+    "hint": "обещание",
+    "words": ["I", "will", "call", "you", "when", "I", "get", "home."]
+  },
+  {
+    "id": 379,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "What will you do after university?",
+    "ru": "Что ты будешь делать после университета?",
+    "hint": "вопрос о планах",
+    "words": ["What", "will", "you", "do", "after", "university?"]
+  },
+  {
+    "id": 380,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "We won't be able to come tomorrow.",
+    "ru": "Мы не сможем прийти завтра.",
+    "hint": "отрицание",
+    "words": ["We", "won't", "be", "able", "to", "come", "tomorrow."]
+  },
+  {
+    "id": 381,
+    "tense": "future_continuous",
+    "tense_label": "Future Continuous",
+    "en": "This time next week I will be lying on a beach.",
+    "ru": "На следующей неделе в это время я буду лежать на пляже.",
+    "hint": "процесс в будущем",
+    "words": ["This", "time", "next", "week", "I", "will", "be", "lying", "on", "a", "beach."]
+  },
+  {
+    "id": 382,
+    "tense": "future_continuous",
+    "tense_label": "Future Continuous",
+    "en": "They will be traveling through Europe all summer.",
+    "ru": "Всё лето они будут путешествовать по Европе.",
+    "hint": "длительный процесс",
+    "words": ["They", "will", "be", "traveling", "through", "Europe", "all", "summer."]
+  },
+  {
+    "id": 383,
+    "tense": "future_perfect",
+    "tense_label": "Future Perfect",
+    "en": "By the end of the year I will have paid off my loan.",
+    "ru": "К концу года я выплачу кредит.",
+    "hint": "завершение к сроку",
+    "words": ["By", "the", "end", "of", "the", "year", "I", "will", "have", "paid", "off", "my", "loan."]
+  },
+  {
+    "id": 384,
+    "tense": "future_perfect",
+    "tense_label": "Future Perfect",
+    "en": "They will have finished the construction by next spring.",
+    "ru": "К следующей весне они закончат строительство.",
+    "hint": "завершение к сроку",
+    "words": ["They", "will", "have", "finished", "the", "construction", "by", "next", "spring."]
+  },
+  {
+    "id": 385,
+    "tense": "future_perfect_continuous",
+    "tense_label": "Future Perfect Continuous",
+    "en": "By next month I will have been studying English for five years.",
+    "ru": "К следующему месяцу я буду учить английский пять лет.",
+    "hint": "длительность к моменту",
+    "words": ["By", "next", "month", "I", "will", "have", "been", "studying", "English", "for", "five", "years."]
+  },
+  {
+    "id": 386,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "Most people work five days a week.",
+    "ru": "Большинство людей работают пять дней в неделю.",
+    "hint": "общий факт",
+    "words": ["Most", "people", "work", "five", "days", "a", "week."]
+  },
+  {
+    "id": 387,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am starting a new course next Monday.",
+    "ru": "В следующий понедельник я начинаю новый курс.",
+    "hint": "запланированное будущее",
+    "words": ["I", "am", "starting", "a", "new", "course", "next", "Monday."]
+  },
+  {
+    "id": 388,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "My English has improved a lot recently.",
+    "ru": "За последнее время мой английский сильно улучшился.",
+    "hint": "результат к сейчас",
+    "words": ["My", "English", "has", "improved", "a", "lot", "recently."]
+  },
+  {
+    "id": 389,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "They moved to Canada five years ago.",
+    "ru": "Они переехали в Канаду пять лет назад.",
+    "hint": "ago",
+    "words": ["They", "moved", "to", "Canada", "five", "years", "ago."]
+  },
+  {
+    "id": 390,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "I was walking home when I saw an old friend.",
+    "ru": "Я шёл домой, когда увидел старого друга.",
+    "hint": "прерванное действие",
+    "words": ["I", "was", "walking", "home", "when", "I", "saw", "an", "old", "friend."]
+  },
+  {
+    "id": 391,
+    "tense": "past_perfect",
+    "tense_label": "Past Perfect",
+    "en": "He had already paid when I offered to help.",
+    "ru": "Он уже заплатил, когда я предложил помочь.",
+    "hint": "раньше другого действия",
+    "words": ["He", "had", "already", "paid", "when", "I", "offered", "to", "help."]
+  },
+  {
+    "id": 392,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "We will have a meeting next Tuesday.",
+    "ru": "В следующий вторник у нас будет встреча.",
+    "hint": "запланированное событие",
+    "words": ["We", "will", "have", "a", "meeting", "next", "Tuesday."]
+  },
+  {
+    "id": 393,
+    "tense": "future_continuous",
+    "tense_label": "Future Continuous",
+    "en": "I will be working late tomorrow.",
+    "ru": "Завтра я буду работать допоздна.",
+    "hint": "процесс в будущем",
+    "words": ["I", "will", "be", "working", "late", "tomorrow."]
+  },
+  {
+    "id": 394,
+    "tense": "future_perfect",
+    "tense_label": "Future Perfect",
+    "en": "By next year they will have saved enough for a house.",
+    "ru": "К следующему году они накопят достаточно на дом.",
+    "hint": "завершение к сроку",
+    "words": ["By", "next", "year", "they", "will", "have", "saved", "enough", "for", "a", "house."]
+  },
+  {
+    "id": 395,
+    "tense": "present_simple",
+    "tense_label": "Present Simple",
+    "en": "Do you believe in luck?",
+    "ru": "Ты веришь в удачу?",
+    "hint": "вопрос",
+    "words": ["Do", "you", "believe", "in", "luck?"]
+  },
+  {
+    "id": 396,
+    "tense": "present_continuous",
+    "tense_label": "Present Continuous",
+    "en": "I am learning three languages at the same time.",
+    "ru": "Я учу три языка одновременно.",
+    "hint": "временный процесс",
+    "words": ["I", "am", "learning", "three", "languages", "at", "the", "same", "time."]
+  },
+  {
+    "id": 397,
+    "tense": "present_perfect",
+    "tense_label": "Present Perfect",
+    "en": "We have just finished the project.",
+    "ru": "Мы только что закончили проект.",
+    "hint": "только что",
+    "words": ["We", "have", "just", "finished", "the", "project."]
+  },
+  {
+    "id": 398,
+    "tense": "past_simple",
+    "tense_label": "Past Simple",
+    "en": "I sent the email two hours ago.",
+    "ru": "Я отправил письмо два часа назад.",
+    "hint": "ago",
+    "words": ["I", "sent", "the", "email", "two", "hours", "ago."]
+  },
+  {
+    "id": 399,
+    "tense": "past_continuous",
+    "tense_label": "Past Continuous",
+    "en": "She was crying while I was trying to explain.",
+    "ru": "Она плакала, пока я пытался объяснить.",
+    "hint": "параллельные действия",
+    "words": ["She", "was", "crying", "while", "I", "was", "trying", "to", "explain."]
+  },
+  {
+    "id": 400,
+    "tense": "future_simple",
+    "tense_label": "Future Simple",
+    "en": "I will see you tomorrow morning.",
+    "ru": "Увидимся завтра утром.",
+    "hint": "прощание",
+    "words": ["I", "will", "see", "you", "tomorrow", "morning."]
+  }
+]
