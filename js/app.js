@@ -27,10 +27,11 @@ let sentLevelFilter = 'all';
 
 // === LEARNING PATH ===
 let duoProgress = JSON.parse(localStorage.getItem('duoProgress') || '{}');
-// { "1": { build: true, choose: true, translate: false }, ... }
+// { "1": { build: true, translate: false }, ... }
 let lpExpandedTenses = JSON.parse(localStorage.getItem('lpExpandedTenses') || '[]');
 let sentOrderOverride = null;   // null | 'ordered'
 let sentReturnToLP = false;
+let sentFromLP = false;         // зашли ли в Sentences из Пути (для сабнава)
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
@@ -172,7 +173,7 @@ async function loadFromFirebase() {
             }
             srsData = data.srsData ?? srsData;
 
-            // === LEARNING PATH: мержим duoProgress ===
+            // === MERGE duoProgress (build + translate) ===
             if (data.duoProgress && typeof data.duoProgress === 'object') {
                 const merged = { ...duoProgress };
                 Object.keys(data.duoProgress).forEach(id => {
@@ -180,7 +181,6 @@ async function loadFromFirebase() {
                     const local = merged[id] || {};
                     merged[id] = {
                         build: !!(local.build || remote.build),
-                        choose: !!(local.choose || remote.choose),
                         translate: !!(local.translate || remote.translate)
                     };
                 });
@@ -200,6 +200,11 @@ async function loadFromFirebase() {
             localStorage.setItem('temporary', JSON.stringify(temporary));
             localStorage.setItem('srsData', JSON.stringify(srsData));
             localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
+
+            // Если сидим в Пути — перерисуем с новыми данными
+            if (currentMode === 'learning') {
+                renderLearningPath();
+            }
         }
     } catch (e) {
         console.error('❌ Load error:', e);
@@ -287,7 +292,6 @@ async function loadData() {
     }
 }
 
-// Хелпер — перемешивание Фишера-Йетса
 function shuffleArray(arr) {
     const a = [...arr];
     for (let i = a.length - 1; i > 0; i--) {
@@ -339,11 +343,15 @@ function getDueWords() {
 }
 
 // ===== DUO PROGRESS (Learning Path) =====
+// Прогресс теперь: build + translate
 function markDuoDone(sentId, skill) {
-    // skill: 'build' | 'choose' | 'translate'
     if (!skill) return;
     if (!duoProgress[sentId]) {
-        duoProgress[sentId] = { build: false, choose: false, translate: false };
+        duoProgress[sentId] = { build: false, translate: false };
+    }
+    // Чистим старое поле choose, если осталось
+    if ('choose' in duoProgress[sentId]) {
+        delete duoProgress[sentId].choose;
     }
     if (duoProgress[sentId][skill] === true) return;
     duoProgress[sentId][skill] = true;
@@ -353,7 +361,7 @@ function markDuoDone(sentId, skill) {
 
 function isDuoDone(sentId) {
     const p = duoProgress[sentId];
-    return !!(p && p.build && p.choose && p.translate);
+    return !!(p && p.build && p.translate);
 }
 
 function getTenseProgress(tense) {
@@ -573,11 +581,12 @@ function setActiveNav(mode) {
 }
 
 function renderMode(mode) {
-    // Сброс флага возврата, если зашли в Sentences НЕ из Learning Path
+    // Если зашли в Sentences НЕ из Learning Path — сбрасываем флаг
     if (mode === 'sentences' && currentMode !== 'learning') {
         sentReturnToLP = false;
+        sentFromLP = false;
     }
-    // Сброс override при уходе из Sentences
+    // Уход из Sentences — чистим override
     if (mode !== 'sentences') {
         sentOrderOverride = null;
     }
@@ -636,7 +645,6 @@ function renderDashboard() {
             <rect x="45" y="48" width="30" height="20" rx="8" fill="#5B5FE9"/>
             <rect x="125" y="48" width="30" height="20" rx="8" fill="#5B5FE9"/>
             <rect x="35" y="40" width="130" height="16" rx="8" fill="#7C80F5"/>
-            <path d="M60 140 Q70 155 80 140" stroke="#A5B4FC" stroke-width="0" fill="none"/>
             <rect x="85" y="138" width="30" height="22" rx="4" fill="#5B5FE9"/>
             <rect x="90" y="143" width="20" height="12" rx="2" fill="#EEF0FE"/>
             <circle cx="100" cy="149" r="2" fill="#5B5FE9"/>
@@ -659,9 +667,7 @@ function renderDashboard() {
 
     document.getElementById('content').innerHTML = `
         <div class="dash-wrap">
-
             <div class="dash-main">
-
                 <div class="dash-hero">
                     <div class="dash-hero-content">
                         <div class="dash-hero-title">Время учить английский! 🚀</div>
@@ -740,11 +746,9 @@ function renderDashboard() {
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="dash-side">
-
                 <div class="dash-card">
                     <div class="dash-card-title">Твоя статистика</div>
                     <div class="dash-stat-main">
@@ -784,9 +788,7 @@ function renderDashboard() {
                     <div class="dash-motivation-mascot">${mascotSmall}</div>
                     <div class="dash-motivation-text">У тебя всё получится!</div>
                 </div>
-
             </div>
-
         </div>
     `;
 
@@ -876,13 +878,13 @@ function renderCards() {
                 </div>
 
                 <div id="buttons-before" class="card-actions">
-    <button class="btn btn-primary btn-lg" id="btn-show">
-        <i data-lucide="eye"></i> Показать перевод
-    </button>
-    <button class="btn btn-secondary" onclick="renderMode('test')">
-        <i data-lucide="check-circle-2"></i> Режим теста
-    </button>
-</div>
+                    <button class="btn btn-primary btn-lg" id="btn-show">
+                        <i data-lucide="eye"></i> Показать перевод
+                    </button>
+                    <button class="btn btn-secondary" onclick="renderMode('test')">
+                        <i data-lucide="check-circle-2"></i> Режим теста
+                    </button>
+                </div>
 
                 <div id="buttons-after" class="card-actions" style="display: none;">
                     <button class="btn btn-success" id="btn-learned">
@@ -1924,7 +1926,18 @@ function renderSentences() {
         </button>`;
     }).join('');
 
-    const subNav = `
+    // Сабнав: если из Пути — только 2 кнопки (Сборка / Перевод)
+    // Если из сайдбара — все 3
+    const subNav = sentFromLP ? `
+        <div class="subnav">
+            <button class="subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">
+                <i data-lucide="puzzle"></i> Сборка
+            </button>
+            <button class="subnav-btn ${sentSubMode === 'translate' ? 'active' : ''}" data-sub="translate">
+                <i data-lucide="pencil"></i> Перевод
+            </button>
+        </div>
+    ` : `
         <div class="subnav">
             <button class="subnav-btn ${sentSubMode === 'build' ? 'active' : ''}" data-sub="build">
                 <i data-lucide="puzzle"></i> Сборка
@@ -1937,6 +1950,11 @@ function renderSentences() {
             </button>
         </div>
     `;
+
+    // Если из Пути и вдруг стоит choose — сбросим на build
+    if (sentFromLP && sentSubMode === 'choose') {
+        sentSubMode = 'build';
+    }
 
     let bodyHtml = '';
     if (sentSubMode === 'build') bodyHtml = renderSentBuild();
@@ -1971,6 +1989,7 @@ function renderSentences() {
             sentLevelFilter = 'all';
             sentOrderOverride = null;
             sentReturnToLP = false;
+            sentFromLP = false;
             renderSentences();
         };
     });
@@ -1985,6 +2004,7 @@ function renderSentences() {
             }
             sentOrderOverride = null;
             sentReturnToLP = false;
+            sentFromLP = false;
             renderSentences();
         };
     });
@@ -2005,6 +2025,7 @@ function renderSentences() {
         backBtn.onclick = () => {
             sentOrderOverride = null;
             sentReturnToLP = false;
+            sentFromLP = false;
             renderMode('learning');
         };
     }
@@ -2151,14 +2172,34 @@ function attachSentBuildHandlers() {
 
 function renderSentChoose() {
     const data = getFilteredSentences();
-    if (data.length < 4) return `<div class="empty-inline"><i data-lucide="alert-circle"></i><div>Нужно минимум 4 предложения.</div></div>`;
+    // Уронили порог с 4 до 2 — но правильные варианты добираем из всей базы
+    if (data.length < 2) return `<div class="empty-inline"><i data-lucide="alert-circle"></i><div>Нужно минимум 2 предложения.</div></div>`;
 
     if (positions.sentChoose >= data.length) positions.sentChoose = 0;
     const sent = data[positions.sentChoose];
     const correct = sent.tense_label;
 
-    const allLabels = [...new Set(data.map(s => s.tense_label))];
-    const wrongOptions = allLabels.filter(l => l !== correct).slice(0, 3);
+    // Собираем неправильные варианты: сначала из группы, потом из всей базы
+    const wrongOptions = [];
+    const seen = new Set([correct]);
+
+    data.forEach(s => {
+        if (wrongOptions.length >= 3) return;
+        if (!seen.has(s.tense_label)) {
+            seen.add(s.tense_label);
+            wrongOptions.push(s.tense_label);
+        }
+    });
+
+    sentences.forEach(s => {
+        if (wrongOptions.length >= 3) return;
+        if (!seen.has(s.tense_label)) {
+            seen.add(s.tense_label);
+            wrongOptions.push(s.tense_label);
+        }
+    });
+
+    // Фолбэк — на всякий случай
     const fallback = ['Present Simple', 'Present Continuous', 'Present Perfect', 'Past Simple', 'Future Simple', 'Past Continuous'];
     for (const f of fallback) {
         if (wrongOptions.length >= 3) break;
@@ -2195,7 +2236,7 @@ function renderSentChoose() {
 
 function attachSentChooseHandlers() {
     const data = getFilteredSentences();
-    if (data.length < 4) return;
+    if (data.length < 2) return;
 
     const sent = data[positions.sentChoose];
     const correct = sent.tense_label;
@@ -2210,7 +2251,6 @@ function attachSentChooseHandlers() {
                 feedback.innerHTML = `<i data-lucide="check-circle"></i> Правильно! ${correct} (+10 XP)`;
                 feedback.className = 'sent-feedback correct';
                 addXP(10);
-                markDuoDone(sent.id, 'choose');
             } else {
                 btn.classList.add('wrong');
                 document.querySelectorAll('#content .test-option').forEach(b => {
@@ -2447,7 +2487,7 @@ function renderLearningPath() {
 
             <div class="lp-tip">
                 <i data-lucide="info"></i>
-                Предложение считается пройденным, когда ты правильно <b>собрал</b>, <b>определил время</b> и <b>перевёл</b> его.
+                Предложение считается пройденным, когда ты правильно <b>собрал</b> и <b>перевёл</b> его.
             </div>
 
             <div class="lp-blocks">
@@ -2488,6 +2528,7 @@ function attachLearningPathHandlers() {
 
             sentOrderOverride = 'ordered';
             sentReturnToLP = true;
+            sentFromLP = true;
 
             renderMode('sentences');
         };
@@ -2497,7 +2538,6 @@ function attachLearningPathHandlers() {
     if (resetBtn) {
         resetBtn.onclick = () => {
             if (!confirm('Сбросить прогресс Пути обучения? XP и слова останутся.')) return;
-            if (!confirm('Точно? Отметки «собрал/выбрал/перевёл» будут удалены.')) return;
             duoProgress = {};
             localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
             syncToFirebase();
@@ -2678,13 +2718,8 @@ function renderProfile() {
 }
 
 // ===== НАВИГАЦИЯ =====
-function nextCard() {
-    // Пустышка — навигация по футеру отключена в новом дизайне
-}
-
-function prevCard() {
-    // Пустышка
-}
+function nextCard() {}
+function prevCard() {}
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 document.addEventListener('DOMContentLoaded', () => {
