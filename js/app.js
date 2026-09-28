@@ -682,15 +682,21 @@ function renderCards() {
 
     if (dueWords.length === 0) {
         document.getElementById('content').innerHTML = `
-            <div class="card">
-                <h2>🎉 All caught up!</h2>
-                <p>No words due for review right now.</p>
-                <p>Come back later or add new words.</p>
-                <div style="margin-top:20px;">
-                    <button class="btn btn-secondary" onclick="renderMode('temporary')">📝 Temporary</button>
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="party-popper"></i></div>
+                <div class="empty-title">Всё повторено! 🎉</div>
+                <div class="empty-text">На сегодня нет слов для повторения.<br>Возвращайся позже или добавь новые слова.</div>
+                <div class="empty-actions">
+                    <button class="btn btn-primary" onclick="renderMode('temporary')">
+                        <i data-lucide="plus"></i> Добавить слова
+                    </button>
+                    <button class="btn btn-secondary" onclick="renderMode('sentences')">
+                        <i data-lucide="book-open"></i> Грамматика
+                    </button>
                 </div>
             </div>
         `;
+        refreshIcons();
         return;
     }
 
@@ -721,31 +727,66 @@ function renderCards() {
         hiddenContent += `<div class="card-collocations"><strong>Collocations:</strong> ${formatCollocations(word.collocations)}</div>`;
     }
 
+    const progressPct = Math.round(((positions.cards + 1) / dueWords.length) * 100);
+
     document.getElementById('content').innerHTML = `
-        <div class="card">
-            <div class="card-srs">SRS Level: ${srs.level}/5</div>
-            <div class="card-word">
-                ${word.word}
-                <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+        <div class="mode-wrap">
+            <div class="mode-progress">
+                <div class="mode-progress-info">
+                    <span class="mode-progress-label">Карточка ${positions.cards + 1} из ${dueWords.length}</span>
+                    <span class="mode-progress-pct">${progressPct}%</span>
+                </div>
+                <div class="mode-progress-bar">
+                    <div class="mode-progress-fill" style="width:${progressPct}%"></div>
+                </div>
             </div>
-            <div class="card-meta">${transText} ${posText}</div>
-            <div id="hidden-content" style="display: none;">${hiddenContent}</div>
-            <div id="buttons-before">
-                <button class="btn btn-secondary" id="btn-show">👁 Показать перевод</button>
+
+            <div class="card mode-card">
+                <div class="card-srs">
+                    <i data-lucide="bar-chart-3"></i>
+                    SRS Level ${srs.level}/5
+                </div>
+                <div class="card-word">
+                    ${word.word}
+                    <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">
+                        <i data-lucide="volume-2"></i>
+                    </button>
+                </div>
+                <div class="card-meta">${transText} ${posText}</div>
+
+                <div id="hidden-content" class="card-hidden" style="display: none;">
+                    ${hiddenContent}
+                </div>
+
+                <div id="buttons-before" class="card-actions">
+                    <button class="btn btn-primary btn-lg" id="btn-show">
+                        <i data-lucide="eye"></i> Показать перевод
+                    </button>
+                </div>
+
+                <div id="buttons-after" class="card-actions" style="display: none;">
+                    <button class="btn btn-success" id="btn-learned">
+                        <i data-lucide="check"></i> Выучил <span class="xp-tag">+10 XP</span>
+                    </button>
+                    <button class="btn btn-warning" id="btn-dontknow">
+                        <i data-lucide="x"></i> Не знаю
+                    </button>
+                    <button class="btn btn-master" id="btn-master">
+                        <i data-lucide="check-check"></i> Навсегда <span class="xp-tag">+20 XP</span>
+                    </button>
+                </div>
+
+                <div class="card-frequency">
+                    <i data-lucide="activity"></i> Частота: ${word.frequency}
+                </div>
             </div>
-            <div id="buttons-after" style="display: none;">
-                <button class="btn btn-success" id="btn-learned">✓ Выучил (+10 XP)</button>
-                <button class="btn btn-warning" id="btn-dontknow">✗ Не знаю</button>
-                <button class="btn btn-master" id="btn-master">✓✓ Навсегда (+20 XP)</button>
-            </div>
-            <div class="card-frequency">Частота: ${word.frequency} · Слово ${positions.cards + 1} из ${dueWords.length}</div>
         </div>
     `;
 
     document.getElementById('btn-show').onclick = () => {
         document.getElementById('hidden-content').style.display = 'block';
         document.getElementById('buttons-before').style.display = 'none';
-        document.getElementById('buttons-after').style.display = 'block';
+        document.getElementById('buttons-after').style.display = 'flex';
         refreshIcons();
     };
 
@@ -778,8 +819,7 @@ function renderCards() {
         updateStats();
     };
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 // ===== TEST =====
@@ -792,7 +832,14 @@ function renderTest() {
     );
 
     if (data.length < 4) {
-        document.getElementById('content').innerHTML = '<p>Недостаточно слов для теста.</p>';
+        document.getElementById('content').innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="alert-circle"></i></div>
+                <div class="empty-title">Недостаточно слов</div>
+                <div class="empty-text">Для теста нужно минимум 4 слова в текущем уровне.</div>
+            </div>
+        `;
+        refreshIcons();
         return;
     }
 
@@ -816,21 +863,40 @@ function renderTest() {
         ? `<span class="card-transcription">[${word.transcription_ru}]</span>`
         : (word.ipa ? `<span class="card-transcription">${word.ipa}</span>` : '');
 
+    const progressPct = Math.round(((positions.test + 1) / data.length) * 100);
+
     document.getElementById('content').innerHTML = `
-        <div class="test-question">
-            ${word.word}
-            <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">🔊</button>
+        <div class="mode-wrap">
+            <div class="mode-progress">
+                <div class="mode-progress-info">
+                    <span class="mode-progress-label">Тест ${positions.test + 1} из ${data.length}</span>
+                    <span class="mode-progress-pct">${progressPct}%</span>
+                </div>
+                <div class="mode-progress-bar">
+                    <div class="mode-progress-fill" style="width:${progressPct}%"></div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                <div class="test-question">
+                    ${word.word}
+                    <button class="speak-btn" onclick="speak('${word.word.replace(/'/g, "\\'")}')">
+                        <i data-lucide="volume-2"></i>
+                    </button>
+                </div>
+                <div class="card-meta">
+                    ${transText}
+                    ${word.pos ? `<span class="card-pos">${word.pos}</span>` : ''}
+                </div>
+                <div class="test-options">
+                    ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
+                </div>
+                <div class="test-feedback" id="test-feedback"></div>
+                <button class="btn btn-success btn-lg" id="btn-next-test" style="display: none;">
+                    Дальше <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
         </div>
-        <div class="card-meta">
-            ${transText}
-            ${word.pos ? `<span class="card-pos">${word.pos}</span>` : ''}
-        </div>
-        <div class="test-options">
-            ${options.map(opt => `<button class="test-option" data-answer="${opt}">${opt}</button>`).join('')}
-        </div>
-        <div class="test-feedback" id="test-feedback"></div>
-        <button class="btn btn-success" id="btn-next-test" style="display: none;">Дальше →</button>
-        <div class="card-frequency">Слово ${positions.test + 1} из ${data.length}</div>
     `;
 
     document.querySelectorAll('.test-option').forEach(btn => {
@@ -840,7 +906,7 @@ function renderTest() {
 
             if (answer === correct) {
                 btn.classList.add('correct');
-                feedback.textContent = '✓ Правильно! +10 XP';
+                feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
                 feedback.className = 'test-feedback correct';
                 updateSrs(word.word, true, false);
                 addXP(10);
@@ -849,13 +915,14 @@ function renderTest() {
                 document.querySelectorAll('.test-option').forEach(b => {
                     if (b.dataset.answer === correct) b.classList.add('correct');
                 });
-                feedback.textContent = `✗ Неправильно. Правильный ответ: ${correct} (+2 XP)`;
+                feedback.innerHTML = `<i data-lucide="x-circle"></i> Правильный ответ: ${correct} (+2 XP)`;
                 feedback.className = 'test-feedback wrong';
                 updateSrs(word.word, false, false);
                 addXP(2);
             }
             document.querySelectorAll('.test-option').forEach(b => b.disabled = true);
-            document.getElementById('btn-next-test').style.display = 'inline-block';
+            document.getElementById('btn-next-test').style.display = 'inline-flex';
+            refreshIcons();
         };
     });
 
@@ -866,29 +933,69 @@ function renderTest() {
         renderTest();
     };
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
 
 // ===== WRITE =====
 function renderWrite() {
     const data = getFilteredVocabulary().filter(w => !isMastered(w.word));
     if (data.length === 0) {
-        document.getElementById('content').innerHTML = '<p>Нет слов для этого уровня.</p>';
+        document.getElementById('content').innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="inbox"></i></div>
+                <div class="empty-title">Нет слов</div>
+                <div class="empty-text">Для этого уровня нет доступных слов.</div>
+            </div>
+        `;
+        refreshIcons();
         return;
     }
 
     if (positions.write >= data.length) positions.write = 0;
     const word = data[positions.write];
+    const progressPct = Math.round(((positions.write + 1) / data.length) * 100);
 
     document.getElementById('content').innerHTML = `
-        <div class="card-word">${word.translation}</div>
-        <input type="text" class="write-input" id="write-input" placeholder="Введи слово..." autocomplete="off">
-        <button class="btn btn-primary" id="btn-check">✓ Проверить</button>
-        <button class="btn btn-secondary" id="btn-show-answer">👁 Показать ответ</button>
-        <button class="btn btn-success" id="btn-next-write" style="display: none;">Дальше →</button>
-        <div class="write-feedback" id="write-feedback"></div>
-        <div class="card-frequency">Подсказка: ${word.word.length} букв. Слово ${positions.write + 1} из ${data.length}</div>
+        <div class="mode-wrap">
+            <div class="mode-progress">
+                <div class="mode-progress-info">
+                    <span class="mode-progress-label">Письмо ${positions.write + 1} из ${data.length}</span>
+                    <span class="mode-progress-pct">${progressPct}%</span>
+                </div>
+                <div class="mode-progress-bar">
+                    <div class="mode-progress-fill" style="width:${progressPct}%"></div>
+                </div>
+            </div>
+
+            <div class="mode-card write-card">
+                <div class="write-prompt">
+                    <div class="write-prompt-label">Переведи на английский:</div>
+                    <div class="write-prompt-word">${word.translation}</div>
+                    <div class="write-prompt-hint">
+                        <i data-lucide="lightbulb"></i>
+                        ${word.word.length} букв
+                        ${word.transcription_ru ? ` · [${word.transcription_ru}]` : ''}
+                    </div>
+                </div>
+
+                <input type="text" class="write-input" id="write-input" placeholder="Введи слово на английском..." autocomplete="off" autocapitalize="off" spellcheck="false">
+
+                <div class="card-actions">
+                    <button class="btn btn-primary btn-lg" id="btn-check">
+                        <i data-lucide="check"></i> Проверить
+                    </button>
+                    <button class="btn btn-secondary" id="btn-show-answer">
+                        <i data-lucide="eye"></i> Показать ответ
+                    </button>
+                </div>
+
+                <button class="btn btn-success btn-lg" id="btn-next-write" style="display: none;">
+                    Дальше <i data-lucide="arrow-right"></i>
+                </button>
+
+                <div class="write-feedback" id="write-feedback"></div>
+            </div>
+        </div>
     `;
 
     const input = document.getElementById('write-input');
@@ -899,12 +1006,12 @@ function renderWrite() {
         const feedback = document.getElementById('write-feedback');
 
         if (answer === word.word.toLowerCase()) {
-            feedback.textContent = '✓ Правильно! +10 XP';
+            feedback.innerHTML = '<i data-lucide="check-circle"></i> Правильно! +10 XP';
             feedback.className = 'write-feedback correct';
             updateSrs(word.word, true, false);
             addXP(10);
         } else {
-            feedback.textContent = `✗ Неправильно. Правильный ответ: ${word.word} (+2 XP)`;
+            feedback.innerHTML = `<i data-lucide="x-circle"></i> Правильный ответ: <b>${word.word}</b> (+2 XP)`;
             feedback.className = 'write-feedback wrong';
             updateSrs(word.word, false, false);
             addXP(2);
@@ -912,18 +1019,20 @@ function renderWrite() {
         document.getElementById('btn-check').disabled = true;
         document.getElementById('btn-show-answer').disabled = true;
         input.disabled = true;
-        document.getElementById('btn-next-write').style.display = 'inline-block';
+        document.getElementById('btn-next-write').style.display = 'inline-flex';
+        refreshIcons();
     };
 
     document.getElementById('btn-show-answer').onclick = () => {
-        document.getElementById('write-feedback').textContent = `Правильный ответ: ${word.word}`;
+        document.getElementById('write-feedback').innerHTML = `<i data-lucide="eye"></i> Правильный ответ: <b>${word.word}</b>`;
         document.getElementById('write-feedback').className = 'write-feedback';
         document.getElementById('btn-check').disabled = true;
         document.getElementById('btn-show-answer').disabled = true;
         input.disabled = true;
-        document.getElementById('btn-next-write').style.display = 'inline-block';
+        document.getElementById('btn-next-write').style.display = 'inline-flex';
         updateSrs(word.word, false, false);
         addXP(2);
+        refreshIcons();
     };
 
     document.getElementById('btn-next-write').onclick = () => {
@@ -939,10 +1048,8 @@ function renderWrite() {
         }
     });
 
-    document.getElementById('btn-prev').disabled = true;
-    document.getElementById('btn-next').disabled = true;
+    refreshIcons();
 }
-
 // ===== PHRASES =====
 function renderPhrases() {
     const data = getFilteredPhrases();
