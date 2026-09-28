@@ -44,26 +44,23 @@ let currentUser = null;
 
 // ===== ТЕМА =====
 function initTheme() {
-    const saved = localStorage.getItem('theme') || 'light';
+    let saved = localStorage.getItem('theme');
+    if (!saved || (saved !== 'light' && saved !== 'dark')) {
+        // Первый заход — смотрим на системную тему
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        saved = prefersDark ? 'dark' : 'light';
+    }
     document.documentElement.setAttribute('data-theme', saved);
     updateThemeIcon(saved);
-}
 
-function updateThemeIcon(theme) {
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    btn.innerHTML = theme === 'dark'
-        ? '<i data-lucide="sun"></i>'
-        : '<i data-lucide="moon"></i>';
-    if (window.lucide) window.lucide.createIcons();
-}
-
-function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    updateThemeIcon(next);
+    // Реагируем на изменение системной темы, если пользователь не выбирал вручную
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+    });
 }
 
 // ===== ИКОНКИ LUCIDE =====
