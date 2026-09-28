@@ -2597,3 +2597,314 @@ button {
         padding: 6px 10px;
     }
 }
+/* ============================================================
+   LEARNING PATH (Путь обучения)
+   ============================================================ */
+
+.lp-wrap {
+    max-width: 900px;
+}
+
+/* --- Подсказка сверху --- */
+.lp-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.lp-tip svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--accent);
+}
+
+.lp-tip b {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* --- Список блоков --- */
+.lp-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Блок (Present / Past / Future) --- */
+.lp-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 20px 22px;
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.lp-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.lp-block-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.lp-block-emoji {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.lp-block-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.lp-block-pct {
+    color: var(--text-primary);
+    min-width: 38px;
+    text-align: right;
+}
+
+.lp-block-bar {
+    height: 8px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.lp-block-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+/* Цвета блоков */
+.lp-block-green .lp-block-fill  { background: linear-gradient(90deg, #22C55E, #4ADE80); }
+.lp-block-amber .lp-block-fill  { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+.lp-block-red   .lp-block-fill  { background: linear-gradient(90deg, #EF4444, #F87171); }
+
+.lp-block-green .lp-block-title { color: #16A34A; }
+.lp-block-amber .lp-block-title { color: #D97706; }
+.lp-block-red   .lp-block-title { color: #DC2626; }
+
+[data-theme="dark"] .lp-block-green .lp-block-title { color: #4ADE80; }
+[data-theme="dark"] .lp-block-amber .lp-block-title { color: #FBBF24; }
+[data-theme="dark"] .lp-block-red   .lp-block-title { color: #F87171; }
+
+/* --- Времена внутри блока --- */
+.lp-tenses {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.lp-tense {
+    background: var(--bg-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: background var(--transition);
+}
+
+.lp-tense-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: background var(--transition);
+    gap: 12px;
+}
+
+.lp-tense-header:hover {
+    background: var(--bg-hover);
+}
+
+.lp-tense-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.lp-chevron {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: transform var(--transition);
+}
+
+.lp-tense-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.lp-tense-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-family: 'Courier New', monospace;
+    min-width: 46px;
+    text-align: right;
+}
+
+.lp-tense-bar {
+    width: 80px;
+    height: 6px;
+    background: var(--bg-card);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.lp-tense-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+/* --- Уровни (A1/A2/B1/B2) --- */
+.lp-levels {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    padding: 8px 12px 14px;
+    animation: fadeInUp 0.25s ease;
+}
+
+.lp-level-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: left;
+    font-family: inherit;
+}
+
+.lp-level-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.lp-level-btn.complete {
+    border-color: var(--success);
+    background: var(--success-bg);
+}
+
+.lp-level-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+}
+
+.lp-level-name {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+}
+
+.lp-level-btn.complete .lp-level-name {
+    color: var(--success);
+}
+
+.lp-level-count {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-family: 'Courier New', monospace;
+}
+
+.lp-level-bar {
+    height: 4px;
+    background: var(--bg-soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.lp-level-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.lp-level-btn.complete .lp-level-fill {
+    background: var(--success);
+}
+
+/* --- Адаптив --- */
+@media (max-width: 700px) {
+    .lp-wrap {
+        max-width: 100%;
+    }
+
+    .lp-block {
+        padding: 16px;
+    }
+
+    .lp-block-title {
+        font-size: 12px;
+    }
+
+    .lp-tense-bar {
+        width: 56px;
+    }
+
+    .lp-tense-count {
+        font-size: 11px;
+        min-width: 40px;
+    }
+
+    .lp-levels {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 8px 10px 12px;
+    }
+
+    .lp-tip {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .lp-levels {
+        grid-template-columns: 1fr;
+    }
+}
