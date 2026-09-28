@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LangStep — Small steps, big results</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>English with Purpose</title>
+
+    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="English">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#5B5FE9">
+
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -21,7 +30,7 @@
                     <i data-lucide="rocket"></i>
                 </div>
                 <div class="brand-text">
-                    <div class="brand-name">LangStep</div>
+                    <div class="brand-name">English with Purpose</div>
                     <div class="brand-tagline">Small steps · Big results</div>
                 </div>
             </div>
@@ -108,7 +117,7 @@
             <!-- Level switcher -->
             <div class="levels-bar" id="level-buttons"></div>
 
-                       <!-- Content -->
+            <!-- Content -->
             <div class="content-area">
                 <div id="content"></div>
             </div>
@@ -176,5 +185,16 @@
     </script>
 
     <script src="js/app.js"></script>
+
+    <!-- Service Worker регистрация -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then((reg) => console.log('✅ SW зарегистрирован:', reg.scope))
+                    .catch((err) => console.warn('⚠️ SW ошибка:', err));
+            });
+        }
+    </script>
 </body>
 </html>
