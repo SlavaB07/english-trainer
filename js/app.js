@@ -36,6 +36,14 @@ let achievements = JSON.parse(localStorage.getItem('achievements') || '[]');
 let userName = localStorage.getItem('userName') || '';
 
 let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
+let duoProgress = JSON.parse(localStorage.getItem('duoProgress') || '{}');
+// { "1": { build: true, choose: true, translate: false }, ... }
+let lpExpandedTenses = JSON.parse(localStorage.getItem('lpExpandedTenses') || '[]');
+// ['present_simple', 'past_simple', ...] — какие тенсы раскрыты в Learning Path
+let sentOrderOverride = null;
+// null | 'ordered' — если пришли из Learning Path, идём по порядку id
+let sentReturnToLP = false;
+// true — показывать кнопку «← Назад в Путь»
 
 const DAILY_GOAL = 20;
 const SRS_INTERVALS = [0, 1, 2, 4, 7, 14];
@@ -115,9 +123,10 @@ async function syncToFirebase() {
     if (!currentUser || !window.firebaseSetDoc) return;
     try {
         const payload = {
-            xp, dailyXP, lastActiveDate, streak, achievements,
-            learned, mastered, positions, currentLevel, srsData, userName
-        };
+    xp, dailyXP, lastActiveDate, streak, achievements,
+    learned, mastered, positions, currentLevel, srsData, userName,
+    duoProgress
+};
         if (Array.isArray(temporary) && temporary.length > 0) {
             payload.temporary = temporary;
         }
@@ -165,6 +174,20 @@ async function loadFromFirebase() {
                 temporary = mergeTemporary(temporary, data.temporary);
             }
             srsData = data.srsData ?? srsData;
+            if (data.duoProgress && typeof data.duoProgress === 'object') {
+    // Мержим: локальный + серверный, объединяем по skill
+    const merged = { ...duoProgress };
+    Object.keys(data.duoProgress).forEach(id => {
+        const remote = data.duoProgress[id] || {};
+        const local = merged[id] || {};
+        merged[id] = {
+            build: !!(local.build || remote.build),
+            choose: !!(local.choose || remote.choose),
+            translate: !!(local.translate || remote.translate)
+        };
+    });
+    duoProgress = merged;
+}
 
             localStorage.setItem('xp', xp.toString());
             localStorage.setItem('dailyXP', dailyXP.toString());
@@ -178,6 +201,7 @@ async function loadFromFirebase() {
             localStorage.setItem('level', currentLevel);
             localStorage.setItem('temporary', JSON.stringify(temporary));
             localStorage.setItem('srsData', JSON.stringify(srsData));
+            localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
         }
     } catch (e) {
         console.error('❌ Load error:', e);
@@ -316,7 +340,64 @@ function getDueWords() {
     });
     return due;
 }
+// ===== DUO PROGRESS (Learning Path) =====
+function markDuoDone(sentId, skill) {
+    // skill: 'build' | 'choose' | 'translate'
+    if (!skill) return;
+    if (!duoProgress[sentId]) {
+        duoProgress[sentId] = { build: false, choose: false, translate: false };
+    }
+    if (duoProgress[sentId][skill] === true) return; // уже отмечено — не дёргаем sync
+    duoProgress[sentId][skill] = true;
+    localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
+    syncToFirebase();
+}
 
+function isDuoDone(sentId) {
+    const p = duoProgress[sentId];
+    return !!(p && p.build && p.choose && p.translate);
+}
+
+function getTenseProgress(tense) {
+    const items = sentences.filter(s => s.tense === tense);
+    const done = items.filter(s => isDuoDone(s.id)).length;
+    return { done, total: items.length };
+}
+
+function getLevelProgress(tense, level) {
+    const items = sentences.filter(s => s.tense === tense && s.level === level);
+    const done = items.filter(s => isDuoDone(s.id)).length;
+    return { done, total: items.length };
+}
+
+function getBlockProgress(tenseKeys) {
+    const items = sentences.filter(s => tenseKeys.includes(s.tense));
+    const done = items.filter(s => isDuoDone(s.id)).length;
+    return { done, total: items.length };
+}
+
+// ===== LEARNING PATH: блоки и времена =====
+function getBlockName(block) {
+    if (block === 'present') return { label: 'Present', emoji: '🟢', color: 'green' };
+    if (block === 'past')    return { label: 'Past',    emoji: '🟡', color: 'amber' };
+    if (block === 'future')  return { label: 'Future',  emoji: '🔴', color: 'red' };
+    return { label: block, emoji: '⚪', color: 'gray' };
+}
+
+function getTensesInBlock(block) {
+    return sentences
+        .filter(s => s.tense.startsWith(block + '_'))
+        .reduce((acc, s) => {
+            if (!acc.find(t => t.key === s.tense)) {
+                acc.push({ key: s.tense, label: s.tense_label });
+            }
+            return acc;
+        }, []);
+}
+
+function getBlockKeys() {
+    return ['present', 'past', 'future'];
+}
 // ===== MASTERED =====
 function isMastered(word) {
     return mastered.includes(word);
@@ -486,7 +567,8 @@ function renderMode(mode) {
     currentMode = mode;
     setActiveNav(mode);
 
-    if (mode === 'dashboard') renderDashboard();
+      if (mode === 'dashboard') renderDashboard();
+    else if (mode === 'learning') renderLearningPath();
     else if (mode === 'cards') renderCards();
     else if (mode === 'test') renderTest();
     else if (mode === 'write') renderWrite();
@@ -2215,7 +2297,181 @@ function attachSentTranslateHandlers() {
         }
     });
 }
+// ===== LEARNING PATH =====
+function renderLearningPath() {
+    if (sentences.length === 0) {
+        document.getElementById('content').innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="map"></i></div>
+                <div class="empty-title">Нет данных</div>
+                <div class="empty-text">Файл <b>sentences.json</b> не загружен.</div>
+            </div>
+        `;
+        refreshIcons();
+        return;
+    }
 
+    const blocks = getBlockKeys();
+    const totalAll = sentences.length;
+    const doneAll = sentences.filter(s => isDuoDone(s.id)).length;
+    const pctAll = totalAll > 0 ? Math.round((doneAll / totalAll) * 100) : 0;
+
+    let blocksHtml = '';
+    blocks.forEach(block => {
+        const info = getBlockName(block);
+        const tenses = getTensesInBlock(block);
+        const blockProg = getBlockProgress(tenses.map(t => t.key));
+        const blockPct = blockProg.total > 0 ? Math.round((blockProg.done / blockProg.total) * 100) : 0;
+
+        let tensesHtml = '';
+        tenses.forEach(t => {
+            const tp = getTenseProgress(t.key);
+            const tpPct = tp.total > 0 ? Math.round((tp.done / tp.total) * 100) : 0;
+            const isExpanded = lpExpandedTenses.includes(t.key);
+
+            // Уровни внутри тенса
+            let levelsHtml = '';
+            if (isExpanded) {
+                const levels = ['A1', 'A2', 'B1', 'B2'];
+                levelsHtml = `<div class="lp-levels">` + levels.map(lvl => {
+                    const lp = getLevelProgress(t.key, lvl);
+                    if (lp.total === 0) return '';
+                    const lpPct = Math.round((lp.done / lp.total) * 100);
+                    const isComplete = lp.done === lp.total && lp.total > 0;
+                    return `
+                        <button class="lp-level-btn ${isComplete ? 'complete' : ''}" data-tense="${t.key}" data-level="${lvl}">
+                            <div class="lp-level-head">
+                                <span class="lp-level-name">${lvl}</span>
+                                <span class="lp-level-count">${lp.done}/${lp.total}</span>
+                            </div>
+                            <div class="lp-level-bar">
+                                <div class="lp-level-fill" style="width:${lpPct}%"></div>
+                            </div>
+                        </button>
+                    `;
+                }).join('') + `</div>`;
+            }
+
+            tensesHtml += `
+                <div class="lp-tense" data-tense="${t.key}">
+                    <div class="lp-tense-header" data-tense-toggle="${t.key}">
+                        <div class="lp-tense-title">
+                            <i data-lucide="${isExpanded ? 'chevron-down' : 'chevron-right'}" class="lp-chevron"></i>
+                            <span>${t.label}</span>
+                        </div>
+                        <div class="lp-tense-progress">
+                            <span class="lp-tense-count">${tp.done}/${tp.total}</span>
+                            <div class="lp-tense-bar">
+                                <div class="lp-tense-fill" style="width:${tpPct}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    ${levelsHtml}
+                </div>
+            `;
+        });
+
+        blocksHtml += `
+            <div class="lp-block lp-block-${info.color}">
+                <div class="lp-block-header">
+                    <div class="lp-block-title">
+                        <span class="lp-block-emoji">${info.emoji}</span>
+                        <span>${info.label.toUpperCase()}</span>
+                    </div>
+                    <div class="lp-block-progress">
+                        <span class="lp-block-count">${blockProg.done}/${blockProg.total}</span>
+                        <span class="lp-block-pct">${blockPct}%</span>
+                    </div>
+                </div>
+                <div class="lp-block-bar">
+                    <div class="lp-block-fill" style="width:${blockPct}%"></div>
+                </div>
+                <div class="lp-tenses">
+                    ${tensesHtml}
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap lp-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title"><i data-lucide="map"></i> Путь обучения</div>
+                    <div class="list-subtitle">
+                        12 времён · ${totalAll} предложений · пройдено ${doneAll} (${pctAll}%)
+                    </div>
+                </div>
+                <button class="btn btn-secondary" id="lp-reset" title="Сбросить прогресс Пути">
+                    <i data-lucide="rotate-ccw"></i> Сбросить
+                </button>
+            </div>
+
+            <div class="lp-tip">
+                <i data-lucide="info"></i>
+                Предложение считается пройденным, когда ты правильно <b>собрал</b>, <b>определил время</b> и <b>перевёл</b> его.
+            </div>
+
+            <div class="lp-blocks">
+                ${blocksHtml}
+            </div>
+        </div>
+    `;
+
+    attachLearningPathHandlers();
+    refreshIcons();
+}
+
+function attachLearningPathHandlers() {
+    // Раскрытие тенса
+    document.querySelectorAll('[data-tense-toggle]').forEach(el => {
+        el.onclick = () => {
+            const key = el.dataset.tenseToggle;
+            const idx = lpExpandedTenses.indexOf(key);
+            if (idx === -1) lpExpandedTenses.push(key);
+            else lpExpandedTenses.splice(idx, 1);
+            localStorage.setItem('lpExpandedTenses', JSON.stringify(lpExpandedTenses));
+            renderLearningPath();
+        };
+    });
+
+    // Клик на уровень → переход в Sentences с фильтрами
+    document.querySelectorAll('.lp-level-btn').forEach(btn => {
+        btn.onclick = () => {
+            const tense = btn.dataset.tense;
+            const level = btn.dataset.level;
+
+            sentTenseFilter = tense;
+            sentLevelFilter = level;
+            sentSubMode = 'build';
+
+            // Сброс позиций, чтобы начать группу с начала
+            positions.sentBuild = 0;
+            positions.sentChoose = 0;
+            positions.sentTranslate = 0;
+            savePositions();
+
+            // Идём по порядку id, не шаффлим
+            sentOrderOverride = 'ordered';
+            sentReturnToLP = true;
+
+            renderMode('sentences');
+        };
+    });
+
+    // Сброс прогресса Пути
+    const resetBtn = document.getElementById('lp-reset');
+    if (resetBtn) {
+        resetBtn.onclick = () => {
+            if (!confirm('Сбросить прогресс Пути обучения? XP и слова останутся.')) return;
+            if (!confirm('Точно? Отметки «собрал/выбрал/перевёл» будут удалены.')) return;
+            duoProgress = {};
+            localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
+            syncToFirebase();
+            renderLearningPath();
+        };
+    }
+}
 // ===== PROFILE =====
 function renderProfile() {
     const levelTotal = getLevelTotal();
