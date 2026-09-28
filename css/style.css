@@ -2563,3 +2563,37 @@ button {
         margin-right: 0;
     }
 }
+/* ===== SENTENCES: ряд уровней ===== */
+.chips-row-levels {
+    margin-top: -8px;  /* чуть ближе к первому ряду */
+}
+
+.chip-level {
+    font-family: 'Courier New', monospace;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: var(--bg-soft);
+}
+
+.chip-level:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.chip-level.active {
+    background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .chips-row-levels {
+        margin-top: -4px;
+    }
+    .chip-level {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
