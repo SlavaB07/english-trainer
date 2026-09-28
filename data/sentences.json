@@ -6,7 +6,13 @@
     "en": "I work every day.",
     "ru": "Я работаю каждый день.",
     "hint": "регулярное действие, факт",
-    "words": ["I", "work", "every", "day."]
+    "words": [
+      "I",
+      "work",
+      "every",
+      "day."
+    ],
+    "level": "A1"
   },
   {
     "id": 2,
@@ -15,7 +21,15 @@
     "en": "She drinks coffee in the morning.",
     "ru": "Она пьёт кофе по утрам.",
     "hint": "привычка, регулярно",
-    "words": ["She", "drinks", "coffee", "in", "the", "morning."]
+    "words": [
+      "She",
+      "drinks",
+      "coffee",
+      "in",
+      "the",
+      "morning."
+    ],
+    "level": "A1"
   },
   {
     "id": 3,
@@ -24,7 +38,13 @@
     "en": "They live in London.",
     "ru": "Они живут в Лондоне.",
     "hint": "постоянное положение",
-    "words": ["They", "live", "in", "London."]
+    "words": [
+      "They",
+      "live",
+      "in",
+      "London."
+    ],
+    "level": "A1"
   },
   {
     "id": 4,
@@ -33,7 +53,14 @@
     "en": "He speaks English very well.",
     "ru": "Он очень хорошо говорит по-английски.",
     "hint": "умение, факт",
-    "words": ["He", "speaks", "English", "very", "well."]
+    "words": [
+      "He",
+      "speaks",
+      "English",
+      "very",
+      "well."
+    ],
+    "level": "A1"
   },
   {
     "id": 5,
@@ -42,7 +69,15 @@
     "en": "The sun rises in the east.",
     "ru": "Солнце встаёт на востоке.",
     "hint": "закон природы",
-    "words": ["The", "sun", "rises", "in", "the", "east."]
+    "words": [
+      "The",
+      "sun",
+      "rises",
+      "in",
+      "the",
+      "east."
+    ],
+    "level": "A1"
   },
   {
     "id": 6,
@@ -51,7 +86,17 @@
     "en": "We usually go to the gym on Mondays.",
     "ru": "Мы обычно ходим в спортзал по понедельникам.",
     "hint": "регулярное действие",
-    "words": ["We", "usually", "go", "to", "the", "gym", "on", "Mondays."]
+    "words": [
+      "We",
+      "usually",
+      "go",
+      "to",
+      "the",
+      "gym",
+      "on",
+      "Mondays."
+    ],
+    "level": "A1"
   },
   {
     "id": 7,
@@ -60,7 +105,15 @@
     "en": "My brother works at a bank.",
     "ru": "Мой брат работает в банке.",
     "hint": "постоянная работа",
-    "words": ["My", "brother", "works", "at", "a", "bank."]
+    "words": [
+      "My",
+      "brother",
+      "works",
+      "at",
+      "a",
+      "bank."
+    ],
+    "level": "A1"
   },
   {
     "id": 8,
@@ -69,7 +122,15 @@
     "en": "Water boils at 100 degrees Celsius.",
     "ru": "Вода кипит при 100 градусах Цельсия.",
     "hint": "научный факт",
-    "words": ["Water", "boils", "at", "100", "degrees", "Celsius."]
+    "words": [
+      "Water",
+      "boils",
+      "at",
+      "100",
+      "degrees",
+      "Celsius."
+    ],
+    "level": "A1"
   },
   {
     "id": 9,
@@ -78,7 +139,13 @@
     "en": "She never eats meat.",
     "ru": "Она никогда не ест мясо.",
     "hint": "привычка, отрицание",
-    "words": ["She", "never", "eats", "meat."]
+    "words": [
+      "She",
+      "never",
+      "eats",
+      "meat."
+    ],
+    "level": "A1"
   },
   {
     "id": 10,
@@ -87,7 +154,14 @@
     "en": "Do you like Italian food?",
     "ru": "Ты любишь итальянскую еду?",
     "hint": "вопрос о предпочтении",
-    "words": ["Do", "you", "like", "Italian", "food?"]
+    "words": [
+      "Do",
+      "you",
+      "like",
+      "Italian",
+      "food?"
+    ],
+    "level": "A1"
   },
   {
     "id": 11,
@@ -96,7 +170,15 @@
     "en": "The train leaves at 7 AM.",
     "ru": "Поезд отправляется в 7 утра.",
     "hint": "расписание",
-    "words": ["The", "train", "leaves", "at", "7", "AM."]
+    "words": [
+      "The",
+      "train",
+      "leaves",
+      "at",
+      "7",
+      "AM."
+    ],
+    "level": "A1"
   },
   {
     "id": 12,
@@ -105,7 +187,13 @@
     "en": "He doesn't understand Spanish.",
     "ru": "Он не понимает испанский.",
     "hint": "отрицание, факт",
-    "words": ["He", "doesn't", "understand", "Spanish."]
+    "words": [
+      "He",
+      "doesn't",
+      "understand",
+      "Spanish."
+    ],
+    "level": "A1"
   },
   {
     "id": 13,
@@ -114,7 +202,16 @@
     "en": "I am reading a book right now.",
     "ru": "Я сейчас читаю книгу.",
     "hint": "действие прямо сейчас",
-    "words": ["I", "am", "reading", "a", "book", "right", "now."]
+    "words": [
+      "I",
+      "am",
+      "reading",
+      "a",
+      "book",
+      "right",
+      "now."
+    ],
+    "level": "A1"
   },
   {
     "id": 14,
@@ -123,7 +220,16 @@
     "en": "She is cooking dinner at the moment.",
     "ru": "Она сейчас готовит ужин.",
     "hint": "действие в момент речи",
-    "words": ["She", "is", "cooking", "dinner", "at", "the", "moment."]
+    "words": [
+      "She",
+      "is",
+      "cooking",
+      "dinner",
+      "at",
+      "the",
+      "moment."
+    ],
+    "level": "A1"
   },
   {
     "id": 15,
@@ -132,7 +238,16 @@
     "en": "They are playing football in the park.",
     "ru": "Они играют в футбол в парке.",
     "hint": "действие прямо сейчас",
-    "words": ["They", "are", "playing", "football", "in", "the", "park."]
+    "words": [
+      "They",
+      "are",
+      "playing",
+      "football",
+      "in",
+      "the",
+      "park."
+    ],
+    "level": "A1"
   },
   {
     "id": 16,
@@ -141,7 +256,15 @@
     "en": "I am learning English this year.",
     "ru": "Я учу английский в этом году.",
     "hint": "временная ситуация",
-    "words": ["I", "am", "learning", "English", "this", "year."]
+    "words": [
+      "I",
+      "am",
+      "learning",
+      "English",
+      "this",
+      "year."
+    ],
+    "level": "A2"
   },
   {
     "id": 17,
@@ -150,7 +273,14 @@
     "en": "The baby is sleeping now.",
     "ru": "Ребёнок сейчас спит.",
     "hint": "прямо сейчас",
-    "words": ["The", "baby", "is", "sleeping", "now."]
+    "words": [
+      "The",
+      "baby",
+      "is",
+      "sleeping",
+      "now."
+    ],
+    "level": "A1"
   },
   {
     "id": 18,
@@ -159,7 +289,18 @@
     "en": "We are moving to a new apartment next month.",
     "ru": "Мы переезжаем в новую квартиру в следующем месяце.",
     "hint": "запланированное будущее",
-    "words": ["We", "are", "moving", "to", "a", "new", "apartment", "next", "month."]
+    "words": [
+      "We",
+      "are",
+      "moving",
+      "to",
+      "a",
+      "new",
+      "apartment",
+      "next",
+      "month."
+    ],
+    "level": "A1"
   },
   {
     "id": 19,
@@ -168,7 +309,15 @@
     "en": "He is working from home today.",
     "ru": "Он сегодня работает из дома.",
     "hint": "временное действие",
-    "words": ["He", "is", "working", "from", "home", "today."]
+    "words": [
+      "He",
+      "is",
+      "working",
+      "from",
+      "home",
+      "today."
+    ],
+    "level": "A2"
   },
   {
     "id": 20,
@@ -177,7 +326,13 @@
     "en": "It is raining outside.",
     "ru": "На улице идёт дождь.",
     "hint": "погода сейчас",
-    "words": ["It", "is", "raining", "outside."]
+    "words": [
+      "It",
+      "is",
+      "raining",
+      "outside."
+    ],
+    "level": "A1"
   },
   {
     "id": 21,
@@ -186,7 +341,13 @@
     "en": "Why are you laughing?",
     "ru": "Почему ты смеёшься?",
     "hint": "вопрос о действии сейчас",
-    "words": ["Why", "are", "you", "laughing?"]
+    "words": [
+      "Why",
+      "are",
+      "you",
+      "laughing?"
+    ],
+    "level": "A1"
   },
   {
     "id": 22,
@@ -195,7 +356,15 @@
     "en": "She is talking on the phone.",
     "ru": "Она говорит по телефону.",
     "hint": "действие прямо сейчас",
-    "words": ["She", "is", "talking", "on", "the", "phone."]
+    "words": [
+      "She",
+      "is",
+      "talking",
+      "on",
+      "the",
+      "phone."
+    ],
+    "level": "A1"
   },
   {
     "id": 23,
@@ -204,7 +373,15 @@
     "en": "They are not listening to me.",
     "ru": "Они меня не слушают.",
     "hint": "отрицание",
-    "words": ["They", "are", "not", "listening", "to", "me."]
+    "words": [
+      "They",
+      "are",
+      "not",
+      "listening",
+      "to",
+      "me."
+    ],
+    "level": "A1"
   },
   {
     "id": 24,
@@ -213,7 +390,15 @@
     "en": "I am thinking about my future.",
     "ru": "Я думаю о своём будущем.",
     "hint": "процесс мышления",
-    "words": ["I", "am", "thinking", "about", "my", "future."]
+    "words": [
+      "I",
+      "am",
+      "thinking",
+      "about",
+      "my",
+      "future."
+    ],
+    "level": "A2"
   },
   {
     "id": 25,
@@ -222,7 +407,14 @@
     "en": "I have finished my homework.",
     "ru": "Я закончил домашнюю работу.",
     "hint": "результат важен сейчас",
-    "words": ["I", "have", "finished", "my", "homework."]
+    "words": [
+      "I",
+      "have",
+      "finished",
+      "my",
+      "homework."
+    ],
+    "level": "A2"
   },
   {
     "id": 26,
@@ -231,7 +423,17 @@
     "en": "She has lived in Paris for five years.",
     "ru": "Она живёт в Париже пять лет.",
     "hint": "действие началось в прошлом и продолжается",
-    "words": ["She", "has", "lived", "in", "Paris", "for", "five", "years."]
+    "words": [
+      "She",
+      "has",
+      "lived",
+      "in",
+      "Paris",
+      "for",
+      "five",
+      "years."
+    ],
+    "level": "A2"
   },
   {
     "id": 27,
@@ -240,7 +442,13 @@
     "en": "They have just arrived.",
     "ru": "Они только что приехали.",
     "hint": "только что завершилось",
-    "words": ["They", "have", "just", "arrived."]
+    "words": [
+      "They",
+      "have",
+      "just",
+      "arrived."
+    ],
+    "level": "A2"
   },
   {
     "id": 28,
@@ -249,7 +457,15 @@
     "en": "I have never seen this movie.",
     "ru": "Я никогда не видел этот фильм.",
     "hint": "опыт до настоящего момента",
-    "words": ["I", "have", "never", "seen", "this", "movie."]
+    "words": [
+      "I",
+      "have",
+      "never",
+      "seen",
+      "this",
+      "movie."
+    ],
+    "level": "B1"
   },
   {
     "id": 29,
@@ -258,7 +474,14 @@
     "en": "He has already eaten lunch.",
     "ru": "Он уже пообедал.",
     "hint": "действие завершено",
-    "words": ["He", "has", "already", "eaten", "lunch."]
+    "words": [
+      "He",
+      "has",
+      "already",
+      "eaten",
+      "lunch."
+    ],
+    "level": "B1"
   },
   {
     "id": 30,
@@ -267,7 +490,16 @@
     "en": "We have known each other since childhood.",
     "ru": "Мы знаем друг друга с детства.",
     "hint": "с какого-то момента в прошлом",
-    "words": ["We", "have", "known", "each", "other", "since", "childhood."]
+    "words": [
+      "We",
+      "have",
+      "known",
+      "each",
+      "other",
+      "since",
+      "childhood."
+    ],
+    "level": "B1"
   },
   {
     "id": 31,
@@ -276,7 +508,15 @@
     "en": "Have you ever been to Japan?",
     "ru": "Ты когда-нибудь был в Японии?",
     "hint": "вопрос об опыте",
-    "words": ["Have", "you", "ever", "been", "to", "Japan?"]
+    "words": [
+      "Have",
+      "you",
+      "ever",
+      "been",
+      "to",
+      "Japan?"
+    ],
+    "level": "A2"
   },
   {
     "id": 32,
@@ -285,7 +525,15 @@
     "en": "She has bought a new car.",
     "ru": "Она купила новую машину.",
     "hint": "недавно, результат виден",
-    "words": ["She", "has", "bought", "a", "new", "car."]
+    "words": [
+      "She",
+      "has",
+      "bought",
+      "a",
+      "new",
+      "car."
+    ],
+    "level": "A2"
   },
   {
     "id": 33,
@@ -294,7 +542,14 @@
     "en": "I have lost my keys.",
     "ru": "Я потерял свои ключи.",
     "hint": "результат сейчас — ключей нет",
-    "words": ["I", "have", "lost", "my", "keys."]
+    "words": [
+      "I",
+      "have",
+      "lost",
+      "my",
+      "keys."
+    ],
+    "level": "B1"
   },
   {
     "id": 34,
@@ -303,7 +558,16 @@
     "en": "They have been married for ten years.",
     "ru": "Они женаты десять лет.",
     "hint": "состояние длится",
-    "words": ["They", "have", "been", "married", "for", "ten", "years."]
+    "words": [
+      "They",
+      "have",
+      "been",
+      "married",
+      "for",
+      "ten",
+      "years."
+    ],
+    "level": "A2"
   },
   {
     "id": 35,
@@ -312,7 +576,15 @@
     "en": "He has not called me yet.",
     "ru": "Он мне ещё не позвонил.",
     "hint": "отрицание + ещё не",
-    "words": ["He", "has", "not", "called", "me", "yet."]
+    "words": [
+      "He",
+      "has",
+      "not",
+      "called",
+      "me",
+      "yet."
+    ],
+    "level": "B1"
   },
   {
     "id": 36,
@@ -321,7 +593,16 @@
     "en": "The train has just left the station.",
     "ru": "Поезд только что уехал со станции.",
     "hint": "только что",
-    "words": ["The", "train", "has", "just", "left", "the", "station."]
+    "words": [
+      "The",
+      "train",
+      "has",
+      "just",
+      "left",
+      "the",
+      "station."
+    ],
+    "level": "A2"
   },
   {
     "id": 37,
@@ -330,7 +611,17 @@
     "en": "I have been studying English for three years.",
     "ru": "Я учу английский три года.",
     "hint": "процесс начался в прошлом и продолжается",
-    "words": ["I", "have", "been", "studying", "English", "for", "three", "years."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "studying",
+      "English",
+      "for",
+      "three",
+      "years."
+    ],
+    "level": "A2"
   },
   {
     "id": 38,
@@ -339,7 +630,16 @@
     "en": "She has been working here since 2020.",
     "ru": "Она работает здесь с 2020 года.",
     "hint": "длительный процесс",
-    "words": ["She", "has", "been", "working", "here", "since", "2020."]
+    "words": [
+      "She",
+      "has",
+      "been",
+      "working",
+      "here",
+      "since",
+      "2020."
+    ],
+    "level": "B1"
   },
   {
     "id": 39,
@@ -348,7 +648,15 @@
     "en": "It has been raining all day.",
     "ru": "Дождь идёт весь день.",
     "hint": "процесс длится и не завершён",
-    "words": ["It", "has", "been", "raining", "all", "day."]
+    "words": [
+      "It",
+      "has",
+      "been",
+      "raining",
+      "all",
+      "day."
+    ],
+    "level": "A2"
   },
   {
     "id": 40,
@@ -357,7 +665,16 @@
     "en": "They have been waiting for two hours.",
     "ru": "Они ждут уже два часа.",
     "hint": "длительное ожидание",
-    "words": ["They", "have", "been", "waiting", "for", "two", "hours."]
+    "words": [
+      "They",
+      "have",
+      "been",
+      "waiting",
+      "for",
+      "two",
+      "hours."
+    ],
+    "level": "A2"
   },
   {
     "id": 41,
@@ -366,7 +683,17 @@
     "en": "I have been reading this book all week.",
     "ru": "Я читаю эту книгу всю неделю.",
     "hint": "процесс в течение периода",
-    "words": ["I", "have", "been", "reading", "this", "book", "all", "week."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "reading",
+      "this",
+      "book",
+      "all",
+      "week."
+    ],
+    "level": "A2"
   },
   {
     "id": 42,
@@ -375,7 +702,17 @@
     "en": "He has been learning to play the guitar.",
     "ru": "Он учится играть на гитаре.",
     "hint": "процесс обучения продолжается",
-    "words": ["He", "has", "been", "learning", "to", "play", "the", "guitar."]
+    "words": [
+      "He",
+      "has",
+      "been",
+      "learning",
+      "to",
+      "play",
+      "the",
+      "guitar."
+    ],
+    "level": "B1"
   },
   {
     "id": 43,
@@ -384,7 +721,20 @@
     "en": "We have been living in this city for a long time.",
     "ru": "Мы живём в этом городе долго.",
     "hint": "длительное состояние",
-    "words": ["We", "have", "been", "living", "in", "this", "city", "for", "a", "long", "time."]
+    "words": [
+      "We",
+      "have",
+      "been",
+      "living",
+      "in",
+      "this",
+      "city",
+      "for",
+      "a",
+      "long",
+      "time."
+    ],
+    "level": "B2"
   },
   {
     "id": 44,
@@ -393,7 +743,15 @@
     "en": "She has been feeling tired lately.",
     "ru": "В последнее время она чувствует себя усталой.",
     "hint": "процесс в последнее время",
-    "words": ["She", "has", "been", "feeling", "tired", "lately."]
+    "words": [
+      "She",
+      "has",
+      "been",
+      "feeling",
+      "tired",
+      "lately."
+    ],
+    "level": "A2"
   },
   {
     "id": 45,
@@ -402,7 +760,16 @@
     "en": "How long have you been learning Spanish?",
     "ru": "Как долго ты учишь испанский?",
     "hint": "вопрос о длительности",
-    "words": ["How", "long", "have", "you", "been", "learning", "Spanish?"]
+    "words": [
+      "How",
+      "long",
+      "have",
+      "you",
+      "been",
+      "learning",
+      "Spanish?"
+    ],
+    "level": "B1"
   },
   {
     "id": 46,
@@ -411,7 +778,17 @@
     "en": "The children have been playing outside since morning.",
     "ru": "Дети играют на улице с утра.",
     "hint": "с какого-то времени",
-    "words": ["The", "children", "have", "been", "playing", "outside", "since", "morning."]
+    "words": [
+      "The",
+      "children",
+      "have",
+      "been",
+      "playing",
+      "outside",
+      "since",
+      "morning."
+    ],
+    "level": "B1"
   },
   {
     "id": 47,
@@ -420,7 +797,18 @@
     "en": "I have been trying to call you all day.",
     "ru": "Я весь день пытаюсь тебе дозвониться.",
     "hint": "процесс в течение дня",
-    "words": ["I", "have", "been", "trying", "to", "call", "you", "all", "day."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "trying",
+      "to",
+      "call",
+      "you",
+      "all",
+      "day."
+    ],
+    "level": "A2"
   },
   {
     "id": 48,
@@ -429,9 +817,19 @@
     "en": "He has been working on this project for months.",
     "ru": "Он работает над этим проектом месяцами.",
     "hint": "длительный процесс",
-    "words": ["He", "has", "been", "working", "on", "this", "project", "for", "months."]
+    "words": [
+      "He",
+      "has",
+      "been",
+      "working",
+      "on",
+      "this",
+      "project",
+      "for",
+      "months."
+    ],
+    "level": "B1"
   },
-
   {
     "id": 49,
     "tense": "past_simple",
@@ -439,7 +837,14 @@
     "en": "I visited my grandmother yesterday.",
     "ru": "Я навестил бабушку вчера.",
     "hint": "завершённое действие в прошлом",
-    "words": ["I", "visited", "my", "grandmother", "yesterday."]
+    "words": [
+      "I",
+      "visited",
+      "my",
+      "grandmother",
+      "yesterday."
+    ],
+    "level": "A2"
   },
   {
     "id": 50,
@@ -448,7 +853,17 @@
     "en": "She worked in a bank for five years.",
     "ru": "Она работала в банке пять лет.",
     "hint": "завершённый период в прошлом",
-    "words": ["She", "worked", "in", "a", "bank", "for", "five", "years."]
+    "words": [
+      "She",
+      "worked",
+      "in",
+      "a",
+      "bank",
+      "for",
+      "five",
+      "years."
+    ],
+    "level": "A2"
   },
   {
     "id": 51,
@@ -457,7 +872,15 @@
     "en": "They went to Spain last summer.",
     "ru": "Они ездили в Испанию прошлым летом.",
     "hint": "конкретное время в прошлом",
-    "words": ["They", "went", "to", "Spain", "last", "summer."]
+    "words": [
+      "They",
+      "went",
+      "to",
+      "Spain",
+      "last",
+      "summer."
+    ],
+    "level": "A2"
   },
   {
     "id": 52,
@@ -466,7 +889,17 @@
     "en": "He bought a new phone two days ago.",
     "ru": "Он купил новый телефон два дня назад.",
     "hint": "ago — маркер Past Simple",
-    "words": ["He", "bought", "a", "new", "phone", "two", "days", "ago."]
+    "words": [
+      "He",
+      "bought",
+      "a",
+      "new",
+      "phone",
+      "two",
+      "days",
+      "ago."
+    ],
+    "level": "A2"
   },
   {
     "id": 53,
@@ -475,7 +908,16 @@
     "en": "I didn't see him at the party.",
     "ru": "Я не видел его на вечеринке.",
     "hint": "отрицание в прошлом",
-    "words": ["I", "didn't", "see", "him", "at", "the", "party."]
+    "words": [
+      "I",
+      "didn't",
+      "see",
+      "him",
+      "at",
+      "the",
+      "party."
+    ],
+    "level": "A2"
   },
   {
     "id": 54,
@@ -484,7 +926,14 @@
     "en": "Did you finish your homework?",
     "ru": "Ты закончил домашнюю работу?",
     "hint": "вопрос о прошлом",
-    "words": ["Did", "you", "finish", "your", "homework?"]
+    "words": [
+      "Did",
+      "you",
+      "finish",
+      "your",
+      "homework?"
+    ],
+    "level": "A2"
   },
   {
     "id": 55,
@@ -493,7 +942,16 @@
     "en": "We watched a great movie last night.",
     "ru": "Мы вчера вечером посмотрели отличный фильм.",
     "hint": "завершённое действие",
-    "words": ["We", "watched", "a", "great", "movie", "last", "night."]
+    "words": [
+      "We",
+      "watched",
+      "a",
+      "great",
+      "movie",
+      "last",
+      "night."
+    ],
+    "level": "A2"
   },
   {
     "id": 56,
@@ -502,7 +960,15 @@
     "en": "She was very tired after work.",
     "ru": "После работы она очень устала.",
     "hint": "состояние в прошлом (was)",
-    "words": ["She", "was", "very", "tired", "after", "work."]
+    "words": [
+      "She",
+      "was",
+      "very",
+      "tired",
+      "after",
+      "work."
+    ],
+    "level": "A2"
   },
   {
     "id": 57,
@@ -511,7 +977,15 @@
     "en": "The concert started at eight o'clock.",
     "ru": "Концерт начался в восемь часов.",
     "hint": "точное время в прошлом",
-    "words": ["The", "concert", "started", "at", "eight", "o'clock."]
+    "words": [
+      "The",
+      "concert",
+      "started",
+      "at",
+      "eight",
+      "o'clock."
+    ],
+    "level": "A2"
   },
   {
     "id": 58,
@@ -520,7 +994,17 @@
     "en": "They lived in Paris when they were young.",
     "ru": "Они жили в Париже, когда были молодыми.",
     "hint": "давнее состояние",
-    "words": ["They", "lived", "in", "Paris", "when", "they", "were", "young."]
+    "words": [
+      "They",
+      "lived",
+      "in",
+      "Paris",
+      "when",
+      "they",
+      "were",
+      "young."
+    ],
+    "level": "A2"
   },
   {
     "id": 59,
@@ -529,7 +1013,15 @@
     "en": "I called you three times yesterday.",
     "ru": "Я звонил тебе вчера три раза.",
     "hint": "повторяющееся действие в прошлом",
-    "words": ["I", "called", "you", "three", "times", "yesterday."]
+    "words": [
+      "I",
+      "called",
+      "you",
+      "three",
+      "times",
+      "yesterday."
+    ],
+    "level": "A2"
   },
   {
     "id": 60,
@@ -538,9 +1030,18 @@
     "en": "He didn't like the food at the restaurant.",
     "ru": "Ему не понравилась еда в ресторане.",
     "hint": "отрицание",
-    "words": ["He", "didn't", "like", "the", "food", "at", "the", "restaurant."]
+    "words": [
+      "He",
+      "didn't",
+      "like",
+      "the",
+      "food",
+      "at",
+      "the",
+      "restaurant."
+    ],
+    "level": "A2"
   },
-
   {
     "id": 61,
     "tense": "past_continuous",
@@ -548,7 +1049,18 @@
     "en": "I was reading a book at 8 PM yesterday.",
     "ru": "Вчера в 8 вечера я читал книгу.",
     "hint": "процесс в конкретный момент прошлого",
-    "words": ["I", "was", "reading", "a", "book", "at", "8", "PM", "yesterday."]
+    "words": [
+      "I",
+      "was",
+      "reading",
+      "a",
+      "book",
+      "at",
+      "8",
+      "PM",
+      "yesterday."
+    ],
+    "level": "A2"
   },
   {
     "id": 62,
@@ -557,7 +1069,15 @@
     "en": "She was cooking when I called.",
     "ru": "Она готовила, когда я позвонил.",
     "hint": "длительное действие прервано",
-    "words": ["She", "was", "cooking", "when", "I", "called."]
+    "words": [
+      "She",
+      "was",
+      "cooking",
+      "when",
+      "I",
+      "called."
+    ],
+    "level": "A2"
   },
   {
     "id": 63,
@@ -566,7 +1086,16 @@
     "en": "They were playing football at that time.",
     "ru": "В то время они играли в футбол.",
     "hint": "процесс в прошлом",
-    "words": ["They", "were", "playing", "football", "at", "that", "time."]
+    "words": [
+      "They",
+      "were",
+      "playing",
+      "football",
+      "at",
+      "that",
+      "time."
+    ],
+    "level": "A2"
   },
   {
     "id": 64,
@@ -575,7 +1104,17 @@
     "en": "It was raining when we left the house.",
     "ru": "Шёл дождь, когда мы вышли из дома.",
     "hint": "фоновое действие",
-    "words": ["It", "was", "raining", "when", "we", "left", "the", "house."]
+    "words": [
+      "It",
+      "was",
+      "raining",
+      "when",
+      "we",
+      "left",
+      "the",
+      "house."
+    ],
+    "level": "A2"
   },
   {
     "id": 65,
@@ -584,7 +1123,15 @@
     "en": "What were you doing at midnight?",
     "ru": "Что ты делал в полночь?",
     "hint": "вопрос о процессе в прошлом",
-    "words": ["What", "were", "you", "doing", "at", "midnight?"]
+    "words": [
+      "What",
+      "were",
+      "you",
+      "doing",
+      "at",
+      "midnight?"
+    ],
+    "level": "A2"
   },
   {
     "id": 66,
@@ -593,7 +1140,16 @@
     "en": "He was sleeping when the phone rang.",
     "ru": "Он спал, когда зазвонил телефон.",
     "hint": "прерванное действие",
-    "words": ["He", "was", "sleeping", "when", "the", "phone", "rang."]
+    "words": [
+      "He",
+      "was",
+      "sleeping",
+      "when",
+      "the",
+      "phone",
+      "rang."
+    ],
+    "level": "A2"
   },
   {
     "id": 67,
@@ -602,7 +1158,17 @@
     "en": "We were walking in the park all morning.",
     "ru": "Мы всё утро гуляли в парке.",
     "hint": "длительное действие",
-    "words": ["We", "were", "walking", "in", "the", "park", "all", "morning."]
+    "words": [
+      "We",
+      "were",
+      "walking",
+      "in",
+      "the",
+      "park",
+      "all",
+      "morning."
+    ],
+    "level": "A2"
   },
   {
     "id": 68,
@@ -611,7 +1177,18 @@
     "en": "She was talking on the phone when I arrived.",
     "ru": "Она говорила по телефону, когда я пришёл.",
     "hint": "прерванный процесс",
-    "words": ["She", "was", "talking", "on", "the", "phone", "when", "I", "arrived."]
+    "words": [
+      "She",
+      "was",
+      "talking",
+      "on",
+      "the",
+      "phone",
+      "when",
+      "I",
+      "arrived."
+    ],
+    "level": "A2"
   },
   {
     "id": 69,
@@ -620,7 +1197,18 @@
     "en": "The children were playing while their mother was cooking.",
     "ru": "Дети играли, пока мама готовила.",
     "hint": "два параллельных процесса",
-    "words": ["The", "children", "were", "playing", "while", "their", "mother", "was", "cooking."]
+    "words": [
+      "The",
+      "children",
+      "were",
+      "playing",
+      "while",
+      "their",
+      "mother",
+      "was",
+      "cooking."
+    ],
+    "level": "A2"
   },
   {
     "id": 70,
@@ -629,7 +1217,16 @@
     "en": "I was not listening to the teacher.",
     "ru": "Я не слушал учителя.",
     "hint": "отрицание",
-    "words": ["I", "was", "not", "listening", "to", "the", "teacher."]
+    "words": [
+      "I",
+      "was",
+      "not",
+      "listening",
+      "to",
+      "the",
+      "teacher."
+    ],
+    "level": "A2"
   },
   {
     "id": 71,
@@ -638,7 +1235,16 @@
     "en": "At 6 AM I was still sleeping.",
     "ru": "В 6 утра я ещё спал.",
     "hint": "процесс в прошлом",
-    "words": ["At", "6", "AM", "I", "was", "still", "sleeping."]
+    "words": [
+      "At",
+      "6",
+      "AM",
+      "I",
+      "was",
+      "still",
+      "sleeping."
+    ],
+    "level": "A2"
   },
   {
     "id": 72,
@@ -647,9 +1253,17 @@
     "en": "Were you working when I called you?",
     "ru": "Ты работал, когда я тебе позвонил?",
     "hint": "вопрос о процессе",
-    "words": ["Were", "you", "working", "when", "I", "called", "you?"]
+    "words": [
+      "Were",
+      "you",
+      "working",
+      "when",
+      "I",
+      "called",
+      "you?"
+    ],
+    "level": "B1"
   },
-
   {
     "id": 73,
     "tense": "past_perfect",
@@ -657,7 +1271,17 @@
     "en": "I had finished my work before he came.",
     "ru": "Я закончил работу до того, как он пришёл.",
     "hint": "действие раньше другого в прошлом",
-    "words": ["I", "had", "finished", "my", "work", "before", "he", "came."]
+    "words": [
+      "I",
+      "had",
+      "finished",
+      "my",
+      "work",
+      "before",
+      "he",
+      "came."
+    ],
+    "level": "B1"
   },
   {
     "id": 74,
@@ -666,7 +1290,16 @@
     "en": "She had already left when I arrived.",
     "ru": "Она уже ушла, когда я приехал.",
     "hint": "раньше другого действия",
-    "words": ["She", "had", "already", "left", "when", "I", "arrived."]
+    "words": [
+      "She",
+      "had",
+      "already",
+      "left",
+      "when",
+      "I",
+      "arrived."
+    ],
+    "level": "B2"
   },
   {
     "id": 75,
@@ -675,7 +1308,18 @@
     "en": "They had never seen the sea before that trip.",
     "ru": "До той поездки они никогда не видели моря.",
     "hint": "опыт до момента в прошлом",
-    "words": ["They", "had", "never", "seen", "the", "sea", "before", "that", "trip."]
+    "words": [
+      "They",
+      "had",
+      "never",
+      "seen",
+      "the",
+      "sea",
+      "before",
+      "that",
+      "trip."
+    ],
+    "level": "B2"
   },
   {
     "id": 76,
@@ -684,7 +1328,18 @@
     "en": "The train had left before we reached the station.",
     "ru": "Поезд ушёл до того, как мы добрались до станции.",
     "hint": "раньше другого события",
-    "words": ["The", "train", "had", "left", "before", "we", "reached", "the", "station."]
+    "words": [
+      "The",
+      "train",
+      "had",
+      "left",
+      "before",
+      "we",
+      "reached",
+      "the",
+      "station."
+    ],
+    "level": "B2"
   },
   {
     "id": 77,
@@ -693,7 +1348,18 @@
     "en": "I realized I had forgotten my keys at home.",
     "ru": "Я понял, что забыл ключи дома.",
     "hint": "предшествующее действие",
-    "words": ["I", "realized", "I", "had", "forgotten", "my", "keys", "at", "home."]
+    "words": [
+      "I",
+      "realized",
+      "I",
+      "had",
+      "forgotten",
+      "my",
+      "keys",
+      "at",
+      "home."
+    ],
+    "level": "B2"
   },
   {
     "id": 78,
@@ -702,7 +1368,18 @@
     "en": "He had studied English before he moved to London.",
     "ru": "Он учил английский до переезда в Лондон.",
     "hint": "подготовка до события",
-    "words": ["He", "had", "studied", "English", "before", "he", "moved", "to", "London."]
+    "words": [
+      "He",
+      "had",
+      "studied",
+      "English",
+      "before",
+      "he",
+      "moved",
+      "to",
+      "London."
+    ],
+    "level": "B1"
   },
   {
     "id": 79,
@@ -711,7 +1388,18 @@
     "en": "By the time we arrived, the movie had started.",
     "ru": "К тому времени, как мы пришли, фильм уже начался.",
     "hint": "by the time — маркер",
-    "words": ["By", "the", "time", "we", "arrived,", "the", "movie", "had", "started."]
+    "words": [
+      "By",
+      "the",
+      "time",
+      "we",
+      "arrived,",
+      "the",
+      "movie",
+      "had",
+      "started."
+    ],
+    "level": "B1"
   },
   {
     "id": 80,
@@ -720,7 +1408,16 @@
     "en": "She had not eaten anything all day.",
     "ru": "Она ничего не ела весь день.",
     "hint": "отрицание",
-    "words": ["She", "had", "not", "eaten", "anything", "all", "day."]
+    "words": [
+      "She",
+      "had",
+      "not",
+      "eaten",
+      "anything",
+      "all",
+      "day."
+    ],
+    "level": "B1"
   },
   {
     "id": 81,
@@ -729,7 +1426,19 @@
     "en": "They had lived in Tokyo for ten years before moving.",
     "ru": "Они жили в Токио десять лет до переезда.",
     "hint": "длительный период до другого действия",
-    "words": ["They", "had", "lived", "in", "Tokyo", "for", "ten", "years", "before", "moving."]
+    "words": [
+      "They",
+      "had",
+      "lived",
+      "in",
+      "Tokyo",
+      "for",
+      "ten",
+      "years",
+      "before",
+      "moving."
+    ],
+    "level": "B1"
   },
   {
     "id": 82,
@@ -738,7 +1447,17 @@
     "en": "I had just finished cooking when guests arrived.",
     "ru": "Я только закончил готовить, когда пришли гости.",
     "hint": "только что до другого события",
-    "words": ["I", "had", "just", "finished", "cooking", "when", "guests", "arrived."]
+    "words": [
+      "I",
+      "had",
+      "just",
+      "finished",
+      "cooking",
+      "when",
+      "guests",
+      "arrived."
+    ],
+    "level": "B1"
   },
   {
     "id": 83,
@@ -747,7 +1466,18 @@
     "en": "He told me he had bought a new house.",
     "ru": "Он сказал мне, что купил новый дом.",
     "hint": "косвенная речь",
-    "words": ["He", "told", "me", "he", "had", "bought", "a", "new", "house."]
+    "words": [
+      "He",
+      "told",
+      "me",
+      "he",
+      "had",
+      "bought",
+      "a",
+      "new",
+      "house."
+    ],
+    "level": "B1"
   },
   {
     "id": 84,
@@ -756,9 +1486,17 @@
     "en": "We had met before at a conference.",
     "ru": "Мы встречались раньше на конференции.",
     "hint": "предшествующий опыт",
-    "words": ["We", "had", "met", "before", "at", "a", "conference."]
+    "words": [
+      "We",
+      "had",
+      "met",
+      "before",
+      "at",
+      "a",
+      "conference."
+    ],
+    "level": "B2"
   },
-
   {
     "id": 85,
     "tense": "past_perfect_continuous",
@@ -766,7 +1504,19 @@
     "en": "I had been waiting for two hours before he arrived.",
     "ru": "Я ждал два часа до того, как он пришёл.",
     "hint": "длительный процесс до другого действия",
-    "words": ["I", "had", "been", "waiting", "for", "two", "hours", "before", "he", "arrived."]
+    "words": [
+      "I",
+      "had",
+      "been",
+      "waiting",
+      "for",
+      "two",
+      "hours",
+      "before",
+      "he",
+      "arrived."
+    ],
+    "level": "B1"
   },
   {
     "id": 86,
@@ -775,7 +1525,18 @@
     "en": "She had been studying all night before the exam.",
     "ru": "Она готовилась всю ночь перед экзаменом.",
     "hint": "длительная подготовка",
-    "words": ["She", "had", "been", "studying", "all", "night", "before", "the", "exam."]
+    "words": [
+      "She",
+      "had",
+      "been",
+      "studying",
+      "all",
+      "night",
+      "before",
+      "the",
+      "exam."
+    ],
+    "level": "B1"
   },
   {
     "id": 87,
@@ -784,7 +1545,22 @@
     "en": "They had been living there for five years when they decided to move.",
     "ru": "Они жили там пять лет, когда решили переехать.",
     "hint": "длительный процесс до решения",
-    "words": ["They", "had", "been", "living", "there", "for", "five", "years", "when", "they", "decided", "to", "move."]
+    "words": [
+      "They",
+      "had",
+      "been",
+      "living",
+      "there",
+      "for",
+      "five",
+      "years",
+      "when",
+      "they",
+      "decided",
+      "to",
+      "move."
+    ],
+    "level": "B2"
   },
   {
     "id": 88,
@@ -793,7 +1569,20 @@
     "en": "It had been raining for hours before the sun came out.",
     "ru": "Дождь шёл часами, прежде чем выглянуло солнце.",
     "hint": "длительный процесс",
-    "words": ["It", "had", "been", "raining", "for", "hours", "before", "the", "sun", "came", "out."]
+    "words": [
+      "It",
+      "had",
+      "been",
+      "raining",
+      "for",
+      "hours",
+      "before",
+      "the",
+      "sun",
+      "came",
+      "out."
+    ],
+    "level": "B1"
   },
   {
     "id": 89,
@@ -802,7 +1591,19 @@
     "en": "He had been working at the company for ten years.",
     "ru": "Он работал в компании десять лет.",
     "hint": "длительный стаж",
-    "words": ["He", "had", "been", "working", "at", "the", "company", "for", "ten", "years."]
+    "words": [
+      "He",
+      "had",
+      "been",
+      "working",
+      "at",
+      "the",
+      "company",
+      "for",
+      "ten",
+      "years."
+    ],
+    "level": "B2"
   },
   {
     "id": 90,
@@ -811,7 +1612,20 @@
     "en": "We had been driving for hours before we found the hotel.",
     "ru": "Мы ехали часами, прежде чем нашли отель.",
     "hint": "длительный процесс",
-    "words": ["We", "had", "been", "driving", "for", "hours", "before", "we", "found", "the", "hotel."]
+    "words": [
+      "We",
+      "had",
+      "been",
+      "driving",
+      "for",
+      "hours",
+      "before",
+      "we",
+      "found",
+      "the",
+      "hotel."
+    ],
+    "level": "B2"
   },
   {
     "id": 91,
@@ -820,7 +1634,18 @@
     "en": "I had been trying to call you all morning.",
     "ru": "Я всё утро пытался тебе дозвониться.",
     "hint": "длительное действие",
-    "words": ["I", "had", "been", "trying", "to", "call", "you", "all", "morning."]
+    "words": [
+      "I",
+      "had",
+      "been",
+      "trying",
+      "to",
+      "call",
+      "you",
+      "all",
+      "morning."
+    ],
+    "level": "B1"
   },
   {
     "id": 92,
@@ -829,7 +1654,16 @@
     "en": "She had been feeling tired for weeks.",
     "ru": "Она чувствовала усталость неделями.",
     "hint": "длительное состояние",
-    "words": ["She", "had", "been", "feeling", "tired", "for", "weeks."]
+    "words": [
+      "She",
+      "had",
+      "been",
+      "feeling",
+      "tired",
+      "for",
+      "weeks."
+    ],
+    "level": "B1"
   },
   {
     "id": 93,
@@ -838,7 +1672,16 @@
     "en": "They had been playing football since morning.",
     "ru": "Они играли в футбол с утра.",
     "hint": "с какого-то момента",
-    "words": ["They", "had", "been", "playing", "football", "since", "morning."]
+    "words": [
+      "They",
+      "had",
+      "been",
+      "playing",
+      "football",
+      "since",
+      "morning."
+    ],
+    "level": "B2"
   },
   {
     "id": 94,
@@ -847,7 +1690,17 @@
     "en": "The children had been watching TV before dinner.",
     "ru": "Дети смотрели телевизор перед ужином.",
     "hint": "процесс до другого действия",
-    "words": ["The", "children", "had", "been", "watching", "TV", "before", "dinner."]
+    "words": [
+      "The",
+      "children",
+      "had",
+      "been",
+      "watching",
+      "TV",
+      "before",
+      "dinner."
+    ],
+    "level": "B1"
   },
   {
     "id": 95,
@@ -856,7 +1709,18 @@
     "en": "I had been reading that book for a week.",
     "ru": "Я читал эту книгу неделю.",
     "hint": "длительный процесс",
-    "words": ["I", "had", "been", "reading", "that", "book", "for", "a", "week."]
+    "words": [
+      "I",
+      "had",
+      "been",
+      "reading",
+      "that",
+      "book",
+      "for",
+      "a",
+      "week."
+    ],
+    "level": "B1"
   },
   {
     "id": 96,
@@ -865,9 +1729,20 @@
     "en": "He had been learning Spanish before he moved to Mexico.",
     "ru": "Он учил испанский до переезда в Мексику.",
     "hint": "подготовка до события",
-    "words": ["He", "had", "been", "learning", "Spanish", "before", "he", "moved", "to", "Mexico."]
+    "words": [
+      "He",
+      "had",
+      "been",
+      "learning",
+      "Spanish",
+      "before",
+      "he",
+      "moved",
+      "to",
+      "Mexico."
+    ],
+    "level": "B2"
   },
-
   {
     "id": 97,
     "tense": "future_simple",
@@ -875,7 +1750,14 @@
     "en": "I will call you tomorrow.",
     "ru": "Я позвоню тебе завтра.",
     "hint": "решение / обещание",
-    "words": ["I", "will", "call", "you", "tomorrow."]
+    "words": [
+      "I",
+      "will",
+      "call",
+      "you",
+      "tomorrow."
+    ],
+    "level": "A2"
   },
   {
     "id": 98,
@@ -884,7 +1766,15 @@
     "en": "She will arrive at 5 PM.",
     "ru": "Она приедет в 5 вечера.",
     "hint": "предсказание / расписание",
-    "words": ["She", "will", "arrive", "at", "5", "PM."]
+    "words": [
+      "She",
+      "will",
+      "arrive",
+      "at",
+      "5",
+      "PM."
+    ],
+    "level": "A2"
   },
   {
     "id": 99,
@@ -893,7 +1783,15 @@
     "en": "They will visit us next week.",
     "ru": "Они навестят нас на следующей неделе.",
     "hint": "планы на будущее",
-    "words": ["They", "will", "visit", "us", "next", "week."]
+    "words": [
+      "They",
+      "will",
+      "visit",
+      "us",
+      "next",
+      "week."
+    ],
+    "level": "A2"
   },
   {
     "id": 100,
@@ -902,7 +1800,15 @@
     "en": "I think it will rain tomorrow.",
     "ru": "Думаю, завтра будет дождь.",
     "hint": "предсказание",
-    "words": ["I", "think", "it", "will", "rain", "tomorrow."]
+    "words": [
+      "I",
+      "think",
+      "it",
+      "will",
+      "rain",
+      "tomorrow."
+    ],
+    "level": "A2"
   },
   {
     "id": 101,
@@ -911,7 +1817,16 @@
     "en": "He will help you with your homework.",
     "ru": "Он поможет тебе с домашней работой.",
     "hint": "обещание",
-    "words": ["He", "will", "help", "you", "with", "your", "homework."]
+    "words": [
+      "He",
+      "will",
+      "help",
+      "you",
+      "with",
+      "your",
+      "homework."
+    ],
+    "level": "A2"
   },
   {
     "id": 102,
@@ -920,7 +1835,15 @@
     "en": "We will not forget this day.",
     "ru": "Мы не забудем этот день.",
     "hint": "отрицание",
-    "words": ["We", "will", "not", "forget", "this", "day."]
+    "words": [
+      "We",
+      "will",
+      "not",
+      "forget",
+      "this",
+      "day."
+    ],
+    "level": "A2"
   },
   {
     "id": 103,
@@ -929,7 +1852,15 @@
     "en": "Will you come to my party?",
     "ru": "Ты придёшь на мою вечеринку?",
     "hint": "вопрос",
-    "words": ["Will", "you", "come", "to", "my", "party?"]
+    "words": [
+      "Will",
+      "you",
+      "come",
+      "to",
+      "my",
+      "party?"
+    ],
+    "level": "A2"
   },
   {
     "id": 104,
@@ -938,7 +1869,16 @@
     "en": "The train will leave in ten minutes.",
     "ru": "Поезд уедет через десять минут.",
     "hint": "будущее событие",
-    "words": ["The", "train", "will", "leave", "in", "ten", "minutes."]
+    "words": [
+      "The",
+      "train",
+      "will",
+      "leave",
+      "in",
+      "ten",
+      "minutes."
+    ],
+    "level": "A2"
   },
   {
     "id": 105,
@@ -947,7 +1887,14 @@
     "en": "I will always love you.",
     "ru": "Я всегда буду любить тебя.",
     "hint": "обещание",
-    "words": ["I", "will", "always", "love", "you."]
+    "words": [
+      "I",
+      "will",
+      "always",
+      "love",
+      "you."
+    ],
+    "level": "A2"
   },
   {
     "id": 106,
@@ -956,7 +1903,14 @@
     "en": "She will become a doctor.",
     "ru": "Она станет врачом.",
     "hint": "предсказание будущего",
-    "words": ["She", "will", "become", "a", "doctor."]
+    "words": [
+      "She",
+      "will",
+      "become",
+      "a",
+      "doctor."
+    ],
+    "level": "A2"
   },
   {
     "id": 107,
@@ -965,7 +1919,14 @@
     "en": "We will meet again soon.",
     "ru": "Мы скоро снова встретимся.",
     "hint": "обещание / надежда",
-    "words": ["We", "will", "meet", "again", "soon."]
+    "words": [
+      "We",
+      "will",
+      "meet",
+      "again",
+      "soon."
+    ],
+    "level": "A2"
   },
   {
     "id": 108,
@@ -974,9 +1935,16 @@
     "en": "He won't tell anyone about it.",
     "ru": "Он никому об этом не расскажет.",
     "hint": "отрицание (won't)",
-    "words": ["He", "won't", "tell", "anyone", "about", "it."]
+    "words": [
+      "He",
+      "won't",
+      "tell",
+      "anyone",
+      "about",
+      "it."
+    ],
+    "level": "A2"
   },
-
   {
     "id": 109,
     "tense": "future_continuous",
@@ -984,7 +1952,19 @@
     "en": "At 8 PM tomorrow I will be watching a movie.",
     "ru": "Завтра в 8 вечера я буду смотреть фильм.",
     "hint": "процесс в определённый момент в будущем",
-    "words": ["At", "8", "PM", "tomorrow", "I", "will", "be", "watching", "a", "movie."]
+    "words": [
+      "At",
+      "8",
+      "PM",
+      "tomorrow",
+      "I",
+      "will",
+      "be",
+      "watching",
+      "a",
+      "movie."
+    ],
+    "level": "B1"
   },
   {
     "id": 110,
@@ -993,7 +1973,16 @@
     "en": "She will be working when you arrive.",
     "ru": "Она будет работать, когда ты приедешь.",
     "hint": "процесс в будущем",
-    "words": ["She", "will", "be", "working", "when", "you", "arrive."]
+    "words": [
+      "She",
+      "will",
+      "be",
+      "working",
+      "when",
+      "you",
+      "arrive."
+    ],
+    "level": "B2"
   },
   {
     "id": 111,
@@ -1002,7 +1991,18 @@
     "en": "They will be flying to Paris this time tomorrow.",
     "ru": "Завтра в это время они будут лететь в Париж.",
     "hint": "процесс в будущем",
-    "words": ["They", "will", "be", "flying", "to", "Paris", "this", "time", "tomorrow."]
+    "words": [
+      "They",
+      "will",
+      "be",
+      "flying",
+      "to",
+      "Paris",
+      "this",
+      "time",
+      "tomorrow."
+    ],
+    "level": "B1"
   },
   {
     "id": 112,
@@ -1011,7 +2011,15 @@
     "en": "I will be sleeping at midnight.",
     "ru": "В полночь я буду спать.",
     "hint": "процесс в будущем",
-    "words": ["I", "will", "be", "sleeping", "at", "midnight."]
+    "words": [
+      "I",
+      "will",
+      "be",
+      "sleeping",
+      "at",
+      "midnight."
+    ],
+    "level": "B1"
   },
   {
     "id": 113,
@@ -1020,7 +2028,18 @@
     "en": "We will be waiting for you at the station.",
     "ru": "Мы будем ждать тебя на станции.",
     "hint": "процесс в будущем",
-    "words": ["We", "will", "be", "waiting", "for", "you", "at", "the", "station."]
+    "words": [
+      "We",
+      "will",
+      "be",
+      "waiting",
+      "for",
+      "you",
+      "at",
+      "the",
+      "station."
+    ],
+    "level": "B1"
   },
   {
     "id": 114,
@@ -1029,7 +2048,17 @@
     "en": "He will be studying when his parents call.",
     "ru": "Он будет заниматься, когда позвонят родители.",
     "hint": "прерванный процесс в будущем",
-    "words": ["He", "will", "be", "studying", "when", "his", "parents", "call."]
+    "words": [
+      "He",
+      "will",
+      "be",
+      "studying",
+      "when",
+      "his",
+      "parents",
+      "call."
+    ],
+    "level": "B1"
   },
   {
     "id": 115,
@@ -1038,7 +2067,19 @@
     "en": "The kids will be playing in the garden all afternoon.",
     "ru": "Дети будут играть в саду весь день.",
     "hint": "длительный процесс",
-    "words": ["The", "kids", "will", "be", "playing", "in", "the", "garden", "all", "afternoon."]
+    "words": [
+      "The",
+      "kids",
+      "will",
+      "be",
+      "playing",
+      "in",
+      "the",
+      "garden",
+      "all",
+      "afternoon."
+    ],
+    "level": "B1"
   },
   {
     "id": 116,
@@ -1047,7 +2088,17 @@
     "en": "I will not be using my car tomorrow.",
     "ru": "Я не буду пользоваться машиной завтра.",
     "hint": "отрицание",
-    "words": ["I", "will", "not", "be", "using", "my", "car", "tomorrow."]
+    "words": [
+      "I",
+      "will",
+      "not",
+      "be",
+      "using",
+      "my",
+      "car",
+      "tomorrow."
+    ],
+    "level": "B1"
   },
   {
     "id": 117,
@@ -1056,7 +2107,15 @@
     "en": "Will you be working this weekend?",
     "ru": "Ты будешь работать в эти выходные?",
     "hint": "вопрос",
-    "words": ["Will", "you", "be", "working", "this", "weekend?"]
+    "words": [
+      "Will",
+      "you",
+      "be",
+      "working",
+      "this",
+      "weekend?"
+    ],
+    "level": "B2"
   },
   {
     "id": 118,
@@ -1065,7 +2124,17 @@
     "en": "She will be having dinner at that time.",
     "ru": "В это время она будет ужинать.",
     "hint": "процесс в будущем",
-    "words": ["She", "will", "be", "having", "dinner", "at", "that", "time."]
+    "words": [
+      "She",
+      "will",
+      "be",
+      "having",
+      "dinner",
+      "at",
+      "that",
+      "time."
+    ],
+    "level": "B1"
   },
   {
     "id": 119,
@@ -1074,7 +2143,17 @@
     "en": "We will be celebrating her birthday next Saturday.",
     "ru": "В следующую субботу мы будем праздновать её день рождения.",
     "hint": "запланированное событие",
-    "words": ["We", "will", "be", "celebrating", "her", "birthday", "next", "Saturday."]
+    "words": [
+      "We",
+      "will",
+      "be",
+      "celebrating",
+      "her",
+      "birthday",
+      "next",
+      "Saturday."
+    ],
+    "level": "B1"
   },
   {
     "id": 120,
@@ -1083,9 +2162,17 @@
     "en": "It will be raining when we leave.",
     "ru": "Будет идти дождь, когда мы уедем.",
     "hint": "процесс в будущем",
-    "words": ["It", "will", "be", "raining", "when", "we", "leave."]
+    "words": [
+      "It",
+      "will",
+      "be",
+      "raining",
+      "when",
+      "we",
+      "leave."
+    ],
+    "level": "B1"
   },
-
   {
     "id": 121,
     "tense": "future_perfect",
@@ -1093,7 +2180,17 @@
     "en": "I will have finished the project by Friday.",
     "ru": "Я закончу проект к пятнице.",
     "hint": "завершится к моменту в будущем",
-    "words": ["I", "will", "have", "finished", "the", "project", "by", "Friday."]
+    "words": [
+      "I",
+      "will",
+      "have",
+      "finished",
+      "the",
+      "project",
+      "by",
+      "Friday."
+    ],
+    "level": "B1"
   },
   {
     "id": 122,
@@ -1102,7 +2199,16 @@
     "en": "She will have left before you arrive.",
     "ru": "Она уйдёт до того, как ты приедешь.",
     "hint": "действие завершится раньше другого",
-    "words": ["She", "will", "have", "left", "before", "you", "arrive."]
+    "words": [
+      "She",
+      "will",
+      "have",
+      "left",
+      "before",
+      "you",
+      "arrive."
+    ],
+    "level": "B1"
   },
   {
     "id": 123,
@@ -1111,7 +2217,19 @@
     "en": "By next year, they will have built a new house.",
     "ru": "К следующему году они построят новый дом.",
     "hint": "by — маркер Future Perfect",
-    "words": ["By", "next", "year,", "they", "will", "have", "built", "a", "new", "house."]
+    "words": [
+      "By",
+      "next",
+      "year,",
+      "they",
+      "will",
+      "have",
+      "built",
+      "a",
+      "new",
+      "house."
+    ],
+    "level": "B1"
   },
   {
     "id": 124,
@@ -1120,7 +2238,19 @@
     "en": "We will have lived here for ten years by then.",
     "ru": "К тому времени мы проживём здесь десять лет.",
     "hint": "длительность к моменту в будущем",
-    "words": ["We", "will", "have", "lived", "here", "for", "ten", "years", "by", "then."]
+    "words": [
+      "We",
+      "will",
+      "have",
+      "lived",
+      "here",
+      "for",
+      "ten",
+      "years",
+      "by",
+      "then."
+    ],
+    "level": "B1"
   },
   {
     "id": 125,
@@ -1129,7 +2259,21 @@
     "en": "He will have read all the books by the end of summer.",
     "ru": "К концу лета он прочитает все книги.",
     "hint": "завершение к сроку",
-    "words": ["He", "will", "have", "read", "all", "the", "books", "by", "the", "end", "of", "summer."]
+    "words": [
+      "He",
+      "will",
+      "have",
+      "read",
+      "all",
+      "the",
+      "books",
+      "by",
+      "the",
+      "end",
+      "of",
+      "summer."
+    ],
+    "level": "B1"
   },
   {
     "id": 126,
@@ -1138,7 +2282,17 @@
     "en": "By 2030, robots will have replaced many jobs.",
     "ru": "К 2030 году роботы заменят многие профессии.",
     "hint": "предсказание будущего",
-    "words": ["By", "2030,", "robots", "will", "have", "replaced", "many", "jobs."]
+    "words": [
+      "By",
+      "2030,",
+      "robots",
+      "will",
+      "have",
+      "replaced",
+      "many",
+      "jobs."
+    ],
+    "level": "B1"
   },
   {
     "id": 127,
@@ -1147,7 +2301,19 @@
     "en": "She will not have finished her work by 6 PM.",
     "ru": "Она не закончит работу к 6 вечера.",
     "hint": "отрицание",
-    "words": ["She", "will", "not", "have", "finished", "her", "work", "by", "6", "PM."]
+    "words": [
+      "She",
+      "will",
+      "not",
+      "have",
+      "finished",
+      "her",
+      "work",
+      "by",
+      "6",
+      "PM."
+    ],
+    "level": "B1"
   },
   {
     "id": 128,
@@ -1156,7 +2322,17 @@
     "en": "Will you have completed the report by Monday?",
     "ru": "Ты закончишь отчёт к понедельнику?",
     "hint": "вопрос",
-    "words": ["Will", "you", "have", "completed", "the", "report", "by", "Monday?"]
+    "words": [
+      "Will",
+      "you",
+      "have",
+      "completed",
+      "the",
+      "report",
+      "by",
+      "Monday?"
+    ],
+    "level": "B1"
   },
   {
     "id": 129,
@@ -1165,7 +2341,19 @@
     "en": "They will have been married for 20 years next month.",
     "ru": "В следующем месяце они будут женаты 20 лет.",
     "hint": "длительность к моменту",
-    "words": ["They", "will", "have", "been", "married", "for", "20", "years", "next", "month."]
+    "words": [
+      "They",
+      "will",
+      "have",
+      "been",
+      "married",
+      "for",
+      "20",
+      "years",
+      "next",
+      "month."
+    ],
+    "level": "B1"
   },
   {
     "id": 130,
@@ -1174,7 +2362,20 @@
     "en": "The train will have left by the time we get there.",
     "ru": "Поезд уйдёт к тому времени, как мы доберёмся.",
     "hint": "by the time",
-    "words": ["The", "train", "will", "have", "left", "by", "the", "time", "we", "get", "there."]
+    "words": [
+      "The",
+      "train",
+      "will",
+      "have",
+      "left",
+      "by",
+      "the",
+      "time",
+      "we",
+      "get",
+      "there."
+    ],
+    "level": "B1"
   },
   {
     "id": 131,
@@ -1183,7 +2384,17 @@
     "en": "I will have saved enough money by December.",
     "ru": "К декабрю я накоплю достаточно денег.",
     "hint": "завершение к сроку",
-    "words": ["I", "will", "have", "saved", "enough", "money", "by", "December."]
+    "words": [
+      "I",
+      "will",
+      "have",
+      "saved",
+      "enough",
+      "money",
+      "by",
+      "December."
+    ],
+    "level": "B2"
   },
   {
     "id": 132,
@@ -1192,9 +2403,19 @@
     "en": "He will have written three books by next year.",
     "ru": "К следующему году он напишет три книги.",
     "hint": "завершение к сроку",
-    "words": ["He", "will", "have", "written", "three", "books", "by", "next", "year."]
+    "words": [
+      "He",
+      "will",
+      "have",
+      "written",
+      "three",
+      "books",
+      "by",
+      "next",
+      "year."
+    ],
+    "level": "B2"
   },
-
   {
     "id": 133,
     "tense": "future_perfect_continuous",
@@ -1202,7 +2423,21 @@
     "en": "By next month, I will have been working here for a year.",
     "ru": "К следующему месяцу я буду работать здесь год.",
     "hint": "длительность к моменту в будущем",
-    "words": ["By", "next", "month,", "I", "will", "have", "been", "working", "here", "for", "a", "year."]
+    "words": [
+      "By",
+      "next",
+      "month,",
+      "I",
+      "will",
+      "have",
+      "been",
+      "working",
+      "here",
+      "for",
+      "a",
+      "year."
+    ],
+    "level": "B2"
   },
   {
     "id": 134,
@@ -1211,7 +2446,20 @@
     "en": "She will have been studying English for five years by 2027.",
     "ru": "К 2027 году она будет учить английский пять лет.",
     "hint": "длительность к моменту",
-    "words": ["She", "will", "have", "been", "studying", "English", "for", "five", "years", "by", "2027."]
+    "words": [
+      "She",
+      "will",
+      "have",
+      "been",
+      "studying",
+      "English",
+      "for",
+      "five",
+      "years",
+      "by",
+      "2027."
+    ],
+    "level": "B1"
   },
   {
     "id": 135,
@@ -1220,7 +2468,21 @@
     "en": "They will have been living in London for a decade next year.",
     "ru": "В следующем году они будут жить в Лондоне десять лет.",
     "hint": "длительный процесс",
-    "words": ["They", "will", "have", "been", "living", "in", "London", "for", "a", "decade", "next", "year."]
+    "words": [
+      "They",
+      "will",
+      "have",
+      "been",
+      "living",
+      "in",
+      "London",
+      "for",
+      "a",
+      "decade",
+      "next",
+      "year."
+    ],
+    "level": "B2"
   },
   {
     "id": 136,
@@ -1229,7 +2491,20 @@
     "en": "By 5 PM, we will have been driving for eight hours.",
     "ru": "К 5 вечера мы будем ехать уже восемь часов.",
     "hint": "длительность к моменту",
-    "words": ["By", "5", "PM,", "we", "will", "have", "been", "driving", "for", "eight", "hours."]
+    "words": [
+      "By",
+      "5",
+      "PM,",
+      "we",
+      "will",
+      "have",
+      "been",
+      "driving",
+      "for",
+      "eight",
+      "hours."
+    ],
+    "level": "B1"
   },
   {
     "id": 137,
@@ -1238,7 +2513,22 @@
     "en": "He will have been working on this project for six months by then.",
     "ru": "К тому времени он будет работать над этим проектом шесть месяцев.",
     "hint": "длительный процесс",
-    "words": ["He", "will", "have", "been", "working", "on", "this", "project", "for", "six", "months", "by", "then."]
+    "words": [
+      "He",
+      "will",
+      "have",
+      "been",
+      "working",
+      "on",
+      "this",
+      "project",
+      "for",
+      "six",
+      "months",
+      "by",
+      "then."
+    ],
+    "level": "B2"
   },
   {
     "id": 138,
@@ -1247,7 +2537,22 @@
     "en": "She will have been teaching at this school for twenty years next September.",
     "ru": "В следующем сентябре она будет преподавать в этой школе двадцать лет.",
     "hint": "длительный стаж",
-    "words": ["She", "will", "have", "been", "teaching", "at", "this", "school", "for", "twenty", "years", "next", "September."]
+    "words": [
+      "She",
+      "will",
+      "have",
+      "been",
+      "teaching",
+      "at",
+      "this",
+      "school",
+      "for",
+      "twenty",
+      "years",
+      "next",
+      "September."
+    ],
+    "level": "B2"
   },
   {
     "id": 139,
@@ -1256,7 +2561,24 @@
     "en": "By the end of the year, I will have been learning Spanish for two years.",
     "ru": "К концу года я буду учить испанский два года.",
     "hint": "длительность к сроку",
-    "words": ["By", "the", "end", "of", "the", "year,", "I", "will", "have", "been", "learning", "Spanish", "for", "two", "years."]
+    "words": [
+      "By",
+      "the",
+      "end",
+      "of",
+      "the",
+      "year,",
+      "I",
+      "will",
+      "have",
+      "been",
+      "learning",
+      "Spanish",
+      "for",
+      "two",
+      "years."
+    ],
+    "level": "B2"
   },
   {
     "id": 140,
@@ -1265,7 +2587,23 @@
     "en": "They will have been waiting for three hours by the time the concert starts.",
     "ru": "К началу концерта они будут ждать уже три часа.",
     "hint": "длительное ожидание",
-    "words": ["They", "will", "have", "been", "waiting", "for", "three", "hours", "by", "the", "time", "the", "concert", "starts."]
+    "words": [
+      "They",
+      "will",
+      "have",
+      "been",
+      "waiting",
+      "for",
+      "three",
+      "hours",
+      "by",
+      "the",
+      "time",
+      "the",
+      "concert",
+      "starts."
+    ],
+    "level": "B2"
   },
   {
     "id": 141,
@@ -1274,7 +2612,21 @@
     "en": "He will have been playing the piano for ten years by 2030.",
     "ru": "К 2030 году он будет играть на пианино десять лет.",
     "hint": "длительный опыт",
-    "words": ["He", "will", "have", "been", "playing", "the", "piano", "for", "ten", "years", "by", "2030."]
+    "words": [
+      "He",
+      "will",
+      "have",
+      "been",
+      "playing",
+      "the",
+      "piano",
+      "for",
+      "ten",
+      "years",
+      "by",
+      "2030."
+    ],
+    "level": "B1"
   },
   {
     "id": 142,
@@ -1283,7 +2635,22 @@
     "en": "We will have been traveling for a month by the time we return.",
     "ru": "К моменту возвращения мы будем путешествовать месяц.",
     "hint": "длительность к моменту",
-    "words": ["We", "will", "have", "been", "traveling", "for", "a", "month", "by", "the", "time", "we", "return."]
+    "words": [
+      "We",
+      "will",
+      "have",
+      "been",
+      "traveling",
+      "for",
+      "a",
+      "month",
+      "by",
+      "the",
+      "time",
+      "we",
+      "return."
+    ],
+    "level": "B2"
   },
   {
     "id": 143,
@@ -1292,7 +2659,21 @@
     "en": "She will have been writing her novel for five years next spring.",
     "ru": "Следующей весной она будет писать свой роман пять лет.",
     "hint": "длительный процесс",
-    "words": ["She", "will", "have", "been", "writing", "her", "novel", "for", "five", "years", "next", "spring."]
+    "words": [
+      "She",
+      "will",
+      "have",
+      "been",
+      "writing",
+      "her",
+      "novel",
+      "for",
+      "five",
+      "years",
+      "next",
+      "spring."
+    ],
+    "level": "B1"
   },
   {
     "id": 144,
@@ -1301,7 +2682,19 @@
     "en": "By midnight, they will have been dancing for six hours.",
     "ru": "К полуночи они будут танцевать шесть часов.",
     "hint": "длительность к моменту",
-    "words": ["By", "midnight,", "they", "will", "have", "been", "dancing", "for", "six", "hours."]
+    "words": [
+      "By",
+      "midnight,",
+      "they",
+      "will",
+      "have",
+      "been",
+      "dancing",
+      "for",
+      "six",
+      "hours."
+    ],
+    "level": "B1"
   },
   {
     "id": 145,
@@ -1310,7 +2703,13 @@
     "en": "Do you speak English?",
     "ru": "Ты говоришь по-английски?",
     "hint": "вопрос о факте",
-    "words": ["Do", "you", "speak", "English?"]
+    "words": [
+      "Do",
+      "you",
+      "speak",
+      "English?"
+    ],
+    "level": "A1"
   },
   {
     "id": 146,
@@ -1319,7 +2718,15 @@
     "en": "I don't eat breakfast on weekdays.",
     "ru": "Я не завтракаю по будням.",
     "hint": "отрицание привычки",
-    "words": ["I", "don't", "eat", "breakfast", "on", "weekdays."]
+    "words": [
+      "I",
+      "don't",
+      "eat",
+      "breakfast",
+      "on",
+      "weekdays."
+    ],
+    "level": "A1"
   },
   {
     "id": 147,
@@ -1328,7 +2735,14 @@
     "en": "Does she live near here?",
     "ru": "Она живёт где-то рядом?",
     "hint": "вопрос о месте жительства",
-    "words": ["Does", "she", "live", "near", "here?"]
+    "words": [
+      "Does",
+      "she",
+      "live",
+      "near",
+      "here?"
+    ],
+    "level": "A1"
   },
   {
     "id": 148,
@@ -1337,7 +2751,14 @@
     "en": "My parents don't speak English.",
     "ru": "Мои родители не говорят по-английски.",
     "hint": "отрицание, факт",
-    "words": ["My", "parents", "don't", "speak", "English."]
+    "words": [
+      "My",
+      "parents",
+      "don't",
+      "speak",
+      "English."
+    ],
+    "level": "A1"
   },
   {
     "id": 149,
@@ -1346,7 +2767,17 @@
     "en": "How often do you go to the gym?",
     "ru": "Как часто ты ходишь в спортзал?",
     "hint": "вопрос о частоте",
-    "words": ["How", "often", "do", "you", "go", "to", "the", "gym?"]
+    "words": [
+      "How",
+      "often",
+      "do",
+      "you",
+      "go",
+      "to",
+      "the",
+      "gym?"
+    ],
+    "level": "A1"
   },
   {
     "id": 150,
@@ -1355,7 +2786,14 @@
     "en": "The store opens at nine.",
     "ru": "Магазин открывается в девять.",
     "hint": "расписание",
-    "words": ["The", "store", "opens", "at", "nine."]
+    "words": [
+      "The",
+      "store",
+      "opens",
+      "at",
+      "nine."
+    ],
+    "level": "A2"
   },
   {
     "id": 151,
@@ -1364,7 +2802,14 @@
     "en": "He always forgets my birthday.",
     "ru": "Он всегда забывает про мой день рождения.",
     "hint": "привычка",
-    "words": ["He", "always", "forgets", "my", "birthday."]
+    "words": [
+      "He",
+      "always",
+      "forgets",
+      "my",
+      "birthday."
+    ],
+    "level": "A1"
   },
   {
     "id": 152,
@@ -1373,7 +2818,16 @@
     "en": "Cats sleep for many hours a day.",
     "ru": "Кошки спят много часов в день.",
     "hint": "факт о животных",
-    "words": ["Cats", "sleep", "for", "many", "hours", "a", "day."]
+    "words": [
+      "Cats",
+      "sleep",
+      "for",
+      "many",
+      "hours",
+      "a",
+      "day."
+    ],
+    "level": "A1"
   },
   {
     "id": 153,
@@ -1382,7 +2836,15 @@
     "en": "I usually get up at seven.",
     "ru": "Я обычно встаю в семь.",
     "hint": "ежедневная привычка",
-    "words": ["I", "usually", "get", "up", "at", "seven."]
+    "words": [
+      "I",
+      "usually",
+      "get",
+      "up",
+      "at",
+      "seven."
+    ],
+    "level": "A1"
   },
   {
     "id": 154,
@@ -1391,7 +2853,13 @@
     "en": "Where do you work?",
     "ru": "Где ты работаешь?",
     "hint": "вопрос о работе",
-    "words": ["Where", "do", "you", "work?"]
+    "words": [
+      "Where",
+      "do",
+      "you",
+      "work?"
+    ],
+    "level": "A1"
   },
   {
     "id": 155,
@@ -1400,7 +2868,15 @@
     "en": "This bus goes to the airport.",
     "ru": "Этот автобус идёт в аэропорт.",
     "hint": "маршрут",
-    "words": ["This", "bus", "goes", "to", "the", "airport."]
+    "words": [
+      "This",
+      "bus",
+      "goes",
+      "to",
+      "the",
+      "airport."
+    ],
+    "level": "A1"
   },
   {
     "id": 156,
@@ -1409,7 +2885,15 @@
     "en": "We don't have any milk left.",
     "ru": "У нас не осталось молока.",
     "hint": "отрицание, факт",
-    "words": ["We", "don't", "have", "any", "milk", "left."]
+    "words": [
+      "We",
+      "don't",
+      "have",
+      "any",
+      "milk",
+      "left."
+    ],
+    "level": "A1"
   },
   {
     "id": 157,
@@ -1418,7 +2902,15 @@
     "en": "Do they know about the meeting?",
     "ru": "Они знают о встрече?",
     "hint": "вопрос",
-    "words": ["Do", "they", "know", "about", "the", "meeting?"]
+    "words": [
+      "Do",
+      "they",
+      "know",
+      "about",
+      "the",
+      "meeting?"
+    ],
+    "level": "A1"
   },
   {
     "id": 158,
@@ -1427,7 +2919,15 @@
     "en": "I am waiting for the bus.",
     "ru": "Я жду автобус.",
     "hint": "прямо сейчас",
-    "words": ["I", "am", "waiting", "for", "the", "bus."]
+    "words": [
+      "I",
+      "am",
+      "waiting",
+      "for",
+      "the",
+      "bus."
+    ],
+    "level": "A1"
   },
   {
     "id": 159,
@@ -1436,7 +2936,15 @@
     "en": "She is not answering her phone.",
     "ru": "Она не отвечает на телефон.",
     "hint": "отрицание",
-    "words": ["She", "is", "not", "answering", "her", "phone."]
+    "words": [
+      "She",
+      "is",
+      "not",
+      "answering",
+      "her",
+      "phone."
+    ],
+    "level": "A1"
   },
   {
     "id": 160,
@@ -1445,7 +2953,14 @@
     "en": "Are you listening to me?",
     "ru": "Ты меня слушаешь?",
     "hint": "вопрос",
-    "words": ["Are", "you", "listening", "to", "me?"]
+    "words": [
+      "Are",
+      "you",
+      "listening",
+      "to",
+      "me?"
+    ],
+    "level": "A1"
   },
   {
     "id": 161,
@@ -1454,7 +2969,14 @@
     "en": "The kids are watching cartoons.",
     "ru": "Дети смотрят мультики.",
     "hint": "прямо сейчас",
-    "words": ["The", "kids", "are", "watching", "cartoons."]
+    "words": [
+      "The",
+      "kids",
+      "are",
+      "watching",
+      "cartoons."
+    ],
+    "level": "A1"
   },
   {
     "id": 162,
@@ -1463,7 +2985,15 @@
     "en": "We are having lunch right now.",
     "ru": "Мы как раз обедаем.",
     "hint": "прямо сейчас",
-    "words": ["We", "are", "having", "lunch", "right", "now."]
+    "words": [
+      "We",
+      "are",
+      "having",
+      "lunch",
+      "right",
+      "now."
+    ],
+    "level": "A1"
   },
   {
     "id": 163,
@@ -1472,7 +3002,16 @@
     "en": "I am thinking about changing my job.",
     "ru": "Я подумываю сменить работу.",
     "hint": "временный процесс",
-    "words": ["I", "am", "thinking", "about", "changing", "my", "job."]
+    "words": [
+      "I",
+      "am",
+      "thinking",
+      "about",
+      "changing",
+      "my",
+      "job."
+    ],
+    "level": "A2"
   },
   {
     "id": 164,
@@ -1481,7 +3020,14 @@
     "en": "The weather is getting warmer.",
     "ru": "Погода становится теплее.",
     "hint": "изменение во времени",
-    "words": ["The", "weather", "is", "getting", "warmer."]
+    "words": [
+      "The",
+      "weather",
+      "is",
+      "getting",
+      "warmer."
+    ],
+    "level": "A1"
   },
   {
     "id": 165,
@@ -1490,7 +3036,15 @@
     "en": "He is always losing his keys.",
     "ru": "Он вечно теряет ключи.",
     "hint": "раздражение, повторяющееся",
-    "words": ["He", "is", "always", "losing", "his", "keys."]
+    "words": [
+      "He",
+      "is",
+      "always",
+      "losing",
+      "his",
+      "keys."
+    ],
+    "level": "A1"
   },
   {
     "id": 166,
@@ -1499,7 +3053,16 @@
     "en": "Are they still working on the project?",
     "ru": "Они всё ещё работают над проектом?",
     "hint": "вопрос",
-    "words": ["Are", "they", "still", "working", "on", "the", "project?"]
+    "words": [
+      "Are",
+      "they",
+      "still",
+      "working",
+      "on",
+      "the",
+      "project?"
+    ],
+    "level": "A2"
   },
   {
     "id": 167,
@@ -1508,7 +3071,14 @@
     "en": "My phone is not working.",
     "ru": "Мой телефон не работает.",
     "hint": "временная поломка",
-    "words": ["My", "phone", "is", "not", "working."]
+    "words": [
+      "My",
+      "phone",
+      "is",
+      "not",
+      "working."
+    ],
+    "level": "A2"
   },
   {
     "id": 168,
@@ -1517,7 +3087,16 @@
     "en": "We are planning a trip to Italy.",
     "ru": "Мы планируем поездку в Италию.",
     "hint": "запланированное будущее",
-    "words": ["We", "are", "planning", "a", "trip", "to", "Italy."]
+    "words": [
+      "We",
+      "are",
+      "planning",
+      "a",
+      "trip",
+      "to",
+      "Italy."
+    ],
+    "level": "A1"
   },
   {
     "id": 169,
@@ -1526,7 +3105,17 @@
     "en": "She is studying for her exam right now.",
     "ru": "Она сейчас готовится к экзамену.",
     "hint": "процесс сейчас",
-    "words": ["She", "is", "studying", "for", "her", "exam", "right", "now."]
+    "words": [
+      "She",
+      "is",
+      "studying",
+      "for",
+      "her",
+      "exam",
+      "right",
+      "now."
+    ],
+    "level": "A1"
   },
   {
     "id": 170,
@@ -1535,7 +3124,15 @@
     "en": "I am not feeling well today.",
     "ru": "Я сегодня плохо себя чувствую.",
     "hint": "отрицание, состояние",
-    "words": ["I", "am", "not", "feeling", "well", "today."]
+    "words": [
+      "I",
+      "am",
+      "not",
+      "feeling",
+      "well",
+      "today."
+    ],
+    "level": "A1"
   },
   {
     "id": 171,
@@ -1544,7 +3141,15 @@
     "en": "What are you doing this evening?",
     "ru": "Что ты делаешь сегодня вечером?",
     "hint": "вопрос о планах",
-    "words": ["What", "are", "you", "doing", "this", "evening?"]
+    "words": [
+      "What",
+      "are",
+      "you",
+      "doing",
+      "this",
+      "evening?"
+    ],
+    "level": "A1"
   },
   {
     "id": 172,
@@ -1553,7 +3158,15 @@
     "en": "I have just finished my coffee.",
     "ru": "Я только что допил кофе.",
     "hint": "только что",
-    "words": ["I", "have", "just", "finished", "my", "coffee."]
+    "words": [
+      "I",
+      "have",
+      "just",
+      "finished",
+      "my",
+      "coffee."
+    ],
+    "level": "A2"
   },
   {
     "id": 173,
@@ -1562,7 +3175,15 @@
     "en": "Have you finished your work yet?",
     "ru": "Ты уже закончил работу?",
     "hint": "вопрос с yet",
-    "words": ["Have", "you", "finished", "your", "work", "yet?"]
+    "words": [
+      "Have",
+      "you",
+      "finished",
+      "your",
+      "work",
+      "yet?"
+    ],
+    "level": "B1"
   },
   {
     "id": 174,
@@ -1571,7 +3192,16 @@
     "en": "We have been friends for twenty years.",
     "ru": "Мы друзья двадцать лет.",
     "hint": "состояние длится",
-    "words": ["We", "have", "been", "friends", "for", "twenty", "years."]
+    "words": [
+      "We",
+      "have",
+      "been",
+      "friends",
+      "for",
+      "twenty",
+      "years."
+    ],
+    "level": "A2"
   },
   {
     "id": 175,
@@ -1580,7 +3210,15 @@
     "en": "She hasn't replied to my email.",
     "ru": "Она не ответила на моё письмо.",
     "hint": "отрицание",
-    "words": ["She", "hasn't", "replied", "to", "my", "email."]
+    "words": [
+      "She",
+      "hasn't",
+      "replied",
+      "to",
+      "my",
+      "email."
+    ],
+    "level": "A2"
   },
   {
     "id": 176,
@@ -1589,7 +3227,16 @@
     "en": "I have visited ten countries so far.",
     "ru": "Я пока посетил десять стран.",
     "hint": "опыт, so far",
-    "words": ["I", "have", "visited", "ten", "countries", "so", "far."]
+    "words": [
+      "I",
+      "have",
+      "visited",
+      "ten",
+      "countries",
+      "so",
+      "far."
+    ],
+    "level": "A2"
   },
   {
     "id": 177,
@@ -1598,7 +3245,17 @@
     "en": "How many times have you been to London?",
     "ru": "Сколько раз ты был в Лондоне?",
     "hint": "вопрос об опыте",
-    "words": ["How", "many", "times", "have", "you", "been", "to", "London?"]
+    "words": [
+      "How",
+      "many",
+      "times",
+      "have",
+      "you",
+      "been",
+      "to",
+      "London?"
+    ],
+    "level": "A2"
   },
   {
     "id": 178,
@@ -1607,7 +3264,15 @@
     "en": "They have lived here since 2015.",
     "ru": "Они живут здесь с 2015 года.",
     "hint": "since + год",
-    "words": ["They", "have", "lived", "here", "since", "2015."]
+    "words": [
+      "They",
+      "have",
+      "lived",
+      "here",
+      "since",
+      "2015."
+    ],
+    "level": "B1"
   },
   {
     "id": 179,
@@ -1616,7 +3281,16 @@
     "en": "I have already seen this film twice.",
     "ru": "Я уже видел этот фильм дважды.",
     "hint": "already",
-    "words": ["I", "have", "already", "seen", "this", "film", "twice."]
+    "words": [
+      "I",
+      "have",
+      "already",
+      "seen",
+      "this",
+      "film",
+      "twice."
+    ],
+    "level": "B1"
   },
   {
     "id": 180,
@@ -1625,7 +3299,14 @@
     "en": "He has never been abroad.",
     "ru": "Он никогда не был за границей.",
     "hint": "никогда, опыт",
-    "words": ["He", "has", "never", "been", "abroad."]
+    "words": [
+      "He",
+      "has",
+      "never",
+      "been",
+      "abroad."
+    ],
+    "level": "B1"
   },
   {
     "id": 181,
@@ -1634,7 +3315,13 @@
     "en": "The rain has stopped.",
     "ru": "Дождь прекратился.",
     "hint": "результат сейчас",
-    "words": ["The", "rain", "has", "stopped."]
+    "words": [
+      "The",
+      "rain",
+      "has",
+      "stopped."
+    ],
+    "level": "A2"
   },
   {
     "id": 182,
@@ -1643,7 +3330,15 @@
     "en": "I haven't seen him for ages.",
     "ru": "Я его сто лет не видел.",
     "hint": "отрицание + for ages",
-    "words": ["I", "haven't", "seen", "him", "for", "ages."]
+    "words": [
+      "I",
+      "haven't",
+      "seen",
+      "him",
+      "for",
+      "ages."
+    ],
+    "level": "B1"
   },
   {
     "id": 183,
@@ -1652,7 +3347,17 @@
     "en": "We have just moved into a new house.",
     "ru": "Мы только что переехали в новый дом.",
     "hint": "только что",
-    "words": ["We", "have", "just", "moved", "into", "a", "new", "house."]
+    "words": [
+      "We",
+      "have",
+      "just",
+      "moved",
+      "into",
+      "a",
+      "new",
+      "house."
+    ],
+    "level": "A2"
   },
   {
     "id": 184,
@@ -1661,7 +3366,14 @@
     "en": "Have they called you back?",
     "ru": "Они тебе перезвонили?",
     "hint": "вопрос о результате",
-    "words": ["Have", "they", "called", "you", "back?"]
+    "words": [
+      "Have",
+      "they",
+      "called",
+      "you",
+      "back?"
+    ],
+    "level": "A2"
   },
   {
     "id": 185,
@@ -1670,7 +3382,17 @@
     "en": "I have been working here for five years.",
     "ru": "Я работаю здесь пять лет.",
     "hint": "процесс начался в прошлом",
-    "words": ["I", "have", "been", "working", "here", "for", "five", "years."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "working",
+      "here",
+      "for",
+      "five",
+      "years."
+    ],
+    "level": "B1"
   },
   {
     "id": 186,
@@ -1679,7 +3401,15 @@
     "en": "She has been learning to drive.",
     "ru": "Она учится водить машину.",
     "hint": "процесс обучения",
-    "words": ["She", "has", "been", "learning", "to", "drive."]
+    "words": [
+      "She",
+      "has",
+      "been",
+      "learning",
+      "to",
+      "drive."
+    ],
+    "level": "B1"
   },
   {
     "id": 187,
@@ -1688,7 +3418,15 @@
     "en": "How long have you been waiting?",
     "ru": "Как долго ты ждёшь?",
     "hint": "вопрос о длительности",
-    "words": ["How", "long", "have", "you", "been", "waiting?"]
+    "words": [
+      "How",
+      "long",
+      "have",
+      "you",
+      "been",
+      "waiting?"
+    ],
+    "level": "A2"
   },
   {
     "id": 188,
@@ -1697,7 +3435,17 @@
     "en": "They have been building that bridge for months.",
     "ru": "Они строят этот мост месяцами.",
     "hint": "длительный процесс",
-    "words": ["They", "have", "been", "building", "that", "bridge", "for", "months."]
+    "words": [
+      "They",
+      "have",
+      "been",
+      "building",
+      "that",
+      "bridge",
+      "for",
+      "months."
+    ],
+    "level": "B1"
   },
   {
     "id": 189,
@@ -1706,7 +3454,15 @@
     "en": "It has been snowing since morning.",
     "ru": "С утра идёт снег.",
     "hint": "процесс с определённого момента",
-    "words": ["It", "has", "been", "snowing", "since", "morning."]
+    "words": [
+      "It",
+      "has",
+      "been",
+      "snowing",
+      "since",
+      "morning."
+    ],
+    "level": "B1"
   },
   {
     "id": 190,
@@ -1715,7 +3471,18 @@
     "en": "I have been trying to reach you all day.",
     "ru": "Я весь день пытаюсь с тобой связаться.",
     "hint": "процесс в течение дня",
-    "words": ["I", "have", "been", "trying", "to", "reach", "you", "all", "day."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "trying",
+      "to",
+      "reach",
+      "you",
+      "all",
+      "day."
+    ],
+    "level": "B1"
   },
   {
     "id": 191,
@@ -1724,7 +3491,17 @@
     "en": "He has been feeling ill for a week.",
     "ru": "Он болеет уже неделю.",
     "hint": "длительное состояние",
-    "words": ["He", "has", "been", "feeling", "ill", "for", "a", "week."]
+    "words": [
+      "He",
+      "has",
+      "been",
+      "feeling",
+      "ill",
+      "for",
+      "a",
+      "week."
+    ],
+    "level": "A2"
   },
   {
     "id": 192,
@@ -1733,7 +3510,18 @@
     "en": "We have been waiting for the results since yesterday.",
     "ru": "Мы ждём результатов со вчерашнего дня.",
     "hint": "since yesterday",
-    "words": ["We", "have", "been", "waiting", "for", "the", "results", "since", "yesterday."]
+    "words": [
+      "We",
+      "have",
+      "been",
+      "waiting",
+      "for",
+      "the",
+      "results",
+      "since",
+      "yesterday."
+    ],
+    "level": "B1"
   },
   {
     "id": 193,
@@ -1742,7 +3530,16 @@
     "en": "I saw him at the supermarket yesterday.",
     "ru": "Вчера я видел его в супермаркете.",
     "hint": "завершённое действие",
-    "words": ["I", "saw", "him", "at", "the", "supermarket", "yesterday."]
+    "words": [
+      "I",
+      "saw",
+      "him",
+      "at",
+      "the",
+      "supermarket",
+      "yesterday."
+    ],
+    "level": "A2"
   },
   {
     "id": 194,
@@ -1751,7 +3548,15 @@
     "en": "She didn't come to the party.",
     "ru": "Она не пришла на вечеринку.",
     "hint": "отрицание",
-    "words": ["She", "didn't", "come", "to", "the", "party."]
+    "words": [
+      "She",
+      "didn't",
+      "come",
+      "to",
+      "the",
+      "party."
+    ],
+    "level": "A2"
   },
   {
     "id": 195,
@@ -1760,7 +3565,15 @@
     "en": "Where did you go last weekend?",
     "ru": "Куда ты ездил на прошлых выходных?",
     "hint": "вопрос",
-    "words": ["Where", "did", "you", "go", "last", "weekend?"]
+    "words": [
+      "Where",
+      "did",
+      "you",
+      "go",
+      "last",
+      "weekend?"
+    ],
+    "level": "A2"
   },
   {
     "id": 196,
@@ -1769,7 +3582,14 @@
     "en": "They got married in 2018.",
     "ru": "Они поженились в 2018 году.",
     "hint": "событие с датой",
-    "words": ["They", "got", "married", "in", "2018."]
+    "words": [
+      "They",
+      "got",
+      "married",
+      "in",
+      "2018."
+    ],
+    "level": "A2"
   },
   {
     "id": 197,
@@ -1778,7 +3598,15 @@
     "en": "I was at home all evening.",
     "ru": "Я был дома весь вечер.",
     "hint": "состояние в прошлом",
-    "words": ["I", "was", "at", "home", "all", "evening."]
+    "words": [
+      "I",
+      "was",
+      "at",
+      "home",
+      "all",
+      "evening."
+    ],
+    "level": "A2"
   },
   {
     "id": 198,
@@ -1787,7 +3615,15 @@
     "en": "He worked here three years ago.",
     "ru": "Он работал здесь три года назад.",
     "hint": "ago",
-    "words": ["He", "worked", "here", "three", "years", "ago."]
+    "words": [
+      "He",
+      "worked",
+      "here",
+      "three",
+      "years",
+      "ago."
+    ],
+    "level": "A2"
   },
   {
     "id": 199,
@@ -1796,7 +3632,17 @@
     "en": "We had a great time at the beach.",
     "ru": "Мы отлично провели время на пляже.",
     "hint": "завершённое действие",
-    "words": ["We", "had", "a", "great", "time", "at", "the", "beach."]
+    "words": [
+      "We",
+      "had",
+      "a",
+      "great",
+      "time",
+      "at",
+      "the",
+      "beach."
+    ],
+    "level": "A2"
   },
   {
     "id": 200,
@@ -1805,7 +3651,14 @@
     "en": "Did you like the movie?",
     "ru": "Тебе понравился фильм?",
     "hint": "вопрос",
-    "words": ["Did", "you", "like", "the", "movie?"]
+    "words": [
+      "Did",
+      "you",
+      "like",
+      "the",
+      "movie?"
+    ],
+    "level": "A2"
   },
   {
     "id": 201,
@@ -1814,7 +3667,16 @@
     "en": "She bought a new laptop last week.",
     "ru": "Она купила новый ноутбук на прошлой неделе.",
     "hint": "last week",
-    "words": ["She", "bought", "a", "new", "laptop", "last", "week."]
+    "words": [
+      "She",
+      "bought",
+      "a",
+      "new",
+      "laptop",
+      "last",
+      "week."
+    ],
+    "level": "A2"
   },
   {
     "id": 202,
@@ -1823,7 +3685,14 @@
     "en": "I didn't understand the question.",
     "ru": "Я не понял вопрос.",
     "hint": "отрицание",
-    "words": ["I", "didn't", "understand", "the", "question."]
+    "words": [
+      "I",
+      "didn't",
+      "understand",
+      "the",
+      "question."
+    ],
+    "level": "A2"
   },
   {
     "id": 203,
@@ -1832,7 +3701,15 @@
     "en": "He drove to work this morning.",
     "ru": "Он поехал на работу утром.",
     "hint": "завершённое действие",
-    "words": ["He", "drove", "to", "work", "this", "morning."]
+    "words": [
+      "He",
+      "drove",
+      "to",
+      "work",
+      "this",
+      "morning."
+    ],
+    "level": "B1"
   },
   {
     "id": 204,
@@ -1841,7 +3718,15 @@
     "en": "When did they move to Berlin?",
     "ru": "Когда они переехали в Берлин?",
     "hint": "вопрос с when",
-    "words": ["When", "did", "they", "move", "to", "Berlin?"]
+    "words": [
+      "When",
+      "did",
+      "they",
+      "move",
+      "to",
+      "Berlin?"
+    ],
+    "level": "A2"
   },
   {
     "id": 205,
@@ -1850,7 +3735,16 @@
     "en": "I was watching TV when you called.",
     "ru": "Я смотрел телевизор, когда ты позвонил.",
     "hint": "прерванное действие",
-    "words": ["I", "was", "watching", "TV", "when", "you", "called."]
+    "words": [
+      "I",
+      "was",
+      "watching",
+      "TV",
+      "when",
+      "you",
+      "called."
+    ],
+    "level": "A2"
   },
   {
     "id": 206,
@@ -1859,7 +3753,16 @@
     "en": "They were arguing when I walked in.",
     "ru": "Они спорили, когда я вошёл.",
     "hint": "прерванный процесс",
-    "words": ["They", "were", "arguing", "when", "I", "walked", "in."]
+    "words": [
+      "They",
+      "were",
+      "arguing",
+      "when",
+      "I",
+      "walked",
+      "in."
+    ],
+    "level": "A2"
   },
   {
     "id": 207,
@@ -1868,7 +3771,14 @@
     "en": "What were you thinking about?",
     "ru": "О чём ты думал?",
     "hint": "вопрос",
-    "words": ["What", "were", "you", "thinking", "about?"]
+    "words": [
+      "What",
+      "were",
+      "you",
+      "thinking",
+      "about?"
+    ],
+    "level": "B1"
   },
   {
     "id": 208,
@@ -1877,7 +3787,14 @@
     "en": "She was not paying attention.",
     "ru": "Она не обращала внимания.",
     "hint": "отрицание",
-    "words": ["She", "was", "not", "paying", "attention."]
+    "words": [
+      "She",
+      "was",
+      "not",
+      "paying",
+      "attention."
+    ],
+    "level": "B1"
   },
   {
     "id": 209,
@@ -1886,7 +3803,14 @@
     "en": "It was snowing all night.",
     "ru": "Всю ночь шёл снег.",
     "hint": "длительное действие",
-    "words": ["It", "was", "snowing", "all", "night."]
+    "words": [
+      "It",
+      "was",
+      "snowing",
+      "all",
+      "night."
+    ],
+    "level": "A2"
   },
   {
     "id": 210,
@@ -1895,7 +3819,18 @@
     "en": "We were having dinner when the lights went out.",
     "ru": "Мы ужинали, когда погас свет.",
     "hint": "прерванное действие",
-    "words": ["We", "were", "having", "dinner", "when", "the", "lights", "went", "out."]
+    "words": [
+      "We",
+      "were",
+      "having",
+      "dinner",
+      "when",
+      "the",
+      "lights",
+      "went",
+      "out."
+    ],
+    "level": "A2"
   },
   {
     "id": 211,
@@ -1904,7 +3839,17 @@
     "en": "He was walking his dog at 7 AM.",
     "ru": "Он выгуливал собаку в 7 утра.",
     "hint": "точное время",
-    "words": ["He", "was", "walking", "his", "dog", "at", "7", "AM."]
+    "words": [
+      "He",
+      "was",
+      "walking",
+      "his",
+      "dog",
+      "at",
+      "7",
+      "AM."
+    ],
+    "level": "A2"
   },
   {
     "id": 212,
@@ -1913,7 +3858,16 @@
     "en": "I had already eaten when they arrived.",
     "ru": "Я уже поел, когда они пришли.",
     "hint": "раньше другого действия",
-    "words": ["I", "had", "already", "eaten", "when", "they", "arrived."]
+    "words": [
+      "I",
+      "had",
+      "already",
+      "eaten",
+      "when",
+      "they",
+      "arrived."
+    ],
+    "level": "B2"
   },
   {
     "id": 213,
@@ -1922,7 +3876,16 @@
     "en": "She had never flown before that day.",
     "ru": "До того дня она никогда не летала.",
     "hint": "опыт до момента",
-    "words": ["She", "had", "never", "flown", "before", "that", "day."]
+    "words": [
+      "She",
+      "had",
+      "never",
+      "flown",
+      "before",
+      "that",
+      "day."
+    ],
+    "level": "B1"
   },
   {
     "id": 214,
@@ -1931,7 +3894,16 @@
     "en": "Had you met him before the party?",
     "ru": "Ты встречал его до вечеринки?",
     "hint": "вопрос",
-    "words": ["Had", "you", "met", "him", "before", "the", "party?"]
+    "words": [
+      "Had",
+      "you",
+      "met",
+      "him",
+      "before",
+      "the",
+      "party?"
+    ],
+    "level": "B1"
   },
   {
     "id": 215,
@@ -1940,7 +3912,18 @@
     "en": "The film had already started when we got there.",
     "ru": "Фильм уже начался, когда мы пришли.",
     "hint": "раньше другого действия",
-    "words": ["The", "film", "had", "already", "started", "when", "we", "got", "there."]
+    "words": [
+      "The",
+      "film",
+      "had",
+      "already",
+      "started",
+      "when",
+      "we",
+      "got",
+      "there."
+    ],
+    "level": "B2"
   },
   {
     "id": 216,
@@ -1949,7 +3932,16 @@
     "en": "He had forgotten to lock the door.",
     "ru": "Он забыл запереть дверь.",
     "hint": "предшествующее действие",
-    "words": ["He", "had", "forgotten", "to", "lock", "the", "door."]
+    "words": [
+      "He",
+      "had",
+      "forgotten",
+      "to",
+      "lock",
+      "the",
+      "door."
+    ],
+    "level": "B1"
   },
   {
     "id": 217,
@@ -1958,7 +3950,19 @@
     "en": "I had been waiting for an hour before she came.",
     "ru": "Я ждал час до её прихода.",
     "hint": "длительный процесс",
-    "words": ["I", "had", "been", "waiting", "for", "an", "hour", "before", "she", "came."]
+    "words": [
+      "I",
+      "had",
+      "been",
+      "waiting",
+      "for",
+      "an",
+      "hour",
+      "before",
+      "she",
+      "came."
+    ],
+    "level": "B1"
   },
   {
     "id": 218,
@@ -1967,7 +3971,20 @@
     "en": "They had been dating for two years before they broke up.",
     "ru": "Они встречались два года, прежде чем расстались.",
     "hint": "длительный процесс",
-    "words": ["They", "had", "been", "dating", "for", "two", "years", "before", "they", "broke", "up."]
+    "words": [
+      "They",
+      "had",
+      "been",
+      "dating",
+      "for",
+      "two",
+      "years",
+      "before",
+      "they",
+      "broke",
+      "up."
+    ],
+    "level": "B1"
   },
   {
     "id": 219,
@@ -1976,7 +3993,15 @@
     "en": "It had been snowing for days.",
     "ru": "Снег шёл днями.",
     "hint": "длительный процесс",
-    "words": ["It", "had", "been", "snowing", "for", "days."]
+    "words": [
+      "It",
+      "had",
+      "been",
+      "snowing",
+      "for",
+      "days."
+    ],
+    "level": "B1"
   },
   {
     "id": 220,
@@ -1985,7 +4010,16 @@
     "en": "I will send you the file later.",
     "ru": "Я пришлю тебе файл позже.",
     "hint": "обещание",
-    "words": ["I", "will", "send", "you", "the", "file", "later."]
+    "words": [
+      "I",
+      "will",
+      "send",
+      "you",
+      "the",
+      "file",
+      "later."
+    ],
+    "level": "B2"
   },
   {
     "id": 221,
@@ -1994,7 +4028,15 @@
     "en": "She won't be at the meeting.",
     "ru": "Её не будет на встрече.",
     "hint": "отрицание",
-    "words": ["She", "won't", "be", "at", "the", "meeting."]
+    "words": [
+      "She",
+      "won't",
+      "be",
+      "at",
+      "the",
+      "meeting."
+    ],
+    "level": "A2"
   },
   {
     "id": 222,
@@ -2003,7 +4045,15 @@
     "en": "Will you help me with this?",
     "ru": "Ты поможешь мне с этим?",
     "hint": "просьба",
-    "words": ["Will", "you", "help", "me", "with", "this?"]
+    "words": [
+      "Will",
+      "you",
+      "help",
+      "me",
+      "with",
+      "this?"
+    ],
+    "level": "A2"
   },
   {
     "id": 223,
@@ -2012,7 +4062,16 @@
     "en": "I think it will be sunny tomorrow.",
     "ru": "Думаю, завтра будет солнечно.",
     "hint": "предсказание",
-    "words": ["I", "think", "it", "will", "be", "sunny", "tomorrow."]
+    "words": [
+      "I",
+      "think",
+      "it",
+      "will",
+      "be",
+      "sunny",
+      "tomorrow."
+    ],
+    "level": "A2"
   },
   {
     "id": 224,
@@ -2021,7 +4080,15 @@
     "en": "We will see each other soon.",
     "ru": "Мы скоро увидимся.",
     "hint": "обещание",
-    "words": ["We", "will", "see", "each", "other", "soon."]
+    "words": [
+      "We",
+      "will",
+      "see",
+      "each",
+      "other",
+      "soon."
+    ],
+    "level": "A2"
   },
   {
     "id": 225,
@@ -2030,7 +4097,18 @@
     "en": "This time tomorrow I will be flying to Tokyo.",
     "ru": "Завтра в это время я буду лететь в Токио.",
     "hint": "процесс в будущем",
-    "words": ["This", "time", "tomorrow", "I", "will", "be", "flying", "to", "Tokyo."]
+    "words": [
+      "This",
+      "time",
+      "tomorrow",
+      "I",
+      "will",
+      "be",
+      "flying",
+      "to",
+      "Tokyo."
+    ],
+    "level": "B1"
   },
   {
     "id": 226,
@@ -2039,7 +4117,16 @@
     "en": "She will be studying at 8 PM.",
     "ru": "В 8 вечера она будет заниматься.",
     "hint": "процесс в конкретный момент",
-    "words": ["She", "will", "be", "studying", "at", "8", "PM."]
+    "words": [
+      "She",
+      "will",
+      "be",
+      "studying",
+      "at",
+      "8",
+      "PM."
+    ],
+    "level": "B1"
   },
   {
     "id": 227,
@@ -2048,7 +4135,17 @@
     "en": "They will not be using the car tonight.",
     "ru": "Сегодня вечером они не будут пользоваться машиной.",
     "hint": "отрицание",
-    "words": ["They", "will", "not", "be", "using", "the", "car", "tonight."]
+    "words": [
+      "They",
+      "will",
+      "not",
+      "be",
+      "using",
+      "the",
+      "car",
+      "tonight."
+    ],
+    "level": "B1"
   },
   {
     "id": 228,
@@ -2057,7 +4154,21 @@
     "en": "By the end of the month I will have saved enough money.",
     "ru": "К концу месяца я накоплю достаточно денег.",
     "hint": "завершение к сроку",
-    "words": ["By", "the", "end", "of", "the", "month", "I", "will", "have", "saved", "enough", "money."]
+    "words": [
+      "By",
+      "the",
+      "end",
+      "of",
+      "the",
+      "month",
+      "I",
+      "will",
+      "have",
+      "saved",
+      "enough",
+      "money."
+    ],
+    "level": "B2"
   },
   {
     "id": 229,
@@ -2066,7 +4177,17 @@
     "en": "By 2030 she will have finished her degree.",
     "ru": "К 2030 году она закончит учёбу.",
     "hint": "завершение к году",
-    "words": ["By", "2030", "she", "will", "have", "finished", "her", "degree."]
+    "words": [
+      "By",
+      "2030",
+      "she",
+      "will",
+      "have",
+      "finished",
+      "her",
+      "degree."
+    ],
+    "level": "B1"
   },
   {
     "id": 230,
@@ -2075,7 +4196,21 @@
     "en": "By next year I will have been working here for a decade.",
     "ru": "К следующему году я буду работать здесь десять лет.",
     "hint": "длительность к моменту",
-    "words": ["By", "next", "year", "I", "will", "have", "been", "working", "here", "for", "a", "decade."]
+    "words": [
+      "By",
+      "next",
+      "year",
+      "I",
+      "will",
+      "have",
+      "been",
+      "working",
+      "here",
+      "for",
+      "a",
+      "decade."
+    ],
+    "level": "B2"
   },
   {
     "id": 231,
@@ -2084,7 +4219,15 @@
     "en": "Does this train go to Manchester?",
     "ru": "Этот поезд идёт в Манчестер?",
     "hint": "вопрос о маршруте",
-    "words": ["Does", "this", "train", "go", "to", "Manchester?"]
+    "words": [
+      "Does",
+      "this",
+      "train",
+      "go",
+      "to",
+      "Manchester?"
+    ],
+    "level": "A1"
   },
   {
     "id": 232,
@@ -2093,7 +4236,13 @@
     "en": "My sister studies medicine.",
     "ru": "Моя сестра учится на врача.",
     "hint": "постоянный факт",
-    "words": ["My", "sister", "studies", "medicine."]
+    "words": [
+      "My",
+      "sister",
+      "studies",
+      "medicine."
+    ],
+    "level": "A1"
   },
   {
     "id": 233,
@@ -2102,7 +4251,15 @@
     "en": "We don't watch TV very often.",
     "ru": "Мы не очень часто смотрим телевизор.",
     "hint": "отрицание привычки",
-    "words": ["We", "don't", "watch", "TV", "very", "often."]
+    "words": [
+      "We",
+      "don't",
+      "watch",
+      "TV",
+      "very",
+      "often."
+    ],
+    "level": "A1"
   },
   {
     "id": 234,
@@ -2111,7 +4268,15 @@
     "en": "I am looking for my glasses.",
     "ru": "Я ищу свои очки.",
     "hint": "действие сейчас",
-    "words": ["I", "am", "looking", "for", "my", "glasses."]
+    "words": [
+      "I",
+      "am",
+      "looking",
+      "for",
+      "my",
+      "glasses."
+    ],
+    "level": "A1"
   },
   {
     "id": 235,
@@ -2120,7 +4285,14 @@
     "en": "The baby is crying again.",
     "ru": "Ребёнок снова плачет.",
     "hint": "прямо сейчас",
-    "words": ["The", "baby", "is", "crying", "again."]
+    "words": [
+      "The",
+      "baby",
+      "is",
+      "crying",
+      "again."
+    ],
+    "level": "A1"
   },
   {
     "id": 236,
@@ -2129,7 +4301,16 @@
     "en": "I have just sent you the document.",
     "ru": "Я только что отправил тебе документ.",
     "hint": "только что",
-    "words": ["I", "have", "just", "sent", "you", "the", "document."]
+    "words": [
+      "I",
+      "have",
+      "just",
+      "sent",
+      "you",
+      "the",
+      "document."
+    ],
+    "level": "B1"
   },
   {
     "id": 237,
@@ -2138,7 +4319,14 @@
     "en": "She has never tried sushi.",
     "ru": "Она никогда не пробовала суши.",
     "hint": "опыт",
-    "words": ["She", "has", "never", "tried", "sushi."]
+    "words": [
+      "She",
+      "has",
+      "never",
+      "tried",
+      "sushi."
+    ],
+    "level": "A2"
   },
   {
     "id": 238,
@@ -2147,7 +4335,17 @@
     "en": "How long have you lived in this city?",
     "ru": "Как долго ты живёшь в этом городе?",
     "hint": "вопрос о длительности",
-    "words": ["How", "long", "have", "you", "lived", "in", "this", "city?"]
+    "words": [
+      "How",
+      "long",
+      "have",
+      "you",
+      "lived",
+      "in",
+      "this",
+      "city?"
+    ],
+    "level": "A2"
   },
   {
     "id": 239,
@@ -2156,7 +4354,16 @@
     "en": "I have been learning English since 2020.",
     "ru": "Я учу английский с 2020 года.",
     "hint": "since + год",
-    "words": ["I", "have", "been", "learning", "English", "since", "2020."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "learning",
+      "English",
+      "since",
+      "2020."
+    ],
+    "level": "B1"
   },
   {
     "id": 240,
@@ -2165,7 +4372,15 @@
     "en": "We visited the museum last Sunday.",
     "ru": "В прошлое воскресенье мы посетили музей.",
     "hint": "last Sunday",
-    "words": ["We", "visited", "the", "museum", "last", "Sunday."]
+    "words": [
+      "We",
+      "visited",
+      "the",
+      "museum",
+      "last",
+      "Sunday."
+    ],
+    "level": "A2"
   },
   {
     "id": 241,
@@ -2174,7 +4389,16 @@
     "en": "I didn't have time to call you.",
     "ru": "У меня не было времени тебе позвонить.",
     "hint": "отрицание",
-    "words": ["I", "didn't", "have", "time", "to", "call", "you."]
+    "words": [
+      "I",
+      "didn't",
+      "have",
+      "time",
+      "to",
+      "call",
+      "you."
+    ],
+    "level": "A2"
   },
   {
     "id": 242,
@@ -2183,7 +4407,15 @@
     "en": "Why did you leave so early?",
     "ru": "Почему ты ушёл так рано?",
     "hint": "вопрос с why",
-    "words": ["Why", "did", "you", "leave", "so", "early?"]
+    "words": [
+      "Why",
+      "did",
+      "you",
+      "leave",
+      "so",
+      "early?"
+    ],
+    "level": "A2"
   },
   {
     "id": 243,
@@ -2192,7 +4424,16 @@
     "en": "I was cooking when the doorbell rang.",
     "ru": "Я готовил, когда зазвонил дверной звонок.",
     "hint": "прерванное действие",
-    "words": ["I", "was", "cooking", "when", "the", "doorbell", "rang."]
+    "words": [
+      "I",
+      "was",
+      "cooking",
+      "when",
+      "the",
+      "doorbell",
+      "rang."
+    ],
+    "level": "A2"
   },
   {
     "id": 244,
@@ -2201,7 +4442,14 @@
     "en": "The birds were singing outside.",
     "ru": "На улице пели птицы.",
     "hint": "фоновое действие",
-    "words": ["The", "birds", "were", "singing", "outside."]
+    "words": [
+      "The",
+      "birds",
+      "were",
+      "singing",
+      "outside."
+    ],
+    "level": "A2"
   },
   {
     "id": 245,
@@ -2210,7 +4458,17 @@
     "en": "He had never been to a concert before.",
     "ru": "Он никогда раньше не был на концерте.",
     "hint": "опыт до момента",
-    "words": ["He", "had", "never", "been", "to", "a", "concert", "before."]
+    "words": [
+      "He",
+      "had",
+      "never",
+      "been",
+      "to",
+      "a",
+      "concert",
+      "before."
+    ],
+    "level": "B1"
   },
   {
     "id": 246,
@@ -2219,7 +4477,18 @@
     "en": "I will call you as soon as I arrive.",
     "ru": "Я позвоню тебе, как только приеду.",
     "hint": "обещание",
-    "words": ["I", "will", "call", "you", "as", "soon", "as", "I", "arrive."]
+    "words": [
+      "I",
+      "will",
+      "call",
+      "you",
+      "as",
+      "soon",
+      "as",
+      "I",
+      "arrive."
+    ],
+    "level": "A2"
   },
   {
     "id": 247,
@@ -2228,7 +4497,15 @@
     "en": "What will you do next weekend?",
     "ru": "Что ты будешь делать на следующих выходных?",
     "hint": "вопрос о планах",
-    "words": ["What", "will", "you", "do", "next", "weekend?"]
+    "words": [
+      "What",
+      "will",
+      "you",
+      "do",
+      "next",
+      "weekend?"
+    ],
+    "level": "A2"
   },
   {
     "id": 248,
@@ -2237,7 +4514,15 @@
     "en": "She will probably be late again.",
     "ru": "Она, вероятно, снова опоздает.",
     "hint": "предположение",
-    "words": ["She", "will", "probably", "be", "late", "again."]
+    "words": [
+      "She",
+      "will",
+      "probably",
+      "be",
+      "late",
+      "again."
+    ],
+    "level": "A2"
   },
   {
     "id": 249,
@@ -2246,7 +4531,21 @@
     "en": "Don't call me at 10 — I will be having a meeting.",
     "ru": "Не звони мне в 10 — у меня будет встреча.",
     "hint": "процесс в будущем",
-    "words": ["Don't", "call", "me", "at", "10", "—", "I", "will", "be", "having", "a", "meeting."]
+    "words": [
+      "Don't",
+      "call",
+      "me",
+      "at",
+      "10",
+      "—",
+      "I",
+      "will",
+      "be",
+      "having",
+      "a",
+      "meeting."
+    ],
+    "level": "B1"
   },
   {
     "id": 250,
@@ -2255,7 +4554,18 @@
     "en": "By Christmas, I will have finished all my exams.",
     "ru": "К Рождеству я сдам все экзамены.",
     "hint": "завершение к моменту",
-    "words": ["By", "Christmas,", "I", "will", "have", "finished", "all", "my", "exams."]
+    "words": [
+      "By",
+      "Christmas,",
+      "I",
+      "will",
+      "have",
+      "finished",
+      "all",
+      "my",
+      "exams."
+    ],
+    "level": "B1"
   },
   {
     "id": 251,
@@ -2264,7 +4574,17 @@
     "en": "Do you mind if I open the window?",
     "ru": "Ты не против, если я открою окно?",
     "hint": "вежливая просьба",
-    "words": ["Do", "you", "mind", "if", "I", "open", "the", "window?"]
+    "words": [
+      "Do",
+      "you",
+      "mind",
+      "if",
+      "I",
+      "open",
+      "the",
+      "window?"
+    ],
+    "level": "A2"
   },
   {
     "id": 252,
@@ -2273,7 +4593,16 @@
     "en": "She is wearing a red dress today.",
     "ru": "Сегодня она в красном платье.",
     "hint": "описание сейчас",
-    "words": ["She", "is", "wearing", "a", "red", "dress", "today."]
+    "words": [
+      "She",
+      "is",
+      "wearing",
+      "a",
+      "red",
+      "dress",
+      "today."
+    ],
+    "level": "A1"
   },
   {
     "id": 253,
@@ -2282,7 +4611,16 @@
     "en": "We have been to Italy three times.",
     "ru": "Мы были в Италии три раза.",
     "hint": "опыт",
-    "words": ["We", "have", "been", "to", "Italy", "three", "times."]
+    "words": [
+      "We",
+      "have",
+      "been",
+      "to",
+      "Italy",
+      "three",
+      "times."
+    ],
+    "level": "A2"
   },
   {
     "id": 254,
@@ -2291,7 +4629,13 @@
     "en": "I haven't decided yet.",
     "ru": "Я ещё не решил.",
     "hint": "yet, отрицание",
-    "words": ["I", "haven't", "decided", "yet."]
+    "words": [
+      "I",
+      "haven't",
+      "decided",
+      "yet."
+    ],
+    "level": "B1"
   },
   {
     "id": 255,
@@ -2300,7 +4644,15 @@
     "en": "They arrived late because of traffic.",
     "ru": "Они приехали поздно из-за пробок.",
     "hint": "причина в прошлом",
-    "words": ["They", "arrived", "late", "because", "of", "traffic."]
+    "words": [
+      "They",
+      "arrived",
+      "late",
+      "because",
+      "of",
+      "traffic."
+    ],
+    "level": "A2"
   },
   {
     "id": 256,
@@ -2309,7 +4661,16 @@
     "en": "I was reading when she texted me.",
     "ru": "Я читал, когда она мне написала.",
     "hint": "прерванное действие",
-    "words": ["I", "was", "reading", "when", "she", "texted", "me."]
+    "words": [
+      "I",
+      "was",
+      "reading",
+      "when",
+      "she",
+      "texted",
+      "me."
+    ],
+    "level": "A2"
   },
   {
     "id": 257,
@@ -2318,7 +4679,19 @@
     "en": "She had already gone to bed when I got home.",
     "ru": "Она уже легла спать, когда я вернулся домой.",
     "hint": "раньше другого действия",
-    "words": ["She", "had", "already", "gone", "to", "bed", "when", "I", "got", "home."]
+    "words": [
+      "She",
+      "had",
+      "already",
+      "gone",
+      "to",
+      "bed",
+      "when",
+      "I",
+      "got",
+      "home."
+    ],
+    "level": "B2"
   },
   {
     "id": 258,
@@ -2327,7 +4700,15 @@
     "en": "I promise I won't be late.",
     "ru": "Обещаю, я не опоздаю.",
     "hint": "обещание, отрицание",
-    "words": ["I", "promise", "I", "won't", "be", "late."]
+    "words": [
+      "I",
+      "promise",
+      "I",
+      "won't",
+      "be",
+      "late."
+    ],
+    "level": "B1"
   },
   {
     "id": 259,
@@ -2336,7 +4717,16 @@
     "en": "Will you be using the computer later?",
     "ru": "Ты будешь пользоваться компьютером позже?",
     "hint": "вопрос",
-    "words": ["Will", "you", "be", "using", "the", "computer", "later?"]
+    "words": [
+      "Will",
+      "you",
+      "be",
+      "using",
+      "the",
+      "computer",
+      "later?"
+    ],
+    "level": "B1"
   },
   {
     "id": 260,
@@ -2345,7 +4735,22 @@
     "en": "By the time you read this, I will have been travelling for weeks.",
     "ru": "К тому моменту, как ты это прочитаешь, я буду путешествовать неделями.",
     "hint": "длительность к моменту",
-    "words": ["By", "the", "time", "you", "read", "this,", "I", "will", "have", "been", "travelling", "for", "weeks."]
+    "words": [
+      "By",
+      "the",
+      "time",
+      "you",
+      "read",
+      "this,",
+      "I",
+      "will",
+      "have",
+      "been",
+      "travelling",
+      "for",
+      "weeks."
+    ],
+    "level": "B2"
   },
   {
     "id": 261,
@@ -2354,7 +4759,14 @@
     "en": "How much does this cost?",
     "ru": "Сколько это стоит?",
     "hint": "вопрос о цене",
-    "words": ["How", "much", "does", "this", "cost?"]
+    "words": [
+      "How",
+      "much",
+      "does",
+      "this",
+      "cost?"
+    ],
+    "level": "A1"
   },
   {
     "id": 262,
@@ -2363,7 +4775,14 @@
     "en": "The company is growing fast.",
     "ru": "Компания быстро растёт.",
     "hint": "процесс развития",
-    "words": ["The", "company", "is", "growing", "fast."]
+    "words": [
+      "The",
+      "company",
+      "is",
+      "growing",
+      "fast."
+    ],
+    "level": "A1"
   },
   {
     "id": 263,
@@ -2372,7 +4791,15 @@
     "en": "Have you ever tried bungee jumping?",
     "ru": "Ты когда-нибудь пробовал банджи-джампинг?",
     "hint": "вопрос об опыте",
-    "words": ["Have", "you", "ever", "tried", "bungee", "jumping?"]
+    "words": [
+      "Have",
+      "you",
+      "ever",
+      "tried",
+      "bungee",
+      "jumping?"
+    ],
+    "level": "A2"
   },
   {
     "id": 264,
@@ -2381,7 +4808,16 @@
     "en": "We met at a friend's birthday party.",
     "ru": "Мы познакомились на дне рождения друга.",
     "hint": "завершённое событие",
-    "words": ["We", "met", "at", "a", "friend's", "birthday", "party."]
+    "words": [
+      "We",
+      "met",
+      "at",
+      "a",
+      "friend's",
+      "birthday",
+      "party."
+    ],
+    "level": "A2"
   },
   {
     "id": 265,
@@ -2390,7 +4826,18 @@
     "en": "While I was studying, my roommate was watching TV.",
     "ru": "Пока я занимался, мой сосед смотрел телевизор.",
     "hint": "параллельные действия",
-    "words": ["While", "I", "was", "studying,", "my", "roommate", "was", "watching", "TV."]
+    "words": [
+      "While",
+      "I",
+      "was",
+      "studying,",
+      "my",
+      "roommate",
+      "was",
+      "watching",
+      "TV."
+    ],
+    "level": "A2"
   },
   {
     "id": 266,
@@ -2399,7 +4846,17 @@
     "en": "Maybe we will go to the cinema tonight.",
     "ru": "Может быть, мы пойдём в кино сегодня вечером.",
     "hint": "предположение",
-    "words": ["Maybe", "we", "will", "go", "to", "the", "cinema", "tonight."]
+    "words": [
+      "Maybe",
+      "we",
+      "will",
+      "go",
+      "to",
+      "the",
+      "cinema",
+      "tonight."
+    ],
+    "level": "A2"
   },
   {
     "id": 267,
@@ -2408,7 +4865,16 @@
     "en": "He has been working non-stop since morning.",
     "ru": "Он работает без перерыва с утра.",
     "hint": "длительный процесс",
-    "words": ["He", "has", "been", "working", "non-stop", "since", "morning."]
+    "words": [
+      "He",
+      "has",
+      "been",
+      "working",
+      "non-stop",
+      "since",
+      "morning."
+    ],
+    "level": "B1"
   },
   {
     "id": 268,
@@ -2417,7 +4883,16 @@
     "en": "She had been crying before we arrived.",
     "ru": "Она плакала до нашего прихода.",
     "hint": "длительный процесс до события",
-    "words": ["She", "had", "been", "crying", "before", "we", "arrived."]
+    "words": [
+      "She",
+      "had",
+      "been",
+      "crying",
+      "before",
+      "we",
+      "arrived."
+    ],
+    "level": "B1"
   },
   {
     "id": 269,
@@ -2426,7 +4901,18 @@
     "en": "By 5 PM they will have completed the assignment.",
     "ru": "К 5 вечера они закончат задание.",
     "hint": "завершение к моменту",
-    "words": ["By", "5", "PM", "they", "will", "have", "completed", "the", "assignment."]
+    "words": [
+      "By",
+      "5",
+      "PM",
+      "they",
+      "will",
+      "have",
+      "completed",
+      "the",
+      "assignment."
+    ],
+    "level": "B1"
   },
   {
     "id": 270,
@@ -2435,7 +4921,15 @@
     "en": "The meeting starts at ten sharp.",
     "ru": "Встреча начинается ровно в десять.",
     "hint": "расписание",
-    "words": ["The", "meeting", "starts", "at", "ten", "sharp."]
+    "words": [
+      "The",
+      "meeting",
+      "starts",
+      "at",
+      "ten",
+      "sharp."
+    ],
+    "level": "A1"
   },
   {
     "id": 271,
@@ -2444,7 +4938,16 @@
     "en": "I am preparing dinner for the family.",
     "ru": "Я готовлю ужин для семьи.",
     "hint": "процесс сейчас",
-    "words": ["I", "am", "preparing", "dinner", "for", "the", "family."]
+    "words": [
+      "I",
+      "am",
+      "preparing",
+      "dinner",
+      "for",
+      "the",
+      "family."
+    ],
+    "level": "A1"
   },
   {
     "id": 272,
@@ -2453,7 +4956,14 @@
     "en": "The weather has changed suddenly.",
     "ru": "Погода внезапно изменилась.",
     "hint": "результат сейчас",
-    "words": ["The", "weather", "has", "changed", "suddenly."]
+    "words": [
+      "The",
+      "weather",
+      "has",
+      "changed",
+      "suddenly."
+    ],
+    "level": "B1"
   },
   {
     "id": 273,
@@ -2462,7 +4972,18 @@
     "en": "My father always reads the newspaper in the morning.",
     "ru": "Мой отец всегда читает газету по утрам.",
     "hint": "привычка",
-    "words": ["My", "father", "always", "reads", "the", "newspaper", "in", "the", "morning."]
+    "words": [
+      "My",
+      "father",
+      "always",
+      "reads",
+      "the",
+      "newspaper",
+      "in",
+      "the",
+      "morning."
+    ],
+    "level": "A1"
   },
   {
     "id": 274,
@@ -2471,7 +4992,13 @@
     "en": "Where does she work?",
     "ru": "Где она работает?",
     "hint": "вопрос о работе",
-    "words": ["Where", "does", "she", "work?"]
+    "words": [
+      "Where",
+      "does",
+      "she",
+      "work?"
+    ],
+    "level": "A1"
   },
   {
     "id": 275,
@@ -2480,7 +5007,16 @@
     "en": "I don't drink coffee in the evening.",
     "ru": "Я не пью кофе вечером.",
     "hint": "отрицание привычки",
-    "words": ["I", "don't", "drink", "coffee", "in", "the", "evening."]
+    "words": [
+      "I",
+      "don't",
+      "drink",
+      "coffee",
+      "in",
+      "the",
+      "evening."
+    ],
+    "level": "A1"
   },
   {
     "id": 276,
@@ -2489,7 +5025,14 @@
     "en": "Water freezes at zero degrees.",
     "ru": "Вода замерзает при нуле градусов.",
     "hint": "научный факт",
-    "words": ["Water", "freezes", "at", "zero", "degrees."]
+    "words": [
+      "Water",
+      "freezes",
+      "at",
+      "zero",
+      "degrees."
+    ],
+    "level": "A2"
   },
   {
     "id": 277,
@@ -2498,7 +5041,16 @@
     "en": "They never go to bed before midnight.",
     "ru": "Они никогда не ложатся спать до полуночи.",
     "hint": "привычка, отрицание",
-    "words": ["They", "never", "go", "to", "bed", "before", "midnight."]
+    "words": [
+      "They",
+      "never",
+      "go",
+      "to",
+      "bed",
+      "before",
+      "midnight."
+    ],
+    "level": "A1"
   },
   {
     "id": 278,
@@ -2507,7 +5059,16 @@
     "en": "How do you usually get to work?",
     "ru": "Как ты обычно добираешься до работы?",
     "hint": "вопрос о привычке",
-    "words": ["How", "do", "you", "usually", "get", "to", "work?"]
+    "words": [
+      "How",
+      "do",
+      "you",
+      "usually",
+      "get",
+      "to",
+      "work?"
+    ],
+    "level": "A1"
   },
   {
     "id": 279,
@@ -2516,7 +5077,16 @@
     "en": "She teaches math at a local school.",
     "ru": "Она преподаёт математику в местной школе.",
     "hint": "постоянная работа",
-    "words": ["She", "teaches", "math", "at", "a", "local", "school."]
+    "words": [
+      "She",
+      "teaches",
+      "math",
+      "at",
+      "a",
+      "local",
+      "school."
+    ],
+    "level": "A1"
   },
   {
     "id": 280,
@@ -2525,7 +5095,15 @@
     "en": "The bank doesn't open on Sundays.",
     "ru": "Банк не работает по воскресеньям.",
     "hint": "расписание, отрицание",
-    "words": ["The", "bank", "doesn't", "open", "on", "Sundays."]
+    "words": [
+      "The",
+      "bank",
+      "doesn't",
+      "open",
+      "on",
+      "Sundays."
+    ],
+    "level": "A1"
   },
   {
     "id": 281,
@@ -2534,7 +5112,15 @@
     "en": "Do you know how to drive?",
     "ru": "Ты умеешь водить машину?",
     "hint": "вопрос об умении",
-    "words": ["Do", "you", "know", "how", "to", "drive?"]
+    "words": [
+      "Do",
+      "you",
+      "know",
+      "how",
+      "to",
+      "drive?"
+    ],
+    "level": "A1"
   },
   {
     "id": 282,
@@ -2543,7 +5129,15 @@
     "en": "My grandfather always tells interesting stories.",
     "ru": "Мой дедушка всегда рассказывает интересные истории.",
     "hint": "привычка",
-    "words": ["My", "grandfather", "always", "tells", "interesting", "stories."]
+    "words": [
+      "My",
+      "grandfather",
+      "always",
+      "tells",
+      "interesting",
+      "stories."
+    ],
+    "level": "A1"
   },
   {
     "id": 283,
@@ -2552,7 +5146,16 @@
     "en": "We have three cats and one dog.",
     "ru": "У нас три кошки и одна собака.",
     "hint": "постоянный факт",
-    "words": ["We", "have", "three", "cats", "and", "one", "dog."]
+    "words": [
+      "We",
+      "have",
+      "three",
+      "cats",
+      "and",
+      "one",
+      "dog."
+    ],
+    "level": "A1"
   },
   {
     "id": 284,
@@ -2561,7 +5164,15 @@
     "en": "What time does the film start?",
     "ru": "Во сколько начинается фильм?",
     "hint": "вопрос о расписании",
-    "words": ["What", "time", "does", "the", "film", "start?"]
+    "words": [
+      "What",
+      "time",
+      "does",
+      "the",
+      "film",
+      "start?"
+    ],
+    "level": "A1"
   },
   {
     "id": 285,
@@ -2570,7 +5181,16 @@
     "en": "He often visits his parents on weekends.",
     "ru": "Он часто навещает родителей по выходным.",
     "hint": "привычка",
-    "words": ["He", "often", "visits", "his", "parents", "on", "weekends."]
+    "words": [
+      "He",
+      "often",
+      "visits",
+      "his",
+      "parents",
+      "on",
+      "weekends."
+    ],
+    "level": "A1"
   },
   {
     "id": 286,
@@ -2579,7 +5199,17 @@
     "en": "I am listening to a podcast right now.",
     "ru": "Я сейчас слушаю подкаст.",
     "hint": "прямо сейчас",
-    "words": ["I", "am", "listening", "to", "a", "podcast", "right", "now."]
+    "words": [
+      "I",
+      "am",
+      "listening",
+      "to",
+      "a",
+      "podcast",
+      "right",
+      "now."
+    ],
+    "level": "A1"
   },
   {
     "id": 287,
@@ -2588,7 +5218,17 @@
     "en": "She is not coming to the party tonight.",
     "ru": "Она не придёт на вечеринку сегодня.",
     "hint": "отрицание",
-    "words": ["She", "is", "not", "coming", "to", "the", "party", "tonight."]
+    "words": [
+      "She",
+      "is",
+      "not",
+      "coming",
+      "to",
+      "the",
+      "party",
+      "tonight."
+    ],
+    "level": "A1"
   },
   {
     "id": 288,
@@ -2597,7 +5237,15 @@
     "en": "What is he doing right now?",
     "ru": "Что он сейчас делает?",
     "hint": "вопрос",
-    "words": ["What", "is", "he", "doing", "right", "now?"]
+    "words": [
+      "What",
+      "is",
+      "he",
+      "doing",
+      "right",
+      "now?"
+    ],
+    "level": "A1"
   },
   {
     "id": 289,
@@ -2606,7 +5254,16 @@
     "en": "They are building a new shopping centre.",
     "ru": "Они строят новый торговый центр.",
     "hint": "процесс сейчас",
-    "words": ["They", "are", "building", "a", "new", "shopping", "centre."]
+    "words": [
+      "They",
+      "are",
+      "building",
+      "a",
+      "new",
+      "shopping",
+      "centre."
+    ],
+    "level": "A1"
   },
   {
     "id": 290,
@@ -2615,7 +5272,17 @@
     "en": "I am getting used to this new job.",
     "ru": "Я привыкаю к этой новой работе.",
     "hint": "процесс адаптации",
-    "words": ["I", "am", "getting", "used", "to", "this", "new", "job."]
+    "words": [
+      "I",
+      "am",
+      "getting",
+      "used",
+      "to",
+      "this",
+      "new",
+      "job."
+    ],
+    "level": "A2"
   },
   {
     "id": 291,
@@ -2624,7 +5291,13 @@
     "en": "Why is she crying?",
     "ru": "Почему она плачет?",
     "hint": "вопрос",
-    "words": ["Why", "is", "she", "crying?"]
+    "words": [
+      "Why",
+      "is",
+      "she",
+      "crying?"
+    ],
+    "level": "A1"
   },
   {
     "id": 292,
@@ -2633,7 +5306,17 @@
     "en": "We are not watching TV at the moment.",
     "ru": "Мы сейчас не смотрим телевизор.",
     "hint": "отрицание",
-    "words": ["We", "are", "not", "watching", "TV", "at", "the", "moment."]
+    "words": [
+      "We",
+      "are",
+      "not",
+      "watching",
+      "TV",
+      "at",
+      "the",
+      "moment."
+    ],
+    "level": "A1"
   },
   {
     "id": 293,
@@ -2642,7 +5325,16 @@
     "en": "The children are playing in the yard.",
     "ru": "Дети играют во дворе.",
     "hint": "прямо сейчас",
-    "words": ["The", "children", "are", "playing", "in", "the", "yard."]
+    "words": [
+      "The",
+      "children",
+      "are",
+      "playing",
+      "in",
+      "the",
+      "yard."
+    ],
+    "level": "A1"
   },
   {
     "id": 294,
@@ -2651,7 +5343,18 @@
     "en": "I am working on a new project this month.",
     "ru": "В этом месяце я работаю над новым проектом.",
     "hint": "временная ситуация",
-    "words": ["I", "am", "working", "on", "a", "new", "project", "this", "month."]
+    "words": [
+      "I",
+      "am",
+      "working",
+      "on",
+      "a",
+      "new",
+      "project",
+      "this",
+      "month."
+    ],
+    "level": "A2"
   },
   {
     "id": 295,
@@ -2660,7 +5363,14 @@
     "en": "It is getting dark outside.",
     "ru": "На улице темнеет.",
     "hint": "изменение сейчас",
-    "words": ["It", "is", "getting", "dark", "outside."]
+    "words": [
+      "It",
+      "is",
+      "getting",
+      "dark",
+      "outside."
+    ],
+    "level": "A1"
   },
   {
     "id": 296,
@@ -2669,7 +5379,14 @@
     "en": "Are you feeling better today?",
     "ru": "Тебе сегодня лучше?",
     "hint": "вопрос о состоянии",
-    "words": ["Are", "you", "feeling", "better", "today?"]
+    "words": [
+      "Are",
+      "you",
+      "feeling",
+      "better",
+      "today?"
+    ],
+    "level": "A1"
   },
   {
     "id": 297,
@@ -2678,7 +5395,15 @@
     "en": "She is preparing for her exam.",
     "ru": "Она готовится к экзамену.",
     "hint": "процесс сейчас",
-    "words": ["She", "is", "preparing", "for", "her", "exam."]
+    "words": [
+      "She",
+      "is",
+      "preparing",
+      "for",
+      "her",
+      "exam."
+    ],
+    "level": "A1"
   },
   {
     "id": 298,
@@ -2687,7 +5412,16 @@
     "en": "We are looking for a new apartment.",
     "ru": "Мы ищем новую квартиру.",
     "hint": "временный процесс",
-    "words": ["We", "are", "looking", "for", "a", "new", "apartment."]
+    "words": [
+      "We",
+      "are",
+      "looking",
+      "for",
+      "a",
+      "new",
+      "apartment."
+    ],
+    "level": "A1"
   },
   {
     "id": 299,
@@ -2696,7 +5430,15 @@
     "en": "I have just read your message.",
     "ru": "Я только что прочитал твоё сообщение.",
     "hint": "только что",
-    "words": ["I", "have", "just", "read", "your", "message."]
+    "words": [
+      "I",
+      "have",
+      "just",
+      "read",
+      "your",
+      "message."
+    ],
+    "level": "A2"
   },
   {
     "id": 300,
@@ -2705,7 +5447,16 @@
     "en": "She has worked here for three years.",
     "ru": "Она работает здесь три года.",
     "hint": "длительность до сейчас",
-    "words": ["She", "has", "worked", "here", "for", "three", "years."]
+    "words": [
+      "She",
+      "has",
+      "worked",
+      "here",
+      "for",
+      "three",
+      "years."
+    ],
+    "level": "A2"
   },
   {
     "id": 301,
@@ -2714,7 +5465,15 @@
     "en": "Have you ever eaten Indian food?",
     "ru": "Ты когда-нибудь ел индийскую еду?",
     "hint": "вопрос об опыте",
-    "words": ["Have", "you", "ever", "eaten", "Indian", "food?"]
+    "words": [
+      "Have",
+      "you",
+      "ever",
+      "eaten",
+      "Indian",
+      "food?"
+    ],
+    "level": "A2"
   },
   {
     "id": 302,
@@ -2723,7 +5482,13 @@
     "en": "They haven't arrived yet.",
     "ru": "Они ещё не приехали.",
     "hint": "отрицание с yet",
-    "words": ["They", "haven't", "arrived", "yet."]
+    "words": [
+      "They",
+      "haven't",
+      "arrived",
+      "yet."
+    ],
+    "level": "B1"
   },
   {
     "id": 303,
@@ -2732,7 +5497,15 @@
     "en": "I have broken my phone screen.",
     "ru": "Я разбил экран телефона.",
     "hint": "результат сейчас",
-    "words": ["I", "have", "broken", "my", "phone", "screen."]
+    "words": [
+      "I",
+      "have",
+      "broken",
+      "my",
+      "phone",
+      "screen."
+    ],
+    "level": "A2"
   },
   {
     "id": 304,
@@ -2741,7 +5514,15 @@
     "en": "We have already seen this film.",
     "ru": "Мы уже видели этот фильм.",
     "hint": "already",
-    "words": ["We", "have", "already", "seen", "this", "film."]
+    "words": [
+      "We",
+      "have",
+      "already",
+      "seen",
+      "this",
+      "film."
+    ],
+    "level": "B1"
   },
   {
     "id": 305,
@@ -2750,7 +5531,15 @@
     "en": "How long has she known him?",
     "ru": "Как давно она его знает?",
     "hint": "вопрос о длительности",
-    "words": ["How", "long", "has", "she", "known", "him?"]
+    "words": [
+      "How",
+      "long",
+      "has",
+      "she",
+      "known",
+      "him?"
+    ],
+    "level": "A2"
   },
   {
     "id": 306,
@@ -2759,7 +5548,15 @@
     "en": "I haven't finished my project yet.",
     "ru": "Я ещё не закончил проект.",
     "hint": "отрицание с yet",
-    "words": ["I", "haven't", "finished", "my", "project", "yet."]
+    "words": [
+      "I",
+      "haven't",
+      "finished",
+      "my",
+      "project",
+      "yet."
+    ],
+    "level": "B1"
   },
   {
     "id": 307,
@@ -2768,7 +5565,16 @@
     "en": "He has written three books so far.",
     "ru": "Он написал три книги на данный момент.",
     "hint": "so far",
-    "words": ["He", "has", "written", "three", "books", "so", "far."]
+    "words": [
+      "He",
+      "has",
+      "written",
+      "three",
+      "books",
+      "so",
+      "far."
+    ],
+    "level": "B2"
   },
   {
     "id": 308,
@@ -2777,7 +5583,14 @@
     "en": "The shop has just closed.",
     "ru": "Магазин только что закрылся.",
     "hint": "только что",
-    "words": ["The", "shop", "has", "just", "closed."]
+    "words": [
+      "The",
+      "shop",
+      "has",
+      "just",
+      "closed."
+    ],
+    "level": "B1"
   },
   {
     "id": 309,
@@ -2786,7 +5599,15 @@
     "en": "I have seen this film twice.",
     "ru": "Я видел этот фильм дважды.",
     "hint": "опыт",
-    "words": ["I", "have", "seen", "this", "film", "twice."]
+    "words": [
+      "I",
+      "have",
+      "seen",
+      "this",
+      "film",
+      "twice."
+    ],
+    "level": "B1"
   },
   {
     "id": 310,
@@ -2795,7 +5616,17 @@
     "en": "We have known each other for many years.",
     "ru": "Мы знакомы много лет.",
     "hint": "длительное знакомство",
-    "words": ["We", "have", "known", "each", "other", "for", "many", "years."]
+    "words": [
+      "We",
+      "have",
+      "known",
+      "each",
+      "other",
+      "for",
+      "many",
+      "years."
+    ],
+    "level": "A2"
   },
   {
     "id": 311,
@@ -2804,7 +5635,18 @@
     "en": "I have been working on this task since morning.",
     "ru": "Я работаю над этой задачей с утра.",
     "hint": "since + момент",
-    "words": ["I", "have", "been", "working", "on", "this", "task", "since", "morning."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "working",
+      "on",
+      "this",
+      "task",
+      "since",
+      "morning."
+    ],
+    "level": "B1"
   },
   {
     "id": 312,
@@ -2813,7 +5655,17 @@
     "en": "She has been learning French for two years.",
     "ru": "Она учит французский два года.",
     "hint": "for + период",
-    "words": ["She", "has", "been", "learning", "French", "for", "two", "years."]
+    "words": [
+      "She",
+      "has",
+      "been",
+      "learning",
+      "French",
+      "for",
+      "two",
+      "years."
+    ],
+    "level": "B1"
   },
   {
     "id": 313,
@@ -2822,7 +5674,16 @@
     "en": "How long have you been living here?",
     "ru": "Как долго ты здесь живёшь?",
     "hint": "вопрос о длительности",
-    "words": ["How", "long", "have", "you", "been", "living", "here?"]
+    "words": [
+      "How",
+      "long",
+      "have",
+      "you",
+      "been",
+      "living",
+      "here?"
+    ],
+    "level": "B2"
   },
   {
     "id": 314,
@@ -2831,7 +5692,16 @@
     "en": "They have been arguing for an hour.",
     "ru": "Они спорят уже час.",
     "hint": "длительный процесс",
-    "words": ["They", "have", "been", "arguing", "for", "an", "hour."]
+    "words": [
+      "They",
+      "have",
+      "been",
+      "arguing",
+      "for",
+      "an",
+      "hour."
+    ],
+    "level": "A2"
   },
   {
     "id": 315,
@@ -2840,7 +5710,16 @@
     "en": "It has been raining since last night.",
     "ru": "Дождь идёт с прошлой ночи.",
     "hint": "процесс с момента",
-    "words": ["It", "has", "been", "raining", "since", "last", "night."]
+    "words": [
+      "It",
+      "has",
+      "been",
+      "raining",
+      "since",
+      "last",
+      "night."
+    ],
+    "level": "B1"
   },
   {
     "id": 316,
@@ -2849,7 +5728,16 @@
     "en": "I have been feeling tired all week.",
     "ru": "Я всю неделю чувствую усталость.",
     "hint": "длительное состояние",
-    "words": ["I", "have", "been", "feeling", "tired", "all", "week."]
+    "words": [
+      "I",
+      "have",
+      "been",
+      "feeling",
+      "tired",
+      "all",
+      "week."
+    ],
+    "level": "A2"
   },
   {
     "id": 317,
@@ -2858,7 +5746,16 @@
     "en": "We travelled to Spain two years ago.",
     "ru": "Два года назад мы ездили в Испанию.",
     "hint": "ago",
-    "words": ["We", "travelled", "to", "Spain", "two", "years", "ago."]
+    "words": [
+      "We",
+      "travelled",
+      "to",
+      "Spain",
+      "two",
+      "years",
+      "ago."
+    ],
+    "level": "A2"
   },
   {
     "id": 318,
@@ -2867,7 +5764,14 @@
     "en": "She didn't call me yesterday.",
     "ru": "Она вчера мне не позвонила.",
     "hint": "отрицание",
-    "words": ["She", "didn't", "call", "me", "yesterday."]
+    "words": [
+      "She",
+      "didn't",
+      "call",
+      "me",
+      "yesterday."
+    ],
+    "level": "A2"
   },
   {
     "id": 319,
@@ -2876,7 +5780,14 @@
     "en": "Did they enjoy the concert?",
     "ru": "Им понравился концерт?",
     "hint": "вопрос",
-    "words": ["Did", "they", "enjoy", "the", "concert?"]
+    "words": [
+      "Did",
+      "they",
+      "enjoy",
+      "the",
+      "concert?"
+    ],
+    "level": "A2"
   },
   {
     "id": 320,
@@ -2885,7 +5796,17 @@
     "en": "I met her at a conference in Berlin.",
     "ru": "Я познакомился с ней на конференции в Берлине.",
     "hint": "завершённое событие",
-    "words": ["I", "met", "her", "at", "a", "conference", "in", "Berlin."]
+    "words": [
+      "I",
+      "met",
+      "her",
+      "at",
+      "a",
+      "conference",
+      "in",
+      "Berlin."
+    ],
+    "level": "B1"
   },
   {
     "id": 321,
@@ -2894,7 +5815,15 @@
     "en": "He broke his leg last winter.",
     "ru": "Он сломал ногу прошлой зимой.",
     "hint": "last winter",
-    "words": ["He", "broke", "his", "leg", "last", "winter."]
+    "words": [
+      "He",
+      "broke",
+      "his",
+      "leg",
+      "last",
+      "winter."
+    ],
+    "level": "A2"
   },
   {
     "id": 322,
@@ -2903,7 +5832,14 @@
     "en": "We didn't have enough time.",
     "ru": "У нас не было достаточно времени.",
     "hint": "отрицание",
-    "words": ["We", "didn't", "have", "enough", "time."]
+    "words": [
+      "We",
+      "didn't",
+      "have",
+      "enough",
+      "time."
+    ],
+    "level": "A2"
   },
   {
     "id": 323,
@@ -2912,7 +5848,15 @@
     "en": "What did you do last night?",
     "ru": "Что ты делал вчера вечером?",
     "hint": "вопрос",
-    "words": ["What", "did", "you", "do", "last", "night?"]
+    "words": [
+      "What",
+      "did",
+      "you",
+      "do",
+      "last",
+      "night?"
+    ],
+    "level": "A2"
   },
   {
     "id": 324,
@@ -2921,7 +5865,16 @@
     "en": "They sold their house and moved abroad.",
     "ru": "Они продали дом и уехали за границу.",
     "hint": "последовательные действия",
-    "words": ["They", "sold", "their", "house", "and", "moved", "abroad."]
+    "words": [
+      "They",
+      "sold",
+      "their",
+      "house",
+      "and",
+      "moved",
+      "abroad."
+    ],
+    "level": "B1"
   },
   {
     "id": 325,
@@ -2930,7 +5883,15 @@
     "en": "I was very busy last week.",
     "ru": "Я был очень занят на прошлой неделе.",
     "hint": "состояние в прошлом",
-    "words": ["I", "was", "very", "busy", "last", "week."]
+    "words": [
+      "I",
+      "was",
+      "very",
+      "busy",
+      "last",
+      "week."
+    ],
+    "level": "A2"
   },
   {
     "id": 326,
@@ -2939,7 +5900,17 @@
     "en": "She wrote a long letter to her friend.",
     "ru": "Она написала длинное письмо подруге.",
     "hint": "завершённое действие",
-    "words": ["She", "wrote", "a", "long", "letter", "to", "her", "friend."]
+    "words": [
+      "She",
+      "wrote",
+      "a",
+      "long",
+      "letter",
+      "to",
+      "her",
+      "friend."
+    ],
+    "level": "A2"
   },
   {
     "id": 327,
@@ -2948,7 +5919,16 @@
     "en": "We ate at a nice restaurant yesterday.",
     "ru": "Вчера мы поели в хорошем ресторане.",
     "hint": "yesterday",
-    "words": ["We", "ate", "at", "a", "nice", "restaurant", "yesterday."]
+    "words": [
+      "We",
+      "ate",
+      "at",
+      "a",
+      "nice",
+      "restaurant",
+      "yesterday."
+    ],
+    "level": "A2"
   },
   {
     "id": 328,
@@ -2957,7 +5937,16 @@
     "en": "He didn't tell me about the meeting.",
     "ru": "Он не сказал мне о встрече.",
     "hint": "отрицание",
-    "words": ["He", "didn't", "tell", "me", "about", "the", "meeting."]
+    "words": [
+      "He",
+      "didn't",
+      "tell",
+      "me",
+      "about",
+      "the",
+      "meeting."
+    ],
+    "level": "A2"
   },
   {
     "id": 329,
@@ -2966,7 +5955,16 @@
     "en": "I was studying when the phone rang.",
     "ru": "Я занимался, когда зазвонил телефон.",
     "hint": "прерванное действие",
-    "words": ["I", "was", "studying", "when", "the", "phone", "rang."]
+    "words": [
+      "I",
+      "was",
+      "studying",
+      "when",
+      "the",
+      "phone",
+      "rang."
+    ],
+    "level": "A2"
   },
   {
     "id": 330,
@@ -2975,7 +5973,19 @@
     "en": "They were waiting for the bus when it started raining.",
     "ru": "Они ждали автобус, когда начался дождь.",
     "hint": "прерванный процесс",
-    "words": ["They", "were", "waiting", "for", "the", "bus", "when", "it", "started", "raining."]
+    "words": [
+      "They",
+      "were",
+      "waiting",
+      "for",
+      "the",
+      "bus",
+      "when",
+      "it",
+      "started",
+      "raining."
+    ],
+    "level": "A2"
   },
   {
     "id": 331,
@@ -2984,7 +5994,18 @@
     "en": "She was cooking while he was setting the table.",
     "ru": "Она готовила, пока он накрывал на стол.",
     "hint": "параллельные действия",
-    "words": ["She", "was", "cooking", "while", "he", "was", "setting", "the", "table."]
+    "words": [
+      "She",
+      "was",
+      "cooking",
+      "while",
+      "he",
+      "was",
+      "setting",
+      "the",
+      "table."
+    ],
+    "level": "A2"
   },
   {
     "id": 332,
@@ -2993,7 +6014,16 @@
     "en": "What were you doing at nine o'clock?",
     "ru": "Что ты делал в девять часов?",
     "hint": "вопрос",
-    "words": ["What", "were", "you", "doing", "at", "nine", "o'clock?"]
+    "words": [
+      "What",
+      "were",
+      "you",
+      "doing",
+      "at",
+      "nine",
+      "o'clock?"
+    ],
+    "level": "A2"
   },
   {
     "id": 333,
@@ -3002,7 +6032,15 @@
     "en": "It was raining heavily all night.",
     "ru": "Всю ночь шёл сильный дождь.",
     "hint": "длительное действие",
-    "words": ["It", "was", "raining", "heavily", "all", "night."]
+    "words": [
+      "It",
+      "was",
+      "raining",
+      "heavily",
+      "all",
+      "night."
+    ],
+    "level": "A2"
   },
   {
     "id": 334,
@@ -3011,7 +6049,19 @@
     "en": "She had already left when I got to the office.",
     "ru": "Она уже ушла, когда я пришёл в офис.",
     "hint": "раньше другого действия",
-    "words": ["She", "had", "already", "left", "when", "I", "got", "to", "the", "office."]
+    "words": [
+      "She",
+      "had",
+      "already",
+      "left",
+      "when",
+      "I",
+      "got",
+      "to",
+      "the",
+      "office."
+    ],
+    "level": "B2"
   },
   {
     "id": 335,
@@ -3020,7 +6070,18 @@
     "en": "I had never seen such a beautiful place before.",
     "ru": "Я никогда раньше не видел такого красивого места.",
     "hint": "опыт до момента",
-    "words": ["I", "had", "never", "seen", "such", "a", "beautiful", "place", "before."]
+    "words": [
+      "I",
+      "had",
+      "never",
+      "seen",
+      "such",
+      "a",
+      "beautiful",
+      "place",
+      "before."
+    ],
+    "level": "B2"
   },
   {
     "id": 336,
@@ -3029,7 +6090,18 @@
     "en": "By the time we arrived, the show had ended.",
     "ru": "К тому времени как мы пришли, шоу закончилось.",
     "hint": "by the time",
-    "words": ["By", "the", "time", "we", "arrived,", "the", "show", "had", "ended."]
+    "words": [
+      "By",
+      "the",
+      "time",
+      "we",
+      "arrived,",
+      "the",
+      "show",
+      "had",
+      "ended."
+    ],
+    "level": "B1"
   },
   {
     "id": 337,
@@ -3038,7 +6110,16 @@
     "en": "He had finished his work before dinner.",
     "ru": "Он закончил работу до ужина.",
     "hint": "раньше другого действия",
-    "words": ["He", "had", "finished", "his", "work", "before", "dinner."]
+    "words": [
+      "He",
+      "had",
+      "finished",
+      "his",
+      "work",
+      "before",
+      "dinner."
+    ],
+    "level": "B1"
   },
   {
     "id": 338,
@@ -3047,7 +6128,21 @@
     "en": "I had been working for ten hours before I took a break.",
     "ru": "Я работал десять часов, прежде чем сделал перерыв.",
     "hint": "длительный процесс",
-    "words": ["I", "had", "been", "working", "for", "ten", "hours", "before", "I", "took", "a", "break."]
+    "words": [
+      "I",
+      "had",
+      "been",
+      "working",
+      "for",
+      "ten",
+      "hours",
+      "before",
+      "I",
+      "took",
+      "a",
+      "break."
+    ],
+    "level": "B2"
   },
   {
     "id": 339,
@@ -3056,7 +6151,20 @@
     "en": "They had been waiting for an hour when the doctor arrived.",
     "ru": "Они ждали час, когда пришёл врач.",
     "hint": "длительное ожидание",
-    "words": ["They", "had", "been", "waiting", "for", "an", "hour", "when", "the", "doctor", "arrived."]
+    "words": [
+      "They",
+      "had",
+      "been",
+      "waiting",
+      "for",
+      "an",
+      "hour",
+      "when",
+      "the",
+      "doctor",
+      "arrived."
+    ],
+    "level": "B1"
   },
   {
     "id": 340,
@@ -3065,7 +6173,20 @@
     "en": "It had been raining for two days before the sun appeared.",
     "ru": "Дождь шёл два дня, прежде чем появилось солнце.",
     "hint": "длительный процесс",
-    "words": ["It", "had", "been", "raining", "for", "two", "days", "before", "the", "sun", "appeared."]
+    "words": [
+      "It",
+      "had",
+      "been",
+      "raining",
+      "for",
+      "two",
+      "days",
+      "before",
+      "the",
+      "sun",
+      "appeared."
+    ],
+    "level": "B1"
   },
   {
     "id": 341,
@@ -3074,7 +6195,16 @@
     "en": "I will send you the details tomorrow.",
     "ru": "Я пришлю тебе детали завтра.",
     "hint": "обещание",
-    "words": ["I", "will", "send", "you", "the", "details", "tomorrow."]
+    "words": [
+      "I",
+      "will",
+      "send",
+      "you",
+      "the",
+      "details",
+      "tomorrow."
+    ],
+    "level": "A2"
   },
   {
     "id": 342,
@@ -3083,7 +6213,16 @@
     "en": "She won't come to the meeting tomorrow.",
     "ru": "Она не придёт на встречу завтра.",
     "hint": "отрицание",
-    "words": ["She", "won't", "come", "to", "the", "meeting", "tomorrow."]
+    "words": [
+      "She",
+      "won't",
+      "come",
+      "to",
+      "the",
+      "meeting",
+      "tomorrow."
+    ],
+    "level": "A2"
   },
   {
     "id": 343,
@@ -3092,7 +6231,16 @@
     "en": "Will you help me carry these bags?",
     "ru": "Ты поможешь мне донести эти сумки?",
     "hint": "просьба",
-    "words": ["Will", "you", "help", "me", "carry", "these", "bags?"]
+    "words": [
+      "Will",
+      "you",
+      "help",
+      "me",
+      "carry",
+      "these",
+      "bags?"
+    ],
+    "level": "A2"
   },
   {
     "id": 344,
@@ -3101,7 +6249,16 @@
     "en": "I think they will win the match.",
     "ru": "Думаю, они выиграют матч.",
     "hint": "предсказание",
-    "words": ["I", "think", "they", "will", "win", "the", "match."]
+    "words": [
+      "I",
+      "think",
+      "they",
+      "will",
+      "win",
+      "the",
+      "match."
+    ],
+    "level": "A2"
   },
   {
     "id": 345,
@@ -3110,7 +6267,17 @@
     "en": "We will meet at the café at six.",
     "ru": "Мы встретимся в кафе в шесть.",
     "hint": "договорённость",
-    "words": ["We", "will", "meet", "at", "the", "café", "at", "six."]
+    "words": [
+      "We",
+      "will",
+      "meet",
+      "at",
+      "the",
+      "café",
+      "at",
+      "six."
+    ],
+    "level": "A2"
   },
   {
     "id": 346,
@@ -3119,7 +6286,14 @@
     "en": "It will probably snow tonight.",
     "ru": "Сегодня вечером, вероятно, пойдёт снег.",
     "hint": "предсказание",
-    "words": ["It", "will", "probably", "snow", "tonight."]
+    "words": [
+      "It",
+      "will",
+      "probably",
+      "snow",
+      "tonight."
+    ],
+    "level": "A2"
   },
   {
     "id": 347,
@@ -3128,7 +6302,15 @@
     "en": "I won't tell anyone your secret.",
     "ru": "Я никому не расскажу твой секрет.",
     "hint": "обещание, отрицание",
-    "words": ["I", "won't", "tell", "anyone", "your", "secret."]
+    "words": [
+      "I",
+      "won't",
+      "tell",
+      "anyone",
+      "your",
+      "secret."
+    ],
+    "level": "A2"
   },
   {
     "id": 348,
@@ -3137,7 +6319,18 @@
     "en": "At 6 PM tomorrow I will be driving home.",
     "ru": "Завтра в 6 вечера я буду ехать домой.",
     "hint": "процесс в будущем",
-    "words": ["At", "6", "PM", "tomorrow", "I", "will", "be", "driving", "home."]
+    "words": [
+      "At",
+      "6",
+      "PM",
+      "tomorrow",
+      "I",
+      "will",
+      "be",
+      "driving",
+      "home."
+    ],
+    "level": "B1"
   },
   {
     "id": 349,
@@ -3146,7 +6339,16 @@
     "en": "She will be teaching when you arrive.",
     "ru": "Она будет преподавать, когда ты приедешь.",
     "hint": "процесс в будущем",
-    "words": ["She", "will", "be", "teaching", "when", "you", "arrive."]
+    "words": [
+      "She",
+      "will",
+      "be",
+      "teaching",
+      "when",
+      "you",
+      "arrive."
+    ],
+    "level": "B1"
   },
   {
     "id": 350,
@@ -3155,7 +6357,16 @@
     "en": "Will you be using the car tonight?",
     "ru": "Ты будешь пользоваться машиной сегодня вечером?",
     "hint": "вопрос",
-    "words": ["Will", "you", "be", "using", "the", "car", "tonight?"]
+    "words": [
+      "Will",
+      "you",
+      "be",
+      "using",
+      "the",
+      "car",
+      "tonight?"
+    ],
+    "level": "B1"
   },
   {
     "id": 351,
@@ -3164,7 +6375,17 @@
     "en": "By 2030 I will have visited twenty countries.",
     "ru": "К 2030 году я посещу двадцать стран.",
     "hint": "завершение к сроку",
-    "words": ["By", "2030", "I", "will", "have", "visited", "twenty", "countries."]
+    "words": [
+      "By",
+      "2030",
+      "I",
+      "will",
+      "have",
+      "visited",
+      "twenty",
+      "countries."
+    ],
+    "level": "B1"
   },
   {
     "id": 352,
@@ -3173,7 +6394,17 @@
     "en": "She will have written her thesis by June.",
     "ru": "К июню она напишет диссертацию.",
     "hint": "by + срок",
-    "words": ["She", "will", "have", "written", "her", "thesis", "by", "June."]
+    "words": [
+      "She",
+      "will",
+      "have",
+      "written",
+      "her",
+      "thesis",
+      "by",
+      "June."
+    ],
+    "level": "B2"
   },
   {
     "id": 353,
@@ -3182,7 +6413,21 @@
     "en": "By next summer I will have been living here for ten years.",
     "ru": "К следующему лету я буду жить здесь десять лет.",
     "hint": "длительность к моменту",
-    "words": ["By", "next", "summer", "I", "will", "have", "been", "living", "here", "for", "ten", "years."]
+    "words": [
+      "By",
+      "next",
+      "summer",
+      "I",
+      "will",
+      "have",
+      "been",
+      "living",
+      "here",
+      "for",
+      "ten",
+      "years."
+    ],
+    "level": "B2"
   },
   {
     "id": 354,
@@ -3191,7 +6436,16 @@
     "en": "What do you usually do on weekends?",
     "ru": "Что ты обычно делаешь по выходным?",
     "hint": "вопрос о привычке",
-    "words": ["What", "do", "you", "usually", "do", "on", "weekends?"]
+    "words": [
+      "What",
+      "do",
+      "you",
+      "usually",
+      "do",
+      "on",
+      "weekends?"
+    ],
+    "level": "A1"
   },
   {
     "id": 355,
@@ -3200,7 +6454,15 @@
     "en": "My sister doesn't like horror films.",
     "ru": "Моя сестра не любит ужастики.",
     "hint": "отрицание",
-    "words": ["My", "sister", "doesn't", "like", "horror", "films."]
+    "words": [
+      "My",
+      "sister",
+      "doesn't",
+      "like",
+      "horror",
+      "films."
+    ],
+    "level": "A1"
   },
   {
     "id": 356,
@@ -3209,7 +6471,15 @@
     "en": "How much does the ticket cost?",
     "ru": "Сколько стоит билет?",
     "hint": "вопрос о цене",
-    "words": ["How", "much", "does", "the", "ticket", "cost?"]
+    "words": [
+      "How",
+      "much",
+      "does",
+      "the",
+      "ticket",
+      "cost?"
+    ],
+    "level": "A1"
   },
   {
     "id": 357,
@@ -3218,7 +6488,16 @@
     "en": "The bus is coming around the corner.",
     "ru": "Автобус выезжает из-за угла.",
     "hint": "процесс сейчас",
-    "words": ["The", "bus", "is", "coming", "around", "the", "corner."]
+    "words": [
+      "The",
+      "bus",
+      "is",
+      "coming",
+      "around",
+      "the",
+      "corner."
+    ],
+    "level": "A1"
   },
   {
     "id": 358,
@@ -3227,7 +6506,17 @@
     "en": "They are staying at a hotel this week.",
     "ru": "На этой неделе они живут в отеле.",
     "hint": "временное положение",
-    "words": ["They", "are", "staying", "at", "a", "hotel", "this", "week."]
+    "words": [
+      "They",
+      "are",
+      "staying",
+      "at",
+      "a",
+      "hotel",
+      "this",
+      "week."
+    ],
+    "level": "A1"
   },
   {
     "id": 359,
@@ -3236,7 +6525,17 @@
     "en": "Why are you wearing a jacket in summer?",
     "ru": "Почему ты носишь куртку летом?",
     "hint": "вопрос",
-    "words": ["Why", "are", "you", "wearing", "a", "jacket", "in", "summer?"]
+    "words": [
+      "Why",
+      "are",
+      "you",
+      "wearing",
+      "a",
+      "jacket",
+      "in",
+      "summer?"
+    ],
+    "level": "A1"
   },
   {
     "id": 360,
@@ -3245,7 +6544,16 @@
     "en": "I am working from home this week.",
     "ru": "На этой неделе я работаю из дома.",
     "hint": "временная ситуация",
-    "words": ["I", "am", "working", "from", "home", "this", "week."]
+    "words": [
+      "I",
+      "am",
+      "working",
+      "from",
+      "home",
+      "this",
+      "week."
+    ],
+    "level": "A2"
   },
   {
     "id": 361,
@@ -3254,7 +6562,14 @@
     "en": "Are you enjoying the party?",
     "ru": "Тебе нравится вечеринка?",
     "hint": "вопрос",
-    "words": ["Are", "you", "enjoying", "the", "party?"]
+    "words": [
+      "Are",
+      "you",
+      "enjoying",
+      "the",
+      "party?"
+    ],
+    "level": "A1"
   },
   {
     "id": 362,
@@ -3263,7 +6578,14 @@
     "en": "I have already eaten breakfast.",
     "ru": "Я уже позавтракал.",
     "hint": "already",
-    "words": ["I", "have", "already", "eaten", "breakfast."]
+    "words": [
+      "I",
+      "have",
+      "already",
+      "eaten",
+      "breakfast."
+    ],
+    "level": "B1"
   },
   {
     "id": 363,
@@ -3272,7 +6594,15 @@
     "en": "She hasn't finished her homework yet.",
     "ru": "Она ещё не сделала домашнюю работу.",
     "hint": "отрицание с yet",
-    "words": ["She", "hasn't", "finished", "her", "homework", "yet."]
+    "words": [
+      "She",
+      "hasn't",
+      "finished",
+      "her",
+      "homework",
+      "yet."
+    ],
+    "level": "B1"
   },
   {
     "id": 364,
@@ -3281,7 +6611,15 @@
     "en": "Have you ever been to Australia?",
     "ru": "Ты когда-нибудь был в Австралии?",
     "hint": "вопрос об опыте",
-    "words": ["Have", "you", "ever", "been", "to", "Australia?"]
+    "words": [
+      "Have",
+      "you",
+      "ever",
+      "been",
+      "to",
+      "Australia?"
+    ],
+    "level": "A2"
   },
   {
     "id": 365,
@@ -3290,7 +6628,17 @@
     "en": "We have known each other since primary school.",
     "ru": "Мы знакомы с начальной школы.",
     "hint": "since + момент",
-    "words": ["We", "have", "known", "each", "other", "since", "primary", "school."]
+    "words": [
+      "We",
+      "have",
+      "known",
+      "each",
+      "other",
+      "since",
+      "primary",
+      "school."
+    ],
+    "level": "B1"
   },
   {
     "id": 366,
@@ -3299,7 +6647,16 @@
     "en": "How long have you been studying here?",
     "ru": "Как долго ты здесь учишься?",
     "hint": "вопрос о длительности",
-    "words": ["How", "long", "have", "you", "been", "studying", "here?"]
+    "words": [
+      "How",
+      "long",
+      "have",
+      "you",
+      "been",
+      "studying",
+      "here?"
+    ],
+    "level": "A2"
   },
   {
     "id": 367,
@@ -3308,7 +6665,16 @@
     "en": "They have been waiting since two o'clock.",
     "ru": "Они ждут с двух часов.",
     "hint": "since + время",
-    "words": ["They", "have", "been", "waiting", "since", "two", "o'clock."]
+    "words": [
+      "They",
+      "have",
+      "been",
+      "waiting",
+      "since",
+      "two",
+      "o'clock."
+    ],
+    "level": "B1"
   },
   {
     "id": 368,
@@ -3317,7 +6683,17 @@
     "en": "I learned to swim when I was five.",
     "ru": "Я научился плавать, когда мне было пять.",
     "hint": "завершённое действие",
-    "words": ["I", "learned", "to", "swim", "when", "I", "was", "five."]
+    "words": [
+      "I",
+      "learned",
+      "to",
+      "swim",
+      "when",
+      "I",
+      "was",
+      "five."
+    ],
+    "level": "A2"
   },
   {
     "id": 369,
@@ -3326,7 +6702,17 @@
     "en": "We didn't go out because of the rain.",
     "ru": "Мы не пошли гулять из-за дождя.",
     "hint": "отрицание с причиной",
-    "words": ["We", "didn't", "go", "out", "because", "of", "the", "rain."]
+    "words": [
+      "We",
+      "didn't",
+      "go",
+      "out",
+      "because",
+      "of",
+      "the",
+      "rain."
+    ],
+    "level": "A2"
   },
   {
     "id": 370,
@@ -3335,7 +6721,17 @@
     "en": "He paid for dinner and left a tip.",
     "ru": "Он заплатил за ужин и оставил чаевые.",
     "hint": "последовательность",
-    "words": ["He", "paid", "for", "dinner", "and", "left", "a", "tip."]
+    "words": [
+      "He",
+      "paid",
+      "for",
+      "dinner",
+      "and",
+      "left",
+      "a",
+      "tip."
+    ],
+    "level": "A2"
   },
   {
     "id": 371,
@@ -3344,7 +6740,15 @@
     "en": "Did she tell you the truth?",
     "ru": "Она сказала тебе правду?",
     "hint": "вопрос",
-    "words": ["Did", "she", "tell", "you", "the", "truth?"]
+    "words": [
+      "Did",
+      "she",
+      "tell",
+      "you",
+      "the",
+      "truth?"
+    ],
+    "level": "B2"
   },
   {
     "id": 372,
@@ -3353,7 +6757,16 @@
     "en": "They were still sleeping when I left.",
     "ru": "Они ещё спали, когда я уходил.",
     "hint": "фоновое действие",
-    "words": ["They", "were", "still", "sleeping", "when", "I", "left."]
+    "words": [
+      "They",
+      "were",
+      "still",
+      "sleeping",
+      "when",
+      "I",
+      "left."
+    ],
+    "level": "A2"
   },
   {
     "id": 373,
@@ -3362,7 +6775,17 @@
     "en": "I was not paying attention during the lecture.",
     "ru": "Я не слушал лекцию внимательно.",
     "hint": "отрицание",
-    "words": ["I", "was", "not", "paying", "attention", "during", "the", "lecture."]
+    "words": [
+      "I",
+      "was",
+      "not",
+      "paying",
+      "attention",
+      "during",
+      "the",
+      "lecture."
+    ],
+    "level": "B1"
   },
   {
     "id": 374,
@@ -3371,7 +6794,16 @@
     "en": "What was she wearing at the party?",
     "ru": "Что она была одета на вечеринке?",
     "hint": "вопрос",
-    "words": ["What", "was", "she", "wearing", "at", "the", "party?"]
+    "words": [
+      "What",
+      "was",
+      "she",
+      "wearing",
+      "at",
+      "the",
+      "party?"
+    ],
+    "level": "A2"
   },
   {
     "id": 375,
@@ -3380,7 +6812,20 @@
     "en": "The train had already left when we got to the station.",
     "ru": "Поезд уже уехал, когда мы пришли на станцию.",
     "hint": "раньше другого действия",
-    "words": ["The", "train", "had", "already", "left", "when", "we", "got", "to", "the", "station."]
+    "words": [
+      "The",
+      "train",
+      "had",
+      "already",
+      "left",
+      "when",
+      "we",
+      "got",
+      "to",
+      "the",
+      "station."
+    ],
+    "level": "B2"
   },
   {
     "id": 376,
@@ -3389,7 +6834,17 @@
     "en": "I had never eaten sushi before that day.",
     "ru": "До того дня я никогда не ел суши.",
     "hint": "опыт до момента",
-    "words": ["I", "had", "never", "eaten", "sushi", "before", "that", "day."]
+    "words": [
+      "I",
+      "had",
+      "never",
+      "eaten",
+      "sushi",
+      "before",
+      "that",
+      "day."
+    ],
+    "level": "B1"
   },
   {
     "id": 377,
@@ -3398,7 +6853,20 @@
     "en": "They had been traveling for a month before they came home.",
     "ru": "Они путешествовали месяц, прежде чем вернулись домой.",
     "hint": "длительный процесс",
-    "words": ["They", "had", "been", "traveling", "for", "a", "month", "before", "they", "came", "home."]
+    "words": [
+      "They",
+      "had",
+      "been",
+      "traveling",
+      "for",
+      "a",
+      "month",
+      "before",
+      "they",
+      "came",
+      "home."
+    ],
+    "level": "B1"
   },
   {
     "id": 378,
@@ -3407,7 +6875,17 @@
     "en": "I will call you when I get home.",
     "ru": "Я позвоню тебе, когда приду домой.",
     "hint": "обещание",
-    "words": ["I", "will", "call", "you", "when", "I", "get", "home."]
+    "words": [
+      "I",
+      "will",
+      "call",
+      "you",
+      "when",
+      "I",
+      "get",
+      "home."
+    ],
+    "level": "A2"
   },
   {
     "id": 379,
@@ -3416,7 +6894,15 @@
     "en": "What will you do after university?",
     "ru": "Что ты будешь делать после университета?",
     "hint": "вопрос о планах",
-    "words": ["What", "will", "you", "do", "after", "university?"]
+    "words": [
+      "What",
+      "will",
+      "you",
+      "do",
+      "after",
+      "university?"
+    ],
+    "level": "A2"
   },
   {
     "id": 380,
@@ -3425,7 +6911,16 @@
     "en": "We won't be able to come tomorrow.",
     "ru": "Мы не сможем прийти завтра.",
     "hint": "отрицание",
-    "words": ["We", "won't", "be", "able", "to", "come", "tomorrow."]
+    "words": [
+      "We",
+      "won't",
+      "be",
+      "able",
+      "to",
+      "come",
+      "tomorrow."
+    ],
+    "level": "B1"
   },
   {
     "id": 381,
@@ -3434,7 +6929,20 @@
     "en": "This time next week I will be lying on a beach.",
     "ru": "На следующей неделе в это время я буду лежать на пляже.",
     "hint": "процесс в будущем",
-    "words": ["This", "time", "next", "week", "I", "will", "be", "lying", "on", "a", "beach."]
+    "words": [
+      "This",
+      "time",
+      "next",
+      "week",
+      "I",
+      "will",
+      "be",
+      "lying",
+      "on",
+      "a",
+      "beach."
+    ],
+    "level": "B1"
   },
   {
     "id": 382,
@@ -3443,7 +6951,17 @@
     "en": "They will be traveling through Europe all summer.",
     "ru": "Всё лето они будут путешествовать по Европе.",
     "hint": "длительный процесс",
-    "words": ["They", "will", "be", "traveling", "through", "Europe", "all", "summer."]
+    "words": [
+      "They",
+      "will",
+      "be",
+      "traveling",
+      "through",
+      "Europe",
+      "all",
+      "summer."
+    ],
+    "level": "B1"
   },
   {
     "id": 383,
@@ -3452,7 +6970,22 @@
     "en": "By the end of the year I will have paid off my loan.",
     "ru": "К концу года я выплачу кредит.",
     "hint": "завершение к сроку",
-    "words": ["By", "the", "end", "of", "the", "year", "I", "will", "have", "paid", "off", "my", "loan."]
+    "words": [
+      "By",
+      "the",
+      "end",
+      "of",
+      "the",
+      "year",
+      "I",
+      "will",
+      "have",
+      "paid",
+      "off",
+      "my",
+      "loan."
+    ],
+    "level": "B2"
   },
   {
     "id": 384,
@@ -3461,7 +6994,18 @@
     "en": "They will have finished the construction by next spring.",
     "ru": "К следующей весне они закончат строительство.",
     "hint": "завершение к сроку",
-    "words": ["They", "will", "have", "finished", "the", "construction", "by", "next", "spring."]
+    "words": [
+      "They",
+      "will",
+      "have",
+      "finished",
+      "the",
+      "construction",
+      "by",
+      "next",
+      "spring."
+    ],
+    "level": "B2"
   },
   {
     "id": 385,
@@ -3470,7 +7014,21 @@
     "en": "By next month I will have been studying English for five years.",
     "ru": "К следующему месяцу я буду учить английский пять лет.",
     "hint": "длительность к моменту",
-    "words": ["By", "next", "month", "I", "will", "have", "been", "studying", "English", "for", "five", "years."]
+    "words": [
+      "By",
+      "next",
+      "month",
+      "I",
+      "will",
+      "have",
+      "been",
+      "studying",
+      "English",
+      "for",
+      "five",
+      "years."
+    ],
+    "level": "B1"
   },
   {
     "id": 386,
@@ -3479,7 +7037,16 @@
     "en": "Most people work five days a week.",
     "ru": "Большинство людей работают пять дней в неделю.",
     "hint": "общий факт",
-    "words": ["Most", "people", "work", "five", "days", "a", "week."]
+    "words": [
+      "Most",
+      "people",
+      "work",
+      "five",
+      "days",
+      "a",
+      "week."
+    ],
+    "level": "A1"
   },
   {
     "id": 387,
@@ -3488,7 +7055,17 @@
     "en": "I am starting a new course next Monday.",
     "ru": "В следующий понедельник я начинаю новый курс.",
     "hint": "запланированное будущее",
-    "words": ["I", "am", "starting", "a", "new", "course", "next", "Monday."]
+    "words": [
+      "I",
+      "am",
+      "starting",
+      "a",
+      "new",
+      "course",
+      "next",
+      "Monday."
+    ],
+    "level": "A1"
   },
   {
     "id": 388,
@@ -3497,7 +7074,16 @@
     "en": "My English has improved a lot recently.",
     "ru": "За последнее время мой английский сильно улучшился.",
     "hint": "результат к сейчас",
-    "words": ["My", "English", "has", "improved", "a", "lot", "recently."]
+    "words": [
+      "My",
+      "English",
+      "has",
+      "improved",
+      "a",
+      "lot",
+      "recently."
+    ],
+    "level": "A2"
   },
   {
     "id": 389,
@@ -3506,7 +7092,16 @@
     "en": "They moved to Canada five years ago.",
     "ru": "Они переехали в Канаду пять лет назад.",
     "hint": "ago",
-    "words": ["They", "moved", "to", "Canada", "five", "years", "ago."]
+    "words": [
+      "They",
+      "moved",
+      "to",
+      "Canada",
+      "five",
+      "years",
+      "ago."
+    ],
+    "level": "A2"
   },
   {
     "id": 390,
@@ -3515,7 +7110,19 @@
     "en": "I was walking home when I saw an old friend.",
     "ru": "Я шёл домой, когда увидел старого друга.",
     "hint": "прерванное действие",
-    "words": ["I", "was", "walking", "home", "when", "I", "saw", "an", "old", "friend."]
+    "words": [
+      "I",
+      "was",
+      "walking",
+      "home",
+      "when",
+      "I",
+      "saw",
+      "an",
+      "old",
+      "friend."
+    ],
+    "level": "A2"
   },
   {
     "id": 391,
@@ -3524,7 +7131,18 @@
     "en": "He had already paid when I offered to help.",
     "ru": "Он уже заплатил, когда я предложил помочь.",
     "hint": "раньше другого действия",
-    "words": ["He", "had", "already", "paid", "when", "I", "offered", "to", "help."]
+    "words": [
+      "He",
+      "had",
+      "already",
+      "paid",
+      "when",
+      "I",
+      "offered",
+      "to",
+      "help."
+    ],
+    "level": "B2"
   },
   {
     "id": 392,
@@ -3533,7 +7151,16 @@
     "en": "We will have a meeting next Tuesday.",
     "ru": "В следующий вторник у нас будет встреча.",
     "hint": "запланированное событие",
-    "words": ["We", "will", "have", "a", "meeting", "next", "Tuesday."]
+    "words": [
+      "We",
+      "will",
+      "have",
+      "a",
+      "meeting",
+      "next",
+      "Tuesday."
+    ],
+    "level": "A2"
   },
   {
     "id": 393,
@@ -3542,7 +7169,15 @@
     "en": "I will be working late tomorrow.",
     "ru": "Завтра я буду работать допоздна.",
     "hint": "процесс в будущем",
-    "words": ["I", "will", "be", "working", "late", "tomorrow."]
+    "words": [
+      "I",
+      "will",
+      "be",
+      "working",
+      "late",
+      "tomorrow."
+    ],
+    "level": "B2"
   },
   {
     "id": 394,
@@ -3551,7 +7186,20 @@
     "en": "By next year they will have saved enough for a house.",
     "ru": "К следующему году они накопят достаточно на дом.",
     "hint": "завершение к сроку",
-    "words": ["By", "next", "year", "they", "will", "have", "saved", "enough", "for", "a", "house."]
+    "words": [
+      "By",
+      "next",
+      "year",
+      "they",
+      "will",
+      "have",
+      "saved",
+      "enough",
+      "for",
+      "a",
+      "house."
+    ],
+    "level": "B2"
   },
   {
     "id": 395,
@@ -3560,7 +7208,14 @@
     "en": "Do you believe in luck?",
     "ru": "Ты веришь в удачу?",
     "hint": "вопрос",
-    "words": ["Do", "you", "believe", "in", "luck?"]
+    "words": [
+      "Do",
+      "you",
+      "believe",
+      "in",
+      "luck?"
+    ],
+    "level": "A1"
   },
   {
     "id": 396,
@@ -3569,7 +7224,18 @@
     "en": "I am learning three languages at the same time.",
     "ru": "Я учу три языка одновременно.",
     "hint": "временный процесс",
-    "words": ["I", "am", "learning", "three", "languages", "at", "the", "same", "time."]
+    "words": [
+      "I",
+      "am",
+      "learning",
+      "three",
+      "languages",
+      "at",
+      "the",
+      "same",
+      "time."
+    ],
+    "level": "A2"
   },
   {
     "id": 397,
@@ -3578,7 +7244,15 @@
     "en": "We have just finished the project.",
     "ru": "Мы только что закончили проект.",
     "hint": "только что",
-    "words": ["We", "have", "just", "finished", "the", "project."]
+    "words": [
+      "We",
+      "have",
+      "just",
+      "finished",
+      "the",
+      "project."
+    ],
+    "level": "A2"
   },
   {
     "id": 398,
@@ -3587,7 +7261,16 @@
     "en": "I sent the email two hours ago.",
     "ru": "Я отправил письмо два часа назад.",
     "hint": "ago",
-    "words": ["I", "sent", "the", "email", "two", "hours", "ago."]
+    "words": [
+      "I",
+      "sent",
+      "the",
+      "email",
+      "two",
+      "hours",
+      "ago."
+    ],
+    "level": "A2"
   },
   {
     "id": 399,
@@ -3596,7 +7279,18 @@
     "en": "She was crying while I was trying to explain.",
     "ru": "Она плакала, пока я пытался объяснить.",
     "hint": "параллельные действия",
-    "words": ["She", "was", "crying", "while", "I", "was", "trying", "to", "explain."]
+    "words": [
+      "She",
+      "was",
+      "crying",
+      "while",
+      "I",
+      "was",
+      "trying",
+      "to",
+      "explain."
+    ],
+    "level": "A2"
   },
   {
     "id": 400,
@@ -3605,6 +7299,14 @@
     "en": "I will see you tomorrow morning.",
     "ru": "Увидимся завтра утром.",
     "hint": "прощание",
-    "words": ["I", "will", "see", "you", "tomorrow", "morning."]
+    "words": [
+      "I",
+      "will",
+      "see",
+      "you",
+      "tomorrow",
+      "morning."
+    ],
+    "level": "A2"
   }
 ]
