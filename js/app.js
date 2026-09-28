@@ -39,12 +39,6 @@ let srsData = JSON.parse(localStorage.getItem('srsData') || '{}');
 const DAILY_GOAL = 20;
 const SRS_INTERVALS = [0, 1, 2, 4, 7, 14];
 
-const LEVEL_RANGES = {
-    A1: { start: 0,   end: 300 },
-    A2: { start: 300, end: 600 },
-    B1: { start: 600, end: Infinity }
-};
-
 let currentUser = null;
 
 // ===== ТЕМА =====
@@ -412,7 +406,7 @@ function renderLevelButtons() {
     const container = document.getElementById('level-buttons');
     if (!container) return;
 
-    const levels = ['all', 'A1', 'A2', 'B1'];
+    const levels = ['all', 'A1', 'A2', 'B1', 'B2'];
     container.innerHTML = levels.map(lvl =>
         `<button class="level-btn ${lvl === currentLevel ? 'active' : ''}" data-level="${lvl}">
             ${lvl === 'all' ? 'All' : lvl}
@@ -439,9 +433,7 @@ function renderLevelButtons() {
 
 function getFilteredVocabulary() {
     if (currentLevel === 'all') return vocabulary;
-    const range = LEVEL_RANGES[currentLevel];
-    if (!range) return vocabulary;
-    return vocabulary.slice(range.start, Math.min(range.end, vocabulary.length));
+    return vocabulary.filter(w => w.level === currentLevel);
 }
 
 function getFilteredPhrases() {
