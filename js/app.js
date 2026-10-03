@@ -27,14 +27,13 @@ let sentLevelFilter = 'all';
 
 // === LEARNING PATH ===
 let duoProgress = JSON.parse(localStorage.getItem('duoProgress') || '{}');
-// { "1": { build: true, translate: false }, ... }
 let lpExpandedTenses = JSON.parse(localStorage.getItem('lpExpandedTenses') || '[]');
-let sentOrderOverride = null;   // null | 'ordered'
+let sentOrderOverride = null;
 let sentReturnToLP = false;
-let sentFromLP = false;         // зашли ли в Sentences из Пути (для сабнава)
-let lpQueue = [];                    // очередь sentId для текущей LP-группы
-let lpIndex = 0;                     // текущий индекс в очереди
-let lpSkippedThisSession = new Set(); // пропущенные в этой сессии (сбрасывается при заходе в новую группу)
+let sentFromLP = false;
+let lpQueue = [];
+let lpIndex = 0;
+let lpSkippedThisSession = new Set();
 
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
@@ -119,6 +118,25 @@ function formatCollocations(collocations) {
     }).join(' · ');
 }
 
+// ===== ХЕЛПЕР ПЕРЕВОДА =====
+function getTranslation(item) {
+    if (!item) return '';
+    if (Array.isArray(item.translations) && item.translations.length > 0) {
+        return item.translations[0];
+    }
+    if (typeof item.translation === 'string') {
+        return item.translation;
+    }
+    return '';
+}
+
+function getAllTranslations(item) {
+    if (!item) return [];
+    if (Array.isArray(item.translations)) return item.translations;
+    if (typeof item.translation === 'string') return [item.translation];
+    return [];
+}
+
 // ===== FIREBASE =====
 async function syncToFirebase() {
     if (!currentUser || !window.firebaseSetDoc) return;
@@ -176,7 +194,6 @@ async function loadFromFirebase() {
             }
             srsData = data.srsData ?? srsData;
 
-            // === MERGE duoProgress (build + translate) ===
             if (data.duoProgress && typeof data.duoProgress === 'object') {
                 const merged = { ...duoProgress };
                 Object.keys(data.duoProgress).forEach(id => {
@@ -204,7 +221,6 @@ async function loadFromFirebase() {
             localStorage.setItem('srsData', JSON.stringify(srsData));
             localStorage.setItem('duoProgress', JSON.stringify(duoProgress));
 
-            // Если сидим в Пути — перерисуем с новыми данными
             if (currentMode === 'learning') {
                 renderLearningPath();
             }
@@ -345,14 +361,12 @@ function getDueWords() {
     return due;
 }
 
-// ===== DUO PROGRESS (Learning Path) =====
-// Прогресс теперь: build + translate
+// ===== DUO PROGRESS =====
 function markDuoDone(sentId, skill) {
     if (!skill) return;
     if (!duoProgress[sentId]) {
         duoProgress[sentId] = { build: false, translate: false };
     }
-    // Чистим старое поле choose, если осталось
     if ('choose' in duoProgress[sentId]) {
         delete duoProgress[sentId].choose;
     }
@@ -568,12 +582,8 @@ function getFilteredVocabulary() {
 
 function getFilteredPhrases() {
     if (currentLevel === 'all') return phrases;
-    const total = phrases.length;
-    const step = Math.ceil(total / 3);
-    if (currentLevel === 'A1') return phrases.slice(0, step);
-    if (currentLevel === 'A2') return phrases.slice(step, step * 2);
-    if (currentLevel === 'B1') return phrases.slice(step * 2);
-    return phrases;
+    // Фразы без level (n-граммы) показываем на всех уровнях
+    return phrases.filter(p => !p.level || p.level === currentLevel);
 }
 
 // ===== НАВИГАЦИЯ =====
@@ -584,7 +594,6 @@ function setActiveNav(mode) {
 }
 
 function renderMode(mode) {
-    // Если ушли из Sentences в другой раздел (не learning) — сбрасываем override
     if (mode !== 'sentences' && mode !== 'learning') {
         sentOrderOverride = null;
     }
@@ -1173,13 +1182,15 @@ function renderWrite() {
 
 // ===== PHRASES =====
 function renderPhrases() {
-    const data = getFilteredPhrases();
+    const allWithTranslation = phrases.filter(p => getTranslation(p));
+    const data = getFilteredPhrases().filter(p => getTranslation(p));
+
     if (data.length < 4) {
         document.getElementById('content').innerHTML = `
             <div class="empty-state">
                 <div class="empty-icon"><i data-lucide="message-circle"></i></div>
                 <div class="empty-title">Недостаточно фраз</div>
-                <div class="empty-text">Для этого уровня нужно минимум 4 фразы.</div>
+                <div class="empty-text">Для этого уровня нужно минимум 4 фразы с переводом.</div>
             </div>
         `;
         refreshIcons();
@@ -1188,15 +1199,16 @@ function renderPhrases() {
 
     if (positions.phrases >= data.length) positions.phrases = 0;
     const phrase = data[positions.phrases];
-    const correct = phrase.translation;
+    const correct = getTranslation(phrase);
 
     const wrongOptions = [];
     let guard = 0;
-    while (wrongOptions.length < 3 && guard < 200) {
+    while (wrongOptions.length < 3 && guard < 500) {
         guard++;
-        const randomPhrase = data[Math.floor(Math.random() * data.length)];
-        if (randomPhrase.translation !== correct && !wrongOptions.includes(randomPhrase.translation)) {
-            wrongOptions.push(randomPhrase.translation);
+        const randomPhrase = allWithTranslation[Math.floor(Math.random() * allWithTranslation.length)];
+        const tr = getTranslation(randomPhrase);
+        if (tr && tr !== correct && !wrongOptions.includes(tr)) {
+            wrongOptions.push(tr);
         }
     }
 
@@ -1604,7 +1616,7 @@ function attachTempCardsHandlers() {
 }
 
 function renderTempTest() {
-    if (temporary.length < 4) return `<div class="empty-inline"><i data-lucide="alert-circle"></i><div>Нужно минимум 4 слова для теста.</div></div>`;
+    if (temporary.length < 2) return `<div class="empty-inline"><i data-lucide="alert-circle"></i><div>Нужно минимум 2 слова для теста.</div></div>`;
 
     if (positions.tempTest >= temporary.length) positions.tempTest = 0;
     const word = temporary[positions.tempTest];
@@ -1612,7 +1624,7 @@ function renderTempTest() {
 
     const wrongOptions = [];
     let guard = 0;
-    while (wrongOptions.length < 3 && guard < 100) {
+    while (wrongOptions.length < 3 && guard < 200) {
         guard++;
         const randomWord = temporary[Math.floor(Math.random() * temporary.length)];
         if (randomWord.translation !== correct && !wrongOptions.includes(randomWord.translation)) {
@@ -1651,7 +1663,7 @@ function renderTempTest() {
 }
 
 function attachTempTestHandlers() {
-    if (temporary.length < 4) return;
+    if (temporary.length < 2) return;
 
     const word = temporary[positions.tempTest];
     const correct = word.translation;
@@ -1897,7 +1909,6 @@ function renderSentences() {
         return;
     }
 
-    // Режим Learning Path — отдельный рендер
     if (sentFromLP) {
         renderSentencesLP();
         return;
@@ -1966,13 +1977,12 @@ function renderSentences() {
         </div>
     `;
 
-        document.querySelectorAll('.chip[data-tense]').forEach(btn => {
+    document.querySelectorAll('.chip[data-tense]').forEach(btn => {
         btn.onclick = () => {
             sentTenseFilter = btn.dataset.tense;
             sentLevelFilter = 'all';
 
             if (sentFromLP) {
-                // Пересобираем LP-очередь
                 rebuildLPQueue();
             } else {
                 sentOrderOverride = null;
@@ -2152,14 +2162,12 @@ function attachSentBuildHandlers() {
 
 function renderSentChoose() {
     const data = getFilteredSentences();
-    // Уронили порог с 4 до 2 — но правильные варианты добираем из всей базы
     if (data.length < 2) return `<div class="empty-inline"><i data-lucide="alert-circle"></i><div>Нужно минимум 2 предложения.</div></div>`;
 
     if (positions.sentChoose >= data.length) positions.sentChoose = 0;
     const sent = data[positions.sentChoose];
     const correct = sent.tense_label;
 
-    // Собираем неправильные варианты: сначала из группы, потом из всей базы
     const wrongOptions = [];
     const seen = new Set([correct]);
 
@@ -2179,7 +2187,6 @@ function renderSentChoose() {
         }
     });
 
-    // Фолбэк — на всякий случай
     const fallback = ['Present Simple', 'Present Continuous', 'Present Perfect', 'Past Simple', 'Future Simple', 'Past Continuous'];
     for (const f of fallback) {
         if (wrongOptions.length >= 3) break;
@@ -2492,7 +2499,7 @@ function attachLearningPathHandlers() {
         };
     });
 
-        document.querySelectorAll('.lp-level-btn').forEach(btn => {
+    document.querySelectorAll('.lp-level-btn').forEach(btn => {
         btn.onclick = () => {
             startLPGroup(btn.dataset.tense, btn.dataset.level);
         };
@@ -2509,8 +2516,8 @@ function attachLearningPathHandlers() {
         };
     }
 }
-// ===== LEARNING PATH — Sentences (режим Пути) =====
 
+// ===== LEARNING PATH — Sentences =====
 function rebuildLPQueue() {
     lpQueue = sentences
         .filter(s => sentTenseFilter === 'all' || s.tense === sentTenseFilter)
@@ -2534,7 +2541,6 @@ function startLPGroup(tense, level) {
 }
 
 function renderSentencesLP() {
-    // Пропускаем пройденные и пропущенные в этой сессии
     while (lpIndex < lpQueue.length) {
         const id = lpQueue[lpIndex];
         if (isDuoDone(id) || lpSkippedThisSession.has(id)) {
@@ -2554,7 +2560,6 @@ function renderSentencesLP() {
     });
     const groupDone = groupAll.filter(s => isDuoDone(s.id)).length;
 
-    // Всё пройдено — экран «Готово»
     if (lpIndex >= lpQueue.length) {
         renderLPDoneScreen(tense, level, groupDone, groupAll.length);
         return;
@@ -2729,7 +2734,6 @@ function attachBuildHandlersLP(sent) {
             showBtn.disabled = true;
             refreshIcons();
 
-            // Автопереход в Перевод этого же предложения
             setTimeout(() => {
                 if (currentMode === 'sentences' && sentFromLP) {
                     renderSentencesLP();
@@ -2833,7 +2837,6 @@ function attachTranslateHandlersLP(sent) {
     const skipBtn = document.getElementById('sent-translate-skip');
     if (skipBtn) {
         skipBtn.onclick = () => {
-            // Запоминаем как пропущенный в этой сессии
             lpSkippedThisSession.add(sent.id);
             goNext();
         };
@@ -2905,6 +2908,7 @@ function renderLPDoneScreen(tense, level, done, total) {
 
     refreshIcons();
 }
+
 // ===== PROFILE =====
 function renderProfile() {
     const levelTotal = getLevelTotal();
@@ -3084,10 +3088,9 @@ function prevCard() {}
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
 
-        document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(btn => {
+    document.querySelectorAll('.nav-item, .bottom-nav-item').forEach(btn => {
         btn.onclick = () => {
             const mode = btn.dataset.mode;
-            // Если кликнули на «Грамматика» — принудительно выходим из режима Пути
             if (mode === 'sentences') {
                 sentFromLP = false;
                 sentReturnToLP = false;
