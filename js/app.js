@@ -25,7 +25,19 @@ let sentSubMode = 'build';
 let sentTenseFilter = 'all';
 let sentLevelFilter = 'all';
 let currentTheme = 'all';
+let phrasesSession = JSON.parse(localStorage.getItem('phrasesSession') || '{"done": 0, "total": 0}');
+let shuffledPhrases = [];
 
+function getShuffledPhrases() {
+    if (shuffledPhrases.length === 0) {
+        shuffledPhrases = shuffleArray([...phrases]);
+    }
+    return shuffledPhrases;
+}
+
+function resetPhrasesShuffle() {
+    shuffledPhrases = [];
+}
 // === LEARNING PATH ===
 let duoProgress = JSON.parse(localStorage.getItem('duoProgress') || '{}');
 let lpExpandedTenses = JSON.parse(localStorage.getItem('lpExpandedTenses') || '[]');
@@ -571,6 +583,8 @@ function renderLevelButtons() {
             resetShuffle();
             sessionProgress = { done: 0, total: 0 };
             localStorage.removeItem('sessionProgress');
+            phrasesSession = { done: 0, total: 0 };
+            localStorage.removeItem('phrasesSession');
             savePositions();
             renderLevelButtons();
             renderMode(currentMode);
@@ -594,7 +608,7 @@ function resetShuffle() {
 }
 
 function getFilteredPhrases() {
-    let arr = phrases;
+    let arr = getShuffledPhrases();
     if (currentLevel !== 'all') {
         arr = arr.filter(p => !p.level || p.level === currentLevel);
     }
@@ -1235,6 +1249,11 @@ function getPhraseThemes() {
 function renderPhrases() {
     const allWithTranslation = phrases.filter(p => getTranslation(p));
     const data = getFilteredPhrases().filter(p => getTranslation(p));
+    // Инициализация сессии
+    if (phrasesSession.total === 0) {
+        phrasesSession.total = data.length;
+        localStorage.setItem('phrasesSession', JSON.stringify(phrasesSession));
+    }
 
     if (data.length < 4) {
         document.getElementById('content').innerHTML = `
@@ -1264,7 +1283,9 @@ function renderPhrases() {
     }
 
     const options = [correct, ...wrongOptions].sort(() => Math.random() - 0.5);
-    const progressPct = Math.round(((positions.phrases + 1) / data.length) * 100);
+    const progressPct = phrasesSession.total > 0
+        ? Math.round(((phrasesSession.done + 1) / phrasesSession.total) * 100)
+        : 0;
     // === КНОПКИ ТЕМ ===
     const themes = getPhraseThemes();
     const themeChips = `
@@ -1281,7 +1302,7 @@ function renderPhrases() {
         <div class="mode-wrap">
             <div class="mode-progress">
                 <div class="mode-progress-info">
-                    <span class="mode-progress-label">Фраза ${positions.phrases + 1} из ${data.length}</span>
+                    <span class="mode-progress-label">Фраза ${phrasesSession.done + 1} из ${phrasesSession.total}</span>
                     <span class="mode-progress-pct">${progressPct}%</span>
                 </div>
                 <div class="mode-progress-bar">
@@ -1338,6 +1359,8 @@ function renderPhrases() {
     });
 
     document.getElementById('btn-next-phrase').onclick = () => {
+        phrasesSession.done++;
+        localStorage.setItem('phrasesSession', JSON.stringify(phrasesSession));
         positions.phrases++;
         if (positions.phrases >= data.length) positions.phrases = 0;
         savePositions();
@@ -1349,6 +1372,10 @@ function renderPhrases() {
         btn.onclick = () => {
             currentTheme = btn.dataset.theme;
             positions.phrases = 0;
+            phrasesSession = { done: 0, total: 0 };
+            localStorage.removeItem('phrasesSession');
+            resetPhrasesShuffle();
+            resetPhrasesShuffle();
             savePositions();
             renderPhrases();
         };
