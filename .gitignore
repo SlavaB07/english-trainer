@@ -25,3 +25,26 @@ data/*_backup*.json
 data/*_old.json
 data/*_final.json
 data/*_leveled.json
+# Архив (локальные бэкапы)
+_archive/
+
+# Бэкапы
+*_backup_*.json
+*_backup*.json
+*_old.json
+*_final.json
+*_leveled.json
+
+# Промежуточные
+vocabulary_new_batch*.json
+vocabulary_a1_batch*.json
+vocabulary_clean.json
+vocabulary (2).json
+
+# Oxford (локальные)
+oxford3000.txt
+oxford5000.txt
+
+# Системные
+.DS_Store
+Thumbs.db

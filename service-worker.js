@@ -1,6 +1,6 @@
 // ===== SERVICE WORKER =====
 // Версия — увеличивай при каждом обновлении, чтобы сбросить кеш
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v17';
 const CACHE_NAME = `english-trainer-${CACHE_VERSION}`;
 
 // Что кешируем сразу при установке
@@ -76,7 +76,7 @@ self.addEventListener('fetch', (event) => {
                             cache.put(event.request, response.clone());
                         });
                     }
-                }).catch(() => {});
+                }).catch(() => { });
                 return cached;
             }
 
