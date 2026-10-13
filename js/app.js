@@ -24,6 +24,7 @@ let tempSubMode = 'list';
 let sentSubMode = 'build';
 let sentTenseFilter = 'all';
 let sentLevelFilter = 'all';
+let currentTheme = 'all';
 
 // === LEARNING PATH ===
 let duoProgress = JSON.parse(localStorage.getItem('duoProgress') || '{}');
@@ -550,7 +551,7 @@ function renderLevelButtons() {
     const container = document.getElementById('level-buttons');
     if (!container) return;
 
-    const levels = ['all', 'A1', 'A2', 'B1', 'B2'];
+    const levels = ['all', 'A1', 'A2', 'B1', 'B2', 'C1'];
     container.innerHTML = levels.map(lvl =>
         `<button class="level-btn ${lvl === currentLevel ? 'active' : ''}" data-level="${lvl}">
             ${lvl === 'all' ? 'All' : lvl}
@@ -593,9 +594,14 @@ function resetShuffle() {
 }
 
 function getFilteredPhrases() {
-    if (currentLevel === 'all') return phrases;
-    // Фразы без level (n-граммы) показываем на всех уровнях
-    return phrases.filter(p => !p.level || p.level === currentLevel);
+    let arr = phrases;
+    if (currentLevel !== 'all') {
+        arr = arr.filter(p => !p.level || p.level === currentLevel);
+    }
+    if (currentTheme !== 'all') {
+        arr = arr.filter(p => p.theme === currentTheme);
+    }
+    return arr;
 }
 
 // ===== НАВИГАЦИЯ =====
@@ -1213,6 +1219,19 @@ function renderWrite() {
 }
 
 // ===== PHRASES =====
+function getPhraseThemes() {
+    const counts = {};
+    phrases.forEach(p => {
+        const t = p.theme || 'other';
+        counts[t] = (counts[t] || 0) + 1;
+    });
+    // Сортируем по количеству
+    const sorted = Object.entries(counts)
+        .filter(([t, c]) => c >= 20)  // только темы >= 20
+        .sort((a, b) => b[1] - a[1]);
+    return sorted.map(([t, c]) => ({ theme: t, count: c }));
+}
+
 function renderPhrases() {
     const allWithTranslation = phrases.filter(p => getTranslation(p));
     const data = getFilteredPhrases().filter(p => getTranslation(p));
@@ -1246,7 +1265,18 @@ function renderPhrases() {
 
     const options = [correct, ...wrongOptions].sort(() => Math.random() - 0.5);
     const progressPct = Math.round(((positions.phrases + 1) / data.length) * 100);
-
+    // === КНОПКИ ТЕМ ===
+    const themes = getPhraseThemes();
+    const themeChips = `
+        <button class="theme-chip ${currentTheme === 'all' ? 'active' : ''}" data-theme="all">
+            All · ${phrases.filter(p => getTranslation(p)).length}
+        </button>
+        ${themes.map(t => `
+            <button class="theme-chip ${currentTheme === t.theme ? 'active' : ''}" data-theme="${t.theme}">
+                ${t.theme} · ${t.count}
+            </button>
+        `).join('')}
+    `;
     document.getElementById('content').innerHTML = `
         <div class="mode-wrap">
             <div class="mode-progress">
@@ -1258,6 +1288,8 @@ function renderPhrases() {
                     <div class="mode-progress-fill" style="width:${progressPct}%"></div>
                 </div>
             </div>
+            
+            <div class="theme-chips-row">${themeChips}</div>
 
             <div class="mode-card">
                 <div class="mode-badge">
@@ -1311,6 +1343,16 @@ function renderPhrases() {
         savePositions();
         renderPhrases();
     };
+
+    // === ОБРАБОТЧИКИ ТЕМ ===
+    document.querySelectorAll('.theme-chip').forEach(btn => {
+        btn.onclick = () => {
+            currentTheme = btn.dataset.theme;
+            positions.phrases = 0;
+            savePositions();
+            renderPhrases();
+        };
+    });
 
     refreshIcons();
 }
