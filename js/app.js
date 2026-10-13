@@ -249,7 +249,11 @@ async function loadData() {
             const tempRes = await fetch('data/temporary.json');
             tempFromJson = await tempRes.json();
             if (!Array.isArray(tempFromJson)) tempFromJson = [];
+<<<<<<< HEAD
+        } catch (e) { }
+=======
         } catch (e) {}
+>>>>>>> 2e320d313d988293643029bb0b2e8ff98d55b2f0
 
         let tempFromLocal = [];
         try {
@@ -258,7 +262,11 @@ async function loadData() {
                 const parsed = JSON.parse(localTemp);
                 if (Array.isArray(parsed)) tempFromLocal = parsed;
             }
+<<<<<<< HEAD
+        } catch (e) { }
+=======
         } catch (e) {}
+>>>>>>> 2e320d313d988293643029bb0b2e8ff98d55b2f0
 
         temporary = mergeTemporary(tempFromJson, tempFromLocal);
         localStorage.setItem('temporary', JSON.stringify(temporary));
@@ -376,8 +384,13 @@ function getBlockProgress(tenseKeys) {
 
 function getBlockName(block) {
     if (block === 'present') return { label: 'Present', emoji: '🟢', color: 'green' };
+<<<<<<< HEAD
+    if (block === 'past') return { label: 'Past', emoji: '🟡', color: 'amber' };
+    if (block === 'future') return { label: 'Future', emoji: '🔴', color: 'red' };
+=======
     if (block === 'past')    return { label: 'Past',    emoji: '🟡', color: 'amber' };
     if (block === 'future')  return { label: 'Future',  emoji: '🔴', color: 'red' };
+>>>>>>> 2e320d313d988293643029bb0b2e8ff98d55b2f0
     return { label: block, emoji: '⚪', color: 'gray' };
 }
 
@@ -1450,11 +1463,19 @@ function renderTempList() {
         </div>
         <div class="list-items">
             ${temporary.length === 0
+<<<<<<< HEAD
+            ? `<div class="empty-inline">
+                    <i data-lucide="inbox"></i>
+                    <div>Пока нет временных слов. Нажми «Добавить слово».</div>
+                </div>`
+            : temporary.map((w, i) => `
+=======
                 ? `<div class="empty-inline">
                     <i data-lucide="inbox"></i>
                     <div>Пока нет временных слов. Нажми «Добавить слово».</div>
                 </div>`
                 : temporary.map((w, i) => `
+>>>>>>> 2e320d313d988293643029bb0b2e8ff98d55b2f0
                     <div class="list-item">
                         <div class="list-item-info">
                             <strong>${w.word}</strong>
@@ -1469,7 +1490,11 @@ function renderTempList() {
                         </button>
                     </div>
                 `).join('')
+<<<<<<< HEAD
+        }
+=======
             }
+>>>>>>> 2e320d313d988293643029bb0b2e8ff98d55b2f0
         </div>
     `;
 }
@@ -1906,11 +1931,19 @@ function renderSentences() {
             All · ${totalAll}
         </button>
         ${tenses.map(t => {
+<<<<<<< HEAD
+        const count = sentences.filter(s => s.tense === t.key).length;
+        return `<button class="chip ${sentTenseFilter === t.key ? 'active' : ''}" data-tense="${t.key}">
+                ${t.label} · ${count}
+            </button>`;
+    }).join('')}
+=======
             const count = sentences.filter(s => s.tense === t.key).length;
             return `<button class="chip ${sentTenseFilter === t.key ? 'active' : ''}" data-tense="${t.key}">
                 ${t.label} · ${count}
             </button>`;
         }).join('')}
+>>>>>>> 2e320d313d988293643029bb0b2e8ff98d55b2f0
     `;
 
     const levels = getUniqueLevels();
