@@ -38,12 +38,7 @@
     "example_translation": "Перепрыгни!",
     "transcription_ru": "экрос",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "come across",
-        "translation": "приходить, поперек"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -112,12 +107,7 @@
     "example": "Added.",
     "example_translation": "Добавлено.",
     "transcription_ru": "эд",
-    "family": [
-      {
-        "word": "added",
-        "translation": "добавил"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -160,16 +150,7 @@
     "example_translation": "Никогда не давай советов.",
     "transcription_ru": "эдвайс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "what advice",
-        "translation": "what, совет"
-      },
-      {
-        "phrase": "your advice",
-        "translation": "your, совет"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -183,16 +164,7 @@
     "example_translation": "Не бойся!",
     "transcription_ru": "эфрейд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "afraid of",
-        "translation": "бояться, of"
-      },
-      {
-        "phrase": "be afraid",
-        "translation": "be, бояться"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -248,12 +220,7 @@
     "example_translation": "\"Возраст?\" - \"16\".",
     "transcription_ru": "эйдж",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "same age",
-        "translation": "same, возраст"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -267,20 +234,7 @@
     "example_translation": "Срок годности вышел несколько месяцев назад.",
     "transcription_ru": "эгоу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "hour ago",
-        "translation": "час, давно"
-      },
-      {
-        "phrase": "time ago",
-        "translation": "время, давно"
-      },
-      {
-        "phrase": "years ago",
-        "translation": "Много лет назад"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -294,12 +248,7 @@
     "example_translation": "Согласна.",
     "transcription_ru": "эгри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "agree with",
-        "translation": "соглашаться, with"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -355,20 +304,7 @@
     "example_translation": "Он тоже ушёл.",
     "transcription_ru": "олсоу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "also acceptable",
-        "translation": "также, приемлемый"
-      },
-      {
-        "phrase": "also possible",
-        "translation": "также, возможный"
-      },
-      {
-        "phrase": "can also",
-        "translation": "can, также"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -382,20 +318,7 @@
     "example_translation": "Всегда.",
     "transcription_ru": "олуейз",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "always count",
-        "translation": "всегда, считать"
-      },
-      {
-        "phrase": "always liked",
-        "translation": "всегда, нравиться"
-      },
-      {
-        "phrase": "always wanted",
-        "translation": "всегда, желанный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -437,20 +360,7 @@
     "example_translation": "Ты злишься.",
     "transcription_ru": "энггри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "an angry",
-        "translation": "an, гнев"
-      },
-      {
-        "phrase": "angry about",
-        "translation": "гнев, about"
-      },
-      {
-        "phrase": "very angry",
-        "translation": "very, гнев"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -478,20 +388,7 @@
     "example_translation": "Ещё один!",
     "transcription_ru": "энэзэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "another country",
-        "translation": "другой, страна"
-      },
-      {
-        "phrase": "another example",
-        "translation": "другой, пример"
-      },
-      {
-        "phrase": "another place",
-        "translation": "другой, место"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -505,12 +402,7 @@
     "example_translation": "Отвечай!",
     "transcription_ru": "энсэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "correct answer",
-        "translation": "Правильный ответ"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -678,12 +570,7 @@
     "example_translation": "Прочти эту статью.",
     "transcription_ru": "артикэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "an article",
-        "translation": "an, статья"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -724,12 +611,7 @@
     "example": "Ask.",
     "example_translation": "Спроси!",
     "transcription_ru": "эск",
-    "family": [
-      {
-        "word": "asked",
-        "translation": "спросил"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -800,20 +682,7 @@
     "example_translation": "Долой!",
     "transcription_ru": "эуей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "away from",
-        "translation": "уходить, from"
-      },
-      {
-        "phrase": "right away",
-        "translation": "правильно, правый, уходить"
-      },
-      {
-        "phrase": "take away",
-        "translation": "брать, уходить"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -841,16 +710,7 @@
     "example_translation": "Отойди.",
     "transcription_ru": "бэк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "came back",
-        "translation": "пришел, назад"
-      },
-      {
-        "phrase": "come back",
-        "translation": "приходить, назад"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -864,16 +724,7 @@
     "example_translation": "Какая жалость.",
     "transcription_ru": "бэд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "bad situation",
-        "translation": "плохой, ситуация"
-      },
-      {
-        "phrase": "very bad",
-        "translation": "very, плохой"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1013,16 +864,7 @@
     "example_translation": "Прекрасно!",
     "transcription_ru": "бйутэфэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "beautiful girl",
-        "translation": "красивый, девочка"
-      },
-      {
-        "phrase": "very beautiful",
-        "translation": "very, красивый"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1050,12 +892,7 @@
     "example_translation": "Стань неуправляемым.",
     "transcription_ru": "бикэм",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "will become",
-        "translation": "will, становиться"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1139,16 +976,7 @@
     "example_translation": "Начинай.",
     "transcription_ru": "бигининг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "beginning of",
-        "translation": "начало, of"
-      },
-      {
-        "phrase": "the beginning",
-        "translation": "the, начало"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1176,12 +1004,7 @@
     "example_translation": "Верьте.",
     "transcription_ru": "билив",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "believe that",
-        "translation": "верить, that"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1209,20 +1032,7 @@
     "example_translation": "С уважением.",
     "transcription_ru": "бест",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "best channel",
-        "translation": "лучший, channel"
-      },
-      {
-        "phrase": "best choice",
-        "translation": "лучший, выбор"
-      },
-      {
-        "phrase": "best friend",
-        "translation": "лучший, друг"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1236,20 +1046,7 @@
     "example_translation": "Лучше.",
     "transcription_ru": "бетэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "better job",
-        "translation": "лучше, работа"
-      },
-      {
-        "phrase": "better place",
-        "translation": "лучше, место"
-      },
-      {
-        "phrase": "better results",
-        "translation": "лучше, результаты"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1291,20 +1088,7 @@
     "example_translation": "Подумаешь!",
     "transcription_ru": "биг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "big choice",
-        "translation": "большой, выбор"
-      },
-      {
-        "phrase": "big mistake",
-        "translation": "большой, ошибка"
-      },
-      {
-        "phrase": "big problem",
-        "translation": "большой, проблема"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1360,12 +1144,7 @@
     "example_translation": "С днём рождения!",
     "transcription_ru": "бэрсдей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "your birthday",
-        "translation": "your, день рождения"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1462,22 +1241,8 @@
     "example": "Read books.",
     "example_translation": "Читай книги.",
     "transcription_ru": "бук",
-    "family": [
-      {
-        "word": "books",
-        "translation": "книги"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "book consists",
-        "translation": "книга, состоит из"
-      },
-      {
-        "phrase": "interesting book",
-        "translation": "интересный, книга"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1519,16 +1284,7 @@
     "example_translation": "Скучно!",
     "transcription_ru": "боринг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "so boring",
-        "translation": "so, скучный"
-      },
-      {
-        "phrase": "very boring",
-        "translation": "very, скучный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1542,16 +1298,7 @@
     "example_translation": "Как рождаются звёзды?",
     "transcription_ru": "борн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "born on",
-        "translation": "рожденный, on"
-      },
-      {
-        "phrase": "was born",
-        "translation": "was, рожденный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1606,12 +1353,7 @@
     "example": "Boy!",
     "example_translation": "Надо же!",
     "transcription_ru": "бой",
-    "family": [
-      {
-        "word": "boys",
-        "translation": "мальчики"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -1626,12 +1368,7 @@
     "example_translation": "Я знаю её парня.",
     "transcription_ru": "бойфренд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "her boyfriend",
-        "translation": "her, парень"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1659,12 +1396,7 @@
     "example_translation": "Перерыв!",
     "transcription_ru": "брейк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "break up",
-        "translation": "разрыв, up"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1706,16 +1438,7 @@
     "example_translation": "Братья!",
     "transcription_ru": "брэзэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my brother",
-        "translation": "my, брат"
-      },
-      {
-        "phrase": "your brother",
-        "translation": "your, брат"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1742,12 +1465,7 @@
     "example": "Build it.",
     "example_translation": "Построй его.",
     "transcription_ru": "билд",
-    "family": [
-      {
-        "word": "building",
-        "translation": "здание"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -1761,12 +1479,7 @@
     "example": "Build it.",
     "example_translation": "Построй его.",
     "transcription_ru": "билдинг",
-    "family": [
-      {
-        "word": "build",
-        "translation": "строить"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -1795,20 +1508,7 @@
     "example_translation": "Займись делом.",
     "transcription_ru": "бизнис",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "business partner",
-        "translation": "бизнес, партнер"
-      },
-      {
-        "phrase": "business trip",
-        "translation": "бизнес, trip"
-      },
-      {
-        "phrase": "profitable business",
-        "translation": "profitable, бизнес"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1822,16 +1522,7 @@
     "example_translation": "Займись делом.",
     "transcription_ru": "бизи",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "be busy",
-        "translation": "be, занятый"
-      },
-      {
-        "phrase": "very busy",
-        "translation": "very, занятый"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1873,12 +1564,7 @@
     "example_translation": "Покупай!",
     "transcription_ru": "бай",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "buy next",
-        "translation": "покупать, следующий"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -1947,22 +1633,8 @@
     "example": "Call!",
     "example_translation": "Звонок!",
     "transcription_ru": "кол",
-    "family": [
-      {
-        "word": "called",
-        "translation": "называемый"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "call him",
-        "translation": "звонить, him"
-      },
-      {
-        "phrase": "call me",
-        "translation": "перезвони мне"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2032,12 +1704,7 @@
     "example_translation": "Машина!",
     "transcription_ru": "кар",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "good car",
-        "translation": "хорошо, автомобиль"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2191,12 +1858,7 @@
     "example_translation": "Переоденься.",
     "transcription_ru": "чейндж",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "change his",
-        "translation": "изменение, his"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2237,12 +1899,7 @@
     "example": "Check.",
     "example_translation": "Шах.",
     "transcription_ru": "чек",
-    "family": [
-      {
-        "word": "checked",
-        "translation": "проверил"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -2285,12 +1942,7 @@
     "example_translation": "",
     "transcription_ru": "айлд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a child",
-        "translation": "a, ребенок"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2332,12 +1984,7 @@
     "example_translation": "Я люблю кино.",
     "transcription_ru": "синэмэ",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "the cinema",
-        "translation": "the, кино"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2491,12 +2138,7 @@
     "example_translation": "Кофе?",
     "transcription_ru": "кофи",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "of coffee",
-        "translation": "of, кофе"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2552,20 +2194,7 @@
     "example_translation": "Иду!",
     "transcription_ru": "кэм",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "come across",
-        "translation": "приходить, поперек"
-      },
-      {
-        "phrase": "come back",
-        "translation": "приходить, назад"
-      },
-      {
-        "phrase": "come down",
-        "translation": "приходить, down"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2579,12 +2208,7 @@
     "example_translation": "Это обычное дело.",
     "transcription_ru": "камэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "very common",
-        "translation": "very, общий"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2598,12 +2222,7 @@
     "example_translation": "Составь мне компанию.",
     "transcription_ru": "кэмпэни",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "profitable company",
-        "translation": "profitable, компания"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2630,12 +2249,7 @@
     "example": "Relax completely.",
     "example_translation": "Полностью расслабься.",
     "transcription_ru": "кэмплит",
-    "family": [
-      {
-        "word": "completely",
-        "translation": "полностью"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -2650,20 +2264,7 @@
     "example_translation": "Чёртов компьютер!",
     "transcription_ru": "кэмпйутэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "computer games",
-        "translation": "компьютер, игры"
-      },
-      {
-        "phrase": "play computer",
-        "translation": "играть, компьютер"
-      },
-      {
-        "phrase": "playing computer",
-        "translation": "играть, компьютер"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2746,22 +2347,8 @@
     "example": "Correct?",
     "example_translation": "Правильно?",
     "transcription_ru": "кэрект",
-    "family": [
-      {
-        "word": "correctly",
-        "translation": "правильно"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "correct answer",
-        "translation": "Правильный ответ"
-      },
-      {
-        "phrase": "only correct",
-        "translation": "only, исправлять"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2774,18 +2361,8 @@
     "example": "It costs nothing.",
     "example_translation": "Это ничего не стоит.",
     "transcription_ru": "кост",
-    "family": [
-      {
-        "word": "costs",
-        "translation": "расходы"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "cost how",
-        "translation": "стоить, how"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2799,12 +2376,7 @@
     "example_translation": "Конечно!",
     "transcription_ru": "куд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "could help",
-        "translation": "мог бы, помочь"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2818,12 +2390,7 @@
     "example_translation": "",
     "transcription_ru": "кэнтри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "another country",
-        "translation": "другой, страна"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2837,16 +2404,7 @@
     "example_translation": "Конечно!",
     "transcription_ru": "корс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "entire course",
-        "translation": "целиком, курс"
-      },
-      {
-        "phrase": "of course",
-        "translation": "of, курс"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -2958,12 +2516,7 @@
     "example_translation": "Режьте!",
     "transcription_ru": "кэт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "cut down",
-        "translation": "рубить, down"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3088,26 +2641,8 @@
     "example": "G'day!",
     "example_translation": "Здравствуйте.",
     "transcription_ru": "дей",
-    "family": [
-      {
-        "word": "days",
-        "translation": "дни"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "day after",
-        "translation": "день, after"
-      },
-      {
-        "phrase": "day before",
-        "translation": "день, before"
-      },
-      {
-        "phrase": "every day",
-        "translation": "каждый день"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3233,16 +2768,7 @@
     "example_translation": "Добавь деталей.",
     "transcription_ru": "дитейл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "important detail",
-        "translation": "важный, деталь"
-      },
-      {
-        "phrase": "in detail",
-        "translation": "in, деталь"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3270,12 +2796,7 @@
     "example_translation": "Посмотри в своём словаре.",
     "transcription_ru": "дикшэнери",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a dictionary",
-        "translation": "a, словарь"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3317,16 +2838,7 @@
     "example_translation": "Те же яйца, только в профиль.",
     "transcription_ru": "дифэрэнс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "difference between",
-        "translation": "разница, between"
-      },
-      {
-        "phrase": "the difference",
-        "translation": "the, разница"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3339,18 +2851,8 @@
     "example": "Same difference.",
     "example_translation": "Те же яйца, только в профиль.",
     "transcription_ru": "дифэрэнт",
-    "family": [
-      {
-        "word": "differently",
-        "translation": "по-разному"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "different things",
-        "translation": "различный, вещи"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3363,26 +2865,8 @@
     "example": "Exercise is difficult.",
     "example_translation": "Упражнение сложное.",
     "transcription_ru": "дифэкэлт",
-    "family": [
-      {
-        "word": "difficulties",
-        "translation": "трудности"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "difficult exam",
-        "translation": "сложный, экзамен"
-      },
-      {
-        "phrase": "more difficult",
-        "translation": "more, сложный"
-      },
-      {
-        "phrase": "most difficult",
-        "translation": "most, сложный"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3424,12 +2908,7 @@
     "example_translation": "Обсуждение продолжается.",
     "transcription_ru": "дискэс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "let discuss",
-        "translation": "давать, обсуждать"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3471,12 +2950,7 @@
     "example_translation": "Здравствуйте, доктор!",
     "transcription_ru": "доктэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a doctor",
-        "translation": "a, врач"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3517,18 +2991,8 @@
     "example": "These are doors.",
     "example_translation": "Это двери.",
     "transcription_ru": "дор",
-    "family": [
-      {
-        "word": "doors",
-        "translation": "двери"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "the door",
-        "translation": "the, дверь"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3696,12 +3160,7 @@
     "example_translation": "Выезжай пораньше.",
     "transcription_ru": "эрли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "very early",
-        "translation": "very, ранний"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3729,20 +3188,7 @@
     "example_translation": "Спасибо!",
     "transcription_ru": "изи",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "an easy",
-        "translation": "an, легко"
-      },
-      {
-        "phrase": "easy lesson",
-        "translation": "легко, lesson"
-      },
-      {
-        "phrase": "so easy",
-        "translation": "so, легко"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3854,16 +3300,7 @@
     "example_translation": "Где же ещё?",
     "transcription_ru": "елс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "something else",
-        "translation": "что-то, другой"
-      },
-      {
-        "phrase": "what else",
-        "translation": "what, другой"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3890,12 +3327,7 @@
     "example": "End it.",
     "example_translation": "Прекрати это.",
     "transcription_ru": "енд",
-    "family": [
-      {
-        "word": "ended",
-        "translation": "конец"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -3910,12 +3342,7 @@
     "example_translation": "Приятного аппетита!",
     "transcription_ru": "еной",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "i enjoy",
-        "translation": "i, наслаждаться"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3929,20 +3356,7 @@
     "example_translation": "Хватит.",
     "transcription_ru": "инэф",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "enough money",
-        "translation": "достаточно, деньги"
-      },
-      {
-        "phrase": "professional enough",
-        "translation": "профессиональный, достаточно"
-      },
-      {
-        "phrase": "than enough",
-        "translation": "than, достаточно"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -3970,16 +3384,7 @@
     "example_translation": "Мы квиты?",
     "transcription_ru": "ивин",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "even more",
-        "translation": "даже, more"
-      },
-      {
-        "phrase": "or even",
-        "translation": "or, даже"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4007,12 +3412,7 @@
     "example_translation": "Кто организовал это мероприятие?",
     "transcription_ru": "ивент",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this event",
-        "translation": "this, событие"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4026,16 +3426,7 @@
     "example_translation": "Никогда в жизни!",
     "transcription_ru": "евэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "ever been",
-        "translation": "вечно, been"
-      },
-      {
-        "phrase": "you ever",
-        "translation": "you, вечно"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4049,16 +3440,7 @@
     "example_translation": "Любой язык развивается.",
     "transcription_ru": "евэри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "every day",
-        "translation": "каждый день"
-      },
-      {
-        "phrase": "every year",
-        "translation": "каждый, год"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4086,12 +3468,7 @@
     "example_translation": "Все проиграли.",
     "transcription_ru": "евриуэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "everyone has",
-        "translation": "все, has"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4105,12 +3482,7 @@
     "example_translation": "Всё в порядке?",
     "transcription_ru": "еврисинг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "everything seemed",
-        "translation": "все, казаться"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4124,12 +3496,7 @@
     "example_translation": "Когда экзамен?",
     "transcription_ru": "игзэм",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "difficult exam",
-        "translation": "сложный, экзамен"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4143,16 +3510,7 @@
     "example_translation": "Приведи примеры!",
     "transcription_ru": "игзэмпэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "another example",
-        "translation": "другой, пример"
-      },
-      {
-        "phrase": "for example",
-        "translation": "for, пример"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4208,16 +3566,7 @@
     "example_translation": "Как дорого!",
     "transcription_ru": "икспенсив",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "an expensive",
-        "translation": "an, дорогой"
-      },
-      {
-        "phrase": "more expensive",
-        "translation": "more, дорогой"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4230,12 +3579,7 @@
     "example": "They explain.",
     "example_translation": "Они объясняют.",
     "transcription_ru": "иксплейн",
-    "family": [
-      {
-        "word": "explained",
-        "translation": "объяснять"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -4278,12 +3622,7 @@
     "example_translation": "Смотри вперёд.",
     "transcription_ru": "фейс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "his face",
-        "translation": "his, лицо"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4297,16 +3636,7 @@
     "example_translation": "Смотри правде в глаза!",
     "transcription_ru": "фэкт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "fact that",
-        "translation": "факт, that"
-      },
-      {
-        "phrase": "in fact",
-        "translation": "in, факт"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4348,12 +3678,7 @@
     "example_translation": "Мы семья.",
     "transcription_ru": "фэмэли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "your family",
-        "translation": "your, семья"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4395,16 +3720,7 @@
     "example_translation": "Странно.",
     "transcription_ru": "фар",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "far from",
-        "translation": "далеко, from"
-      },
-      {
-        "phrase": "very far",
-        "translation": "very, далеко"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4446,16 +3762,7 @@
     "example_translation": "Они постились.",
     "transcription_ru": "фэст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "so fast",
-        "translation": "so, быстро"
-      },
-      {
-        "phrase": "very fast",
-        "translation": "very, быстро"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4483,20 +3790,7 @@
     "example_translation": "Привет, папа.",
     "transcription_ru": "фазэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "his father",
-        "translation": "his, отец"
-      },
-      {
-        "phrase": "my father",
-        "translation": "my, отец"
-      },
-      {
-        "phrase": "your father",
-        "translation": "your, отец"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4537,30 +3831,6 @@
     "example": "Feel this.",
     "example_translation": "Почувствуй это!",
     "transcription_ru": "фил",
-    "family": [
-      {
-        "word": "feels",
-        "translation": "чувствовать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "feel happy",
-        "translation": "чувствовать, счастливый"
-      }
-    ],
-    "level": "A1"
-  },
-  {
-    "word": "feeling",
-    "translation": "чувство",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈfiɫɪŋ/",
-    "pos": "n",
-    "example": "I feel happy.",
-    "example_translation": "Я чувствую себя счастливой.",
-    "transcription_ru": "филинг",
     "family": [],
     "collocations": [],
     "level": "A1"
@@ -4646,16 +3916,7 @@
     "example_translation": "Наполни его.",
     "transcription_ru": "фил",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "fill in",
-        "translation": "заполнять, in"
-      },
-      {
-        "phrase": "fill out",
-        "translation": "заполнять, out"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4697,12 +3958,7 @@
     "example_translation": "Найди.",
     "transcription_ru": "файнд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "find out",
-        "translation": "найти, out"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4729,18 +3985,8 @@
     "example": "I finish.",
     "example_translation": "Я закончил.",
     "transcription_ru": "финиш",
-    "family": [
-      {
-        "word": "finished",
-        "translation": "закончил"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "finish doing",
-        "translation": "заканчивать, doing"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4768,20 +4014,7 @@
     "example_translation": "Здоровье прежде всего!",
     "transcription_ru": "фэрст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "first part",
-        "translation": "первый, часть"
-      },
-      {
-        "phrase": "first place",
-        "translation": "первый, место"
-      },
-      {
-        "phrase": "first time",
-        "translation": "первый, время"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4809,16 +4042,7 @@
     "example_translation": "Дай пять!",
     "transcription_ru": "файв",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "five years",
-        "translation": "пять, годы"
-      },
-      {
-        "phrase": "for five",
-        "translation": "for, пять"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4901,18 +4125,8 @@
     "example": "Follow them.",
     "example_translation": "Поезжай за ними.",
     "transcription_ru": "фалоу",
-    "family": [
-      {
-        "word": "following",
-        "translation": "следующий"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "follow your",
-        "translation": "следовать, your"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -4982,12 +4196,7 @@
     "example_translation": "Забудьте!",
     "transcription_ru": "фэргет",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "do forget",
-        "translation": "do, забыть"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5000,30 +4209,8 @@
     "example": "Dense clouds formed.",
     "example_translation": "Образовались плотные облака.",
     "transcription_ru": "форм",
-    "family": [
-      {
-        "word": "formal",
-        "translation": "формальный"
-      },
-      {
-        "word": "forms",
-        "translation": "формы (глагола)"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "full form",
-        "translation": "полный, форма"
-      },
-      {
-        "phrase": "negative form",
-        "translation": "отрицательный, форма"
-      },
-      {
-        "phrase": "second form",
-        "translation": "второй, форма"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5093,20 +4280,7 @@
     "example_translation": "Освободите Гавайи!",
     "transcription_ru": "фри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "be free",
-        "translation": "be, свободный, бесплатный"
-      },
-      {
-        "phrase": "free time",
-        "translation": "свободное время"
-      },
-      {
-        "phrase": "free tomorrow",
-        "translation": "свободный, бесплатный, завтра"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5133,26 +4307,8 @@
     "example": "Hello, friends.",
     "example_translation": "Здравствуйте, друзья.",
     "transcription_ru": "френд",
-    "family": [
-      {
-        "word": "friends",
-        "translation": "друзья"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "best friend",
-        "translation": "лучший, друг"
-      },
-      {
-        "phrase": "friend name",
-        "translation": "друг, имя"
-      },
-      {
-        "phrase": "my friend",
-        "translation": "my, друг"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5194,16 +4350,7 @@
     "example_translation": "Деньги вперёд.",
     "transcription_ru": "фрэнт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "front of",
-        "translation": "фронт, of"
-      },
-      {
-        "phrase": "in front",
-        "translation": "in, фронт"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5231,16 +4378,7 @@
     "example_translation": "Полный назад!",
     "transcription_ru": "фул",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "full form",
-        "translation": "полный, форма"
-      },
-      {
-        "phrase": "full of",
-        "translation": "Полный энергии"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5282,16 +4420,7 @@
     "example_translation": "Будущее наступило.",
     "transcription_ru": "фйуэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "future simple",
-        "translation": "будущее, простой"
-      },
-      {
-        "phrase": "future tense",
-        "translation": "будущее, время (грамматическое)"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5346,26 +4475,8 @@
     "example": "Get changed!",
     "example_translation": "Переоденься.",
     "transcription_ru": "гит",
-    "family": [
-      {
-        "word": "gets",
-        "translation": "получать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "get along",
-        "translation": "получать, вдоль"
-      },
-      {
-        "phrase": "get home",
-        "translation": "получать, дом"
-      },
-      {
-        "phrase": "get married",
-        "translation": "получать, женатый"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5379,12 +4490,7 @@
     "example_translation": "Хорошая девочка!",
     "transcription_ru": "гэрл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "beautiful girl",
-        "translation": "красивый, девочка"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5398,16 +4504,7 @@
     "example_translation": "Моя девушка плакала.",
     "transcription_ru": "гэрлфренд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "his girlfriend",
-        "translation": "his, девушка"
-      },
-      {
-        "phrase": "my girlfriend",
-        "translation": "my, девушка"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5463,20 +4560,7 @@
     "example_translation": "Хорошо!",
     "transcription_ru": "гуд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "good car",
-        "translation": "хорошо, автомобиль"
-      },
-      {
-        "phrase": "good job",
-        "translation": "хорошо, работа"
-      },
-      {
-        "phrase": "good luck",
-        "translation": "хорошо, luck"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5545,26 +4629,8 @@
     "example": "Great.",
     "example_translation": "Здорово.",
     "transcription_ru": "грейт",
-    "family": [
-      {
-        "word": "greatly",
-        "translation": "очень"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "great pleasure",
-        "translation": "большое удовольствие"
-      },
-      {
-        "phrase": "great time",
-        "translation": "великий, время"
-      },
-      {
-        "phrase": "with great",
-        "translation": "with, великий"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5676,12 +4742,7 @@
     "example_translation": "Повсюду кошачья шерсть!",
     "transcription_ru": "хер",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "hair dryer",
-        "translation": "волосы, dryer"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5695,16 +4756,7 @@
     "example_translation": "Средний назад!",
     "transcription_ru": "хэф",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "for half",
-        "translation": "for, половина"
-      },
-      {
-        "phrase": "half an",
-        "translation": "половина, an"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5717,12 +4769,7 @@
     "example": "Hands off!",
     "example_translation": "Руки прочь!",
     "transcription_ru": "хэнд",
-    "family": [
-      {
-        "word": "hands",
-        "translation": "руки"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -5736,34 +4783,8 @@
     "example": "Nothing happened!",
     "example_translation": "Ничего не произошло!",
     "transcription_ru": "хэпэн",
-    "family": [
-      {
-        "word": "happened",
-        "translation": "случилось"
-      },
-      {
-        "word": "happening",
-        "translation": "происходящее"
-      },
-      {
-        "word": "happens",
-        "translation": "случается"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "happen sooner",
-        "translation": "случается, sooner"
-      },
-      {
-        "phrase": "things happen",
-        "translation": "вещи, случается"
-      },
-      {
-        "phrase": "will happen",
-        "translation": "will, случается"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5777,16 +4798,7 @@
     "example_translation": "С пятницей!",
     "transcription_ru": "хэпи",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "feel happy",
-        "translation": "чувствовать, счастливый"
-      },
-      {
-        "phrase": "so happy",
-        "translation": "so, счастливый"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5800,20 +4812,7 @@
     "example_translation": "Подумай хорошенько.",
     "transcription_ru": "хард",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "hard work",
-        "translation": "тяжелый, твердый, работать"
-      },
-      {
-        "phrase": "very hard",
-        "translation": "very, тяжелый, твердый"
-      },
-      {
-        "phrase": "your hard",
-        "translation": "your, тяжелый, твердый"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5953,20 +4952,7 @@
     "example_translation": "",
     "transcription_ru": "хелоу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "friends hello",
-        "translation": "друзья, привет"
-      },
-      {
-        "phrase": "hello friends",
-        "translation": "привет, друзья"
-      },
-      {
-        "phrase": "hello hi",
-        "translation": "привет, hi"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -5979,30 +4965,8 @@
     "example": "Help.",
     "example_translation": "Помоги.",
     "transcription_ru": "хелп",
-    "family": [
-      {
-        "word": "helped",
-        "translation": "помог"
-      },
-      {
-        "word": "helps",
-        "translation": "помогает"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "ca help",
-        "translation": "ca, помочь"
-      },
-      {
-        "phrase": "could help",
-        "translation": "мог бы, помочь"
-      },
-      {
-        "phrase": "help me",
-        "translation": "помочь, me"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6071,26 +5035,8 @@
     "example": "High five!",
     "example_translation": "Дай пять!",
     "transcription_ru": "хай",
-    "family": [
-      {
-        "word": "higher",
-        "translation": "выше"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "high level",
-        "translation": "высокий, уровень"
-      },
-      {
-        "phrase": "high time",
-        "translation": "высокий, время"
-      },
-      {
-        "phrase": "very high",
-        "translation": "very, высокий"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6160,12 +5106,7 @@
     "example_translation": "С праздниками!",
     "transcription_ru": "халидей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "on holiday",
-        "translation": "on, праздник"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6179,20 +5120,7 @@
     "example_translation": "Я в домике!",
     "transcription_ru": "хоум",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "at home",
-        "translation": "at, дом"
-      },
-      {
-        "phrase": "came home",
-        "translation": "пришел, дом"
-      },
-      {
-        "phrase": "comes home",
-        "translation": "приходить, дом"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6220,12 +5148,7 @@
     "example_translation": "Надеюсь, что так.",
     "transcription_ru": "хоуп",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "i hope",
-        "translation": "i, надежда"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6294,22 +5217,8 @@
     "example": "Two hours passed.",
     "example_translation": "Прошло два часа.",
     "transcription_ru": "ауэр",
-    "family": [
-      {
-        "word": "hours",
-        "translation": "часы"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "an hour",
-        "translation": "an, час"
-      },
-      {
-        "phrase": "hour ago",
-        "translation": "час, давно"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6323,12 +5232,7 @@
     "example_translation": "Какой дом?",
     "transcription_ru": "хаус",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "new house",
-        "translation": "новый, дом"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6398,12 +5302,7 @@
     "example_translation": "Позови моего мужа.",
     "transcription_ru": "хэзбэнд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "her husband",
-        "translation": "her, муж"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6458,22 +5357,8 @@
     "example": "Nice idea.",
     "example_translation": "Хорошая идея.",
     "transcription_ru": "айдиэ",
-    "family": [
-      {
-        "word": "ideas",
-        "translation": "идеи"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "an idea",
-        "translation": "an, идея"
-      },
-      {
-        "phrase": "interesting idea",
-        "translation": "интересный, идея"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6501,12 +5386,7 @@
     "example_translation": "Представь!",
     "transcription_ru": "имээн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "ca imagine",
-        "translation": "ca, вообразить"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6520,20 +5400,7 @@
     "example_translation": "Насколько важно?",
     "transcription_ru": "импортэнт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "an important",
-        "translation": "an, важный"
-      },
-      {
-        "phrase": "important detail",
-        "translation": "важный, деталь"
-      },
-      {
-        "phrase": "important playlist",
-        "translation": "важный, playlist"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6547,20 +5414,7 @@
     "example_translation": "Улучши это.",
     "transcription_ru": "импрув",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "improve my",
-        "translation": "Улучшить свой английский"
-      },
-      {
-        "phrase": "improve your",
-        "translation": "улучшать, your"
-      },
-      {
-        "phrase": "to improve",
-        "translation": "to, улучшать"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6602,12 +5456,7 @@
     "example_translation": "Держи в курсе.",
     "transcription_ru": "информейшэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this information",
-        "translation": "this, информация"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6621,16 +5470,7 @@
     "example_translation": "Интересно!",
     "transcription_ru": "интэрест",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "does interest",
-        "translation": "does, интерес"
-      },
-      {
-        "phrase": "interest me",
-        "translation": "интерес, me"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6643,22 +5483,8 @@
     "example": "Interesting!",
     "example_translation": "Интересно!",
     "transcription_ru": "интэрестид",
-    "family": [
-      {
-        "word": "interesting",
-        "translation": "интересный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "be interested",
-        "translation": "be, заинтересованный"
-      },
-      {
-        "phrase": "interested in",
-        "translation": "заинтересованный, in"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6671,26 +5497,8 @@
     "example": "Interesting!",
     "example_translation": "Интересно!",
     "transcription_ru": "интэрестинг",
-    "family": [
-      {
-        "word": "interested",
-        "translation": "заинтересованный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "an interesting",
-        "translation": "an, интересный"
-      },
-      {
-        "phrase": "interesting book",
-        "translation": "интересный, книга"
-      },
-      {
-        "phrase": "interesting idea",
-        "translation": "интересный, идея"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6704,12 +5512,7 @@
     "example_translation": "Мне нужен Интернет.",
     "transcription_ru": "интэрнет",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "the internet",
-        "translation": "the, Интернет"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6849,16 +5652,7 @@
     "example_translation": "Отлично сделано!",
     "transcription_ru": "джоб",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "better job",
-        "translation": "лучше, работа"
-      },
-      {
-        "phrase": "good job",
-        "translation": "хорошо, работа"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -6956,12 +5750,7 @@
     "example_translation": "Береги.",
     "transcription_ru": "кип",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "keep up",
-        "translation": "держать, up"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7003,20 +5792,7 @@
     "example_translation": "Какое?",
     "transcription_ru": "кайнд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "kind of",
-        "translation": "вид, тип, of"
-      },
-      {
-        "phrase": "some kind",
-        "translation": "some, вид, тип"
-      },
-      {
-        "phrase": "what kind",
-        "translation": "what, вид, тип"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7043,12 +5819,7 @@
     "example": "You know!",
     "example_translation": "Ты знаешь!",
     "transcription_ru": "ноу",
-    "family": [
-      {
-        "word": "knows",
-        "translation": "знать"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -7077,20 +5848,7 @@
     "example_translation": "Язык – это важно.",
     "transcription_ru": "лэнггуи",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "english language",
-        "translation": "английский, язык"
-      },
-      {
-        "phrase": "language channel",
-        "translation": "язык, channel"
-      },
-      {
-        "phrase": "language playlist",
-        "translation": "язык, playlist"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7118,20 +5876,7 @@
     "example_translation": "Конечная!",
     "transcription_ru": "лэст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "last chance",
-        "translation": "последний, шанс"
-      },
-      {
-        "phrase": "last lesson",
-        "translation": "последний, lesson"
-      },
-      {
-        "phrase": "last month",
-        "translation": "последний, месяц"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7144,22 +5889,8 @@
     "example": "Too late!",
     "example_translation": "Слишком поздно!",
     "transcription_ru": "лейт",
-    "family": [
-      {
-        "word": "lately",
-        "translation": "в последнее время"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "be late",
-        "translation": "be, поздно"
-      },
-      {
-        "phrase": "too late",
-        "translation": "too, поздно"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7173,20 +5904,7 @@
     "example_translation": "Потом.",
     "transcription_ru": "лейтэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "later than",
-        "translation": "позже, чем обычно"
-      },
-      {
-        "phrase": "much later",
-        "translation": "много, позже"
-      },
-      {
-        "phrase": "or later",
-        "translation": "or, позже"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7213,22 +5931,8 @@
     "example": "Learn.",
     "example_translation": "Учись.",
     "transcription_ru": "лэрн",
-    "family": [
-      {
-        "word": "learned",
-        "translation": "учиться"
-      },
-      {
-        "word": "learning",
-        "translation": "обучение"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "learn english",
-        "translation": "выучить английский"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7242,31 +5946,7 @@
     "example_translation": "Уйди.",
     "transcription_ru": "лив",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "leave home",
-        "translation": "уходить, дом"
-      }
-    ],
-    "level": "A1"
-  },
-  {
-    "word": "left",
-    "translation": "левый, оставил",
-    "frequency": "346",
-    "note": "",
-    "ipa": "/lɛft/",
-    "pos": "adj adv n",
-    "example": "He left...",
-    "example_translation": "Он удалялся…",
-    "transcription_ru": "лефт",
-    "family": [],
-    "collocations": [
-      {
-        "phrase": "left home",
-        "translation": "левый, оставил, дом"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7308,20 +5988,7 @@
     "example_translation": "Позвольте!",
     "transcription_ru": "лет",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "herbalist let",
-        "translation": "herbalist, давать"
-      },
-      {
-        "phrase": "let discuss",
-        "translation": "давать, обсуждать"
-      },
-      {
-        "phrase": "let move",
-        "translation": "давать, двигаться"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7377,20 +6044,7 @@
     "example_translation": "Выбери жизнь.",
     "transcription_ru": "лайф",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "her life",
-        "translation": "her, жизнь"
-      },
-      {
-        "phrase": "his life",
-        "translation": "his, жизнь"
-      },
-      {
-        "phrase": "my life",
-        "translation": "my, жизнь"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7403,12 +6057,7 @@
     "example": "Pack light.",
     "example_translation": "Путешествуй налегке.",
     "transcription_ru": "лайт",
-    "family": [
-      {
-        "word": "lights",
-        "translation": "светильники"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -7423,20 +6072,7 @@
     "example_translation": "",
     "transcription_ru": "лайк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "exactly like",
-        "translation": "точно, нравиться"
-      },
-      {
-        "phrase": "looks like",
-        "translation": "взгляд, нравиться"
-      },
-      {
-        "phrase": "really like",
-        "translation": "очень нравится"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7478,16 +6114,7 @@
     "example_translation": "Упорядочьте этот список по алфавиту.",
     "transcription_ru": "лист",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "list let",
-        "translation": "список, давать"
-      },
-      {
-        "phrase": "our list",
-        "translation": "our, список"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7500,18 +6127,8 @@
     "example": "Listen...",
     "example_translation": "Послушай...",
     "transcription_ru": "лисэн",
-    "family": [
-      {
-        "word": "listening",
-        "translation": "слушать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "listen to",
-        "translation": "Слушайте музыку"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7525,20 +6142,7 @@
     "example_translation": "Он был немногословен.",
     "transcription_ru": "литэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a little",
-        "translation": "a, маленький"
-      },
-      {
-        "phrase": "little money",
-        "translation": "маленький, деньги"
-      },
-      {
-        "phrase": "little more",
-        "translation": "Немного сложнее"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7552,16 +6156,7 @@
     "example_translation": "Живи!",
     "transcription_ru": "лив",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "live translate",
-        "translation": "жить, переводить"
-      },
-      {
-        "phrase": "playlist live",
-        "translation": "playlist, жить"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7588,26 +6183,8 @@
     "example": "Too long!",
     "example_translation": "Слишком долго!",
     "transcription_ru": "лонг",
-    "family": [
-      {
-        "word": "longer",
-        "translation": "дольше"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "how long",
-        "translation": "how, длинный, долго"
-      },
-      {
-        "phrase": "long does",
-        "translation": "длинный, долго, does"
-      },
-      {
-        "phrase": "long has",
-        "translation": "длинный, долго, has"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7620,34 +6197,8 @@
     "example": "Look.",
     "example_translation": "Смотри!",
     "transcription_ru": "лук",
-    "family": [
-      {
-        "word": "looked",
-        "translation": "смотрел"
-      },
-      {
-        "word": "looking",
-        "translation": "смотреть"
-      },
-      {
-        "word": "looks",
-        "translation": "взгляд"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "look at",
-        "translation": "смотреть, at"
-      },
-      {
-        "phrase": "look forward",
-        "translation": "смотреть, вперед"
-      },
-      {
-        "phrase": "look up",
-        "translation": "смотреть, up"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7674,12 +6225,7 @@
     "example": "Thanks a lot.",
     "example_translation": "Большое спасибо.",
     "transcription_ru": "лот",
-    "family": [
-      {
-        "word": "lots",
-        "translation": "много"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -7750,12 +6296,7 @@
     "example_translation": "Опишите главного героя.",
     "transcription_ru": "мейн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my main",
-        "translation": "my, основной"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7769,12 +6310,7 @@
     "example_translation": "Поднимите паруса!",
     "transcription_ru": "мейк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "make mistakes",
-        "translation": "совершать ошибки"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7802,20 +6338,7 @@
     "example_translation": "Многие не согласны.",
     "transcription_ru": "мени",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "how many",
-        "translation": "how, много"
-      },
-      {
-        "phrase": "many difficulties",
-        "translation": "много, трудности"
-      },
-      {
-        "phrase": "many guests",
-        "translation": "много, guests"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7871,16 +6394,7 @@
     "example_translation": "Я женился.",
     "transcription_ru": "мерид",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "get married",
-        "translation": "получать, женатый"
-      },
-      {
-        "phrase": "got married",
-        "translation": "получил, женатый"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7894,12 +6408,7 @@
     "example_translation": "И то, и то подходит.",
     "transcription_ru": "мач",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "match beta",
-        "translation": "матч, beta"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7913,12 +6422,7 @@
     "example_translation": "Вы можете.",
     "transcription_ru": "мей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "may seem",
-        "translation": "может, казаться"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7932,12 +6436,7 @@
     "example_translation": "Возможно!",
     "transcription_ru": "мейби",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "or maybe",
-        "translation": "or, может быть"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -7978,54 +6477,8 @@
     "example": "He means me.",
     "example_translation": "Он говорит обо мне.",
     "transcription_ru": "мин",
-    "family": [
-      {
-        "word": "meaning",
-        "translation": "значение"
-      },
-      {
-        "word": "means",
-        "translation": "означает"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "mean that",
-        "translation": "означать, that"
-      },
-      {
-        "phrase": "necessarily mean",
-        "translation": "necessarily, означать"
-      }
-    ],
-    "level": "A1"
-  },
-  {
-    "word": "meaning",
-    "translation": "значение",
-    "frequency": "416",
-    "note": "",
-    "ipa": "/ˈminɪŋ/",
-    "pos": "n",
-    "example": "He means me.",
-    "example_translation": "Он говорит обо мне.",
-    "transcription_ru": "мининг",
-    "family": [
-      {
-        "word": "mean",
-        "translation": "означать"
-      },
-      {
-        "word": "means",
-        "translation": "означает"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "meaning of",
-        "translation": "значение этой фразы"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8052,37 +6505,8 @@
     "example": "Extremes meet.",
     "example_translation": "Противоположности сходятся.",
     "transcription_ru": "мит",
-    "family": [
-      {
-        "word": "meeting",
-        "translation": "заседание"
-      }
-    ],
+    "family": [],
     "collocations": [],
-    "level": "A1"
-  },
-  {
-    "word": "meeting",
-    "translation": "заседание",
-    "frequency": "279",
-    "note": "",
-    "ipa": "/ˈmitɪŋ/",
-    "pos": "n",
-    "example": "Extremes meet.",
-    "example_translation": "Противоположности сходятся.",
-    "transcription_ru": "митинг",
-    "family": [
-      {
-        "word": "meet",
-        "translation": "встреча"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "our meeting",
-        "translation": "our, заседание"
-      }
-    ],
     "level": "A1"
   },
   {
@@ -8194,12 +6618,7 @@
     "example_translation": "Тысячу раз спасибо.",
     "transcription_ru": "милйэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "million dollars",
-        "translation": "миллион, доллары"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8213,12 +6632,7 @@
     "example_translation": "Минутку!",
     "transcription_ru": "минэт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a minute",
-        "translation": "a, минута"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8246,12 +6660,7 @@
     "example_translation": "Ошибки случаются.",
     "transcription_ru": "мистейк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "big mistake",
-        "translation": "большой, ошибка"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8321,20 +6730,7 @@
     "example_translation": "Деньги решают всё.",
     "transcription_ru": "мэни",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "enough money",
-        "translation": "достаточно, деньги"
-      },
-      {
-        "phrase": "less money",
-        "translation": "меньше, деньги"
-      },
-      {
-        "phrase": "little money",
-        "translation": "маленький, деньги"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8347,22 +6743,8 @@
     "example": "It took months.",
     "example_translation": "На это ушло несколько месяцев.",
     "transcription_ru": "мэнс",
-    "family": [
-      {
-        "word": "months",
-        "translation": "месяцы"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "last month",
-        "translation": "последний, месяц"
-      },
-      {
-        "phrase": "next month",
-        "translation": "следующий, месяц"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8390,12 +6772,7 @@
     "example_translation": "Доброе утро!",
     "transcription_ru": "морнинг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "tomorrow morning",
-        "translation": "завтра, утром"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8423,16 +6800,7 @@
     "example_translation": "До свидания, мама.",
     "transcription_ru": "мэзэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my mother",
-        "translation": "my, мать"
-      },
-      {
-        "phrase": "your mother",
-        "translation": "your, мать"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8460,12 +6828,7 @@
     "example_translation": "Мышь!",
     "transcription_ru": "маус",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "and mouse",
-        "translation": "and, мышь"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8493,16 +6856,7 @@
     "example_translation": "Двигайся!",
     "transcription_ru": "мув",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "let move",
-        "translation": "давать, двигаться"
-      },
-      {
-        "phrase": "move on",
-        "translation": "двигаться, on"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8530,20 +6884,7 @@
     "example_translation": "Настолько?",
     "transcription_ru": "мач",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "getting much",
-        "translation": "получать, много"
-      },
-      {
-        "phrase": "how much",
-        "translation": "how, много"
-      },
-      {
-        "phrase": "much better",
-        "translation": "много, лучше"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8599,16 +6940,7 @@
     "example_translation": "Я должен победить.",
     "transcription_ru": "мэст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "must be",
-        "translation": "должен, be"
-      },
-      {
-        "phrase": "must have",
-        "translation": "должен, have"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8636,20 +6968,7 @@
     "example_translation": "Твоё имя?",
     "transcription_ru": "нейм",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "friend name",
-        "translation": "друг, имя"
-      },
-      {
-        "phrase": "his name",
-        "translation": "his, имя"
-      },
-      {
-        "phrase": "name what",
-        "translation": "имя, what"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8690,26 +7009,8 @@
     "example": "",
     "example_translation": "",
     "transcription_ru": "нид",
-    "family": [
-      {
-        "word": "needed",
-        "translation": "необходимый"
-      },
-      {
-        "word": "needs",
-        "translation": "потребности"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "need to",
-        "translation": "Нужно говорить по-английски"
-      },
-      {
-        "phrase": "no need",
-        "translation": "no, нуждаться"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8723,12 +7024,7 @@
     "example_translation": "\"Вопросы есть?\" - \"Никак нет!\"",
     "transcription_ru": "негэтив",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "negative form",
-        "translation": "отрицательный, форма"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8756,16 +7052,7 @@
     "example_translation": "Никогда.",
     "transcription_ru": "невэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "never been",
-        "translation": "никогда, been"
-      },
-      {
-        "phrase": "never thought",
-        "translation": "никогда, думал"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8778,26 +7065,8 @@
     "example": "Nothing new.",
     "example_translation": "Ничего нового.",
     "transcription_ru": "ну",
-    "family": [
-      {
-        "word": "news",
-        "translation": "новости"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "new budget",
-        "translation": "новый, бюджет"
-      },
-      {
-        "phrase": "new house",
-        "translation": "новый, дом"
-      },
-      {
-        "phrase": "new words",
-        "translation": "новый, слова"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8810,18 +7079,8 @@
     "example": "Fake news.",
     "example_translation": "Это поддельные новости.",
     "transcription_ru": "нуз",
-    "family": [
-      {
-        "word": "new",
-        "translation": "новый"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "latest news",
-        "translation": "latest, новости"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8849,20 +7108,7 @@
     "example_translation": "Следующий!",
     "transcription_ru": "некст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "buy next",
-        "translation": "покупать, следующий"
-      },
-      {
-        "phrase": "by next",
-        "translation": "by, следующий"
-      },
-      {
-        "phrase": "next month",
-        "translation": "следующий, месяц"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -8904,12 +7150,7 @@
     "example_translation": "Смеркалось.",
     "transcription_ru": "найт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "at night",
-        "translation": "at, ночь"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9063,12 +7304,7 @@
     "example_translation": "Ничего!",
     "transcription_ru": "нэсинг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "have nothing",
-        "translation": "have, ничего"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9222,20 +7458,7 @@
     "example_translation": "Как часто?",
     "transcription_ru": "офэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "how often",
-        "translation": "how, часто"
-      },
-      {
-        "phrase": "often confuse",
-        "translation": "часто, путать"
-      },
-      {
-        "phrase": "often confused",
-        "translation": "часто, путать"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9318,26 +7541,8 @@
     "example": "One second!",
     "example_translation": "Секунду!",
     "transcription_ru": "уэн",
-    "family": [
-      {
-        "word": "ones",
-        "translation": "один"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "one more",
-        "translation": "один, more"
-      },
-      {
-        "phrase": "one word",
-        "translation": "один, слово"
-      },
-      {
-        "phrase": "only one",
-        "translation": "only, один"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9407,12 +7612,7 @@
     "example_translation": "Скажи своё мнение.",
     "transcription_ru": "эпинйэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my opinion",
-        "translation": "my, мнение"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9468,12 +7668,7 @@
     "example_translation": "Тихо!",
     "transcription_ru": "ордэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "word order",
-        "translation": "слово, приказ, заказ"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9669,12 +7864,7 @@
     "example_translation": "Не парковаться.",
     "transcription_ru": "парк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "the park",
-        "translation": "the, парк"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9687,26 +7877,8 @@
     "example": "Death did us part.",
     "example_translation": "Смерть разлучила нас.",
     "transcription_ru": "парт",
-    "family": [
-      {
-        "word": "parts",
-        "translation": "части"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "as part",
-        "translation": "as, часть"
-      },
-      {
-        "phrase": "first part",
-        "translation": "первый, часть"
-      },
-      {
-        "phrase": "next part",
-        "translation": "следующий, часть"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9720,12 +7892,7 @@
     "example_translation": "Мы партнёры.",
     "transcription_ru": "партнэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "business partner",
-        "translation": "бизнес, партнер"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9767,20 +7934,7 @@
     "example_translation": "Забудь о прошлом.",
     "transcription_ru": "пэст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "past continuous",
-        "translation": "прошлое, длительный"
-      },
-      {
-        "phrase": "past perfect",
-        "translation": "прошлое, совершенный"
-      },
-      {
-        "phrase": "past simple",
-        "translation": "прошлое, простой"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9794,12 +7948,7 @@
     "example_translation": "Честность окупается.",
     "transcription_ru": "пей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "pay attention",
-        "translation": "обращать внимание"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9841,20 +7990,7 @@
     "example_translation": "Люди запаниковали.",
     "transcription_ru": "пипэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "many people",
-        "translation": "много, люди"
-      },
-      {
-        "phrase": "other people",
-        "translation": "other, люди"
-      },
-      {
-        "phrase": "poor people",
-        "translation": "бедный, люди"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9881,26 +8017,8 @@
     "example": "Perfect!",
     "example_translation": "Безупречно!",
     "transcription_ru": "пэрфикт",
-    "family": [
-      {
-        "word": "perfectly",
-        "translation": "идеально"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "past perfect",
-        "translation": "прошлое, совершенный"
-      },
-      {
-        "phrase": "perfect continuous",
-        "translation": "совершенный, длительный"
-      },
-      {
-        "phrase": "present perfect",
-        "translation": "настоящее (время), совершенный"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -9927,12 +8045,7 @@
     "example": "Or what person?",
     "example_translation": "Или кто?",
     "transcription_ru": "пэрсэн",
-    "family": [
-      {
-        "word": "personal",
-        "translation": "личный"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -9946,18 +8059,8 @@
     "example": "Or what person?",
     "example_translation": "Или кто?",
     "transcription_ru": "пэрсинэл",
-    "family": [
-      {
-        "word": "person",
-        "translation": "человек"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "personal pronoun",
-        "translation": "личный, местоимение"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10013,12 +8116,7 @@
     "example_translation": "Это предложение невозможно понять.",
     "transcription_ru": "фрейз",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "phrase verb",
-        "translation": "фраза, глагол"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10102,20 +8200,7 @@
     "example_translation": "Тузик, место.",
     "transcription_ru": "плейс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "another place",
-        "translation": "другой, место"
-      },
-      {
-        "phrase": "better place",
-        "translation": "лучше, место"
-      },
-      {
-        "phrase": "first place",
-        "translation": "первый, место"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10128,12 +8213,7 @@
     "example": "Good plan.",
     "example_translation": "Хороший план.",
     "transcription_ru": "плэн",
-    "family": [
-      {
-        "word": "plans",
-        "translation": "планы"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -10175,22 +8255,8 @@
     "example": "Play.",
     "example_translation": "Играй!",
     "transcription_ru": "плей",
-    "family": [
-      {
-        "word": "played",
-        "translation": "играл"
-      },
-      {
-        "word": "playing",
-        "translation": "играть"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "play computer",
-        "translation": "играть, компьютер"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10231,26 +8297,8 @@
     "example": "Fair point.",
     "example_translation": "Справедливо.",
     "transcription_ru": "пойнт",
-    "family": [
-      {
-        "word": "points",
-        "translation": "точка"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "his point",
-        "translation": "his, точка"
-      },
-      {
-        "phrase": "important point",
-        "translation": "важный, точка"
-      },
-      {
-        "phrase": "point of",
-        "translation": "Точка зрения"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10264,12 +8312,7 @@
     "example_translation": "Полиция!",
     "transcription_ru": "пэлис",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "police arrested",
-        "translation": "полиция, arrested"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10311,16 +8354,7 @@
     "example_translation": "Бедные дети!",
     "transcription_ru": "пур",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "poor people",
-        "translation": "бедный, люди"
-      },
-      {
-        "phrase": "very poor",
-        "translation": "very, бедный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10334,12 +8368,7 @@
     "example_translation": "Он популярен?",
     "transcription_ru": "папйэлэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "very popular",
-        "translation": "very, популярный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10353,12 +8382,7 @@
     "example_translation": "Мыслите позитивно.",
     "transcription_ru": "пазэтив",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "positive atmosphere",
-        "translation": "положительный, atmosphere"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10372,16 +8396,7 @@
     "example_translation": "Мир возможен.",
     "transcription_ru": "пасэбэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "also possible",
-        "translation": "также, возможный"
-      },
-      {
-        "phrase": "as possible",
-        "translation": "as, возможный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10437,12 +8452,7 @@
     "example_translation": "Продолжай практиковаться.",
     "transcription_ru": "прэктис",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "more practice",
-        "translation": "more, практика"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10470,12 +8480,7 @@
     "example_translation": "Я предпочитаю вино.",
     "transcription_ru": "прифэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "prefer to",
-        "translation": "предпочитать, to"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10503,20 +8508,7 @@
     "example_translation": "Все присутствуют?",
     "transcription_ru": "презэнт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "present continuous",
-        "translation": "настоящее (время), длительный"
-      },
-      {
-        "phrase": "present perfect",
-        "translation": "настоящее (время), совершенный"
-      },
-      {
-        "phrase": "present simple",
-        "translation": "настоящее (время), простой"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10571,22 +8563,8 @@
     "example": "Any problems?",
     "example_translation": "Какие-то проблемы?",
     "transcription_ru": "праблэм",
-    "family": [
-      {
-        "word": "problems",
-        "translation": "проблемы"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "big problem",
-        "translation": "большой, проблема"
-      },
-      {
-        "phrase": "no problem",
-        "translation": "no, проблема"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10628,12 +8606,7 @@
     "example_translation": "Проект провалился.",
     "transcription_ru": "праект",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this project",
-        "translation": "this, проект"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10689,12 +8662,7 @@
     "example_translation": "Ещё вопросы?",
     "transcription_ru": "куешэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "special question",
-        "translation": "специальный, вопрос"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10750,20 +8718,7 @@
     "example_translation": "Брось.",
     "transcription_ru": "куайт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "quite frequently",
-        "translation": "довольно, часто"
-      },
-      {
-        "phrase": "quite often",
-        "translation": "довольно, часто"
-      },
-      {
-        "phrase": "quite rarely",
-        "translation": "довольно, редко"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10804,12 +8759,7 @@
     "example": "Read.",
     "example_translation": "Прочти!",
     "transcription_ru": "ред",
-    "family": [
-      {
-        "word": "reading",
-        "translation": "читать"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -10828,25 +8778,6 @@
     "level": "A1"
   },
   {
-    "word": "reading",
-    "translation": "читать",
-    "frequency": "113",
-    "note": "",
-    "ipa": "/ˈrɛdɪŋ/",
-    "pos": "n",
-    "example": "Read.",
-    "example_translation": "Прочти!",
-    "transcription_ru": "рединг",
-    "family": [
-      {
-        "word": "read",
-        "translation": "читал"
-      }
-    ],
-    "collocations": [],
-    "level": "A1"
-  },
-  {
     "word": "ready",
     "translation": "готовый",
     "frequency": "370",
@@ -10857,16 +8788,7 @@
     "example_translation": "На старт!",
     "transcription_ru": "реди",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "get ready",
-        "translation": "получать, готовый"
-      },
-      {
-        "phrase": "ready for",
-        "translation": "готовый, for"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10879,12 +8801,7 @@
     "example": "For real?",
     "example_translation": "Реально?",
     "transcription_ru": "рил",
-    "family": [
-      {
-        "word": "really",
-        "translation": "действительно"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -10898,26 +8815,8 @@
     "example": "Really?!",
     "example_translation": "Серьёзно?!",
     "transcription_ru": "рили",
-    "family": [
-      {
-        "word": "real",
-        "translation": "реальный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "really appreciate",
-        "translation": "действительно, appreciate"
-      },
-      {
-        "phrase": "really good",
-        "translation": "действительно, хорошо"
-      },
-      {
-        "phrase": "really helps",
-        "translation": "действительно, помогает"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10931,16 +8830,7 @@
     "example_translation": "Будь разумен.",
     "transcription_ru": "ризэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "reason for",
-        "translation": "причина, for"
-      },
-      {
-        "phrase": "some reason",
-        "translation": "some, причина"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -10995,22 +8885,8 @@
     "example": "Repeat!",
     "example_translation": "Повтори!",
     "transcription_ru": "рипит",
-    "family": [
-      {
-        "word": "repeated",
-        "translation": "повторяющийся"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "let repeat",
-        "translation": "давать, повторять"
-      },
-      {
-        "phrase": "we repeat",
-        "translation": "we, повторять"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11024,12 +8900,7 @@
     "example_translation": "Сообщайте о больных!",
     "transcription_ru": "рипорт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this report",
-        "translation": "this, доклад, отчет"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11056,22 +8927,8 @@
     "example": "Compare the results.",
     "example_translation": "Сравните результаты.",
     "transcription_ru": "ризэлт",
-    "family": [
-      {
-        "word": "results",
-        "translation": "результаты"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "best result",
-        "translation": "лучший, результат"
-      },
-      {
-        "phrase": "good result",
-        "translation": "хорошо, результат"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11113,12 +8970,7 @@
     "example_translation": "Выскочка!",
     "transcription_ru": "ри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "very rich",
-        "translation": "very, богатый"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11145,26 +8997,8 @@
     "example": "Right?",
     "example_translation": "Верно?",
     "transcription_ru": "райт",
-    "family": [
-      {
-        "word": "rights",
-        "translation": "права"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "only right",
-        "translation": "only, правильно, правый"
-      },
-      {
-        "phrase": "right away",
-        "translation": "правильно, правый, уходить"
-      },
-      {
-        "phrase": "right decision",
-        "translation": "правильно, правый, решение"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11206,12 +9040,7 @@
     "example_translation": "Уберись в своей комнате!",
     "transcription_ru": "рум",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my room",
-        "translation": "my, комната"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11350,16 +9179,7 @@
     "example": "Say \"cheese!\"",
     "example_translation": "Скажите \"чи-и-из\"!",
     "transcription_ru": "сей",
-    "family": [
-      {
-        "word": "saying",
-        "translation": "говорить"
-      },
-      {
-        "word": "says",
-        "translation": "говорит"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -11374,12 +9194,7 @@
     "example_translation": "Школа — отстой.",
     "transcription_ru": "скул",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "at school",
-        "translation": "at, школа"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11435,20 +9250,7 @@
     "example_translation": "Секунду!",
     "transcription_ru": "секэнд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "second form",
-        "translation": "второй, форма"
-      },
-      {
-        "phrase": "second option",
-        "translation": "второй, вариант"
-      },
-      {
-        "phrase": "second part",
-        "translation": "второй, часть"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11504,12 +9306,7 @@
     "example_translation": "Отправь меня.",
     "transcription_ru": "сенд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "send him",
-        "translation": "отправлять, him"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11522,12 +9319,7 @@
     "example": "Translate sentences.",
     "example_translation": "Переведи предложения.",
     "transcription_ru": "сентэнс",
-    "family": [
-      {
-        "word": "sent",
-        "translation": "послал"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -11696,12 +9488,7 @@
     "example_translation": "Они вскоре вернулись.",
     "transcription_ru": "шорт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "short form",
-        "translation": "короткий, форма"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11728,22 +9515,8 @@
     "example": "It shows!",
     "example_translation": "Оно и видно!",
     "transcription_ru": "шоу",
-    "family": [
-      {
-        "word": "showed",
-        "translation": "показал"
-      },
-      {
-        "word": "shows",
-        "translation": "шоу"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "show show",
-        "translation": "шоу, шоу"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11827,16 +9600,7 @@
     "example_translation": "Спасибо, сёстры.",
     "transcription_ru": "систэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my sister",
-        "translation": "my, сестра"
-      },
-      {
-        "phrase": "your sister",
-        "translation": "your, сестра"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -11864,16 +9628,7 @@
     "example_translation": "Какая ситуация!",
     "transcription_ru": "сиуейшэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "bad situation",
-        "translation": "плохой, ситуация"
-      },
-      {
-        "phrase": "current situation",
-        "translation": "текущий, ситуация"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12083,16 +9838,7 @@
     "example_translation": "Поешьте чего-нибудь.",
     "transcription_ru": "сэмсинг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "doing something",
-        "translation": "doing, что-то"
-      },
-      {
-        "phrase": "something else",
-        "translation": "что-то, другой"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12148,16 +9894,7 @@
     "example_translation": "Слишком рано?",
     "transcription_ru": "сун",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "as soon",
-        "translation": "as, скоро"
-      },
-      {
-        "phrase": "soon as",
-        "translation": "Как можно скорее"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12240,22 +9977,8 @@
     "example": "Speak.",
     "example_translation": "Говори.",
     "transcription_ru": "спик",
-    "family": [
-      {
-        "word": "speaker",
-        "translation": "оратор"
-      },
-      {
-        "word": "speaking",
-        "translation": "говорить"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "speak english",
-        "translation": "говорить по-английски"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12269,16 +9992,7 @@
     "example_translation": "Ничего особенного.",
     "transcription_ru": "спешэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a special",
-        "translation": "a, специальный"
-      },
-      {
-        "phrase": "special question",
-        "translation": "специальный, вопрос"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12320,12 +10034,7 @@
     "example_translation": "Трать деньги с умом.",
     "transcription_ru": "спенд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "spend time",
-        "translation": "тратить, время"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12367,12 +10076,7 @@
     "example_translation": "Стой спокойно.",
     "transcription_ru": "стэнд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "stand out",
-        "translation": "стоять, out"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12399,22 +10103,8 @@
     "example": "Start!",
     "example_translation": "Пошли.",
     "transcription_ru": "старт",
-    "family": [
-      {
-        "word": "started",
-        "translation": "начал"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "let start",
-        "translation": "давать, начинать"
-      },
-      {
-        "phrase": "start doing",
-        "translation": "начинать, doing"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12456,12 +10146,7 @@
     "example_translation": "Оставайся.",
     "transcription_ru": "стей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "stay at",
-        "translation": "оставаться, at"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12531,12 +10216,7 @@
     "example_translation": "Будьте сильным.",
     "transcription_ru": "стронг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "very strong",
-        "translation": "very, сильный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12549,12 +10229,7 @@
     "example": "",
     "example_translation": "",
     "transcription_ru": "студэнт",
-    "family": [
-      {
-        "word": "students",
-        "translation": "студенты"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -12568,18 +10243,8 @@
     "example": "Study.",
     "example_translation": "Учись.",
     "transcription_ru": "стэди",
-    "family": [
-      {
-        "word": "studying",
-        "translation": "изучение"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "study english",
-        "translation": "изучать, английский"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12621,16 +10286,7 @@
     "example_translation": "Успех!",
     "transcription_ru": "сэксес",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "big success",
-        "translation": "большой, успех"
-      },
-      {
-        "phrase": "without success",
-        "translation": "без, успех"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12714,12 +10370,7 @@
     "example_translation": "Конечно.",
     "transcription_ru": "шур",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "be sure",
-        "translation": "be, уверен"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12746,20 +10397,6 @@
     "example": "I swim fast.",
     "example_translation": "Я быстро плаваю.",
     "transcription_ru": "суим",
-    "family": [],
-    "collocations": [],
-    "level": "A1"
-  },
-  {
-    "word": "swimming",
-    "translation": "плавание",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈswɪmɪŋ/",
-    "pos": "n",
-    "example": "I like swim.",
-    "example_translation": "Я люблю плавать.",
-    "transcription_ru": "суиминг",
     "family": [],
     "collocations": [],
     "level": "A1"
@@ -12803,20 +10440,7 @@
     "example_translation": "Возьми.",
     "transcription_ru": "тейк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "take away",
-        "translation": "брать, уходить"
-      },
-      {
-        "phrase": "take part",
-        "translation": "принимать участие"
-      },
-      {
-        "phrase": "take place",
-        "translation": "брать, место"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12829,26 +10453,8 @@
     "example": "Talk!",
     "example_translation": "Говори!",
     "transcription_ru": "ток",
-    "family": [
-      {
-        "word": "talked",
-        "translation": "разговор"
-      },
-      {
-        "word": "talking",
-        "translation": "говорить"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "let talk",
-        "translation": "давать, разговаривать"
-      },
-      {
-        "phrase": "talk about",
-        "translation": "Разговоры о прошлом"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -12903,12 +10509,7 @@
     "example": "Teach.",
     "example_translation": "Обучи.",
     "transcription_ru": "ти",
-    "family": [
-      {
-        "word": "teacher",
-        "translation": "учитель"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -12922,18 +10523,8 @@
     "example": "Hello teacher!",
     "example_translation": "Здравствуйте, учитель!",
     "transcription_ru": "тичер",
-    "family": [
-      {
-        "word": "teach",
-        "translation": "преподавать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "our teacher",
-        "translation": "our, учитель"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13003,16 +10594,7 @@
     "example_translation": "Скажи всем.",
     "transcription_ru": "тел",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "tell him",
-        "translation": "рассказывать, him"
-      },
-      {
-        "phrase": "tell me",
-        "translation": "рассказывать, me"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13068,16 +10650,7 @@
     "example_translation": "Ненавижу тесты.",
     "transcription_ru": "тест",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "our test",
-        "translation": "our, тест"
-      },
-      {
-        "phrase": "test work",
-        "translation": "тест, работать"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13118,22 +10691,8 @@
     "example": "Thanks?",
     "example_translation": "Спасибо?",
     "transcription_ru": "сэнгк",
-    "family": [
-      {
-        "word": "thanks",
-        "translation": "спасибо"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "friends thank",
-        "translation": "друзья, благодарить"
-      },
-      {
-        "phrase": "thank you",
-        "translation": "благодарить, you"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13146,22 +10705,8 @@
     "example": "Thanks?",
     "example_translation": "Спасибо?",
     "transcription_ru": "сэнгкс",
-    "family": [
-      {
-        "word": "thank",
-        "translation": "благодарить"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "channel thanks",
-        "translation": "channel, спасибо"
-      },
-      {
-        "phrase": "thanks to",
-        "translation": "спасибо, to"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13286,22 +10831,8 @@
     "example": "Stupid thing!",
     "example_translation": "Это глупо!",
     "transcription_ru": "синг",
-    "family": [
-      {
-        "word": "things",
-        "translation": "вещи"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "important thing",
-        "translation": "важный, вещь"
-      },
-      {
-        "phrase": "same thing",
-        "translation": "same, вещь"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13314,22 +10845,8 @@
     "example": "Think!",
     "example_translation": "Думай!",
     "transcription_ru": "сингк",
-    "family": [
-      {
-        "word": "thinking",
-        "translation": "мышление"
-      },
-      {
-        "word": "thinks",
-        "translation": "думать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "think about",
-        "translation": "думать, about"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13343,16 +10860,7 @@
     "example_translation": "Он был третьим.",
     "transcription_ru": "сэрд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "the third",
-        "translation": "the, третий"
-      },
-      {
-        "phrase": "third form",
-        "translation": "третий, форма"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13436,20 +10944,7 @@
     "example_translation": "Дай мне три.",
     "transcription_ru": "сри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "for three",
-        "translation": "for, три"
-      },
-      {
-        "phrase": "into three",
-        "translation": "into, три"
-      },
-      {
-        "phrase": "three parts",
-        "translation": "три, части"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13505,20 +11000,7 @@
     "example_translation": "Время вышло!",
     "transcription_ru": "тайм",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "first time",
-        "translation": "первый, время"
-      },
-      {
-        "phrase": "free time",
-        "translation": "свободное время"
-      },
-      {
-        "phrase": "great time",
-        "translation": "великий, время"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13532,16 +11014,7 @@
     "example_translation": "Я сильно устал!",
     "transcription_ru": "тайэрд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "get tired",
-        "translation": "получать, усталый"
-      },
-      {
-        "phrase": "not tired",
-        "translation": "not, усталый"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13597,12 +11070,7 @@
     "example_translation": "Приходите вместе!",
     "transcription_ru": "тэгезэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "time together",
-        "translation": "время, вместе"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13644,20 +11112,7 @@
     "example_translation": "Завтра?",
     "transcription_ru": "тэмароу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "after tomorrow",
-        "translation": "after, завтра"
-      },
-      {
-        "phrase": "by tomorrow",
-        "translation": "by, завтра"
-      },
-      {
-        "phrase": "free tomorrow",
-        "translation": "свободный, бесплатный, завтра"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13769,12 +11224,7 @@
     "example_translation": "Начинай тренироваться.",
     "transcription_ru": "трейн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "train my",
-        "translation": "Тренировать свою память"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13844,12 +11294,7 @@
     "example_translation": "Правильно.",
     "transcription_ru": "тру",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "come true",
-        "translation": "приходить, истинный"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13862,18 +11307,8 @@
     "example": "Try knocking.",
     "example_translation": "Попробуйте постучаться.",
     "transcription_ru": "трай",
-    "family": [
-      {
-        "word": "trying",
-        "translation": "пытаться"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "will try",
-        "translation": "will, пробовать"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13900,22 +11335,8 @@
     "example": "Your turn.",
     "example_translation": "Твоя очередь.",
     "transcription_ru": "тэрн",
-    "family": [
-      {
-        "word": "turned",
-        "translation": "повернул"
-      },
-      {
-        "word": "turns",
-        "translation": "оказывается"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "turn on",
-        "translation": "поворачивать, on"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -13985,20 +11406,7 @@
     "example_translation": "Возьмите два.",
     "transcription_ru": "ту",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "into two",
-        "translation": "into, два"
-      },
-      {
-        "phrase": "last two",
-        "translation": "последний, два"
-      },
-      {
-        "phrase": "than two",
-        "translation": "than, два"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14068,16 +11476,7 @@
     "example_translation": "Понятно?",
     "transcription_ru": "эндэрстэнд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "ca understand",
-        "translation": "ca, понимать"
-      },
-      {
-        "phrase": "perfectly understand",
-        "translation": "идеально, понимать"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14091,12 +11490,7 @@
     "example_translation": "Я скучаю по университету.",
     "transcription_ru": "йунэвэрсэти",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "from university",
-        "translation": "from, университет"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14165,26 +11559,8 @@
     "example": "Use them.",
     "example_translation": "Используй их.",
     "transcription_ru": "йуз",
-    "family": [
-      {
-        "word": "useful",
-        "translation": "полезный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "use exactly",
-        "translation": "использовать, точно"
-      },
-      {
-        "phrase": "use phrases",
-        "translation": "использовать, фразы"
-      },
-      {
-        "phrase": "usually use",
-        "translation": "обычно, использовать"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14197,22 +11573,8 @@
     "example": "Use them.",
     "example_translation": "Используй их.",
     "transcription_ru": "йусфэл",
-    "family": [
-      {
-        "word": "use",
-        "translation": "использовать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "really useful",
-        "translation": "действительно, полезный"
-      },
-      {
-        "phrase": "very useful",
-        "translation": "very, полезный"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14226,16 +11588,7 @@
     "example_translation": "Занят, как обычно?",
     "transcription_ru": "йужэуэли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "usually get",
-        "translation": "обычно, получать"
-      },
-      {
-        "phrase": "usually use",
-        "translation": "обычно, использовать"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14346,22 +11699,8 @@
     "example": "Wait.",
     "example_translation": "Ждите.",
     "transcription_ru": "уейт",
-    "family": [
-      {
-        "word": "waiting",
-        "translation": "ждать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "wait for",
-        "translation": "ждать, for"
-      },
-      {
-        "phrase": "will wait",
-        "translation": "will, ждать"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14389,12 +11728,7 @@
     "example_translation": "Просыпайся!",
     "transcription_ru": "уейк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "wake up",
-        "translation": "просыпаться, up"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14408,12 +11742,7 @@
     "example_translation": "Шагай.",
     "transcription_ru": "уок",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "walk in",
-        "translation": "Прогулка в парке"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14440,22 +11769,8 @@
     "example": "I want.",
     "example_translation": "Я хочу.",
     "transcription_ru": "уонт",
-    "family": [
-      {
-        "word": "wanted",
-        "translation": "желанный"
-      },
-      {
-        "word": "wants",
-        "translation": "хотеть"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "want to",
-        "translation": "хотеть, to"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14496,16 +11811,7 @@
     "example": "Watch.",
     "example_translation": "Смотри!",
     "transcription_ru": "уоч",
-    "family": [
-      {
-        "word": "watched",
-        "translation": "смотрел"
-      },
-      {
-        "word": "watching",
-        "translation": "смотреть"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -14533,12 +11839,7 @@
     "example": "Make way!",
     "example_translation": "Посторонись!",
     "transcription_ru": "уей",
-    "family": [
-      {
-        "word": "ways",
-        "translation": "пути"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A1"
   },
@@ -14623,16 +11924,7 @@
     "example_translation": "До следующей недели.",
     "transcription_ru": "уик",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "last week",
-        "translation": "последний, неделя"
-      },
-      {
-        "phrase": "next week",
-        "translation": "следующий, неделя"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14660,16 +11952,7 @@
     "example_translation": "Добро пожаловать!",
     "transcription_ru": "уелкэм",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "hi welcome",
-        "translation": "hi, приветствовать"
-      },
-      {
-        "phrase": "welcome to",
-        "translation": "приветствовать, to"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14683,20 +11966,7 @@
     "example_translation": "Ладно.",
     "transcription_ru": "уел",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "along well",
-        "translation": "вдоль, хорошо"
-      },
-      {
-        "phrase": "very well",
-        "translation": "very, хорошо"
-      },
-      {
-        "phrase": "well again",
-        "translation": "хорошо, again"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14822,20 +12092,7 @@
     "example_translation": "Будь моей женой.",
     "transcription_ru": "уайф",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "his wife",
-        "translation": "his, жена"
-      },
-      {
-        "phrase": "my wife",
-        "translation": "my, жена"
-      },
-      {
-        "phrase": "your wife",
-        "translation": "your, жена"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14933,20 +12190,7 @@
     "example_translation": "Уезжайте без неё.",
     "transcription_ru": "уисаут",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "without any",
-        "translation": "Без ошибок"
-      },
-      {
-        "phrase": "without mistakes",
-        "translation": "без, ошибки"
-      },
-      {
-        "phrase": "without problems",
-        "translation": "без, проблемы"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14960,12 +12204,7 @@
     "example_translation": "Женщина смеётся.",
     "transcription_ru": "уумэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "that woman",
-        "translation": "that, женщина"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -14992,22 +12231,8 @@
     "example": "Words matter!",
     "example_translation": "Слова - это важно!",
     "transcription_ru": "уэрд",
-    "family": [
-      {
-        "word": "words",
-        "translation": "слова"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "one word",
-        "translation": "один, слово"
-      },
-      {
-        "phrase": "word order",
-        "translation": "слово, приказ, заказ"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -15020,34 +12245,8 @@
     "example": "Work!",
     "example_translation": "Работай!",
     "transcription_ru": "уэрк",
-    "family": [
-      {
-        "word": "worked",
-        "translation": "работать"
-      },
-      {
-        "word": "working",
-        "translation": "работа"
-      },
-      {
-        "word": "works",
-        "translation": "работа"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "hard work",
-        "translation": "тяжелый, твердый, работать"
-      },
-      {
-        "phrase": "test work",
-        "translation": "тест, работать"
-      },
-      {
-        "phrase": "work through",
-        "translation": "работать, through"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -15089,12 +12288,7 @@
     "example_translation": "Это бы сработало?",
     "transcription_ru": "ууд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "would like",
-        "translation": "Хотелось бы"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -15108,16 +12302,7 @@
     "example_translation": "Пиши.",
     "transcription_ru": "райт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "write about",
-        "translation": "Напишите о своих результатах"
-      },
-      {
-        "phrase": "write down",
-        "translation": "писать, down"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -15130,20 +12315,6 @@
     "example": "I am a writer.",
     "example_translation": "Я писатель.",
     "transcription_ru": "райтёр",
-    "family": [],
-    "collocations": [],
-    "level": "A1"
-  },
-  {
-    "word": "writing",
-    "translation": "писание",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈɹaɪtɪŋ/",
-    "pos": "n",
-    "example": "I like writing.",
-    "example_translation": "Мне нравится писать.",
-    "transcription_ru": "райтинг",
     "family": [],
     "collocations": [],
     "level": "A1"
@@ -15173,16 +12344,7 @@
     "example_translation": "Да.",
     "transcription_ru": "йэ",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "oh yeah",
-        "translation": "oh, да"
-      },
-      {
-        "phrase": "yeah buddha",
-        "translation": "да, buddha"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -15195,26 +12357,8 @@
     "example": "Next year.",
     "example_translation": "В следующем году.",
     "transcription_ru": "йир",
-    "family": [
-      {
-        "word": "years",
-        "translation": "годы"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "every year",
-        "translation": "каждый, год"
-      },
-      {
-        "phrase": "last year",
-        "translation": "последний, год"
-      },
-      {
-        "phrase": "next year",
-        "translation": "следующий, год"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -15256,12 +12400,7 @@
     "example_translation": "Вчера?",
     "transcription_ru": "йестэрдей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "before yesterday",
-        "translation": "before, вчера"
-      }
-    ],
+    "collocations": [],
     "level": "A1"
   },
   {
@@ -15345,16 +12484,7 @@
     "example_translation": "Он очень способный.",
     "transcription_ru": "ейбэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "able to",
-        "translation": "способный, to"
-      },
-      {
-        "phrase": "be able",
-        "translation": "be, способный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -15368,12 +12498,7 @@
     "example_translation": "Она за границей.",
     "transcription_ru": "эброд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "go abroad",
-        "translation": "go, за границей"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -15681,20 +12806,7 @@
     "example_translation": "Подпевай.",
     "transcription_ru": "элонг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "along our",
-        "translation": "вдоль, our"
-      },
-      {
-        "phrase": "along well",
-        "translation": "вдоль, хорошо"
-      },
-      {
-        "phrase": "further along",
-        "translation": "further, вдоль"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -15708,20 +12820,7 @@
     "example_translation": "Уже?",
     "transcription_ru": "ореди",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "already been",
-        "translation": "уже, been"
-      },
-      {
-        "phrase": "already found",
-        "translation": "уже, нашел"
-      },
-      {
-        "phrase": "already happened",
-        "translation": "уже, случилось"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16099,16 +13198,7 @@
     "example_translation": "Внимание!",
     "transcription_ru": "этеншэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "pay attention",
-        "translation": "обращать внимание"
-      },
-      {
-        "phrase": "your attention",
-        "translation": "your, внимание"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16234,12 +13324,7 @@
     "example_translation": "Цвет фона — чёрный.",
     "transcription_ru": "бэкграунд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a background",
-        "translation": "a, фон"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16407,12 +13492,7 @@
     "example_translation": "Его место здесь.",
     "transcription_ru": "билонг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "belong to",
-        "translation": "принадлежать, to"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16636,20 +13716,7 @@
     "example_translation": "Нам нужна полиция.",
     "transcription_ru": "бос",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my boss",
-        "translation": "my, босс"
-      },
-      {
-        "phrase": "our boss",
-        "translation": "our, босс"
-      },
-      {
-        "phrase": "your boss",
-        "translation": "your, босс"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16733,12 +13800,7 @@
     "example_translation": "Блестяще!",
     "transcription_ru": "брилйэнт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "brilliant results",
-        "translation": "блестящий, результаты"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16794,12 +13856,7 @@
     "example_translation": "Он стал предпринимателем.",
     "transcription_ru": "бизнисмэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "successful businessman",
-        "translation": "успешный, бизнесмен"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16854,12 +13911,7 @@
     "example": "Careful!",
     "example_translation": "Осторожно!",
     "transcription_ru": "кер",
-    "family": [
-      {
-        "word": "careful",
-        "translation": "осторожный"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -16873,22 +13925,8 @@
     "example": "Careful!",
     "example_translation": "Осторожно!",
     "transcription_ru": "керфэл",
-    "family": [
-      {
-        "word": "care",
-        "translation": "уход"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "be careful",
-        "translation": "be, осторожный"
-      },
-      {
-        "phrase": "more careful",
-        "translation": "more, осторожный"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16902,12 +13940,7 @@
     "example_translation": "Осторожно!",
     "transcription_ru": "керфэли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "more carefully",
-        "translation": "more, тщательно"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -16949,12 +13982,7 @@
     "example_translation": "Дело закрыто!",
     "transcription_ru": "кейс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "any case",
-        "translation": "any, дело, случай"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17080,12 +14108,7 @@
     "example_translation": "Нет шансов.",
     "transcription_ru": "энс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "last chance",
-        "translation": "последний, шанс"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17183,20 +14206,7 @@
     "example_translation": "Хороший выбор!",
     "transcription_ru": "ойс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "best choice",
-        "translation": "лучший, выбор"
-      },
-      {
-        "phrase": "big choice",
-        "translation": "большой, выбор"
-      },
-      {
-        "phrase": "no choice",
-        "translation": "no, выбор"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17265,12 +14275,7 @@
     "example": "Clearly!",
     "example_translation": "Ясное дело!",
     "transcription_ru": "клир",
-    "family": [
-      {
-        "word": "clearly",
-        "translation": "ясно"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -17284,18 +14289,8 @@
     "example": "Clearly!",
     "example_translation": "Ясное дело!",
     "transcription_ru": "клирли",
-    "family": [
-      {
-        "word": "clear",
-        "translation": "ясный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "very clearly",
-        "translation": "very, ясно"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17322,20 +14317,6 @@
     "example": "The climate is hot.",
     "example_translation": "Климат здесь жаркий.",
     "transcription_ru": "клаймэт",
-    "family": [],
-    "collocations": [],
-    "level": "A2"
-  },
-  {
-    "word": "closed",
-    "translation": "закрытый",
-    "frequency": "117",
-    "note": "",
-    "ipa": "/kloʊzd/",
-    "pos": "adj",
-    "example": "Closed.",
-    "example_translation": "Закрыто.",
-    "transcription_ru": "клоузд",
     "family": [],
     "collocations": [],
     "level": "A2"
@@ -17490,18 +14471,8 @@
     "example": "Comment.",
     "example_translation": "Прокомментируй.",
     "transcription_ru": "камент",
-    "family": [
-      {
-        "word": "comes",
-        "translation": "приходить"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "comment on",
-        "translation": "комментарий, on"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17571,12 +14542,7 @@
     "example_translation": "Он пожаловался.",
     "transcription_ru": "кэмплейн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "complain about",
-        "translation": "жаловаться, about"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17589,12 +14555,7 @@
     "example": "Relax completely.",
     "example_translation": "Полностью расслабься.",
     "transcription_ru": "кэмплитли",
-    "family": [
-      {
-        "word": "complete",
-        "translation": "полный"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -17693,12 +14654,7 @@
     "example_translation": "Контекст решает всё.",
     "transcription_ru": "кантекст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this context",
-        "translation": "this, контекст"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17726,20 +14682,7 @@
     "example_translation": "",
     "transcription_ru": "кэнтинйу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "continue herbalist",
-        "translation": "продолжать, herbalist"
-      },
-      {
-        "phrase": "continue our",
-        "translation": "продолжать, our"
-      },
-      {
-        "phrase": "we continue",
-        "translation": "we, продолжать"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17808,18 +14751,8 @@
     "example": "Correct?",
     "example_translation": "Правильно?",
     "transcription_ru": "кэректли",
-    "family": [
-      {
-        "word": "correct",
-        "translation": "исправлять"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "english correctly",
-        "translation": "английский, правильно"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17833,20 +14766,7 @@
     "example_translation": "Я считал.",
     "transcription_ru": "каунт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "always count",
-        "translation": "всегда, считать"
-      },
-      {
-        "phrase": "can count",
-        "translation": "can, считать"
-      },
-      {
-        "phrase": "count on",
-        "translation": "считать, on"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -17860,16 +14780,7 @@
     "example_translation": "Пара рассталась.",
     "transcription_ru": "кэпэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a couple",
-        "translation": "a, пара"
-      },
-      {
-        "phrase": "couple of",
-        "translation": "пару лет"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18121,12 +15032,7 @@
     "example_translation": "Договорились?",
     "transcription_ru": "дил",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "deal with",
-        "translation": "сделка, with"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18154,12 +15060,7 @@
     "example_translation": "Примите решение.",
     "transcription_ru": "дисижэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "right decision",
-        "translation": "правильно, правый, решение"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18242,18 +15143,8 @@
     "example": "That depends.",
     "example_translation": "Это зависит от обстоятельств.",
     "transcription_ru": "дипенд",
-    "family": [
-      {
-        "word": "depends",
-        "translation": "зависит"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "depend on",
-        "translation": "зависеть, on"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18364,18 +15255,8 @@
     "example": "Same difference.",
     "example_translation": "Те же яйца, только в профиль.",
     "transcription_ru": "дифэрентли",
-    "family": [
-      {
-        "word": "different",
-        "translation": "различный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "it differently",
-        "translation": "it, по-разному"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18529,12 +15410,7 @@
     "example_translation": "Крысы переносят болезни.",
     "transcription_ru": "дизиз",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this disease",
-        "translation": "this, болезнь"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18576,12 +15452,7 @@
     "example_translation": "Всё задокументируй.",
     "transcription_ru": "дакйэмент",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this document",
-        "translation": "this, документ"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18651,12 +15522,7 @@
     "example_translation": "Мечтай.",
     "transcription_ru": "дрим",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my dream",
-        "translation": "my, мечтать"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18754,12 +15620,7 @@
     "example_translation": "Они легко плавают.",
     "transcription_ru": "изэли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "very easily",
-        "translation": "very, легко"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -18786,12 +15647,7 @@
     "example": "It was effective.",
     "example_translation": "Это было действенно.",
     "transcription_ru": "ифект",
-    "family": [
-      {
-        "word": "effective",
-        "translation": "эффективный"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -19142,16 +15998,7 @@
     "example_translation": "Именно.",
     "transcription_ru": "игзэктли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "exactly like",
-        "translation": "точно, нравиться"
-      },
-      {
-        "phrase": "use exactly",
-        "translation": "использовать, точно"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19165,16 +16012,7 @@
     "example_translation": "Класс!",
     "transcription_ru": "ексэлэнт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "an excellent",
-        "translation": "an, превосходный"
-      },
-      {
-        "phrase": "friends excellent",
-        "translation": "друзья, превосходный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19285,18 +16123,8 @@
     "example": "Express yourself clearly!",
     "example_translation": "Выражайтесь ясно.",
     "transcription_ru": "икспрес",
-    "family": [
-      {
-        "word": "expression",
-        "translation": "выражение"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "express my",
-        "translation": "выражение, my"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19309,22 +16137,8 @@
     "example": "Express yourself clearly!",
     "example_translation": "Выражайтесь ясно.",
     "transcription_ru": "икспрешэн",
-    "family": [
-      {
-        "word": "express",
-        "translation": "выражение"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "an expression",
-        "translation": "an, выражение"
-      },
-      {
-        "phrase": "set expression",
-        "translation": "набор, выражение"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19701,18 +16515,8 @@
     "example": "Follow them.",
     "example_translation": "Поезжай за ними.",
     "transcription_ru": "фалоуинг",
-    "family": [
-      {
-        "word": "follow",
-        "translation": "следовать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "the following",
-        "translation": "the, следующий"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19726,12 +16530,7 @@
     "example_translation": "Он иностранец.",
     "transcription_ru": "форэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "foreign languages",
-        "translation": "иностранные языки"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19772,22 +16571,8 @@
     "example": "All formalities were respected.",
     "example_translation": "Были соблюдены все формальности.",
     "transcription_ru": "формэл",
-    "family": [
-      {
-        "word": "form",
-        "translation": "форма"
-      },
-      {
-        "word": "forms",
-        "translation": "формы (глагола)"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "more formal",
-        "translation": "more, формальный"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19815,16 +16600,7 @@
     "example_translation": "Вперёд!",
     "transcription_ru": "форуэрд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "look forward",
-        "translation": "смотреть, вперед"
-      },
-      {
-        "phrase": "moving forward",
-        "translation": "двигаться, вперед"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19964,12 +16740,7 @@
     "example_translation": "Фрукты обычно быстро гниют.",
     "transcription_ru": "енэрэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "in general",
-        "translation": "in, общий"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -19997,12 +16768,7 @@
     "example_translation": "Гол!",
     "transcription_ru": "гоул",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my goal",
-        "translation": "my, цель"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -20212,12 +16978,7 @@
     "example_translation": "Сердце бьётся.",
     "transcription_ru": "харт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "by heart",
-        "translation": "by, сердце"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -20399,12 +17160,7 @@
     "example_translation": "Подержи это.",
     "transcription_ru": "хоулд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "hold me",
-        "translation": "держать, me"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -20418,12 +17174,7 @@
     "example_translation": "В швейцарском сыре есть дырки.",
     "transcription_ru": "хоул",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a hole",
-        "translation": "a, отверстие"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -20437,12 +17188,7 @@
     "example_translation": "Она огромная.",
     "transcription_ru": "хьюдж",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a huge",
-        "translation": "a, огромный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -20736,12 +17482,7 @@
     "example_translation": "Попробуйте лучше это.",
     "transcription_ru": "инстед",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "instead of",
-        "translation": "вместо, of"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21034,12 +17775,7 @@
     "example": "Kill.",
     "example_translation": "Убей!",
     "transcription_ru": "кил",
-    "family": [
-      {
-        "word": "killed",
-        "translation": "убил"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -21110,16 +17846,7 @@
     "example_translation": "Знание свойственно человеку.",
     "transcription_ru": "нали",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "their knowledge",
-        "translation": "their, знание"
-      },
-      {
-        "phrase": "your knowledge",
-        "translation": "your, знание"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21277,42 +18004,6 @@
     "level": "A2"
   },
   {
-    "word": "learning",
-    "translation": "обучение",
-    "frequency": "353",
-    "note": "",
-    "ipa": "/ˈlərnɪŋ/",
-    "pos": "n",
-    "example": "Learn.",
-    "example_translation": "Учись.",
-    "transcription_ru": "лэрнинг",
-    "family": [
-      {
-        "word": "learn",
-        "translation": "учиться"
-      },
-      {
-        "word": "learned",
-        "translation": "учиться"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "been learning",
-        "translation": "been, обучение"
-      },
-      {
-        "phrase": "learning english",
-        "translation": "изучение английского языка"
-      },
-      {
-        "phrase": "started learning",
-        "translation": "Начал изучать английский"
-      }
-    ],
-    "level": "A2"
-  },
-  {
     "word": "least",
     "translation": "меньше",
     "frequency": "194",
@@ -21323,12 +18014,7 @@
     "example_translation": "По крайней мере ответь мне.",
     "transcription_ru": "лист",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "at least",
-        "translation": "at, меньше"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21384,16 +18070,7 @@
     "example_translation": "Ешьте меньше говядины.",
     "transcription_ru": "лес",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "less money",
-        "translation": "меньше, деньги"
-      },
-      {
-        "phrase": "much less",
-        "translation": "много, меньше"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21407,20 +18084,7 @@
     "example_translation": "Уровень моря растёт.",
     "transcription_ru": "левэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "advance level",
-        "translation": "продвинутый, уровень"
-      },
-      {
-        "phrase": "advanced level",
-        "translation": "продвинутый уровень"
-      },
-      {
-        "phrase": "high level",
-        "translation": "высокий, уровень"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21588,16 +18252,7 @@
     "example_translation": "На пол!",
     "transcription_ru": "лоу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "low level",
-        "translation": "низкий, уровень"
-      },
-      {
-        "phrase": "very low",
-        "translation": "very, низкий"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21625,12 +18280,7 @@
     "example_translation": "Удачи.",
     "transcription_ru": "лэки",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "so lucky",
-        "translation": "so, счастливчик"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21686,12 +18336,7 @@
     "example_translation": "Он справится.",
     "transcription_ru": "мэни",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "manage to",
-        "translation": "управлять, to"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21704,12 +18349,7 @@
     "example": "He'll manage.",
     "example_translation": "Он справится.",
     "transcription_ru": "мэниэр",
-    "family": [
-      {
-        "word": "managed",
-        "translation": "управляемый"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -21808,12 +18448,7 @@
     "example_translation": "Качество имеет значение.",
     "transcription_ru": "мэтэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "does matter",
-        "translation": "does, дело, иметь значение"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21869,12 +18504,7 @@
     "example_translation": "Вот это память!",
     "transcription_ru": "мемэри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my memory",
-        "translation": "my, память"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21916,12 +18546,7 @@
     "example_translation": "Будь методичен.",
     "transcription_ru": "месэд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "effective method",
-        "translation": "эффективный, метод"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -21935,16 +18560,7 @@
     "example_translation": "Я из среднего класса.",
     "transcription_ru": "мидэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "middle of",
-        "translation": "середина, of"
-      },
-      {
-        "phrase": "the middle",
-        "translation": "the, середина"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -22210,12 +18826,7 @@
     "example_translation": "Надо действовать!",
     "transcription_ru": "несэсери",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "be necessary",
-        "translation": "be, необходимый"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -22495,12 +19106,7 @@
     "example_translation": "Выбери что-нибудь одно.",
     "transcription_ru": "опшэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "second option",
-        "translation": "второй, вариант"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -23298,16 +19904,7 @@
     "example_translation": "Они профессионалы.",
     "transcription_ru": "прэфешэнэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "professional enough",
-        "translation": "профессиональный, достаточно"
-      },
-      {
-        "phrase": "very professional",
-        "translation": "very, профессиональный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -23363,12 +19960,7 @@
     "example_translation": "В процессе.",
     "transcription_ru": "прагрес",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my progress",
-        "translation": "my, прогресс"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -23647,12 +20239,7 @@
     "example": "I reached my kitchen.",
     "example_translation": "Я добрался до кухни.",
     "transcription_ru": "ри",
-    "family": [
-      {
-        "word": "reached",
-        "translation": "достигнутый"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -23681,12 +20268,7 @@
     "example_translation": "Она поняла.",
     "transcription_ru": "риэлайз",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "perfectly realize",
-        "translation": "идеально, осознавать"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -23784,12 +20366,7 @@
     "example_translation": "Мы вас рекомендуем.",
     "transcription_ru": "рекэменд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "recommend that",
-        "translation": "рекомендовать, that"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -23900,26 +20477,8 @@
     "example": "Exercise regularly.",
     "example_translation": "Регулярно занимайся спортом.",
     "transcription_ru": "регйэлэр",
-    "family": [
-      {
-        "word": "regularly",
-        "translation": "регулярно"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "a regular",
-        "translation": "a, правильный"
-      },
-      {
-        "phrase": "regular basis",
-        "translation": "правильный, основа"
-      },
-      {
-        "phrase": "regular verbs",
-        "translation": "правильный, глаголы"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24245,20 +20804,6 @@
     "level": "A2"
   },
   {
-    "word": "running",
-    "translation": "бегать",
-    "frequency": "129",
-    "note": "",
-    "ipa": "/ˈrənɪŋ/",
-    "pos": "n",
-    "example": "Run.",
-    "example_translation": "Беги!",
-    "transcription_ru": "рэнинг",
-    "family": [],
-    "collocations": [],
-    "level": "A2"
-  },
-  {
     "word": "sadly",
     "translation": "сожаление",
     "frequency": "",
@@ -24367,16 +20912,7 @@
     "example_translation": "Сообщение сохранено.",
     "transcription_ru": "сейв",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "save up",
-        "translation": "экономить, up"
-      },
-      {
-        "phrase": "to save",
-        "translation": "to, экономить"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24557,30 +21093,8 @@
     "example": "He seems furious.",
     "example_translation": "Он, похоже, в бешенстве.",
     "transcription_ru": "сим",
-    "family": [
-      {
-        "word": "seemed",
-        "translation": "казаться"
-      },
-      {
-        "word": "seems",
-        "translation": "кажется"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "does seem",
-        "translation": "does, казаться"
-      },
-      {
-        "phrase": "may seem",
-        "translation": "может, казаться"
-      },
-      {
-        "phrase": "seem very",
-        "translation": "казаться, very"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24594,12 +21108,7 @@
     "example_translation": "Логично.",
     "transcription_ru": "сенс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "sense of",
-        "translation": "чувство, of"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24641,16 +21150,7 @@
     "example_translation": "Серьёзно?!",
     "transcription_ru": "сириэс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "serious problems",
-        "translation": "серьезный, проблемы"
-      },
-      {
-        "phrase": "very serious",
-        "translation": "very, серьезный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24692,16 +21192,7 @@
     "example_translation": "Несколько человек утонуло.",
     "transcription_ru": "севэрэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "several parts",
-        "translation": "несколько, части"
-      },
-      {
-        "phrase": "several times",
-        "translation": "несколько, время"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24771,12 +21262,7 @@
     "example_translation": "Покиньте судно.",
     "transcription_ru": "шип",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a ship",
-        "translation": "a, судно"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24845,12 +21331,7 @@
     "example": "Sign it.",
     "example_translation": "Подпиши его.",
     "transcription_ru": "сайн",
-    "family": [
-      {
-        "word": "signal",
-        "translation": "сигнал"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "A2"
   },
@@ -24879,20 +21360,7 @@
     "example_translation": "Хорошо быть милосердным.",
     "transcription_ru": "симпэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "future simple",
-        "translation": "будущее, простой"
-      },
-      {
-        "phrase": "past simple",
-        "translation": "прошлое, простой"
-      },
-      {
-        "phrase": "present simple",
-        "translation": "настоящее (время), простой"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -24906,12 +21374,7 @@
     "example_translation": "С каких пор?",
     "transcription_ru": "синс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "since last",
-        "translation": "с тех пор, последний"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25121,12 +21584,7 @@
     "example_translation": "Мы курим.",
     "transcription_ru": "смоукинг",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "up smoking",
-        "translation": "up, курение"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25238,12 +21696,7 @@
     "example_translation": "Я предлагал решения.",
     "transcription_ru": "сэлушэн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "best solution",
-        "translation": "лучший, решение"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25257,16 +21710,7 @@
     "example_translation": "Проблема решена!",
     "transcription_ru": "салв",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "solve this",
-        "translation": "решать, this"
-      },
-      {
-        "phrase": "to solve",
-        "translation": "to, решать"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25321,22 +21765,8 @@
     "example": "Acadians are French speakers.",
     "example_translation": "Акадийцы говорят по-французски.",
     "transcription_ru": "спикэр",
-    "family": [
-      {
-        "word": "speak",
-        "translation": "говорить"
-      },
-      {
-        "word": "speaking",
-        "translation": "говорить"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "native speaker",
-        "translation": "Носитель языка"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25350,12 +21780,7 @@
     "example_translation": "Говори точнее.",
     "transcription_ru": "списифик",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "some specific",
-        "translation": "some, специфический"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25369,12 +21794,7 @@
     "example_translation": "Ты произнёс превосходную речь.",
     "transcription_ru": "спи",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "his speech",
-        "translation": "his, речь"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25514,16 +21934,7 @@
     "example_translation": "Осторожно, ступеньки!",
     "transcription_ru": "степ",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "by step",
-        "translation": "by, шаг"
-      },
-      {
-        "phrase": "step by",
-        "translation": "Шаг за шагом"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25565,16 +21976,7 @@
     "example_translation": "Леса накапливают воду.",
     "transcription_ru": "стор",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "store that",
-        "translation": "магазин, that"
-      },
-      {
-        "phrase": "store what",
-        "translation": "магазин, what"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25616,12 +22018,7 @@
     "example_translation": "Странно.",
     "transcription_ru": "стрейн",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "very strange",
-        "translation": "very, странный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25705,16 +22102,7 @@
     "example_translation": "Успех!",
     "transcription_ru": "сэксесфэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "successful businessman",
-        "translation": "успешный, бизнесмен"
-      },
-      {
-        "phrase": "very successful",
-        "translation": "very, успешный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25840,20 +22228,7 @@
     "example_translation": "Сюрприз!",
     "transcription_ru": "сэпрайзд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "be surprised",
-        "translation": "be, удивленный"
-      },
-      {
-        "phrase": "greatly surprised",
-        "translation": "очень, удивленный"
-      },
-      {
-        "phrase": "surprised by",
-        "translation": "удивленный, by"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -25983,20 +22358,6 @@
     "level": "A2"
   },
   {
-    "word": "teaching",
-    "translation": "учение",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈtitʃɪŋ/",
-    "pos": "n",
-    "example": "I like teaching.",
-    "example_translation": "Мне нравится преподавать.",
-    "transcription_ru": "титшинг",
-    "family": [],
-    "collocations": [],
-    "level": "A2"
-  },
-  {
     "word": "technology",
     "translation": "технология",
     "frequency": "",
@@ -26109,57 +22470,6 @@
     "level": "A2"
   },
   {
-    "word": "thinking",
-    "translation": "мышление",
-    "frequency": "197",
-    "note": "",
-    "ipa": "/ˈθɪŋkɪŋ/",
-    "pos": "n",
-    "example": "Think!",
-    "example_translation": "Думай!",
-    "transcription_ru": "сингкинг",
-    "family": [
-      {
-        "word": "think",
-        "translation": "думать"
-      },
-      {
-        "word": "thinks",
-        "translation": "думать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "thinking about",
-        "translation": "мышление, about"
-      }
-    ],
-    "level": "A2"
-  },
-  {
-    "word": "thought",
-    "translation": "думал",
-    "frequency": "310",
-    "note": "",
-    "ipa": "/θɔt/",
-    "pos": "n",
-    "example": "Thoughts are clouds.",
-    "example_translation": "Мысли — это облака.",
-    "transcription_ru": "сот",
-    "family": [],
-    "collocations": [
-      {
-        "phrase": "never thought",
-        "translation": "никогда, думал"
-      },
-      {
-        "phrase": "thought about",
-        "translation": "думал, about"
-      }
-    ],
-    "level": "A2"
-  },
-  {
     "word": "throw",
     "translation": "бросать",
     "frequency": "126",
@@ -26254,16 +22564,7 @@
     "example_translation": "Сходи проветрись.",
     "transcription_ru": "тэ",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "in touch",
-        "translation": "in, касаться"
-      },
-      {
-        "phrase": "touch with",
-        "translation": "касаться, with"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -26519,20 +22820,6 @@
     "level": "A2"
   },
   {
-    "word": "understanding",
-    "translation": "понимание",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˌəndɝˈstændɪŋ/",
-    "pos": "n",
-    "example": "I understand my teacher.",
-    "example_translation": "Я понимаю своего учителя.",
-    "transcription_ru": "эндёрстэндинг",
-    "family": [],
-    "collocations": [],
-    "level": "A2"
-  },
-  {
     "word": "unfortunately",
     "translation": "сожаление",
     "frequency": "",
@@ -26599,16 +22886,7 @@
     "example_translation": "Объединяйтесь!",
     "transcription_ru": "йунайтид",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "the united",
-        "translation": "the, единый"
-      },
-      {
-        "phrase": "united states",
-        "translation": "единый, государства"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -26664,12 +22942,7 @@
     "example_translation": "Занят, как обычно?",
     "transcription_ru": "йужэуэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "than usual",
-        "translation": "than, обычный"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -26739,12 +23012,7 @@
     "example_translation": "Вид был впечатляющий.",
     "transcription_ru": "вйу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "of view",
-        "translation": "of, вид"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -26772,12 +23040,7 @@
     "example_translation": "Том слышал голоса.",
     "transcription_ru": "войс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "passive voice",
-        "translation": "passive, голос"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -26931,16 +23194,7 @@
     "example_translation": "Весь мост рухнул.",
     "transcription_ru": "хоул",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "the whole",
-        "translation": "the, целое"
-      },
-      {
-        "phrase": "whole truth",
-        "translation": "целое, правда"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -26996,12 +23250,7 @@
     "example_translation": "Ищи ветра в поле.",
     "transcription_ru": "уинд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "wind blew",
-        "translation": "ветер, blew"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -27029,12 +23278,7 @@
     "example_translation": "Хорошо бы!",
     "transcription_ru": "уиш",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "i wish",
-        "translation": "i, желание"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -27066,46 +23310,6 @@
     "level": "A2"
   },
   {
-    "word": "working",
-    "translation": "работа",
-    "frequency": "526",
-    "note": "",
-    "ipa": "/ˈwərkɪŋ/",
-    "pos": "adj",
-    "example": "Work!",
-    "example_translation": "Работай!",
-    "transcription_ru": "уэркинг",
-    "family": [
-      {
-        "word": "work",
-        "translation": "работать"
-      },
-      {
-        "word": "worked",
-        "translation": "работать"
-      },
-      {
-        "word": "works",
-        "translation": "работа"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "been working",
-        "translation": "been, работа"
-      },
-      {
-        "phrase": "working here",
-        "translation": "работа, here"
-      },
-      {
-        "phrase": "working on",
-        "translation": "Работа над этим проектом"
-      }
-    ],
-    "level": "A2"
-  },
-  {
     "word": "worried",
     "translation": "взволнованный",
     "frequency": "",
@@ -27130,16 +23334,7 @@
     "example_translation": "Хватит переживать!",
     "transcription_ru": "уэри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "do worry",
-        "translation": "do, беспокойство"
-      },
-      {
-        "phrase": "worry about",
-        "translation": "беспокойство, about"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -27153,12 +23348,7 @@
     "example_translation": "Наш хуже.",
     "transcription_ru": "уэрс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "much worse",
-        "translation": "много, хуже"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -27200,12 +23390,7 @@
     "example_translation": "Ещё нет.",
     "transcription_ru": "йет",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "yet been",
-        "translation": "еще, been"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -27233,16 +23418,7 @@
     "example_translation": "Это ноль.",
     "transcription_ru": "зироу",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "from zero",
-        "translation": "from, ноль"
-      },
-      {
-        "phrase": "zero to",
-        "translation": "ноль, to"
-      }
-    ],
+    "collocations": [],
     "level": "A2"
   },
   {
@@ -27326,16 +23502,7 @@
     "example_translation": "Удали свой аккаунт.",
     "transcription_ru": "экаунт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "his account",
-        "translation": "his, счет"
-      },
-      {
-        "phrase": "into account",
-        "translation": "into, счет"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -27419,16 +23586,7 @@
     "example_translation": "Иду.",
     "transcription_ru": "эдвэнст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "advanced level",
-        "translation": "продвинутый уровень"
-      },
-      {
-        "phrase": "an advanced",
-        "translation": "an, продвинутый"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -27904,12 +24062,7 @@
     "example_translation": "Моё отношение изменилось.",
     "transcription_ru": "этэтуд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "my attitude",
-        "translation": "my, отношение"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -28063,12 +24216,7 @@
     "example_translation": "Любовь является основой счастья.",
     "transcription_ru": "бейсис",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "regular basis",
-        "translation": "правильный, основа"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -28110,12 +24258,7 @@
     "example_translation": "Прекрасно!",
     "transcription_ru": "бйути",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "beauty of",
-        "translation": "Красота этого места"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -28955,12 +25098,7 @@
     "example_translation": "Насколько сложно?",
     "transcription_ru": "камплекс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "more complex",
-        "translation": "more, сложный"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -29044,16 +25182,7 @@
     "example_translation": "Возникла путаница.",
     "transcription_ru": "кэнфйуз",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "confuse these",
-        "translation": "Запутать эти слова"
-      },
-      {
-        "phrase": "often confuse",
-        "translation": "часто, путать"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -29192,30 +25321,8 @@
     "example": "Continue?",
     "example_translation": "Продолжить?",
     "transcription_ru": "кэнтинйуэс",
-    "family": [
-      {
-        "word": "continues",
-        "translation": "продолжать"
-      },
-      {
-        "word": "continuing",
-        "translation": "продолжать"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "past continuous",
-        "translation": "прошлое, длительный"
-      },
-      {
-        "phrase": "perfect continuous",
-        "translation": "совершенный, длительный"
-      },
-      {
-        "phrase": "present continuous",
-        "translation": "настоящее (время), длительный"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -29397,12 +25504,7 @@
     "example_translation": "Она сейчас работает.",
     "transcription_ru": "карэнт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "current situation",
-        "translation": "текущий, ситуация"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -29724,12 +25826,7 @@
     "example_translation": "Как досадно!",
     "transcription_ru": "дисэпойнид",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "bitterly disappointed",
-        "translation": "bitterly, разочарование"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -30050,26 +26147,8 @@
     "example": "It was effective.",
     "example_translation": "Это было действенно.",
     "transcription_ru": "ифектив",
-    "family": [
-      {
-        "word": "effect",
-        "translation": "эффект"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "an effective",
-        "translation": "an, эффективный"
-      },
-      {
-        "phrase": "effective method",
-        "translation": "эффективный, метод"
-      },
-      {
-        "phrase": "effective ways",
-        "translation": "эффективный, пути"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -30489,12 +26568,7 @@
     "example_translation": "Жди нас.",
     "transcription_ru": "икспектид",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "expected that",
-        "translation": "ожидаемый, that"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -30914,12 +26988,7 @@
     "example_translation": "Почаще сохраняйтесь.",
     "transcription_ru": "фрикуентли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "quite frequently",
-        "translation": "довольно, часто"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -31185,12 +27254,7 @@
     "example_translation": "С удовольствием.",
     "transcription_ru": "глэд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "glad to",
-        "translation": "Рад видеть"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -31596,16 +27660,7 @@
     "example_translation": "Давай быстрей.",
     "transcription_ru": "хэри",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a hurry",
-        "translation": "a, торопиться"
-      },
-      {
-        "phrase": "hurry up",
-        "translation": "торопиться, up"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -31731,16 +27786,7 @@
     "example_translation": "Насколько важно?",
     "transcription_ru": "импортэнс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "importance of",
-        "translation": "важность, of"
-      },
-      {
-        "phrase": "the importance",
-        "translation": "the, важность"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -32216,12 +28262,7 @@
     "example_translation": "Накрой на стол.",
     "transcription_ru": "лей",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "lay down",
-        "translation": "лежал, down"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -32388,22 +28429,8 @@
     "example": "Live!",
     "example_translation": "Живи!",
     "transcription_ru": "ливинг",
-    "family": [
-      {
-        "word": "lived",
-        "translation": "жить"
-      },
-      {
-        "word": "lives",
-        "translation": "жизнь"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "been living",
-        "translation": "been, жить"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -32823,20 +28850,7 @@
     "example_translation": "Туземцы носят мокасины.",
     "transcription_ru": "нейтив",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "a native",
-        "translation": "a, родной"
-      },
-      {
-        "phrase": "educated native",
-        "translation": "educated, родной"
-      },
-      {
-        "phrase": "native speaker",
-        "translation": "Носитель языка"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -33325,22 +29339,8 @@
     "example": "Perfect!",
     "example_translation": "Безупречно!",
     "transcription_ru": "пэрфэктли",
-    "family": [
-      {
-        "word": "perfect",
-        "translation": "совершенный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "perfectly realize",
-        "translation": "идеально, осознавать"
-      },
-      {
-        "phrase": "perfectly understand",
-        "translation": "идеально, понимать"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -33480,12 +29480,7 @@
     "example_translation": "С удовольствием.",
     "transcription_ru": "плежэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "great pleasure",
-        "translation": "большое удовольствие"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -33527,12 +29522,7 @@
     "example_translation": "Знак \"+\" означает \"плюс\".",
     "transcription_ru": "плэс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "plus verb",
-        "translation": "плюс, глагол"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -33839,18 +29829,8 @@
     "example": "Prepare it.",
     "example_translation": "Приготовь его.",
     "transcription_ru": "приперд",
-    "family": [
-      {
-        "word": "preparing",
-        "translation": "подготовка"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "prepared for",
-        "translation": "подготовленный, for"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -33920,16 +29900,7 @@
     "example_translation": "Раньше они были такими же, как мы.",
     "transcription_ru": "привиэс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "previous lesson",
-        "translation": "предыдущий, lesson"
-      },
-      {
-        "phrase": "previous lessons",
-        "translation": "предыдущий, уроки"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -34181,16 +30152,7 @@
     "example_translation": "Я горд.",
     "transcription_ru": "прауд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "be proud",
-        "translation": "be, гордый"
-      },
-      {
-        "phrase": "proud of",
-        "translation": "гордый, of"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -34386,12 +30348,7 @@
     "example_translation": "Он редко читает.",
     "transcription_ru": "рерли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "quite rarely",
-        "translation": "довольно, редко"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -34488,18 +30445,8 @@
     "example": "Exercise regularly.",
     "example_translation": "Регулярно занимайся спортом.",
     "transcription_ru": "регйэлэрли",
-    "family": [
-      {
-        "word": "regular",
-        "translation": "правильный"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "how regularly",
-        "translation": "how, регулярно"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -34722,18 +30669,8 @@
     "example": "Repeat!",
     "example_translation": "Повтори!",
     "transcription_ru": "рипитид",
-    "family": [
-      {
-        "word": "repeat",
-        "translation": "повторять"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "he repeated",
-        "translation": "he, повторяющийся"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -35209,12 +31146,7 @@
     "example_translation": "Установите границы.",
     "transcription_ru": "сет",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "set expression",
-        "translation": "набор, выражение"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -35242,12 +31174,7 @@
     "example_translation": "Секс продаёт.",
     "transcription_ru": "секс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "sex with",
-        "translation": "секс, with"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -35400,12 +31327,7 @@
     "example": "GPS signal not found.",
     "example_translation": "Сигнал GPS не найден.",
     "transcription_ru": "сигнэл",
-    "family": [
-      {
-        "word": "sign",
-        "translation": "знак"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "B1"
   },
@@ -35615,20 +31537,6 @@
     "example": "Be specific.",
     "example_translation": "Говори точнее.",
     "transcription_ru": "спэсификли",
-    "family": [],
-    "collocations": [],
-    "level": "B1"
-  },
-  {
-    "word": "spending",
-    "translation": "расходующий",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈspɛndɪŋ/",
-    "pos": "n",
-    "example": "",
-    "example_translation": "",
-    "transcription_ru": "спэндинг",
     "family": [],
     "collocations": [],
     "level": "B1"
@@ -36302,12 +32210,7 @@
     "example_translation": "Держись крепко.",
     "transcription_ru": "тайт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "so tight",
-        "translation": "so, плотно"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -36433,20 +32336,7 @@
     "example_translation": "Переведено!",
     "transcription_ru": "трэнзлейт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "let translate",
-        "translation": "давать, переводить"
-      },
-      {
-        "phrase": "lights translate",
-        "translation": "светильники, переводить"
-      },
-      {
-        "phrase": "live translate",
-        "translation": "жить, переводить"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -36530,12 +32420,7 @@
     "example_translation": "Правда убивает.",
     "transcription_ru": "трус",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "whole truth",
-        "translation": "целое, правда"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -36815,16 +32700,7 @@
     "example_translation": "Используй их.",
     "transcription_ru": "йузд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "get used",
-        "translation": "получать, использовал"
-      },
-      {
-        "phrase": "often used",
-        "translation": "часто, использовал"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -36992,16 +32868,7 @@
     "example_translation": "Не теряй времени!",
     "transcription_ru": "уейст",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "waste of",
-        "translation": "отходы, of"
-      },
-      {
-        "phrase": "waste time",
-        "translation": "отходы, время"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -37113,12 +32980,7 @@
     "example_translation": "Жить по средствам.",
     "transcription_ru": "уисин",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "within our",
-        "translation": "внутри, our"
-      }
-    ],
+    "collocations": [],
     "level": "B1"
   },
   {
@@ -37300,12 +33162,7 @@
     "example_translation": "Вызов принят.",
     "transcription_ru": "эксептэбэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "also acceptable",
-        "translation": "также, приемлемый"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -37627,12 +33484,7 @@
     "example_translation": "Иду.",
     "transcription_ru": "эдвэнс",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "advance level",
-        "translation": "продвинутый, уровень"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -39158,16 +35010,7 @@
     "example_translation": "Наш бюджет урезали.",
     "transcription_ru": "бэит",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "new budget",
-        "translation": "новый, бюджет"
-      },
-      {
-        "phrase": "no budget",
-        "translation": "no, бюджет"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -40049,12 +35892,7 @@
     "example_translation": "",
     "transcription_ru": "камплэкейтэд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "more complicated",
-        "translation": "more, сложный"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -40278,12 +36116,7 @@
     "example_translation": "",
     "transcription_ru": "канфликт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "this conflict",
-        "translation": "this, конфликт"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -41921,16 +37754,7 @@
     "example_translation": "Она любит его беззаветно.",
     "transcription_ru": "дивоут",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "devote more",
-        "translation": "посвящать больше времени"
-      },
-      {
-        "phrase": "will devote",
-        "translation": "will, посвящать"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -42994,12 +38818,7 @@
     "example_translation": "Энтузиазм заразителен.",
     "transcription_ru": "инсузиэзэм",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "of enthusiasm",
-        "translation": "of, энтузиазм"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -43027,16 +38846,7 @@
     "example_translation": "Правительство в полном составе подало в отставку.",
     "transcription_ru": "интайэр",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "entire course",
-        "translation": "целиком, курс"
-      },
-      {
-        "phrase": "the entire",
-        "translation": "the, целиком"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -43950,20 +39760,6 @@
     "level": "B2"
   },
   {
-    "word": "finding",
-    "translation": "вывод",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈfaɪndɪŋ/",
-    "pos": "n",
-    "example": "I am finding.",
-    "example_translation": "Я нахожу.",
-    "transcription_ru": "файндинг",
-    "family": [],
-    "collocations": [],
-    "level": "B2"
-  },
-  {
     "word": "firefighter",
     "translation": "пожарный",
     "frequency": "",
@@ -44114,16 +39910,7 @@
     "example_translation": "Не поминайте лихом!",
     "transcription_ru": "фанд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "am fond",
-        "translation": "am, любящий"
-      },
-      {
-        "phrase": "fond of",
-        "translation": "любящий, of"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -44295,33 +40082,6 @@
     "level": "B2"
   },
   {
-    "word": "found",
-    "translation": "нашел",
-    "frequency": "755",
-    "note": "",
-    "ipa": "/faʊnd/",
-    "pos": "v",
-    "example": "File not found.",
-    "example_translation": "Файл не найден.",
-    "transcription_ru": "фаунд",
-    "family": [],
-    "collocations": [
-      {
-        "phrase": "already found",
-        "translation": "уже, нашел"
-      },
-      {
-        "phrase": "been found",
-        "translation": "been, нашел"
-      },
-      {
-        "phrase": "found out",
-        "translation": "нашел, out"
-      }
-    ],
-    "level": "B2"
-  },
-  {
     "word": "foundation",
     "translation": "основа",
     "frequency": "",
@@ -44388,16 +40148,7 @@
     "example_translation": "CakePHP - это PHP-фреймворк.",
     "transcription_ru": "фреймуэрк",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "framework of",
-        "translation": "рамки, of"
-      },
-      {
-        "phrase": "the framework",
-        "translation": "the, рамки"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -44984,18 +40735,8 @@
     "example": "Great.",
     "example_translation": "Здорово.",
     "transcription_ru": "грейтли",
-    "family": [
-      {
-        "word": "great",
-        "translation": "великий"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "greatly surprised",
-        "translation": "очень, удивленный"
-      }
-    ],
+    "family": [],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -46856,12 +42597,7 @@
     "example": "Too late!",
     "example_translation": "Слишком поздно!",
     "transcription_ru": "лейтли",
-    "family": [
-      {
-        "word": "late",
-        "translation": "поздно"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "B2"
   },
@@ -47342,20 +43078,6 @@
     "level": "B2"
   },
   {
-    "word": "making",
-    "translation": "изготовление",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈmeɪkɪŋ/",
-    "pos": "n",
-    "example": "I am making art.",
-    "example_translation": "Я занимаюсь искусством.",
-    "transcription_ru": "мейкинг",
-    "family": [],
-    "collocations": [],
-    "level": "B2"
-  },
-  {
     "word": "manufacture",
     "translation": "производство",
     "frequency": "",
@@ -47535,34 +43257,6 @@
     "transcription_ru": "мейёр",
     "family": [],
     "collocations": [],
-    "level": "B2"
-  },
-  {
-    "word": "means",
-    "translation": "означает",
-    "frequency": "1445",
-    "note": "",
-    "ipa": "/minz/",
-    "pos": "n",
-    "example": "He means me.",
-    "example_translation": "Он говорит обо мне.",
-    "transcription_ru": "минз",
-    "family": [
-      {
-        "word": "mean",
-        "translation": "означать"
-      },
-      {
-        "word": "meaning",
-        "translation": "значение"
-      }
-    ],
-    "collocations": [
-      {
-        "phrase": "which means",
-        "translation": "which, означает"
-      }
-    ],
     "level": "B2"
   },
   {
@@ -48658,20 +44352,6 @@
     "level": "B2"
   },
   {
-    "word": "opening",
-    "translation": "отверстие",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈoʊpənɪŋ/",
-    "pos": "n",
-    "example": "I see an opening",
-    "example_translation": "Я вижу лазейку",
-    "transcription_ru": "оупэнинг",
-    "family": [],
-    "collocations": [],
-    "level": "B2"
-  },
-  {
     "word": "openly",
     "translation": "открыто",
     "frequency": "",
@@ -49718,12 +45398,7 @@
     "example_translation": "Точно!",
     "transcription_ru": "присайсли",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "more precisely",
-        "translation": "more, точно"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -49877,12 +45552,7 @@
     "example_translation": "У него твёрдые принципы.",
     "transcription_ru": "принсэпэл",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "in principle",
-        "translation": "in, принцип"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -51492,12 +47162,7 @@
     "example_translation": "Я люблю розы.",
     "transcription_ru": "роуз",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "pop rose",
-        "translation": "pop, встал"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -51623,20 +47288,7 @@
     "example_translation": "Будь доволен.",
     "transcription_ru": "сэтисфайд",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "be satisfied",
-        "translation": "be, удовлетворенный"
-      },
-      {
-        "phrase": "not satisfied",
-        "translation": "not, удовлетворенный"
-      },
-      {
-        "phrase": "satisfied with",
-        "translation": "удовлетворенный, with"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -51776,16 +47428,7 @@
     "example_translation": "Начни с нуля.",
     "transcription_ru": "скрэ",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "from scratch",
-        "translation": "from, с нуля (from scratch)"
-      },
-      {
-        "phrase": "scratch to",
-        "translation": "с нуля (from scratch), to"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -52765,16 +48408,7 @@
     "example_translation": "Он сделал это из злости.",
     "transcription_ru": "спайт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "in spite",
-        "translation": "in, несмотря на (in spite of)"
-      },
-      {
-        "phrase": "spite of",
-        "translation": "несмотря на (in spite of), of"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -53950,16 +49584,7 @@
     "example_translation": "Я дотошный.",
     "transcription_ru": "сэроули",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "more thoroughly",
-        "translation": "more, тщательно"
-      },
-      {
-        "phrase": "very thoroughly",
-        "translation": "very, тщательно"
-      }
-    ],
+    "collocations": [],
     "level": "B2"
   },
   {
@@ -54924,12 +50549,7 @@
     "example": "Tom got a visa.",
     "example_translation": "Том получил визу.",
     "transcription_ru": "визэ",
-    "family": [
-      {
-        "word": "visas",
-        "translation": "визы"
-      }
-    ],
+    "family": [],
     "collocations": [],
     "level": "B2"
   },
@@ -56372,12 +51992,7 @@
     "example_translation": "Мои часы аналоговые.",
     "transcription_ru": "энэлэи",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "by analogy",
-        "translation": "by, аналогия"
-      }
-    ],
+    "collocations": [],
     "level": "C1"
   },
   {
@@ -60059,16 +55674,7 @@
     "example_translation": "Значение по умолчанию - ноль.",
     "transcription_ru": "дифолт",
     "family": [],
-    "collocations": [
-      {
-        "phrase": "by default",
-        "translation": "by, по умолчанию"
-      },
-      {
-        "phrase": "default we",
-        "translation": "по умолчанию, we"
-      }
-    ],
+    "collocations": [],
     "level": "C1"
   },
   {
@@ -70693,20 +66299,6 @@
     "example": "I have a stake.",
     "example_translation": "У меня есть ставка.",
     "transcription_ru": "стейк",
-    "family": [],
-    "collocations": [],
-    "level": "C1"
-  },
-  {
-    "word": "standing",
-    "translation": "таблица",
-    "frequency": "",
-    "note": "",
-    "ipa": "/ˈstændɪŋ/",
-    "pos": "adj",
-    "example": "",
-    "example_translation": "",
-    "transcription_ru": "стэндинг",
     "family": [],
     "collocations": [],
     "level": "C1"

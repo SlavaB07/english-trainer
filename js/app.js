@@ -5,7 +5,7 @@ let temporary = [];
 let sentences = [];
 let currentMode = 'dashboard';
 let currentLevel = localStorage.getItem('level') || 'all';
-
+let sessionProgress = JSON.parse(localStorage.getItem('sessionProgress') || '{"done": 0, "total": 0}');
 let positions = JSON.parse(localStorage.getItem('positions') || '{}');
 positions.cards = positions.cards || 0;
 positions.test = positions.test || 0;
@@ -273,7 +273,7 @@ async function loadData() {
             const tempRes = await fetch('data/temporary.json');
             tempFromJson = await tempRes.json();
             if (!Array.isArray(tempFromJson)) tempFromJson = [];
-        } catch (e) {}
+        } catch (e) { }
 
         let tempFromLocal = [];
         try {
@@ -282,7 +282,7 @@ async function loadData() {
                 const parsed = JSON.parse(localTemp);
                 if (Array.isArray(parsed)) tempFromLocal = parsed;
             }
-        } catch (e) {}
+        } catch (e) { }
 
         temporary = mergeTemporary(tempFromJson, tempFromLocal);
         localStorage.setItem('temporary', JSON.stringify(temporary));
@@ -401,8 +401,8 @@ function getBlockProgress(tenseKeys) {
 
 function getBlockName(block) {
     if (block === 'present') return { label: 'Present', emoji: '🟢', color: 'green' };
-    if (block === 'past')    return { label: 'Past',    emoji: '🟡', color: 'amber' };
-    if (block === 'future')  return { label: 'Future',  emoji: '🔴', color: 'red' };
+    if (block === 'past') return { label: 'Past', emoji: '🟡', color: 'amber' };
+    if (block === 'future') return { label: 'Future', emoji: '🔴', color: 'red' };
     return { label: block, emoji: '⚪', color: 'gray' };
 }
 
@@ -567,6 +567,9 @@ function renderLevelButtons() {
                 tempCards: 0, tempTest: 0, tempWrite: 0,
                 sentBuild: 0, sentChoose: 0, sentTranslate: 0
             };
+            resetShuffle();
+            sessionProgress = { done: 0, total: 0 };
+            localStorage.removeItem('sessionProgress');
             savePositions();
             renderLevelButtons();
             renderMode(currentMode);
@@ -575,9 +578,18 @@ function renderLevelButtons() {
     });
 }
 
+let shuffledVocab = [];
+
 function getFilteredVocabulary() {
-    if (currentLevel === 'all') return vocabulary;
-    return vocabulary.filter(w => w.level === currentLevel);
+    if (shuffledVocab.length === 0) {
+        shuffledVocab = shuffleArray([...vocabulary]);
+    }
+    if (currentLevel === 'all') return shuffledVocab;
+    return shuffledVocab.filter(w => w.level === currentLevel);
+}
+
+function resetShuffle() {
+    shuffledVocab = [];
 }
 
 function getFilteredPhrases() {
@@ -806,6 +818,11 @@ function renderDashboard() {
 function renderCards() {
     const dueWords = getDueWords();
 
+    if (sessionProgress.total === 0) {
+        sessionProgress.total = dueWords.length;
+        localStorage.setItem('sessionProgress', JSON.stringify(sessionProgress));
+    }
+
     if (dueWords.length === 0) {
         document.getElementById('content').innerHTML = `
             <div class="empty-state">
@@ -824,6 +841,13 @@ function renderCards() {
         `;
         refreshIcons();
         return;
+    }
+
+    // Восстанавливаем последнее слово
+    let lastWordCard = localStorage.getItem('lastWordCard') || '';
+    if (lastWordCard) {
+        const idx = dueWords.findIndex(w => w.word === lastWordCard);
+        if (idx !== -1) positions.cards = idx;
     }
 
     if (positions.cards >= dueWords.length) positions.cards = 0;
@@ -846,20 +870,23 @@ function renderCards() {
             </div>
         `;
     }
-    if (word.family && word.family.length > 0) {
-        hiddenContent += `<div class="card-family"><strong>Word Family:</strong> ${formatFamily(word.family)}</div>`;
-    }
-    if (word.collocations && word.collocations.length > 0) {
-        hiddenContent += `<div class="card-collocations"><strong>Collocations:</strong> ${formatCollocations(word.collocations)}</div>`;
-    }
 
-    const progressPct = Math.round(((positions.cards + 1) / dueWords.length) * 100);
+    //if (word.family && word.family.length > 0) {
+    //    hiddenContent += `<div class="card-family"><strong>Word Family:</strong> ${formatFamily(word.family)}</div>`;
+    //}
+    //if (word.collocations && word.collocations.length > 0) {
+    //    hiddenContent += `<div class="card-collocations"><strong>Collocations:</strong> ${formatCollocations(word.collocations)}</div>`;
+    //}
+
+    const progressPct = sessionProgress.total > 0
+        ? Math.round(((sessionProgress.done + 1) / sessionProgress.total) * 100)
+        : 0;
 
     document.getElementById('content').innerHTML = `
         <div class="mode-wrap">
             <div class="mode-progress">
                 <div class="mode-progress-info">
-                    <span class="mode-progress-label">Карточка ${positions.cards + 1} из ${dueWords.length}</span>
+                                        <span class="mode-progress-label">Карточка ${sessionProgress.done + 1} из ${sessionProgress.total}</span>
                     <span class="mode-progress-pct">${progressPct}%</span>
                 </div>
                 <div class="mode-progress-bar">
@@ -920,6 +947,8 @@ function renderCards() {
     };
 
     document.getElementById('btn-learned').onclick = () => {
+        sessionProgress.done++;
+        localStorage.setItem('sessionProgress', JSON.stringify(sessionProgress));
         if (!learned.includes(word.word)) {
             learned.push(word.word);
             localStorage.setItem('learned', JSON.stringify(learned));
@@ -932,6 +961,8 @@ function renderCards() {
     };
 
     document.getElementById('btn-dontknow').onclick = () => {
+        sessionProgress.done++;
+        localStorage.setItem('sessionProgress', JSON.stringify(sessionProgress));
         updateSrs(word.word, false, false);
         addXP(2);
         positions.cards++;
@@ -941,6 +972,8 @@ function renderCards() {
     };
 
     document.getElementById('btn-master').onclick = () => {
+        sessionProgress.done++;
+        localStorage.setItem('sessionProgress', JSON.stringify(sessionProgress));
         addMastered(word.word);
         addXP(20);
         positions.cards = 0;
@@ -1100,10 +1133,9 @@ function renderWrite() {
                 <div class="write-prompt">
                     <div class="write-prompt-label">Переведи на английский:</div>
                     <div class="write-prompt-word">${word.translation}</div>
-                    <div class="write-prompt-hint">
+                                        <div class="write-prompt-hint">
                         <i data-lucide="lightbulb"></i>
                         ${word.word.length} букв
-                        ${word.transcription_ru ? ` · [${word.transcription_ru}]` : ''}
                     </div>
                 </div>
 
@@ -1462,11 +1494,11 @@ function renderTempList() {
         </div>
         <div class="list-items">
             ${temporary.length === 0
-                ? `<div class="empty-inline">
+            ? `<div class="empty-inline">
                     <i data-lucide="inbox"></i>
                     <div>Пока нет временных слов. Нажми «Добавить слово».</div>
                 </div>`
-                : temporary.map((w, i) => `
+            : temporary.map((w, i) => `
                     <div class="list-item">
                         <div class="list-item-info">
                             <strong>${w.word}</strong>
@@ -1481,7 +1513,7 @@ function renderTempList() {
                         </button>
                     </div>
                 `).join('')
-            }
+        }
         </div>
     `;
 }
@@ -1893,7 +1925,7 @@ function getUniqueTenses() {
 function getUniqueLevels() {
     const set = new Set();
     sentences.forEach(s => { if (s.level) set.add(s.level); });
-    return ['A1', 'A2', 'B1', 'B2'].filter(lvl => set.has(lvl));
+    return ['A1', 'A2', 'B1', 'B2', 'C1'].filter(lvl => set.has(lvl));
 }
 
 function renderSentences() {
@@ -1923,11 +1955,11 @@ function renderSentences() {
             All · ${totalAll}
         </button>
         ${tenses.map(t => {
-            const count = sentences.filter(s => s.tense === t.key).length;
-            return `<button class="chip ${sentTenseFilter === t.key ? 'active' : ''}" data-tense="${t.key}">
+        const count = sentences.filter(s => s.tense === t.key).length;
+        return `<button class="chip ${sentTenseFilter === t.key ? 'active' : ''}" data-tense="${t.key}">
                 ${t.label} · ${count}
             </button>`;
-        }).join('')}
+    }).join('')}
     `;
 
     const levels = getUniqueLevels();
@@ -2397,7 +2429,7 @@ function renderLearningPath() {
 
             let levelsHtml = '';
             if (isExpanded) {
-                const levels = ['A1', 'A2', 'B1', 'B2'];
+                const levels = ['all', 'A1', 'A2', 'B1', 'B2', 'C1'];
                 levelsHtml = `<div class="lp-levels">` + levels.map(lvl => {
                     const lp = getLevelProgress(t.key, lvl);
                     if (lp.total === 0) return '';
@@ -3081,8 +3113,8 @@ function renderProfile() {
 }
 
 // ===== НАВИГАЦИЯ =====
-function nextCard() {}
-function prevCard() {}
+function nextCard() { }
+function prevCard() { }
 
 // ===== ИНИЦИАЛИЗАЦИЯ =====
 document.addEventListener('DOMContentLoaded', () => {
