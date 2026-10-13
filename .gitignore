@@ -1,0 +1,27 @@
+# Промежуточные файлы
+data/vocabulary_clean.json
+data/oxford3000.txt
+data/oxford5000.txt
+data/*_backup.json
+data/*.bak
+
+# Черновики
+*.txt
+*.log
+
+# Системные
+.DS_Store
+Thumbs.db
+
+# Локальные скрипты
+push.bat
+# Мусорные файлы в data/
+data/sentences_leveled.json
+data/vocabulary_backup2.json
+data/vocabulary_final.json
+data/vocabulary_leveled.json
+data/vocabulary_old.json
+data/*_backup*.json
+data/*_old.json
+data/*_final.json
+data/*_leveled.json
