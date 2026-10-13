@@ -249,7 +249,7 @@ async function loadData() {
             const tempRes = await fetch('data/temporary.json');
             tempFromJson = await tempRes.json();
             if (!Array.isArray(tempFromJson)) tempFromJson = [];
-        } catch (e) { }
+        } catch (e) {}
 
         let tempFromLocal = [];
         try {
@@ -258,7 +258,7 @@ async function loadData() {
                 const parsed = JSON.parse(localTemp);
                 if (Array.isArray(parsed)) tempFromLocal = parsed;
             }
-        } catch (e) { }
+        } catch (e) {}
 
         temporary = mergeTemporary(tempFromJson, tempFromLocal);
         localStorage.setItem('temporary', JSON.stringify(temporary));
@@ -376,8 +376,8 @@ function getBlockProgress(tenseKeys) {
 
 function getBlockName(block) {
     if (block === 'present') return { label: 'Present', emoji: '🟢', color: 'green' };
-    if (block === 'past') return { label: 'Past', emoji: '🟡', color: 'amber' };
-    if (block === 'future') return { label: 'Future', emoji: '🔴', color: 'red' };
+    if (block === 'past')    return { label: 'Past',    emoji: '🟡', color: 'amber' };
+    if (block === 'future')  return { label: 'Future',  emoji: '🔴', color: 'red' };
     return { label: block, emoji: '⚪', color: 'gray' };
 }
 
@@ -1450,11 +1450,11 @@ function renderTempList() {
         </div>
         <div class="list-items">
             ${temporary.length === 0
-            ? `<div class="empty-inline">
+                ? `<div class="empty-inline">
                     <i data-lucide="inbox"></i>
                     <div>Пока нет временных слов. Нажми «Добавить слово».</div>
                 </div>`
-            : temporary.map((w, i) => `
+                : temporary.map((w, i) => `
                     <div class="list-item">
                         <div class="list-item-info">
                             <strong>${w.word}</strong>
@@ -1469,7 +1469,7 @@ function renderTempList() {
                         </button>
                     </div>
                 `).join('')
-        }
+            }
         </div>
     `;
 }
@@ -1906,11 +1906,11 @@ function renderSentences() {
             All · ${totalAll}
         </button>
         ${tenses.map(t => {
-        const count = sentences.filter(s => s.tense === t.key).length;
-        return `<button class="chip ${sentTenseFilter === t.key ? 'active' : ''}" data-tense="${t.key}">
+            const count = sentences.filter(s => s.tense === t.key).length;
+            return `<button class="chip ${sentTenseFilter === t.key ? 'active' : ''}" data-tense="${t.key}">
                 ${t.label} · ${count}
             </button>`;
-    }).join('')}
+        }).join('')}
     `;
 
     const levels = getUniqueLevels();
