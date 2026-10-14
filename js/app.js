@@ -48,6 +48,18 @@ let lpQueue = [];
 let lpIndex = 0;
 let lpSkippedThisSession = new Set();
 
+// === МОДУЛИ ===
+let modulesData = null;
+let currentModuleLevel = null; // 'A1', 'A2', ... или null (список уровней)
+let currentModuleProgress = JSON.parse(localStorage.getItem('moduleProgress') || '{}');
+// Структура: { "A1.1": { done_tasks: 129, total_tasks: 153, passed: false }, ... }
+let levelUnlocked = JSON.parse(localStorage.getItem('levelUnlocked') || '{"A1": true}');
+// Структура: { "A1": true, "A2": false, ... }
+// === АКТИВНЫЙ ПОДМОДУЛЬ ===
+let activeSubmodule = null; // { level, subId, tasks: [...], currentIndex: 0, errors: [] }
+// === КОНТРОЛЬНАЯ ===
+let activeControlTest = null; // { level, tasks: [...], currentIndex, correct, wrong, answers: [] }
+
 let learned = JSON.parse(localStorage.getItem('learned') || '[]');
 let mastered = JSON.parse(localStorage.getItem('mastered') || '[]');
 
@@ -309,6 +321,15 @@ async function loadData() {
         } catch (e) {
             console.warn('sentences.json не загружен:', e);
             sentences = [];
+        }
+        // Загружаем модули
+        try {
+            const modRes = await fetch('data/modules.json');
+            modulesData = await modRes.json();
+            console.log('📦 Загружено модулей:', Object.keys(modulesData).length);
+        } catch (e) {
+            console.warn('modules.json не загружен:', e);
+            modulesData = null;
         }
 
         checkStreak();
@@ -2466,126 +2487,1268 @@ function attachSentTranslateHandlers() {
 
 // ===== LEARNING PATH =====
 function renderLearningPath() {
-    if (sentences.length === 0) {
+    if (!modulesData) {
         document.getElementById('content').innerHTML = `
             <div class="empty-state">
                 <div class="empty-icon"><i data-lucide="map"></i></div>
                 <div class="empty-title">Нет данных</div>
-                <div class="empty-text">Файл <b>sentences.json</b> не загружен.</div>
+                <div class="empty-text">Файл <b>modules.json</b> не загружен.</div>
             </div>
         `;
         refreshIcons();
         return;
     }
 
-    const blocks = getBlockKeys();
-    const totalAll = sentences.length;
-    const doneAll = sentences.filter(s => isDuoDone(s.id)).length;
-    const pctAll = totalAll > 0 ? Math.round((doneAll / totalAll) * 100) : 0;
+    // Если выбран уровень — показываем подмодули
+    if (currentModuleLevel) {
+        renderSubmodules(currentModuleLevel);
+        return;
+    }
 
-    let blocksHtml = '';
-    blocks.forEach(block => {
-        const info = getBlockName(block);
-        const tenses = getTensesInBlock(block);
-        const blockProg = getBlockProgress(tenses.map(t => t.key));
-        const blockPct = blockProg.total > 0 ? Math.round((blockProg.done / blockProg.total) * 100) : 0;
+    // Иначе — список уровней
+    renderLevelsList();
+}
 
-        let tensesHtml = '';
-        tenses.forEach(t => {
-            const tp = getTenseProgress(t.key);
-            const tpPct = tp.total > 0 ? Math.round((tp.done / tp.total) * 100) : 0;
-            const isExpanded = lpExpandedTenses.includes(t.key);
+function renderLevelsList() {
+    const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-            let levelsHtml = '';
-            if (isExpanded) {
-                const levels = ['all', 'A1', 'A2', 'B1', 'B2', 'C1'];
-                levelsHtml = `<div class="lp-levels">` + levels.map(lvl => {
-                    const lp = getLevelProgress(t.key, lvl);
-                    if (lp.total === 0) return '';
-                    const lpPct = Math.round((lp.done / lp.total) * 100);
-                    const isComplete = lp.done === lp.total && lp.total > 0;
-                    return `
-                        <button class="lp-level-btn ${isComplete ? 'complete' : ''}" data-tense="${t.key}" data-level="${lvl}">
-                            <div class="lp-level-head">
-                                <span class="lp-level-name">${lvl}</span>
-                                <span class="lp-level-count">${lp.done}/${lp.total}</span>
-                            </div>
-                            <div class="lp-level-bar">
-                                <div class="lp-level-fill" style="width:${lpPct}%"></div>
-                            </div>
-                        </button>
-                    `;
-                }).join('') + `</div>`;
-            }
+    let levelsHtml = '';
+    levels.forEach(level => {
+        const mod = modulesData[level];
+        if (!mod) return;
 
-            tensesHtml += `
-                <div class="lp-tense" data-tense="${t.key}">
-                    <div class="lp-tense-header" data-tense-toggle="${t.key}">
-                        <div class="lp-tense-title">
-                            <i data-lucide="${isExpanded ? 'chevron-down' : 'chevron-right'}" class="lp-chevron"></i>
-                            <span>${t.label}</span>
-                        </div>
-                        <div class="lp-tense-progress">
-                            <span class="lp-tense-count">${tp.done}/${tp.total}</span>
-                            <div class="lp-tense-bar">
-                                <div class="lp-tense-fill" style="width:${tpPct}%"></div>
-                            </div>
-                        </div>
+        const unlocked = levelUnlocked[level] === true;
+        const progress = getLevelProgressPercent(level);
+
+        levelsHtml += `
+            <div class="module-level-card ${unlocked ? '' : 'locked'}" data-level="${level}">
+                <div class="module-level-head">
+                    <div class="module-level-badge">${level}</div>
+                    <div class="module-level-info">
+                        <div class="module-level-title">Уровень ${level}</div>
+                        <div class="module-level-sub">${mod.num_submodules} подмодулей · ${mod.total_words} слов</div>
                     </div>
-                    ${levelsHtml}
+                    ${unlocked ? '' : '<i data-lucide="lock" class="module-lock"></i>'}
                 </div>
-            `;
-        });
-
-        blocksHtml += `
-            <div class="lp-block lp-block-${info.color}">
-                <div class="lp-block-header">
-                    <div class="lp-block-title">
-                        <span class="lp-block-emoji">${info.emoji}</span>
-                        <span>${info.label.toUpperCase()}</span>
+                <div class="module-level-progress">
+                    <div class="module-level-bar">
+                        <div class="module-level-fill" style="width:${progress}%"></div>
                     </div>
-                    <div class="lp-block-progress">
-                        <span class="lp-block-count">${blockProg.done}/${blockProg.total}</span>
-                        <span class="lp-block-pct">${blockPct}%</span>
-                    </div>
-                </div>
-                <div class="lp-block-bar">
-                    <div class="lp-block-fill" style="width:${blockPct}%"></div>
-                </div>
-                <div class="lp-tenses">
-                    ${tensesHtml}
+                    <div class="module-level-pct">${progress}%</div>
                 </div>
             </div>
         `;
     });
 
     document.getElementById('content').innerHTML = `
-        <div class="mode-wrap lp-wrap">
+        <div class="mode-wrap">
             <div class="list-header">
                 <div>
-                    <div class="list-title"><i data-lucide="map"></i> Путь обучения</div>
-                    <div class="list-subtitle">
-                        12 времён · ${totalAll} предложений · пройдено ${doneAll} (${pctAll}%)
-                    </div>
+                    <div class="list-title"><i data-lucide="graduation-cap"></i> Модули</div>
+                    <div class="list-subtitle">5 уровней · ${Object.values(modulesData).reduce((s, m) => s + m.num_submodules, 0)} подмодулей</div>
                 </div>
-                <button class="btn btn-secondary" id="lp-reset" title="Сбросить прогресс Пути">
-                    <i data-lucide="rotate-ccw"></i> Сбросить
-                </button>
             </div>
 
-            <div class="lp-tip">
-                <i data-lucide="info"></i>
-                Предложение считается пройденным, когда ты правильно <b>собрал</b> и <b>перевёл</b> его.
-            </div>
-
-            <div class="lp-blocks">
-                ${blocksHtml}
+            <div class="module-levels">
+                ${levelsHtml}
             </div>
         </div>
     `;
 
-    attachLearningPathHandlers();
+    document.querySelectorAll('.module-level-card').forEach(card => {
+        card.onclick = () => {
+            const level = card.dataset.level;
+            if (!levelUnlocked[level]) {
+                alert(`Уровень ${level} заблокирован. Сначала сдай контрольную предыдущего уровня.`);
+                return;
+            }
+            currentModuleLevel = level;
+            renderLearningPath();
+        };
+    });
+
     refreshIcons();
+}
+function renderSubmoduleTask() {
+    if (!activeSubmodule) return;
+
+    const tasks = activeSubmodule.tasks;
+    const idx = activeSubmodule.currentIndex;
+
+    // Проверяем — всё пройдено?
+    // Проверяем — очередь пуста?
+    if (tasks.length === 0) {
+        finishSubmodule();
+        return;
+    }
+
+    // Если currentIndex вышел за границы — сбрасываем
+    if (activeSubmodule.currentIndex >= tasks.length) {
+        activeSubmodule.currentIndex = 0;
+    }
+
+    const task = tasks[idx];
+    const prog = currentModuleProgress[activeSubmodule.subId] || {};
+    const total = prog.total_tasks || tasks.length;
+    const done = prog.done_tasks || 0;
+    const pct = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
+
+    // Рендер в зависимости от типа
+    let taskHtml = '';
+    if (task.type === 'card') taskHtml = renderCardTask(task);
+    else if (task.type === 'write') taskHtml = renderWriteTask(task);
+    else if (task.type === 'listen') taskHtml = renderListenTask(task);
+    else if (task.type === 'phrase') taskHtml = renderPhraseTask(task);
+    else if (task.type === 'sentence') taskHtml = renderSentenceTask(task);
+
+    const typeLabels = {
+        card: '📇 Карточка',
+        write: '📝 Письмо',
+        listen: '👂 Аудио',
+        phrase: '📖 Фраза',
+        sentence: '🧩 Грамматика',
+    };
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title">
+                        <button class="btn-back" id="back-to-subs"><i data-lucide="arrow-left"></i></button>
+                        ${activeSubmodule.subId}
+                    </div>
+                    <div class="list-subtitle">${typeLabels[task.type]} · Задание ${idx + 1} из ${total}</div>
+                </div>
+            </div>
+                       <div class="mode-progress">
+                <div class="mode-progress-info">
+                    <span class="mode-progress-label">Правильно: ${done} / ${total}</span>
+                    <span class="mode-progress-pct">${pct}%</span>
+                </div>
+                <div class="mode-progress-bar">
+                    <div class="mode-progress-fill" style="width:${pct}%"></div>
+                </div>
+            </div>
+
+            <div class="mode-card">
+                ${taskHtml}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('back-to-subs').onclick = () => {
+        activeSubmodule = null;
+        renderSubmodules(activeSubmodule?.level || currentModuleLevel);
+        renderSubmodules(currentModuleLevel);
+    };
+
+    // Привязка обработчиков
+    if (task.type === 'card') attachCardTaskHandlers(task);
+    else if (task.type === 'write') attachWriteTaskHandlers(task);
+    else if (task.type === 'listen') attachListenTaskHandlers(task);
+    else if (task.type === 'phrase') attachPhraseTaskHandlers(task);
+    else if (task.type === 'sentence') attachSentenceTaskHandlers(task);
+
+    refreshIcons();
+}
+
+// === РЕНДЕРЫ ЗАДАНИЙ ===
+
+function findWord(word) {
+    return vocabulary.find(w => w.word.toLowerCase() === word.toLowerCase());
+}
+
+function renderCardTask(task) {
+    const w = findWord(task.word);
+    if (!w) return '<div>Слово не найдено</div>';
+
+    const correct = w.translation;
+    const allWords = getFilteredVocabulary().filter(x =>
+        x.translation && x.translation !== correct && x.translation.length < 30
+    );
+    const wrongOptions = [];
+    let guard = 0;
+    while (wrongOptions.length < 3 && guard < 200) {
+        guard++;
+        const r = allWords[Math.floor(Math.random() * allWords.length)];
+        if (r && r.translation && !wrongOptions.includes(r.translation)) {
+            wrongOptions.push(r.translation);
+        }
+    }
+    const options = shuffleArray([correct, ...wrongOptions]);
+
+    return `
+        <div class="test-question">
+            ${w.word}
+            <button class="speak-btn" onclick="speak('${w.word.replace(/'/g, "\\'")}')">
+                <i data-lucide="volume-2"></i>
+            </button>
+        </div>
+        <div class="test-options">
+            ${options.map(o => `<button class="test-option" data-answer="${o.replace(/"/g, '&quot;')}">${o}</button>`).join('')}
+        </div>
+        <div class="test-feedback" id="task-feedback"></div>
+    `;
+}
+
+function handleControlCorrect() {
+    if (!activeControlTest) return;
+    activeControlTest.correct++;
+    activeControlTest.currentIndex++;
+}
+
+function handleControlError() {
+    if (!activeControlTest) return;
+    activeControlTest.wrong++;
+    activeControlTest.currentIndex++;
+}
+
+function showNextButtonControl() {
+    const old = document.getElementById('task-next-btn');
+    if (old) old.remove();
+    const fb = document.getElementById('task-feedback');
+    if (!fb) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'task-next-btn';
+    btn.className = 'btn btn-success btn-lg';
+    btn.style.marginTop = '16px';
+    btn.innerHTML = 'Дальше <i data-lucide="arrow-right"></i>';
+    btn.onclick = () => renderControlTask();
+    fb.parentNode.insertBefore(btn, fb.nextSibling);
+    if (window.lucide) window.lucide.createIcons();
+}
+
+// ==== CARD CONTROL ====
+function attachCardTaskHandlersControl(task) {
+    const w = findWord(task.word);
+    if (!w) return;
+    const correct = w.translation;
+
+    document.querySelectorAll('#content .test-option').forEach(btn => {
+        btn.onclick = () => {
+            const ans = btn.dataset.answer;
+            if (ans === correct) {
+                btn.classList.add('correct');
+                document.getElementById('task-feedback').innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+                document.getElementById('task-feedback').className = 'test-feedback correct';
+                handleControlCorrect();
+            } else {
+                btn.classList.add('wrong');
+                document.querySelectorAll('#content .test-option').forEach(b => {
+                    if (b.dataset.answer === correct) b.classList.add('correct');
+                });
+                document.getElementById('task-feedback').innerHTML = `<i data-lucide="x-circle"></i> Правильно: ${correct}`;
+                document.getElementById('task-feedback').className = 'test-feedback wrong';
+                handleControlError();
+            }
+            document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
+            showNextButtonControl();
+            refreshIcons();
+        };
+    });
+}
+
+// ==== WRITE CONTROL ====
+function attachWriteTaskHandlersControl(task) {
+    const w = findWord(task.word);
+    if (!w) return;
+    const input = document.getElementById('task-input');
+    input.focus();
+
+    document.getElementById('task-check').onclick = () => {
+        const ans = input.value.trim().toLowerCase();
+        const fb = document.getElementById('task-feedback');
+        if (ans === w.word.toLowerCase()) {
+            fb.innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+            fb.className = 'write-feedback correct';
+            handleControlCorrect();
+        } else {
+            fb.innerHTML = `<i data-lucide="x-circle"></i> Правильно: <b>${w.word}</b>`;
+            fb.className = 'write-feedback wrong';
+            handleControlError();
+        }
+        input.disabled = true;
+        document.getElementById('task-check').disabled = true;
+        showNextButtonControl();
+        refreshIcons();
+    };
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('task-check').disabled) {
+            document.getElementById('task-check').click();
+        }
+    });
+}
+
+// ==== LISTEN CONTROL ====
+function attachListenTaskHandlersControl(task) {
+    const w = findWord(task.word);
+    if (!w) return;
+    const input = document.getElementById('task-input');
+    input.focus();
+
+    document.getElementById('task-play').onclick = () => speak(w.word);
+
+    document.getElementById('task-check').onclick = () => {
+        const ans = input.value.trim().toLowerCase();
+        const fb = document.getElementById('task-feedback');
+        if (ans === w.word.toLowerCase()) {
+            fb.innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+            fb.className = 'write-feedback correct';
+            handleControlCorrect();
+        } else {
+            fb.innerHTML = `<i data-lucide="x-circle"></i> Правильно: <b>${w.word}</b>`;
+            fb.className = 'write-feedback wrong';
+            handleControlError();
+        }
+        input.disabled = true;
+        document.getElementById('task-check').disabled = true;
+        showNextButtonControl();
+        refreshIcons();
+    };
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('task-check').disabled) {
+            document.getElementById('task-check').click();
+        }
+    });
+}
+
+// ==== PHRASE CONTROL ====
+function attachPhraseTaskHandlersControl(task) {
+    const p = phrases.find(x => x.phrase.toLowerCase() === task.phrase.toLowerCase());
+    if (!p) return;
+    const correct = p.translation;
+
+    document.querySelectorAll('#content .test-option').forEach(btn => {
+        btn.onclick = () => {
+            const ans = btn.dataset.answer;
+            if (ans === correct) {
+                btn.classList.add('correct');
+                document.getElementById('task-feedback').innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+                document.getElementById('task-feedback').className = 'test-feedback correct';
+                handleControlCorrect();
+            } else {
+                btn.classList.add('wrong');
+                document.querySelectorAll('#content .test-option').forEach(b => {
+                    if (b.dataset.answer === correct) b.classList.add('correct');
+                });
+                document.getElementById('task-feedback').innerHTML = `<i data-lucide="x-circle"></i> Правильно: ${correct}`;
+                document.getElementById('task-feedback').className = 'test-feedback wrong';
+                handleControlError();
+            }
+            document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
+            showNextButtonControl();
+            refreshIcons();
+        };
+    });
+}
+
+// ==== SENTENCE CONTROL ====
+function attachSentenceTaskHandlersControl(task) {
+    const sent = sentences.find(s => s.id === task.sentId);
+    if (!sent) return;
+    const poolEl = document.getElementById('sent-pool');
+    const answerEl = document.getElementById('sent-answer');
+    const checkBtn = document.getElementById('sent-check');
+    let picked = [];
+
+    function updateUI() {
+        poolEl.innerHTML = '';
+        const shuffled = shuffleArray([...sent.words]);
+        shuffled.forEach(w => {
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip';
+            btn.textContent = w;
+            const used = picked.filter(p => p === w).length;
+            const avail = shuffled.filter(p => p === w).length;
+            if (used >= avail) btn.disabled = true;
+            btn.onclick = () => { picked.push(w); updateUI(); };
+            poolEl.appendChild(btn);
+        });
+        answerEl.innerHTML = '';
+        picked.forEach((w, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip picked';
+            btn.textContent = w;
+            btn.onclick = () => { picked.splice(i, 1); updateUI(); };
+            answerEl.appendChild(btn);
+        });
+        checkBtn.style.display = picked.length === sent.words.length ? 'inline-flex' : 'none';
+    }
+
+    updateUI();
+
+    checkBtn.onclick = () => {
+        const userAns = picked.join(' ').trim();
+        const correct = sent.words.join(' ').trim();
+        const fb = document.getElementById('task-feedback');
+        if (userAns === correct) {
+            fb.innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+            fb.className = 'sent-feedback correct';
+            handleControlCorrect();
+        } else {
+            fb.innerHTML = `<i data-lucide="x-circle"></i> Правильно: <b>${correct}</b>`;
+            fb.className = 'sent-feedback wrong';
+            handleControlError();
+        }
+        document.querySelectorAll('#content .sent-word-chip').forEach(b => b.disabled = true);
+        checkBtn.disabled = true;
+        document.getElementById('sent-reset').disabled = true;
+        showNextButtonControl();
+        refreshIcons();
+    };
+
+    document.getElementById('sent-reset').onclick = () => {
+        picked = [];
+        updateUI();
+    };
+}
+
+function attachCardTaskHandlers(task) {
+    const w = findWord(task.word);
+    if (!w) return;
+    const correct = w.translation;
+
+    document.querySelectorAll('#content .test-option').forEach(btn => {
+        btn.onclick = () => {
+            const ans = btn.dataset.answer;
+            if (ans === correct) {
+                btn.classList.add('correct');
+                document.getElementById('task-feedback').innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+                document.getElementById('task-feedback').className = 'test-feedback correct';
+                handleTaskCorrect();
+            } else {
+                btn.classList.add('wrong');
+                document.querySelectorAll('#content .test-option').forEach(b => {
+                    if (b.dataset.answer === correct) b.classList.add('correct');
+                });
+                document.getElementById('task-feedback').innerHTML = `<i data-lucide="x-circle"></i> Правильно: ${correct}`;
+                document.getElementById('task-feedback').className = 'test-feedback wrong';
+                handleTaskError();
+            }
+            document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
+            showNextButton();
+            refreshIcons();
+        };
+    });
+}
+
+function renderWriteTask(task) {
+    const w = findWord(task.word);
+    if (!w) return '<div>Слово не найдено</div>';
+    return `
+        <div class="write-prompt">
+            <div class="write-prompt-label">Переведи на английский:</div>
+            <div class="write-prompt-word">${w.translation}</div>
+            <div class="write-prompt-hint"><i data-lucide="lightbulb"></i> ${w.word.length} букв</div>
+        </div>
+        <input type="text" class="write-input" id="task-input" placeholder="Введи слово..." autocomplete="off" autocapitalize="off" spellcheck="false">
+        <div class="card-actions">
+            <button class="btn btn-primary btn-lg" id="task-check"><i data-lucide="check"></i> Проверить</button>
+        </div>
+        <div class="write-feedback" id="task-feedback"></div>
+    `;
+}
+
+function attachWriteTaskHandlers(task) {
+    const w = findWord(task.word);
+    if (!w) return;
+    const input = document.getElementById('task-input');
+    input.focus();
+
+    document.getElementById('task-check').onclick = () => {
+        const ans = input.value.trim().toLowerCase();
+        const fb = document.getElementById('task-feedback');
+        if (ans === w.word.toLowerCase()) {
+            fb.innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+            fb.className = 'write-feedback correct';
+            input.disabled = true;
+            document.getElementById('task-check').disabled = true;
+            handleTaskCorrect();
+        } else {
+            fb.innerHTML = `<i data-lucide="x-circle"></i> Правильно: <b>${w.word}</b>`;
+            fb.className = 'write-feedback wrong';
+            input.disabled = true;
+            document.getElementById('task-check').disabled = true;
+            handleTaskError();
+        }
+        showNextButton();
+        refreshIcons();
+    };
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('task-check').disabled) {
+            document.getElementById('task-check').click();
+        }
+    });
+}
+
+function renderListenTask(task) {
+    const w = findWord(task.word);
+    if (!w) return '<div>Слово не найдено</div>';
+    return `
+        <div class="mode-badge"><i data-lucide="ear"></i> Слушай и пиши</div>
+        <button class="listen-big-btn" onclick="speak('${w.word.replace(/'/g, "\\'")}')">
+            <i data-lucide="volume-2"></i>
+        </button>
+        <div class="listen-hint">Нажми и слушай</div>
+        <input type="text" class="write-input" id="task-input" placeholder="Введи слово..." autocomplete="off" autocapitalize="off" spellcheck="false">
+        <div class="card-actions">
+            <button class="btn btn-primary btn-lg" id="task-check"><i data-lucide="check"></i> Проверить</button>
+            <button class="btn btn-secondary" id="task-play"><i data-lucide="volume-2"></i> Повторить</button>
+        </div>
+        <div class="write-feedback" id="task-feedback"></div>
+    `;
+}
+
+function attachListenTaskHandlers(task) {
+    const w = findWord(task.word);
+    if (!w) return;
+    const input = document.getElementById('task-input');
+    input.focus();
+
+    document.getElementById('task-play').onclick = () => speak(w.word);
+
+    document.getElementById('task-check').onclick = () => {
+        const ans = input.value.trim().toLowerCase();
+        const fb = document.getElementById('task-feedback');
+        if (ans === w.word.toLowerCase()) {
+            fb.innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+            fb.className = 'write-feedback correct';
+            input.disabled = true;
+            document.getElementById('task-check').disabled = true;
+            handleTaskCorrect();
+        } else {
+            fb.innerHTML = `<i data-lucide="x-circle"></i> Правильно: <b>${w.word}</b>`;
+            fb.className = 'write-feedback wrong';
+            input.disabled = true;
+            document.getElementById('task-check').disabled = true;
+            handleTaskError();
+        }
+        showNextButton();
+        refreshIcons();
+    };
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !document.getElementById('task-check').disabled) {
+            document.getElementById('task-check').click();
+        }
+    });
+}
+
+function renderPhraseTask(task) {
+    const p = phrases.find(x => x.phrase.toLowerCase() === task.phrase.toLowerCase());
+    if (!p) return '<div>Фраза не найдена</div>';
+    const correct = p.translation;
+    const allPhrases = phrases.filter(x => x.translation && x.translation !== correct);
+    const wrongOptions = [];
+    let guard = 0;
+    while (wrongOptions.length < 3 && guard < 200) {
+        guard++;
+        const r = allPhrases[Math.floor(Math.random() * allPhrases.length)];
+        if (r && r.translation && !wrongOptions.includes(r.translation)) {
+            wrongOptions.push(r.translation);
+        }
+    }
+    const options = shuffleArray([correct, ...wrongOptions]);
+
+    return `
+        <div class="test-question">
+            ${p.phrase}
+            <button class="speak-btn" onclick="speak('${p.phrase.replace(/'/g, "\\'")}')">
+                <i data-lucide="volume-2"></i>
+            </button>
+        </div>
+        <div class="test-options">
+            ${options.map(o => `<button class="test-option" data-answer="${o.replace(/"/g, '&quot;')}">${o}</button>`).join('')}
+        </div>
+        <div class="test-feedback" id="task-feedback"></div>
+    `;
+}
+
+function attachPhraseTaskHandlers(task) {
+    const p = phrases.find(x => x.phrase.toLowerCase() === task.phrase.toLowerCase());
+    if (!p) return;
+    const correct = p.translation;
+
+    document.querySelectorAll('#content .test-option').forEach(btn => {
+        btn.onclick = () => {
+            const ans = btn.dataset.answer;
+            if (ans === correct) {
+                btn.classList.add('correct');
+                document.getElementById('task-feedback').innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+                document.getElementById('task-feedback').className = 'test-feedback correct';
+                handleTaskCorrect();
+            } else {
+                btn.classList.add('wrong');
+                document.querySelectorAll('#content .test-option').forEach(b => {
+                    if (b.dataset.answer === correct) b.classList.add('correct');
+                });
+                document.getElementById('task-feedback').innerHTML = `<i data-lucide="x-circle"></i> Правильно: ${correct}`;
+                document.getElementById('task-feedback').className = 'test-feedback wrong';
+                handleTaskError();
+            }
+            document.querySelectorAll('#content .test-option').forEach(b => b.disabled = true);
+            showNextButton();
+            refreshIcons();
+        };
+    });
+}
+
+function renderSentenceTask(task) {
+    const sent = sentences.find(s => s.id === task.sentId);
+    if (!sent) return '<div>Предложение не найдено</div>';
+    const shuffled = shuffleArray([...sent.words]);
+    return `
+        <div class="mode-badge"><i data-lucide="puzzle"></i> Собери предложение</div>
+        <div class="sent-ru">${sent.ru}</div>
+        <div class="sent-words" id="sent-pool">
+            ${shuffled.map(w => `<button class="sent-word-chip" data-word="${w.replace(/"/g, '&quot;')}">${w}</button>`).join('')}
+        </div>
+        <div class="sent-answer" id="sent-answer"></div>
+        <div class="sent-feedback" id="task-feedback"></div>
+        <div class="card-actions">
+            <button class="btn btn-primary btn-lg" id="sent-check" style="display:none;"><i data-lucide="check"></i> Проверить</button>
+            <button class="btn btn-secondary" id="sent-reset"><i data-lucide="rotate-ccw"></i> Сбросить</button>
+        </div>
+    `;
+}
+
+function attachSentenceTaskHandlers(task) {
+    const sent = sentences.find(s => s.id === task.sentId);
+    if (!sent) return;
+    const poolEl = document.getElementById('sent-pool');
+    const answerEl = document.getElementById('sent-answer');
+    const checkBtn = document.getElementById('sent-check');
+    let picked = [];
+
+    function updateUI() {
+        poolEl.innerHTML = '';
+        const shuffled = shuffleArray([...sent.words]);
+        shuffled.forEach(w => {
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip';
+            btn.textContent = w;
+            const used = picked.filter(p => p === w).length;
+            const avail = shuffled.filter(p => p === w).length;
+            if (used >= avail) btn.disabled = true;
+            btn.onclick = () => { picked.push(w); updateUI(); };
+            poolEl.appendChild(btn);
+        });
+        answerEl.innerHTML = '';
+        picked.forEach((w, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'sent-word-chip picked';
+            btn.textContent = w;
+            btn.onclick = () => { picked.splice(i, 1); updateUI(); };
+            answerEl.appendChild(btn);
+        });
+        checkBtn.style.display = picked.length === sent.words.length ? 'inline-flex' : 'none';
+    }
+
+    updateUI();
+
+    checkBtn.onclick = () => {
+        const userAns = picked.join(' ').trim();
+        const correct = sent.words.join(' ').trim();
+        const fb = document.getElementById('task-feedback');
+        if (userAns === correct) {
+            fb.innerHTML = '<i data-lucide="check-circle"></i> Правильно!';
+            fb.className = 'sent-feedback correct';
+            handleTaskCorrect();
+        } else {
+            fb.innerHTML = `<i data-lucide="x-circle"></i> Правильно: <b>${correct}</b>`;
+            fb.className = 'sent-feedback wrong';
+            handleTaskError();
+        }
+        document.querySelectorAll('#content .sent-word-chip').forEach(b => b.disabled = true);
+        checkBtn.disabled = true;
+        document.getElementById('sent-reset').disabled = true;
+        showNextButton();
+        refreshIcons();
+    };
+
+    document.getElementById('sent-reset').onclick = () => {
+        picked = [];
+        updateUI();
+    };
+}
+
+// === ОБРАБОТКА ОТВЕТОВ ===
+function showNextButton() {
+    // Удаляем старую кнопку, если есть
+    const old = document.getElementById('task-next-btn');
+    if (old) old.remove();
+
+    // Находим feedback
+    const fb = document.getElementById('task-feedback');
+    if (!fb) return;
+
+    // Создаём кнопку
+    const btn = document.createElement('button');
+    btn.id = 'task-next-btn';
+    btn.className = 'btn btn-success btn-lg';
+    btn.style.marginTop = '16px';
+    btn.innerHTML = 'Дальше <i data-lucide="arrow-right"></i>';
+    btn.onclick = () => nextTask();
+
+    fb.parentNode.insertBefore(btn, fb.nextSibling);
+
+    if (window.lucide) window.lucide.createIcons();
+}
+
+function handleTaskCorrect() {
+    if (!activeSubmodule) return;
+    const prog = currentModuleProgress[activeSubmodule.subId];
+    const task = activeSubmodule.tasks[activeSubmodule.currentIndex];
+
+    // Если задание УНИКАЛЬНОЕ и ещё не пройдено — считаем
+    if (task && task.key && !prog.completedKeys.includes(task.key)) {
+        prog.completedKeys.push(task.key);
+        prog.done_tasks = prog.completedKeys.length;
+    }
+
+    // Убираем задание из очереди
+    activeSubmodule.tasks.splice(activeSubmodule.currentIndex, 1);
+
+    prog.currentIndex = activeSubmodule.currentIndex;
+    prog.taskOrder = activeSubmodule.tasks;
+    saveModuleProgress();
+}
+
+function handleTaskError() {
+    if (!activeSubmodule) return;
+    const task = activeSubmodule.tasks[activeSubmodule.currentIndex];
+
+    // Убираем из текущей позиции
+    activeSubmodule.tasks.splice(activeSubmodule.currentIndex, 1);
+    // Добавляем в конец
+    activeSubmodule.tasks.push(task);
+
+    const prog = currentModuleProgress[activeSubmodule.subId];
+    prog.currentIndex = activeSubmodule.currentIndex;
+    prog.taskOrder = activeSubmodule.tasks;
+    saveModuleProgress();
+}
+
+function nextTask() {
+    if (!activeSubmodule) return;
+    renderSubmoduleTask();
+}
+
+function finishControlTest() {
+    if (!activeControlTest) return;
+    const level = activeControlTest.level;
+    const total = activeControlTest.tasks.length;
+    const correct = activeControlTest.correct;
+    const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+    const passed = pct >= 85;
+
+    if (passed) {
+        // Разблокируем следующий уровень
+        const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+        const nextIdx = levels.indexOf(level) + 1;
+        if (nextIdx < levels.length) {
+            levelUnlocked[levels[nextIdx]] = true;
+            localStorage.setItem('levelUnlocked', JSON.stringify(levelUnlocked));
+        }
+    }
+
+    // Сохраняем результат
+    const key = `control_${level}`;
+    currentModuleProgress[key] = {
+        passed: passed,
+        correct: correct,
+        total: total,
+        pct: pct,
+    };
+    saveModuleProgress();
+
+    const emoji = passed ? '🏆' : '😢';
+    const title = passed ? 'Контрольная пройдена!' : 'Не хватило баллов';
+    const nextLevel = passed ? getNextLevel(level) : null;
+    const subtitle = passed
+        ? (nextLevel ? `Уровень ${nextLevel} разблокирован!` : 'Ты прошёл все уровни! 🎉')
+        : `Нужно 85% (${Math.ceil(total * 0.85)}/${total}). Попробуй ещё раз!`;
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap lp-done-wrap">
+            <div class="lp-done-card">
+                <div class="lp-done-icon">${emoji}</div>
+                <div class="lp-done-title">${title}</div>
+                <div class="lp-done-sub">Контрольная ${level}</div>
+                <div class="lp-done-stats">
+                    Результат: <b>${correct}/${total}</b> (${pct}%)
+                </div>
+                <div class="lp-done-text">${subtitle}</div>
+                <div class="lp-done-actions">
+                    <button class="btn btn-primary" id="control-back">
+                        <i data-lucide="arrow-left"></i> К уровням
+                    </button>
+                    ${passed ? '' : `<button class="btn btn-secondary" id="control-retry">
+                        <i data-lucide="rotate-ccw"></i> Пересдать
+                    </button>`}
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('control-back').onclick = () => {
+        activeControlTest = null;
+        currentModuleLevel = null;
+        renderLearningPath();
+    };
+
+    const retryBtn = document.getElementById('control-retry');
+    if (retryBtn) {
+        retryBtn.onclick = () => {
+            const lvl = activeControlTest.level;
+            activeControlTest = null;
+            startControlTest(lvl);
+        };
+    }
+
+    refreshIcons();
+}
+
+function getNextLevel(level) {
+    const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+    const idx = levels.indexOf(level);
+    return idx >= 0 && idx < levels.length - 1 ? levels[idx + 1] : null;
+}
+
+function finishSubmodule() {
+    if (!activeSubmodule) return;
+    const prog = currentModuleProgress[activeSubmodule.subId];
+    const total = prog.total_tasks || 149;
+    const done = prog.done_tasks || 0;
+    const pct = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
+    const passed = pct >= 85;
+    prog.passed = passed;
+    saveModuleProgress();
+
+    const emoji = passed ? '🎉' : '💪';
+    const title = passed ? 'Отлично! Подмодуль пройден!' : 'Ещё немного!';
+    const subtitle = passed
+        ? `Ты справился на ${pct}%. Следующий подмодуль разблокирован.`
+        : `Ты набрал ${pct}%. Нужно 85% для прохождения.`;
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap lp-done-wrap">
+            <div class="lp-done-card">
+                <div class="lp-done-icon">${emoji}</div>
+                <div class="lp-done-title">${title}</div>
+                <div class="lp-done-sub">${activeSubmodule.subId}</div>
+                <div class="lp-done-stats">
+                    Прогресс: <b>${pct}%</b> (${done}/${total})
+                </div>
+                <div class="lp-done-text">${subtitle}</div>
+                <div class="lp-done-actions">
+                    <button class="btn btn-primary" id="finish-back">
+                        <i data-lucide="arrow-left"></i> К подмодулям
+                    </button>
+                    <button class="btn btn-secondary" id="finish-retry">
+                        <i data-lucide="rotate-ccw"></i> Начать заново
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('finish-back').onclick = () => {
+        const lvl = activeSubmodule.level;
+        activeSubmodule = null;
+        renderSubmodules(lvl);
+    };
+
+    document.getElementById('finish-retry').onclick = () => {
+        const lvl = activeSubmodule.level;
+        const sid = activeSubmodule.subId;
+        // Полный сброс прогресса
+        delete currentModuleProgress[sid];
+        saveModuleProgress();
+        activeSubmodule = null;
+        startSubmodule(lvl, sid);
+    };
+
+    refreshIcons();
+}
+
+function renderSubmodules(level) {
+    const mod = modulesData[level];
+    if (!mod) return;
+
+    let subsHtml = '';
+    mod.submodules.forEach((sub, idx) => {
+        const prog = currentModuleProgress[sub.id] || { done_tasks: 0, total_tasks: 0, passed: false };
+        const total = prog.total_tasks || (sub.words.length * 3 + sub.phrases.length + sub.sentences.length);
+        const done = prog.done_tasks || 0;
+        const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+        const isPassed = prog.passed === true;
+        const isLocked = idx > 0 && !isSubmoduleUnlocked(level, idx);
+
+        subsHtml += `
+            <div class="module-sub-card ${isPassed ? 'passed' : ''} ${isLocked ? 'locked' : ''}" data-sub-id="${sub.id}">
+                <div class="module-sub-head">
+                    <div class="module-sub-id">${sub.id}</div>
+                    <div class="module-sub-info">
+                        <div class="module-sub-title">${sub.words.length} слов · ${sub.phrases.length} фраз · ${sub.sentences.length} предложений</div>
+                    </div>
+                    ${isPassed ? '<i data-lucide="check-circle" class="module-sub-icon"></i>' : ''}
+                    ${isLocked ? '<i data-lucide="lock" class="module-sub-icon"></i>' : ''}
+                </div>
+                <div class="module-sub-progress">
+                    <div class="module-sub-bar">
+                        <div class="module-sub-fill" style="width:${pct}%"></div>
+                    </div>
+                    <div class="module-sub-pct">${done}/${total} · ${pct}%</div>
+                </div>
+            </div>
+        `;
+    });
+
+    // Контрольная
+    // Контрольная — ВСЕГДА разблокирована
+    const passed = currentModuleProgress[`control_${level}`]?.passed === true;
+
+    const controlHtml = `
+        <div class="module-control-card ${passed ? 'passed' : ''}" data-control="true">
+            <div class="module-control-head">
+                <div class="module-control-icon">${passed ? '✅' : '🏆'}</div>
+                <div class="module-control-info">
+                    <div class="module-control-title">Контрольная ${level}</div>
+                    <div class="module-control-sub">${mod.control_test.total_questions} вопросов · порог ${mod.control_test.threshold * 100}%</div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title">
+                        <button class="btn-back" id="back-to-levels"><i data-lucide="arrow-left"></i></button>
+                        Уровень ${level}
+                    </div>
+                    <div class="list-subtitle">${mod.num_submodules} подмодулей · ${mod.total_words} слов</div>
+                </div>
+            </div>
+
+            <div class="module-subs">
+                ${subsHtml}
+                ${controlHtml}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('back-to-levels').onclick = () => {
+        currentModuleLevel = null;
+        renderLearningPath();
+    };
+
+    document.querySelectorAll('.module-sub-card').forEach(card => {
+        card.onclick = () => {
+            if (card.classList.contains('locked')) {
+                alert('Этот подмодуль заблокирован. Пройди предыдущий на 85%+.');
+                return;
+            }
+            const subId = card.dataset.subId;
+            startSubmodule(level, subId);
+        };
+    });
+
+    document.querySelectorAll('.module-control-card').forEach(card => {
+        card.onclick = () => {
+            startControlTest(level);
+        };
+    });
+
+    refreshIcons();
+}
+function buildControlTest(level) {
+    const mod = modulesData[level];
+    if (!mod) return [];
+
+    // Собираем ВСЕ слова/фразы/предложения уровня
+    const allWords = [];
+    const allPhrases = [];
+    const allSentences = [];
+
+    mod.submodules.forEach(sub => {
+        sub.words.forEach(w => allWords.push(w));
+        sub.phrases.forEach(p => allPhrases.push(p));
+        sub.sentences.forEach(s => allSentences.push(s));
+    });
+
+    // Перемешиваем
+    const shuffledWords = shuffleArray([...allWords]);
+    const shuffledPhrases = shuffleArray([...allPhrases]);
+    const shuffledSentences = shuffleArray([...allSentences]);
+
+    const tasks = [];
+
+    // 10 карточек
+    for (let i = 0; i < 10 && i < shuffledWords.length; i++) {
+        tasks.push({ type: 'card', word: shuffledWords[i], key: `control:${level}:card:${shuffledWords[i]}:${i}` });
+    }
+
+    // 5 письмо
+    for (let i = 10; i < 15 && i < shuffledWords.length; i++) {
+        tasks.push({ type: 'write', word: shuffledWords[i], key: `control:${level}:write:${shuffledWords[i]}:${i}` });
+    }
+
+    // 5 аудио
+    for (let i = 15; i < 20 && i < shuffledWords.length; i++) {
+        tasks.push({ type: 'listen', word: shuffledWords[i], key: `control:${level}:listen:${shuffledWords[i]}:${i}` });
+    }
+
+    // 5 фраз
+    for (let i = 0; i < 5 && i < shuffledPhrases.length; i++) {
+        tasks.push({ type: 'phrase', phrase: shuffledPhrases[i], key: `control:${level}:phrase:${shuffledPhrases[i]}:${i}` });
+    }
+
+    // 5 предложений
+    for (let i = 0; i < 5 && i < shuffledSentences.length; i++) {
+        tasks.push({ type: 'sentence', sentId: shuffledSentences[i], key: `control:${level}:sentence:${shuffledSentences[i]}:${i}` });
+    }
+
+    // Финальный shuffle
+    return shuffleArray(tasks);
+}
+
+function buildSubmoduleTasks(level, subId) {
+    const mod = modulesData[level];
+    if (!mod) return [];
+    const sub = mod.submodules.find(s => s.id === subId);
+    if (!sub) return [];
+
+    const tasks = [];
+
+    // 1. Карточки (слово → перевод)
+    sub.words.forEach(word => {
+        tasks.push({
+            type: 'card',
+            word: word,
+            key: `${subId}:card:${word}`,
+        });
+    });
+
+    // 2. Письмо (перевод → слово)
+    sub.words.forEach(word => {
+        tasks.push({
+            type: 'write',
+            word: word,
+            key: `${subId}:write:${word}`,
+        });
+    });
+
+    // 3. Аудио (слушаешь → пишешь)
+    sub.words.forEach(word => {
+        tasks.push({
+            type: 'listen',
+            word: word,
+            key: `${subId}:listen:${word}`,
+        });
+    });
+
+    // 4. Фразы
+    sub.phrases.forEach(phrase => {
+        tasks.push({
+            type: 'phrase',
+            phrase: phrase,
+            key: `${subId}:phrase:${phrase}`,
+        });
+    });
+
+    // 5. Грамматика (сборка предложения)
+    sub.sentences.forEach(sentId => {
+        tasks.push({
+            type: 'sentence',
+            sentId: sentId,
+            key: `${subId}:sentence:${sentId}`,
+        });
+    });
+
+    return shuffleArray(tasks);
+}
+function startControlTest(level) {
+    const tasks = buildControlTest(level);
+    if (tasks.length === 0) {
+        alert('Недостаточно данных для контрольной.');
+        return;
+    }
+
+    activeControlTest = {
+        level: level,
+        tasks: tasks,
+        currentIndex: 0,
+        correct: 0,
+        wrong: 0,
+    };
+
+    renderControlTask();
+}
+
+function renderControlTask() {
+    if (!activeControlTest) return;
+
+    const tasks = activeControlTest.tasks;
+    const idx = activeControlTest.currentIndex;
+    const total = tasks.length;
+
+    // Конец?
+    if (idx >= total) {
+        finishControlTest();
+        return;
+    }
+
+    const task = tasks[idx];
+    const pct = Math.round((idx / total) * 100);
+
+    let taskHtml = '';
+    if (task.type === 'card') taskHtml = renderCardTask(task);
+    else if (task.type === 'write') taskHtml = renderWriteTask(task);
+    else if (task.type === 'listen') taskHtml = renderListenTask(task);
+    else if (task.type === 'phrase') taskHtml = renderPhraseTask(task);
+    else if (task.type === 'sentence') taskHtml = renderSentenceTask(task);
+
+    const typeLabels = {
+        card: '📇 Карточка',
+        write: '📝 Письмо',
+        listen: '👂 Аудио',
+        phrase: '📖 Фраза',
+        sentence: '🧩 Грамматика',
+    };
+
+    document.getElementById('content').innerHTML = `
+        <div class="mode-wrap">
+            <div class="list-header">
+                <div>
+                    <div class="list-title">
+                        <button class="btn-back" id="back-from-control"><i data-lucide="arrow-left"></i></button>
+                        🏆 Контрольная ${activeControlTest.level}
+                    </div>
+                    <div class="list-subtitle">${typeLabels[task.type]} · Вопрос ${idx + 1} из ${total}</div>
+                </div>
+            </div>
+            <div class="mode-progress">
+                <div class="mode-progress-info">
+                    <span class="mode-progress-label">Вопрос ${idx + 1} / ${total}</span>
+                    <span class="mode-progress-pct">${pct}%</span>
+                </div>
+                <div class="mode-progress-bar">
+                    <div class="mode-progress-fill" style="width:${pct}%"></div>
+                </div>
+            </div>
+            <div class="mode-card">
+                ${taskHtml}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('back-from-control').onclick = () => {
+        if (confirm('Выйти из контрольной? Прогресс не сохранится.')) {
+            activeControlTest = null;
+            renderSubmodules(activeControlTest?.level || currentModuleLevel);
+        }
+    };
+
+    // Привязка обработчиков (как в подмодуле, но с control)
+    if (task.type === 'card') attachCardTaskHandlersControl(task);
+    else if (task.type === 'write') attachWriteTaskHandlersControl(task);
+    else if (task.type === 'listen') attachListenTaskHandlersControl(task);
+    else if (task.type === 'phrase') attachPhraseTaskHandlersControl(task);
+    else if (task.type === 'sentence') attachSentenceTaskHandlersControl(task);
+
+    refreshIcons();
+}
+
+function startSubmodule(level, subId) {
+    const sub = modulesData[level]?.submodules.find(s => s.id === subId);
+    if (!sub) return;
+
+    // Прогресс подмодуля
+    let prog = currentModuleProgress[subId];
+    if (!prog) {
+        prog = {
+            done_tasks: 0,
+            total_tasks: 0,
+            passed: false,
+            taskOrder: [],
+            currentIndex: 0,
+            errors: [],
+            completedKeys: [],   // ключи УНИКАЛЬНЫХ пройденных заданий
+        };
+    }
+    if (!prog.completedKeys) prog.completedKeys = [];
+
+    // Если порядок не сохранён — создаём
+    if (!prog.taskOrder || prog.taskOrder.length === 0) {
+        const tasks = buildSubmoduleTasks(level, subId);
+        prog.taskOrder = tasks;
+        prog.total_tasks = tasks.length;
+        prog.currentIndex = 0;
+    }
+
+    currentModuleProgress[subId] = prog;
+    saveModuleProgress();
+
+    activeSubmodule = {
+        level: level,
+        subId: subId,
+        tasks: prog.taskOrder,
+        currentIndex: prog.currentIndex,
+        errors: prog.errors || [],
+    };
+
+    renderSubmoduleTask();
+}
+
+function saveModuleProgress() {
+    localStorage.setItem('moduleProgress', JSON.stringify(currentModuleProgress));
+}
+
+function updateSubmoduleProgress(subId, doneTasks, totalTasks, passed, currentIndex, errors) {
+    currentModuleProgress[subId] = {
+        ...currentModuleProgress[subId],
+        done_tasks: doneTasks,
+        total_tasks: totalTasks,
+        passed: passed,
+        currentIndex: currentIndex,
+        errors: errors,
+    };
+    saveModuleProgress();
+}
+function isSubmoduleUnlocked(level, index) {
+    if (index === 0) return true; // A1.1 всегда открыт
+    const mod = modulesData[level];
+    if (!mod) return false;
+    const prevSub = mod.submodules[index - 1];
+    const prevProg = currentModuleProgress[prevSub.id] || { done_tasks: 0, total_tasks: 0 };
+    const total = prevProg.total_tasks || (prevSub.words.length * 3 + prevSub.phrases.length + prevSub.sentences.length);
+    const done = prevProg.done_tasks || 0;
+    const pct = total > 0 ? (done / total) * 100 : 0;
+    return pct >= 85; // 85%+ от заданий → следующий открыт
+}
+
+function getLevelProgressPercent(level) {
+    const mod = modulesData[level];
+    if (!mod) return 0;
+
+    let totalDone = 0;
+    let totalTasks = 0;
+
+    mod.submodules.forEach(sub => {
+        const prog = currentModuleProgress[sub.id] || {};
+        const total = prog.total_tasks || (sub.words.length * 3 + sub.phrases.length + sub.sentences.length);
+        totalTasks += total;
+        totalDone += (prog.done_tasks || 0);
+    });
+
+    return totalTasks > 0 ? Math.round((totalDone / totalTasks) * 100) : 0;
 }
 
 function attachLearningPathHandlers() {
